@@ -1,0 +1,77 @@
+"use client";
+
+import Link from "next/link";
+import { useState } from "react";
+import { ChevronRight, Menu, Search, X } from "lucide-react";
+import { footerColumns, navItems } from "@/lib/data";
+
+export function Logo({ inverse = false }: { inverse?: boolean }) {
+  return (
+    <Link href="/" className={`logo ${inverse ? "logo-inverse" : ""}`} aria-label="Kingdom Civics home">
+      <span className="logo-mark" aria-hidden="true">
+        <span className="logo-crown">✦</span>
+        <span className="logo-arch" />
+      </span>
+      <span className="logo-words">
+        <strong>KINGDOM</strong>
+        <span>CIVICS</span>
+      </span>
+    </Link>
+  );
+}
+
+export function SiteHeader() {
+  const [open, setOpen] = useState(false);
+  return (
+    <header className="site-header">
+      <div className="top-note">
+        <span>Seek truth. Pray faithfully. Serve humbly.</span>
+        <Link href="/trust">See how our research works <ChevronRight size={13} /></Link>
+      </div>
+      <div className="nav-wrap">
+        <Logo />
+        <nav className="desktop-nav" aria-label="Primary navigation">
+          {navItems.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}
+        </nav>
+        <div className="nav-actions">
+          <Link href="/search" className="icon-button" aria-label="Search"><Search size={19} /></Link>
+          <Link href="/my-civics" className="button button-small button-ghost">My Civics</Link>
+          <button className="menu-button" onClick={() => setOpen(!open)} aria-label="Toggle menu" aria-expanded={open}>
+            {open ? <X /> : <Menu />}
+          </button>
+        </div>
+      </div>
+      {open && (
+        <nav className="mobile-nav" aria-label="Mobile navigation">
+          {navItems.map(([label, href]) => <Link key={href} href={href} onClick={() => setOpen(false)}>{label}<ChevronRight size={16} /></Link>)}
+          <Link href="/my-civics" onClick={() => setOpen(false)}>My Civics <ChevronRight size={16} /></Link>
+        </nav>
+      )}
+    </header>
+  );
+}
+
+export function SiteFooter() {
+  return (
+    <footer className="site-footer">
+      <div className="footer-main">
+        <div className="footer-brand">
+          <Logo inverse />
+          <p>Helping the Church understand government, discern leadership, pray faithfully, and serve with humility.</p>
+          <span className="eyebrow gold-text">A ministry of Thy Kingdom Network</span>
+        </div>
+        {footerColumns.map((column) => (
+          <div className="footer-column" key={column.title}>
+            <h3>{column.title}</h3>
+            {column.links.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}
+          </div>
+        ))}
+      </div>
+      <div className="footer-bottom">
+        <span>© 2026 Thy Kingdom Network</span>
+        <span>Educational research, not a candidate endorsement.</span>
+        <strong>KINGDOM FIRST.</strong>
+      </div>
+    </footer>
+  );
+}
