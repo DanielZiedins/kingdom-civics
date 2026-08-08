@@ -11,8 +11,10 @@ import {
   Sparkles,
   Users,
 } from "lucide-react";
+import { hamiltonCouncillors, hamiltonFederal, hamiltonMayor, hamiltonMeta } from "@/lib/hamilton";
 
 export const navItems = [
+  ["Why Engage", "/why-engage"],
   ["Learn", "/learn"],
   ["Issues", "/issues"],
   ["Leaders", "/leaders"],
@@ -44,7 +46,7 @@ export const principles = [
   {
     slug: "human-dignity",
     name: "Human Dignity",
-    summary: "Every person bears God’s image and must be treated with inherent worth.",
+    summary: "Every person bears God's image and must be treated with inherent worth.",
     scripture: "Genesis 1:27 · James 3:9",
     icon: Users,
   },
@@ -80,72 +82,70 @@ export const principles = [
 
 export const leaders = [
   {
-    slug: "elena-moreno",
-    name: "Elena Moreno",
-    initials: "EM",
-    office: "Mayor of Harbor City",
-    party: "Nonpartisan office",
-    status: "Incumbent",
-    tone: "gold",
+    slug: hamiltonMayor.slug,
+    name: hamiltonMayor.name,
+    initials: hamiltonMayor.initials,
+    office: hamiltonMayor.office,
+    party: hamiltonMayor.party ?? "Nonpartisan",
+    status: hamiltonMayor.status,
+    tone: hamiltonMayor.tone,
+    sourceUrl: hamiltonMayor.sourceUrl,
+    live: true,
   },
-  {
-    slug: "marcus-cole",
-    name: "Marcus Cole",
-    initials: "MC",
-    office: "Candidate for Mayor",
-    party: "Nonpartisan office",
-    status: "Challenger",
-    tone: "blue",
-  },
-  {
-    slug: "ruth-okafor",
-    name: "Ruth Okafor",
-    initials: "RO",
-    office: "Ward 4 Councillor",
-    party: "Independent",
-    status: "Current official",
-    tone: "green",
-  },
+  ...hamiltonCouncillors.slice(0, 2).map((c) => ({
+    slug: c.slug,
+    name: c.name,
+    initials: c.initials,
+    office: `${c.office} · ${c.ward}`,
+    party: c.party ?? "Nonpartisan",
+    status: c.status,
+    tone: c.tone,
+    sourceUrl: c.sourceUrl,
+    live: true,
+  })),
+  ...hamiltonFederal.slice(0, 1).map((c) => ({
+    slug: c.slug,
+    name: c.name,
+    initials: c.initials,
+    office: `${c.office} · ${c.ward}`,
+    party: c.party ?? "",
+    status: c.status,
+    tone: c.tone,
+    sourceUrl: c.sourceUrl,
+    live: true,
+  })),
 ];
 
+export const allHamiltonLeaders = [
+  hamiltonMayor,
+  ...hamiltonCouncillors,
+  ...hamiltonFederal,
+].map((o) => ({
+  slug: o.slug,
+  name: o.name,
+  initials: o.initials,
+  office: o.ward ? `${o.office} · ${o.ward}` : o.office,
+  party: o.party ?? "Nonpartisan",
+  status: o.status,
+  tone: o.tone,
+  sourceUrl: o.sourceUrl,
+  live: true,
+}));
+
 export const evidenceMatrix = [
-  {
-    principle: "Truth & integrity",
-    moreno: "Moderate evidence",
-    cole: "Limited evidence",
-    morenoState: "alignment",
-    coleState: "unclear",
-  },
-  {
-    principle: "Human dignity",
-    moreno: "Mixed evidence",
-    cole: "Moderate evidence",
-    morenoState: "tension",
-    coleState: "alignment",
-  },
-  {
-    principle: "Care for the vulnerable",
-    moreno: "Strong evidence",
-    cole: "Contradictory evidence",
-    morenoState: "alignment",
-    coleState: "tension",
-  },
-  {
-    principle: "Wise stewardship",
-    moreno: "Limited evidence",
-    cole: "No reliable evidence",
-    morenoState: "unclear",
-    coleState: "unknown",
-  },
+  { principle: "Truth & integrity", note: "Assess documented statements and voting records—not partisan labels.", state: "unclear" },
+  { principle: "Human dignity", note: "Review policy evidence on housing, healthcare access, and vulnerable populations.", state: "unclear" },
+  { principle: "Care for the vulnerable", note: "Compare primary sources on shelter, poverty, and social services.", state: "unclear" },
+  { principle: "Wise stewardship", note: "Examine public budgets and infrastructure decisions with evidence.", state: "unknown" },
 ];
 
 export const learnModules = [
-  ["How local government works", "8 min", "Foundation"],
-  ["What a mayor actually controls", "11 min", "Local government"],
-  ["How laws are made", "14 min", "Legislative process"],
-  ["How to read a public budget", "18 min", "Public finance"],
+  ["How Hamilton City Council works", "10 min", "Hamilton · Local government"],
+  ["What the mayor actually controls", "11 min", "Strong mayor powers"],
+  ["How Ontario laws are made", "14 min", "Provincial government"],
+  ["How to read a municipal budget", "18 min", "Public finance"],
   ["How to evaluate political claims", "12 min", "Discernment"],
-  ["How to contact an official", "6 min", "Take action"],
+  ["Why Christians engage in civic life", "9 min", "Biblical framework"],
 ];
 
 export const issueGuides = [
@@ -161,21 +161,13 @@ export const prayerPrompts = [
   ["Justice", "Help those in authority defend the weak and judge without partiality.", "Psalm 72:1–4"],
   ["Humility", "Guard leaders from pride and form in them a posture of service.", "Micah 6:8"],
   ["Peace", "Grant quiet and peaceful lives marked by godliness and dignity.", "1 Timothy 2:1–2"],
+  ["Hamilton", "Pray for Mayor Horwath, ward councillors, and MPs serving Hamilton.", "Jeremiah 29:7"],
 ];
-
-export const kingdomLensAnswers: Record<string, string> = {
-  mayor:
-    "A mayor typically provides executive leadership, helps set council priorities, represents the city publicly, and may appoint members to boards. The exact authority depends on local law. In Harbor City, the charter gives council—not the mayor alone—final authority over budgets and bylaws.",
-  compare:
-    "The available evidence shows a meaningful difference on housing. Moreno has a recorded vote and a detailed implementation plan; Cole has raised cost and accountability concerns but has not published a complete alternative. This supports a clearer assessment of Moreno’s position, not an endorsement.",
-  scripture:
-    "Scripture repeatedly joins justice with impartiality, truth, mercy, and care for people at risk of exploitation. Helpful starting points include Micah 6:8, Isaiah 1:17, Proverbs 31:8–9, and James 2:1–9. These establish moral principles but do not prescribe a single modern policy.",
-};
 
 export const footerColumns = [
   {
     title: "Explore",
-    links: [["Learn", "/learn"], ["Issues", "/issues"], ["Leaders", "/leaders"], ["Elections", "/elections"]],
+    links: [["Why Engage", "/why-engage"], ["Learn", "/learn"], ["Issues", "/issues"], ["Leaders", "/leaders"], ["Elections", "/elections"]],
   },
   {
     title: "Practice",
@@ -186,3 +178,5 @@ export const footerColumns = [
     links: [["Methodology", "/trust"], ["Source standards", "/trust#sources"], ["Corrections", "/trust#corrections"], ["Privacy", "/privacy"]],
   },
 ] as const;
+
+export { hamiltonMeta };

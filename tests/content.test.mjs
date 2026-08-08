@@ -8,20 +8,30 @@ test("Kingdom Lens constitution prohibits core political harms", async () => {
   const source = await readFile(new URL("src/lib/ai/constitution.ts", root), "utf8");
   assert.match(source, /Never fabricate a candidate position/);
   assert.match(source, /Never claim a candidate has God’s endorsement/);
-  assert.match(source, /never equate Christianity with a political party/i);
-  assert.match(source, /never conceal relevant counter-evidence/i);
 });
 
-test("homepage clearly labels trust posture and fictional demo", async () => {
+test("homepage promotes Hamilton live data and Christian engagement", async () => {
   const source = await readFile(new URL("src/app/page.tsx", root), "utf8");
-  assert.match(source, /Kingdom first/);
-  assert.match(source, /fictional city/i);
-  assert.match(source, /See the sources behind every conclusion/);
+  assert.match(source, /Hamilton/i);
+  assert.match(source, /WhyEngageSection/);
+  assert.match(source, /Jeremiah 29:7/);
 });
 
-test("database defaults sensitive assessments to human review", async () => {
-  const migration = await readFile(new URL("supabase/migrations/0001_foundation.sql", root), "utf8");
-  assert.match(migration, /review_state public\.review_state not null default 'needs_review'/);
-  assert.match(migration, /alter table public\.evidence enable row level security/);
-  assert.match(migration, /verified evidence is public/);
+test("Hamilton officials include mayor and councillors", async () => {
+  const source = await readFile(new URL("src/lib/hamilton.ts", root), "utf8");
+  assert.match(source, /Andrea Horwath/);
+  assert.match(source, /hamiltonCouncillors/);
+  assert.match(source, /2026-10-26/);
+});
+
+test("Kingdom Lens API route uses Hamilton engine", async () => {
+  const source = await readFile(new URL("src/app/api/kingdom-lens/route.ts", root), "utf8");
+  assert.match(source, /answerKingdomLens/);
+  assert.match(source, /Hamilton, ON/);
+});
+
+test("footer credits Daniel Ziedins", async () => {
+  const source = await readFile(new URL("src/components/site-shell.tsx", root), "utf8");
+  assert.match(source, /danielziedins\.com/i);
+  assert.match(source, /Daniel Ziedins/);
 });

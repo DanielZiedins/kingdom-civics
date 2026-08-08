@@ -25,7 +25,7 @@ export function SiteHeader() {
   return (
     <header className="site-header">
       <div className="top-note">
-        <span>Seek truth. Pray faithfully. Serve humbly.</span>
+        <span>Hamilton, ON live · Seek truth. Pray faithfully. Serve humbly.</span>
         <Link href="/trust">See how our research works <ChevronRight size={13} /></Link>
       </div>
       <div className="nav-wrap">
@@ -70,6 +70,10 @@ export function SiteFooter() {
       <div className="footer-bottom">
         <span>© 2026 Thy Kingdom Network</span>
         <span>Educational research, not a candidate endorsement.</span>
+        <span className="footer-credit">
+          Made with <span aria-label="love">❤️</span> by{" "}
+          <a href="https://danielziedins.com" target="_blank" rel="noopener noreferrer">Daniel Ziedins</a>
+        </span>
         <strong>KINGDOM FIRST.</strong>
       </div>
     </footer>
