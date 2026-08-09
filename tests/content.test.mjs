@@ -24,14 +24,34 @@ test("Hamilton officials include mayor and councillors", async () => {
   assert.match(source, /2026-10-26/);
 });
 
-test("Kingdom Lens API route uses Hamilton engine", async () => {
+test("Kingdom Lens API route uses answer engine", async () => {
   const source = await readFile(new URL("src/app/api/kingdom-lens/route.ts", root), "utf8");
   assert.match(source, /answerKingdomLens/);
-  assert.match(source, /Hamilton, ON/);
+  assert.match(source, /citySlug/);
 });
 
-test("footer credits Daniel Ziedins", async () => {
+test("footer credits Daniel Ziedins.Design", async () => {
   const source = await readFile(new URL("src/components/site-shell.tsx", root), "utf8");
-  assert.match(source, /danielziedins\.com/i);
-  assert.match(source, /Daniel Ziedins/);
+  assert.match(source, /danielziedins\.design/i);
+  assert.match(source, /Daniel Ziedins\.Design/);
+});
+
+test("Kingdom Lens API accepts global city context", async () => {
+  const source = await readFile(new URL("src/app/api/kingdom-lens/route.ts", root), "utf8");
+  assert.match(source, /citySlug/);
+  assert.match(source, /answerKingdomLens/);
+});
+
+test("jurisdiction registry includes live and coming soon cities", async () => {
+  const source = await readFile(new URL("src/lib/jurisdictions/registry.ts", root), "utf8");
+  assert.match(source, /hamilton-on/);
+  assert.match(source, /coming_soon/);
+  assert.match(source, /getLiveCities/);
+});
+
+test("AI engine includes global civic knowledge", async () => {
+  const source = await readFile(new URL("src/lib/ai/engine.ts", root), "utf8");
+  assert.match(source, /globalChunks/);
+  assert.match(source, /why-christians-engage/);
+  assert.match(source, /levels-of-government/);
 });

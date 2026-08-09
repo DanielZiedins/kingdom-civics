@@ -340,7 +340,7 @@ export default async function InnerPage({ params }: PageProps) {
   else if (section === "issues") body = <Cards items={issueGuides.map(([title, detail]) => [title, detail, "ISSUE GUIDE"])} />;
   else if (section === "leaders") body = <LeadersPage detail={slug[1]} />;
   else if (section === "elections") body = <ElectionPage />;
-  else if (section === "kingdom-lens") body = <KingdomLensChat jurisdiction="Hamilton, ON" />;
+  else if (section === "kingdom-lens") body = <KingdomLensChat />;
   else if (section === "pray") body = <PrayPage />;
   else if (section === "serve") body = <ServePage />;
   else if (section === "trust") body = <TrustPage />;

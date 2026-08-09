@@ -407,6 +407,26 @@ em { color: var(--gold-light); font-weight: 400; }
 .faq-answer { padding: 0 20px 18px; }
 .faq-answer p { margin: 0; font-size: 13px; line-height: 1.7; color: var(--stone); }
 
+.city-preview-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 16px; }
+.city-preview-card { text-align: left; padding: 14px; border: 1px solid var(--line); background: white; cursor: pointer; transition: transform .2s, box-shadow .2s; }
+.city-preview-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(20,32,43,.08); }
+.city-preview-card.city-live { border-color: #c9a227; }
+.city-preview-card small { display: block; font-size: 8px; letter-spacing: .12em; color: #9a7431; margin-bottom: 6px; }
+.city-preview-card strong { display: block; font-family: var(--font-serif); font-size: 18px; color: var(--navy); }
+.city-preview-card span { font-size: 11px; color: var(--stone); }
+
+.lens-city-picker { display: flex; align-items: center; gap: 8px; margin-top: 14px; padding: 10px 12px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); }
+.lens-city-picker select { flex: 1; background: transparent; border: 0; color: #d8e2e8; font-size: 11px; outline: none; cursor: pointer; }
+.lens-city-picker select option { color: #14202b; }
+
+@media (max-width: 980px) {
+  .city-preview-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 700px) {
+  .city-preview-grid { grid-template-columns: 1fr; }
+}
+
 @media (max-width: 980px) {
   .engage-grid { grid-template-columns: 1fr 1fr; }
   .scripture-strip { grid-template-columns: 1fr 1fr; }

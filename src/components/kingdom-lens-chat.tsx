@@ -8,23 +8,35 @@ import {
   Compass,
   ExternalLink,
   FileCheck2,
+  Globe,
   MessageCircle,
   ShieldCheck,
   Sparkles,
 } from "lucide-react";
 import type { LensResponse } from "@/lib/ai/constitution";
+import { cityLabel, getAllCities, getDefaultCity } from "@/lib/jurisdictions/registry";
 
-const prompts = [
-  "Who is the mayor of Hamilton?",
-  "What authority does the mayor have?",
+const globalPrompts = [
   "Why should Christians engage in civic life?",
-  "What Scriptures relate to justice?",
-  "When is Hamilton's next election?",
+  "What does the Bible say about government?",
+  "How do levels of government work?",
+  "How should Christians pray for leaders?",
+  "Does Kingdom Civics endorse political parties?",
 ];
 
-type Props = { compact?: boolean; jurisdiction?: string };
+type Props = { compact?: boolean; citySlug?: string };
 
-export function KingdomLensChat({ compact = false, jurisdiction = "Hamilton, ON" }: Props) {
+export function KingdomLensChat({ compact = false, citySlug }: Props) {
+  const cities = getAllCities();
+  const defaultCity = getDefaultCity();
+  const [selectedSlug, setSelectedSlug] = useState(citySlug ?? "global");
+  const selectedCity = selectedSlug === "global" ? null : cities.find((c) => c.slug === selectedSlug) ?? defaultCity;
+
+  const prompts =
+    selectedCity?.status === "live"
+      ? [...selectedCity.exampleQuestions, ...globalPrompts.slice(0, 2)]
+      : globalPrompts;
+
   const [question, setQuestion] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -43,7 +55,11 @@ export function KingdomLensChat({ compact = false, jurisdiction = "Hamilton, ON"
       const res = await fetch("/api/kingdom-lens", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ question: text, jurisdiction }),
+        body: JSON.stringify({
+          question: text,
+          jurisdiction: selectedCity ? cityLabel(selectedCity) : "Global",
+          citySlug: selectedCity?.slug,
+        }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error ?? "Something went wrong.");
@@ -64,18 +80,40 @@ export function KingdomLensChat({ compact = false, jurisdiction = "Hamilton, ON"
     <div className={`lens-window ${compact ? "lens-compact" : ""}`}>
       <div className="lens-sidebar">
         <div className="lens-badge"><Compass size={19} /><span>KINGDOM<br /><strong>LENS</strong></span></div>
-        <p>Examine public life through Scripture, evidence, and wisdom.</p>
+        <p>Examine public life through Scripture, evidence, and wisdom—anywhere in the world.</p>
         <div className="lens-steps">
           {["Ask carefully", "Review evidence", "Inspect sources"].map((step, i) => (
             <span key={step}><b>{i + 1}</b>{step}</span>
           ))}
         </div>
-        <div className="constitution"><ShieldCheck size={16} /><span>AI Constitution active · Hamilton live data</span></div>
+        <div className="lens-city-picker">
+          <Globe size={15} />
+          <label className="sr-only" htmlFor="lens-city">City context</label>
+          <select
+            id="lens-city"
+            value={selectedSlug}
+            onChange={(e) => setSelectedSlug(e.target.value)}
+            disabled={loading}
+          >
+            <option value="global">Global · Biblical civic guidance</option>
+            {cities.map((city) => (
+              <option key={city.slug} value={city.slug}>
+                {city.name}, {city.region} {city.status === "live" ? "· Live" : "· Coming soon"}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="constitution">
+          <ShieldCheck size={16} />
+          <span>
+            AI Constitution active · {selectedCity?.status === "live" ? `${selectedCity.name} live data` : "Global guidance"}
+          </span>
+        </div>
       </div>
       <div className="lens-chat">
         <div className="lens-top">
-          <div><span className="live-dot" /> Live civic data</div>
-          <span>{jurisdiction}</span>
+          <div><span className="live-dot" /> {selectedCity?.status === "live" ? "Live civic data" : "Global civic guidance"}</div>
+          <span>{selectedCity?.status === "live" ? cityLabel(selectedCity) : "Worldwide"}</span>
         </div>
         <div className="prompt-row">
           {prompts.map((label) => (
@@ -131,7 +169,9 @@ export function KingdomLensChat({ compact = false, jurisdiction = "Hamilton, ON"
               <Link href="/trust" className="show-work">Show your work <ExternalLink size={14} /></Link>
             </>
           ) : (
-            <p className="lens-placeholder">Ask about Hamilton government, leaders, elections, biblical principles, or why Christians engage in public life.</p>
+            <p className="lens-placeholder">
+              Ask about government anywhere, biblical principles, Scripture, prayer for leaders, elections, or—where live—officials in {defaultCity.name}.
+            </p>
           )}
         </div>
         <form className="lens-input" onSubmit={onSubmit}>
@@ -139,7 +179,7 @@ export function KingdomLensChat({ compact = false, jurisdiction = "Hamilton, ON"
           <input
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
-            placeholder="Ask about government, a leader, an issue, or Scripture…"
+            placeholder="Ask about government, Scripture, your city, or civic engagement…"
             aria-label="Ask Kingdom Lens"
             disabled={loading}
           />

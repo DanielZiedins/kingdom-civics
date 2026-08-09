@@ -140,12 +140,14 @@ export const evidenceMatrix = [
 ];
 
 export const learnModules = [
-  ["How Hamilton City Council works", "10 min", "Hamilton · Local government"],
-  ["What the mayor actually controls", "11 min", "Strong mayor powers"],
-  ["How Ontario laws are made", "14 min", "Provincial government"],
-  ["How to read a municipal budget", "18 min", "Public finance"],
+  ["How government works — a global overview", "10 min", "Civic foundations"],
+  ["Levels of government: local, state, and national", "12 min", "Jurisdictions"],
+  ["Canadian government structure", "14 min", "Canada"],
+  ["U.S. government branches explained", "14 min", "United States"],
+  ["How to read a public budget", "18 min", "Public finance"],
   ["How to evaluate political claims", "12 min", "Discernment"],
   ["Why Christians engage in civic life", "9 min", "Biblical framework"],
+  ["How Hamilton City Council works", "10 min", "Live city · Hamilton"],
 ];
 
 export const issueGuides = [
@@ -161,7 +163,7 @@ export const prayerPrompts = [
   ["Justice", "Help those in authority defend the weak and judge without partiality.", "Psalm 72:1–4"],
   ["Humility", "Guard leaders from pride and form in them a posture of service.", "Micah 6:8"],
   ["Peace", "Grant quiet and peaceful lives marked by godliness and dignity.", "1 Timothy 2:1–2"],
-  ["Hamilton", "Pray for Mayor Horwath, ward councillors, and MPs serving Hamilton.", "Jeremiah 29:7"],
+  ["Your city", "Pray for the mayor, councillors, and representatives serving where God has placed you.", "Jeremiah 29:7"],
 ];
 
 export const footerColumns = [

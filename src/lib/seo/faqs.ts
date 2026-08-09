@@ -10,8 +10,8 @@ export const globalFaqs: FaqItem[] = [
   {
     question: "What is Kingdom Civics?",
     answer:
-      "Kingdom Civics is a Christian civic education platform that helps believers understand government, discern public leadership, pray faithfully, and serve humbly. We combine live public records, transparent biblical principles, and evidence-based research—starting with Hamilton, Ontario, Canada.",
-    keywords: ["Christian civic education", "Kingdom Civics"],
+      "Kingdom Civics is a global Christian civic education platform. We help believers in every nation understand government, discern public leadership, pray faithfully, and serve humbly—without partisan endorsements. Hamilton, Ontario is our first live city; biblical principles and Kingdom Lens work worldwide.",
+    keywords: ["Christian civic education", "Kingdom Civics global"],
   },
   {
     question: "Why should Christians engage in politics and culture?",
@@ -32,8 +32,8 @@ export const globalFaqs: FaqItem[] = [
   {
     question: "What is Kingdom Lens?",
     answer:
-      "Kingdom Lens is Kingdom Civics' civic research assistant. Ask questions about Hamilton government, elected officials, elections, biblical principles, and Christian civic engagement. Answers cite official sources and Scripture, surface uncertainty, and do not endorse candidates or parties.",
-    keywords: ["Kingdom Lens", "civic AI", "Hamilton government questions"],
+      "Kingdom Lens is Kingdom Civics' global civic research assistant. Ask about government anywhere, biblical principles, Scripture, elections, and Christian engagement. Where live city data exists (starting with Hamilton, ON), answers cite official sources. Everywhere else, Kingdom Lens provides biblical civic guidance and points you to official lookup tools.",
+    keywords: ["Kingdom Lens", "civic AI global", "Christian government questions"],
   },
   {
     question: "Does Kingdom Civics endorse political candidates?",

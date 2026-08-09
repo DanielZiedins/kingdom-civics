@@ -7,11 +7,11 @@ export const SITE_TAGLINE = "Seek Truth. Discern Wisely. Serve Humbly.";
 export const DEFAULT_TITLE = `${SITE_NAME} — ${SITE_TAGLINE}`;
 
 export const DEFAULT_DESCRIPTION =
-  "Christian civic education for Hamilton, Ontario and beyond. Live public records, biblical principles, prayer resources, election guides, and Kingdom Lens AI research—helping believers understand government, discern leadership, and serve humbly.";
+  "Global Christian civic education for every nation and city. Biblical principles, prayer resources, Kingdom Lens AI research, and live public records—starting with Hamilton, Ontario. Help believers understand government, discern leadership, and serve humbly.";
 
 export const CREATOR = {
-  name: "Daniel Ziedins",
-  url: "https://danielziedins.com",
+  name: "Daniel Ziedins.Design",
+  url: "https://www.danielziedins.design",
 } as const;
 
 export const PARENT_ORG = {
@@ -21,8 +21,8 @@ export const PARENT_ORG = {
 
 export const SITE_KEYWORDS = [
   "Christian civic education",
-  "Christian political engagement",
-  "biblical principles government",
+  "global Christian citizenship",
+  "biblical principles government worldwide",
   "pray for government leaders",
   "Hamilton Ontario mayor",
   "Hamilton city councillors",
@@ -41,10 +41,10 @@ export const SITE_KEYWORDS = [
 ] as const;
 
 export const GEO_FOCUS = {
-  city: "Hamilton",
-  region: "Ontario",
-  country: "Canada",
-  countryCode: "CA",
+  city: "Global",
+  region: "Worldwide",
+  country: "International",
+  countryCode: "INT",
 } as const;
 
 export function absoluteUrl(path = "/"): string {

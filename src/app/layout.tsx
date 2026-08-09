@@ -41,7 +41,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} ${cormorant.variable} h-full antialiased`}
     >
       <head>
-        <link rel="author" href="https://danielziedins.com" />
+        <link rel="author" href="https://www.danielziedins.design" />
         <link rel="help" href="/llms.txt" type="text/plain" title="LLM site guide" />
       </head>
       <body className="min-h-full flex flex-col">

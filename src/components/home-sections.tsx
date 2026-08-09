@@ -13,7 +13,8 @@ import {
 } from "lucide-react";
 import { KingdomLensChat } from "@/components/kingdom-lens-chat";
 import { whyEngageReasons } from "@/lib/engagement";
-import { hamiltonCouncillors, hamiltonFederal, hamiltonMayor, hamiltonMeta, matchesHamilton } from "@/lib/hamilton";
+import { hamiltonCouncillors, hamiltonFederal, hamiltonMayor, hamiltonMeta } from "@/lib/hamilton";
+import { cityLabel, getAllCities, getDefaultCity, matchCityFromInput } from "@/lib/jurisdictions/registry";
 import { evidenceMatrix, impactAreas, leaders, principles } from "@/lib/data";
 
 export function ImpactGrid() {
@@ -57,9 +58,11 @@ export function WhyEngageSection() {
 }
 
 export function GovernmentExplorer() {
-  const [place, setPlace] = useState("Hamilton, ON");
-  const [shown, setShown] = useState(true);
-  const isHamilton = matchesHamilton(place) || shown;
+  const defaultCity = getDefaultCity();
+  const allCities = getAllCities();
+  const [place, setPlace] = useState("");
+  const [shown, setShown] = useState(false);
+  const matched = shown ? matchCityFromInput(place) : null;
 
   function submit(event: FormEvent) {
     event.preventDefault();
@@ -70,24 +73,42 @@ export function GovernmentExplorer() {
     <div className="government-demo">
       <form className="location-search" onSubmit={submit}>
         <MapPin size={19} />
-        <label className="sr-only" htmlFor="location">Enter city or postal code</label>
+        <label className="sr-only" htmlFor="location">Enter your city</label>
         <input
           id="location"
           value={place}
           onChange={(e) => { setPlace(e.target.value); setShown(false); }}
-          placeholder="Try Hamilton, ON or your postal code"
+          placeholder="Try Toronto, Nashville, London, or Hamilton, ON"
         />
         <button className="button button-gold" type="submit">Explore</button>
       </form>
-      {shown && isHamilton && (
+
+      {!shown && (
+        <div className="city-preview-grid">
+          {allCities.slice(0, 6).map((city) => (
+            <button
+              key={city.slug}
+              type="button"
+              className={`city-preview-card ${city.status === "live" ? "city-live" : ""}`}
+              onClick={() => { setPlace(cityLabel(city)); setShown(true); }}
+            >
+              <small>{city.status === "live" ? "LIVE" : "COMING SOON"}</small>
+              <strong>{city.name}</strong>
+              <span>{city.region}, {city.country}</span>
+            </button>
+          ))}
+        </div>
+      )}
+
+      {shown && matched?.status === "live" && matched.slug === defaultCity.slug && (
         <div className="jurisdiction-card">
-          <div className="demo-label"><span className="live-dot" /> LIVE DATA · HAMILTON, ON</div>
+          <div className="demo-label"><span className="live-dot" /> LIVE DATA · {cityLabel(matched).toUpperCase()}</div>
           <div className="jurisdiction-title">
             <div className="city-seal"><Landmark size={24} /></div>
             <div>
               <small>Your local government</small>
-              <h3>Hamilton</h3>
-              <p>Ontario, Canada · Verified {hamiltonMeta.lastVerified}</p>
+              <h3>{matched.name}</h3>
+              <p>{matched.region}, {matched.country} · Verified {hamiltonMeta.lastVerified}</p>
             </div>
           </div>
           <div className="jurisdiction-levels">
@@ -102,9 +123,19 @@ export function GovernmentExplorer() {
           <Link href="/leaders" className="text-link">View all Hamilton leaders <ArrowRight size={15} /></Link>
         </div>
       )}
-      {shown && !isHamilton && (
+
+      {shown && matched?.status === "coming_soon" && (
         <div className="jurisdiction-card jurisdiction-muted">
-          <p>Hamilton, Ontario is our first live coverage area. More cities are coming. Try <button type="button" className="inline-link" onClick={() => setPlace("Hamilton, ON")}>Hamilton, ON</button> to see real officials and election data.</p>
+          <div className="demo-label">COMING SOON · {cityLabel(matched).toUpperCase()}</div>
+          <p><strong>{matched.name}</strong> is on our roadmap. {matched.tagline}. Meanwhile, explore global civic education, biblical principles, and our live Hamilton data.</p>
+          <Link href="/kingdom-lens" className="text-link">Ask Kingdom Lens <ArrowRight size={15} /></Link>
+        </div>
+      )}
+
+      {shown && !matched && (
+        <div className="jurisdiction-card jurisdiction-muted">
+          <p>Kingdom Civics is expanding worldwide. <strong>{defaultCity.name}</strong> is our first live city. Try a city above—or ask Kingdom Lens global questions about Scripture, government, and civic engagement.</p>
+          <button type="button" className="inline-link" onClick={() => { setPlace(cityLabel(defaultCity)); setShown(true); }}>Explore {defaultCity.name}</button>
         </div>
       )}
     </div>
@@ -147,7 +178,7 @@ export function PrincipleCards() {
 }
 
 export function LensDemo() {
-  return <KingdomLensChat compact jurisdiction="Hamilton, ON" />;
+  return <KingdomLensChat compact />;
 }
 
 export function ComparisonPreview() {
@@ -207,20 +238,23 @@ export function GlobalSearch() {
   const results = [
     q.includes("hamilton") || q.includes("mayor") ? ["Andrea Horwath — Mayor of Hamilton", "/leaders/andrea-horwath"] : null,
     q.includes("election") || q.includes("vote") ? ["Hamilton 2026 Municipal Election", "/elections"] : null,
-    q.includes("pray") || q.includes("leader") ? ["Pray for Hamilton leaders", "/pray"] : null,
+    q.includes("pray") || q.includes("leader") ? ["Pray for government leaders", "/pray"] : null,
     q.includes("christian") || q.includes("engage") || q.includes("why") ? ["Why Christians engage in civic life", "/why-engage"] : null,
     q.includes("justice") || q.includes("scripture") || q.includes("bible") ? ["Biblical principles framework", "/biblical-principles"] : null,
-    ["How Hamilton City Council works", "/learn"],
+    q.includes("government") || q.includes("levels") ? ["How government works", "/learn"] : null,
+    q.includes("lens") || q.includes("ask") ? ["Ask Kingdom Lens", "/kingdom-lens"] : null,
+    q.includes("canada") ? ["Canadian government overview", "/learn"] : null,
+    ["Kingdom Civics global mission", "/about"],
   ].filter(Boolean) as Array<[string, string]>;
 
   return (
     <div className="search-panel">
       <Search size={21} />
-      <input autoFocus value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search leaders, issues, Scripture, Hamilton…" aria-label="Search" />
+      <input autoFocus value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search leaders, Scripture, civic topics, cities…" aria-label="Search" />
       <kbd>⌘ K</kbd>
       {query && (
         <div className="search-results">
-          {results.slice(0, 6).map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}
+          {results.slice(0, 8).map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}
         </div>
       )}
     </div>

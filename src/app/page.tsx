@@ -25,10 +25,11 @@ export const metadata: Metadata = buildPageMetadata({
   description: DEFAULT_DESCRIPTION,
   path: "/",
   keywords: [
-    "Hamilton Ontario civic education",
-    "Christian government education Canada",
-    "who is Hamilton mayor",
-    "Hamilton election 2026",
+    "Christian civic education worldwide",
+    "biblical government principles",
+    "global Christian citizenship",
+    "Kingdom Lens civic AI",
+    "Hamilton Ontario live data",
   ],
 });
 
@@ -54,11 +55,11 @@ export default function Home() {
           <div className="hero-gridlines" />
           <div className="hero-content page-width">
             <div className="hero-copy">
-              <span className="eyebrow gold-text">CHRISTIAN CIVIC DISCIPLESHIP · HAMILTON LIVE</span>
+              <span className="eyebrow gold-text">GLOBAL CHRISTIAN CIVIC EDUCATION</span>
               <h1>Understand government.<br />Discern leadership.<br /><em>Seek the Kingdom.</em></h1>
-              <p>Trustworthy civic education, transparent biblical principles, live public records for Hamilton, Ontario—and practical ways to pray and serve.</p>
+              <p>Trustworthy civic education for every nation and city—transparent biblical principles, Kingdom Lens research, and live public records. Hamilton, Ontario is our first live city.</p>
               <div className="hero-actions">
-                <Link href="#explore" className="button button-gold"><MapPin size={17} /> Explore Hamilton government</Link>
+                <Link href="#explore" className="button button-gold"><MapPin size={17} /> Find your government</Link>
                 <Link href="/kingdom-lens" className="button button-outline-light"><Sparkles size={17} /> Ask Kingdom Lens</Link>
               </div>
               <div className="hero-trust">
@@ -69,9 +70,9 @@ export default function Home() {
             </div>
             <div className="hero-visual" aria-label="Kingdom Civics civic map illustration">
               <div className="orbit orbit-one" /><div className="orbit orbit-two" /><div className="map-lines" />
-              <div className="civic-pin pin-one"><Landmark size={21} /><span>Hamilton Council<small>16 members</small></span></div>
-              <div className="civic-pin pin-two"><Users size={21} /><span>Your leaders<small>Mayor + MPs</small></span></div>
-              <div className="civic-pin pin-three"><BookOpen size={21} /><span>Election<small>Oct 26, 2026</small></span></div>
+              <div className="civic-pin pin-one"><Landmark size={21} /><span>Every nation<small>Local to federal</small></span></div>
+              <div className="civic-pin pin-two"><Users size={21} /><span>Your leaders<small>Where you live</small></span></div>
+              <div className="civic-pin pin-three"><BookOpen size={21} /><span>Scripture<small>Timeless principles</small></span></div>
               <div className="lens-orb"><div><Eye size={27} /><span>KINGDOM<br /><strong>LENS</strong></span></div><small>EVIDENCE · SCRIPTURE · WISDOM</small></div>
             </div>
           </div>
@@ -100,13 +101,13 @@ export default function Home() {
             <div className="section-copy">
               <span className="eyebrow gold-text-dark">START WHERE YOU ARE</span>
               <h2>Explore your government.</h2>
-              <p>Hamilton is our first live coverage area—real mayor, councillors, election dates, and official source links.</p>
+              <p>Kingdom Civics is built for the whole world—with live official data rolling out city by city. Hamilton, Ontario is live now; Toronto, Nashville, London, and more are coming.</p>
               <ul className="check-list">
-                <li><CheckCircle2 /> Understand municipal, provincial, and federal levels</li>
-                <li><CheckCircle2 /> Find the people who represent you</li>
-                <li><CheckCircle2 /> Follow the October 26, 2026 municipal election</li>
+                <li><CheckCircle2 /> Understand local, state, and national government</li>
+                <li><CheckCircle2 /> Find who represents you—wherever you live</li>
+                <li><CheckCircle2 /> Follow elections with official source links</li>
               </ul>
-              <small className="demo-note live-note">Live data verified {hamiltonMeta.lastVerified} from City of Hamilton and official parliamentary records.</small>
+              <small className="demo-note live-note">Hamilton live · Verified {hamiltonMeta.lastVerified} · More cities on the way</small>
             </div>
             <GovernmentExplorer />
           </div>
@@ -115,8 +116,8 @@ export default function Home() {
         <section className="section section-white">
           <div className="page-width section-heading center-heading">
             <span className="eyebrow">PUBLIC LEADERSHIP</span>
-            <h2>Meet Hamilton&apos;s leaders.</h2>
-            <p>Know who serves, what their office controls, and how to contact them—with links to official records.</p>
+            <h2>Meet your leaders.</h2>
+            <p>Know who serves, what their office controls, and how to contact them—with links to official records. Live now in Hamilton; expanding globally.</p>
           </div>
           <div className="page-width">
             <LeaderCards />
@@ -130,7 +131,7 @@ export default function Home() {
           <div className="page-width section-heading section-heading-light">
             <span className="eyebrow gold-text">AI-ASSISTED CIVIC RESEARCH</span>
             <h2>Ask questions. <em>Inspect the evidence.</em></h2>
-            <p>Kingdom Lens answers from Hamilton live data and Scripture—without telling you what to think.</p>
+            <p>Kingdom Lens answers civic questions worldwide—from Scripture and biblical principles to live Hamilton data.</p>
           </div>
           <div className="page-width"><LensDemo /></div>
         </section>
@@ -165,7 +166,7 @@ export default function Home() {
               <h2>Pray faithfully.</h2>
               <blockquote>&ldquo;I urge that supplications, prayers, intercessions, and thanksgivings be made… for kings and all who are in high positions.&rdquo;</blockquote>
               <small>1 TIMOTHY 2:1–2</small>
-              <p>Pray for Mayor Horwath, Hamilton councillors, and MPs—leaders you agree with and leaders you disagree with.</p>
+              <p>Pray for the leaders where God has placed you—mayors, councillors, MPs, presidents, and prime ministers.</p>
               <Link href="/pray" className="button button-cream">Open the Prayer Center <ArrowRight size={16} /></Link>
             </div>
           </div>
@@ -192,7 +193,7 @@ export default function Home() {
               <Link href="/trust" className="button button-navy">Visit the Trust Center <ArrowRight size={16} /></Link>
             </div>
             <div className="trust-points">
-              {[["Primary sources first", "Official Hamilton records, parliamentary pages, and direct statements."], ["Show your work", "Reasoning, evidence, counter-evidence, confidence, and review date."], ["Human verification", "Sensitive assessments are never published from automation alone."], ["Transparent corrections", "Report errors and inspect meaningful correction history."]].map(([title, text], i) => (
+              {[["Primary sources first", "Official government records, parliamentary pages, and direct statements worldwide."], ["Show your work", "Reasoning, evidence, counter-evidence, confidence, and review date."], ["Human verification", "Sensitive assessments are never published from automation alone."], ["Transparent corrections", "Report errors and inspect meaningful correction history."]].map(([title, text], i) => (
                 <div key={title}><span>0{i + 1}</span><div><h3>{title}</h3><p>{text}</p></div></div>
               ))}
             </div>
@@ -201,7 +202,7 @@ export default function Home() {
 
         <FaqSection
           title="Questions Christians—and search engines—often ask"
-          description="Straight answers about Kingdom Civics, Hamilton government, Scripture, and civic engagement."
+          description="Straight answers about Kingdom Civics, global civic engagement, Scripture, and live city data."
           faqs={globalFaqs}
         />
 
@@ -210,7 +211,7 @@ export default function Home() {
             <div>
               <span className="eyebrow gold-text">THOUGHTFUL, NOT REACTIVE</span>
               <h2>Stay informed without the outrage.</h2>
-              <p>Hamilton election updates, learning resources, and ways to pray and serve.</p>
+              <p>Hamilton election updates, global learning resources, and ways to pray and serve.</p>
             </div>
             <NewsletterForm />
           </div>
