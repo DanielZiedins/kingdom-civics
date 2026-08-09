@@ -1,0 +1,54 @@
+# Kingdom Civics
+
+> Christian civic education for Hamilton, Ontario and beyond. Live public records, biblical principles, prayer resources, and Kingdom Lens research.
+
+Kingdom Civics helps Christians understand government, discern leadership, pray faithfully, and serve humbly—without partisan endorsements.
+
+## Canonical site
+
+- https://kingdom-civics.vercel.app/
+
+## Primary pages
+
+- [Home](https://kingdom-civics.vercel.app/): Christian civic education hub with Hamilton live data
+- [Why Engage](https://kingdom-civics.vercel.app/why-engage): Biblical case for Christian civic engagement
+- [Hamilton Leaders](https://kingdom-civics.vercel.app/leaders): Mayor Andrea Horwath, councillors, MPs, MPPs with official source links
+- [Hamilton Elections](https://kingdom-civics.vercel.app/elections): October 26, 2026 municipal election
+- [Kingdom Lens](https://kingdom-civics.vercel.app/kingdom-lens): Ask civic questions with cited sources and Scripture
+- [Biblical Principles](https://kingdom-civics.vercel.app/biblical-principles): Transparent framework for evaluating public life
+- [Pray](https://kingdom-civics.vercel.app/pray): Prayer prompts for government leaders
+- [Serve](https://kingdom-civics.vercel.app/serve): Pathways into public service
+- [Trust Center](https://kingdom-civics.vercel.app/trust): Methodology, source standards, corrections
+
+## Key facts (Hamilton, Ontario, Canada)
+
+- Mayor: Andrea Horwath (City of Hamilton)
+- City Council: 15 ward councillors + mayor (16 members)
+- Next municipal election: October 26, 2026
+- Official city site: https://www.hamilton.ca
+- Data last verified: 2026-08-08
+
+## Key facts (mission)
+
+- Nonpartisan Christian civic education
+- No candidate or party endorsements
+- Scripture-grounded principles (Jeremiah 29:7, 1 Timothy 2:1–2, Micah 6:8)
+- Kingdom first—not party first
+
+## API
+
+- Kingdom Lens research API (POST JSON): https://kingdom-civics.vercel.app/api/kingdom-lens
+  - Body: `{ "question": "Who is the mayor of Hamilton?" }`
+  - Returns sourced answers with Scripture, uncertainties, and disclaimers
+
+## Sitemap
+
+- https://kingdom-civics.vercel.app/sitemap.xml
+
+## Creator
+
+- Daniel Ziedins — https://danielziedins.com
+
+## Extended documentation
+
+- /llms-full.txt

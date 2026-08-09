@@ -1,5 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Geist, Geist_Mono } from "next/font/google";
+import { JsonLd } from "@/components/seo/json-ld";
+import { rootMetadata } from "@/lib/seo/metadata";
+import { organizationSchema, websiteSchema } from "@/lib/seo/schema";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -19,44 +22,31 @@ const cormorant = Cormorant_Garamond({
   style: ["normal", "italic"],
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL("https://kingdom-civics.vercel.app"),
-  title: {
-    default: "Kingdom Civics — Seek Truth. Discern Wisely. Serve Humbly.",
-    template: "%s · Kingdom Civics",
-  },
-  description:
-    "Christian civic education, transparent biblical principles, sourced public records, prayer resources, and pathways into public service.",
-  keywords: ["Christian civic education", "government education", "biblical principles", "public leadership", "prayer for leaders"],
-  openGraph: {
-    title: "Kingdom Civics",
-    description: "Understand government. Discern leadership. Seek the Kingdom.",
-    type: "website",
-    siteName: "Kingdom Civics",
-  },
-  robots: { index: true, follow: true },
+export const metadata: Metadata = rootMetadata;
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f8f4ec" },
+    { media: "(prefers-color-scheme: dark)", color: "#0f1a2e" },
+  ],
+  colorScheme: "light dark",
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      lang="en"
+      lang="en-CA"
       className={`${geistSans.variable} ${geistMono.variable} ${cormorant.variable} h-full antialiased`}
     >
+      <head>
+        <link rel="author" href="https://danielziedins.com" />
+        <link rel="help" href="/llms.txt" type="text/plain" title="LLM site guide" />
+      </head>
       <body className="min-h-full flex flex-col">
+        <JsonLd data={[organizationSchema(), websiteSchema()]} />
         {children}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "EducationalOrganization",
-              name: "Kingdom Civics",
-              url: "https://kingdomcivics.org",
-              parentOrganization: { "@type": "Organization", name: "Thy Kingdom Network" },
-            }),
-          }}
-        />
       </body>
     </html>
   );

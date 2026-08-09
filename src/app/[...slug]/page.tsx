@@ -3,41 +3,130 @@ import Link from "next/link";
 import { ArrowRight, BookOpen, CalendarDays, ExternalLink, FileCheck2, Heart, Landmark, MapPin, ShieldCheck } from "lucide-react";
 import { ComparisonPreview, GlobalSearch, PrincipleCards } from "@/components/home-sections";
 import { KingdomLensChat } from "@/components/kingdom-lens-chat";
+import { Breadcrumbs } from "@/components/seo/breadcrumbs";
+import { JsonLd } from "@/components/seo/json-ld";
 import { SiteFooter, SiteHeader } from "@/components/site-shell";
 import { engagementScriptures, whyEngageReasons } from "@/lib/engagement";
-import { allHamiltonLeaders, hamiltonMeta } from "@/lib/data";
-import { hamiltonCouncillors, hamiltonFederal, hamiltonMayor } from "@/lib/hamilton";
-import { issueGuides, learnModules, prayerPrompts, principles } from "@/lib/data";
+import { allHamiltonLeaders, hamiltonMeta, issueGuides, learnModules, prayerPrompts, principles } from "@/lib/data";
+import { hamiltonCouncillors, hamiltonFederal, hamiltonMayor, hamiltonOfficials } from "@/lib/hamilton";
+import { globalFaqs, pageFaqs } from "@/lib/seo/faqs";
+import { buildPageMetadata } from "@/lib/seo/metadata";
+import { getPageMetadata, getPageSeo } from "@/lib/seo/pages";
+import {
+  articleSchema,
+  electionEventSchema,
+  faqPageSchema,
+  itemListSchema,
+  personSchema,
+  softwareApplicationSchema,
+  webPageSchema,
+} from "@/lib/seo/schema";
+import { absoluteUrl } from "@/lib/seo/site";
 
 type PageProps = { params: Promise<{ slug: string[] }> };
 
-const pageCopy: Record<string, { eyebrow: string; title: string; description: string }> = {
-  "why-engage": {
-    eyebrow: "KINGDOM CITIZENS IN PUBLIC LIFE",
-    title: "Why Christians should engage in government and culture.",
-    description: "Not partisan outrage. Not culture-war panic. Faithful love of neighbor, prayer for leaders, pursuit of justice, and humble service in the public square.",
-  },
-  learn: { eyebrow: "KINGDOM CIVICS ACADEMY", title: "Understand how government works.", description: "Clear, jurisdiction-aware lessons—including Hamilton-specific civic education." },
-  issues: { eyebrow: "ISSUES LIBRARY", title: "Examine difficult questions carefully.", description: "Understand the policy landscape, biblical principles, meaningful Christian disagreement, and primary sources." },
-  leaders: { eyebrow: "HAMILTON, ONTARIO", title: "Know who serves your community.", description: "Live officials from City of Hamilton and federal parliamentary records—with official source links." },
-  elections: { eyebrow: "OFFICIAL INFORMATION FIRST", title: "Hamilton's 2026 municipal election.", description: "October 26, 2026 · Important dates, offices, and links to authoritative election sources." },
-  "kingdom-lens": { eyebrow: "SCRIPTURE · EVIDENCE · WISDOM", title: "Examine public life through Kingdom Lens.", description: "Ask civic questions about Hamilton, compare evidence, surface uncertainty, and inspect sources." },
-  pray: { eyebrow: "1 TIMOTHY 2:1–2", title: "Pray for those in authority.", description: "Pray for Hamilton's mayor, councillors, and MPs—with wisdom, truth, justice, mercy, and peace." },
-  serve: { eyebrow: "PUBLIC LEADERSHIP IS SERVICE", title: "Serve faithfully where God has placed you.", description: "Attend Hamilton council meetings, consult publicly, volunteer, and explore boards or elected office." },
-  trust: { eyebrow: "TRANSPARENCY BY DESIGN", title: "Trust must be earned.", description: "Inspect how we research leaders, rank sources, use AI, handle theology, surface uncertainty, and correct errors." },
-  search: { eyebrow: "UNIVERSAL SEARCH", title: "Find what matters.", description: "Search Hamilton leaders, elections, issues, biblical principles, and Scripture." },
-  compare: { eyebrow: "EVIDENCE, NOT ENDORSEMENTS", title: "Compare candidates carefully.", description: "Review documented alignment, tension, uncertainty, counter-evidence, and source reliability." },
-  "biblical-principles": { eyebrow: "PRINCIPLES BEFORE POLITICS", title: "A transparent biblical framework.", description: "Scripture establishes enduring moral principles while leaving room for prudential disagreement." },
-  "my-civics": { eyebrow: "YOUR CIVIC HOME", title: "Stay rooted in Hamilton.", description: "Save your jurisdictions, representatives, elections, learning progress, and prayer list." },
-  privacy: { eyebrow: "MINIMUM DATA, MAXIMUM DIGNITY", title: "Your civic life is not an ad profile.", description: "Kingdom Civics uses location for jurisdiction lookup—not political manipulation." },
-  about: { eyebrow: "THY KINGDOM NETWORK", title: "Kingdom first. Always.", description: "We help the Church seek truth, pray faithfully, discern wisely, and serve humbly in public life." },
-  admin: { eyebrow: "RESEARCH OPERATIONS", title: "Verification workspace.", description: "Role-based editorial system for evidence review, theology review, and audit history." },
-};
-
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const copy = pageCopy[slug[0]] ?? pageCopy.about;
-  return { title: copy.title, description: copy.description };
+  const section = slug[0];
+
+  if (section === "leaders" && slug[1]) {
+    const leader = hamiltonOfficials.find((item) => item.slug === slug[1]);
+    if (leader) {
+      return buildPageMetadata({
+        title: `${leader.name} — ${leader.office} | Hamilton, Ontario`,
+        description: `${leader.name} serves as ${leader.office}${leader.ward ? ` (${leader.ward})` : ""} in Hamilton, Ontario. Official record, role, and source links from Kingdom Civics.`,
+        path: `/leaders/${leader.slug}`,
+        keywords: [leader.name, leader.office, "Hamilton Ontario", leader.party ?? "nonpartisan"],
+      });
+    }
+  }
+
+  if (section === "biblical-principles" && slug[1]) {
+    const principle = principles.find((item) => item.slug === slug[1]);
+    if (principle) {
+      return buildPageMetadata({
+        title: `${principle.name} — Biblical Principle for Public Life`,
+        description: `${principle.summary} Scripture: ${principle.scripture}.`,
+        path: `/biblical-principles/${principle.slug}`,
+        keywords: [principle.name, "biblical principles government", principle.scripture],
+      });
+    }
+  }
+
+  return getPageMetadata(section);
+}
+
+function pageStructuredData(section: string, slug: string[], copy: ReturnType<typeof getPageSeo>) {
+  const faqs = [...(pageFaqs[section] ?? []), ...globalFaqs.slice(0, 3)];
+  const base = webPageSchema({
+    title: copy.title,
+    description: copy.description,
+    path: slug[1] ? `/${section}/${slug[1]}` : copy.path,
+  });
+
+  if (section === "why-engage") {
+    return [base, articleSchema(copy), faqPageSchema(pageFaqs["why-engage"] ?? [])];
+  }
+  if (section === "leaders" && slug[1]) {
+    const leader = hamiltonOfficials.find((item) => item.slug === slug[1]);
+    return leader ? [base, personSchema(leader)] : [base, faqPageSchema(pageFaqs.leaders ?? [])];
+  }
+  if (section === "leaders") {
+    return [
+      base,
+      itemListSchema({
+        name: "Hamilton Elected Officials",
+        items: hamiltonOfficials.map((leader) => ({
+          name: leader.name,
+          url: absoluteUrl(`/leaders/${leader.slug}`),
+          description: `${leader.office}${leader.ward ? ` · ${leader.ward}` : ""}`,
+        })),
+      }),
+      faqPageSchema(pageFaqs.leaders ?? []),
+    ];
+  }
+  if (section === "elections") {
+    return [base, electionEventSchema(), faqPageSchema(pageFaqs.elections ?? [])];
+  }
+  if (section === "kingdom-lens") {
+    return [base, softwareApplicationSchema(), faqPageSchema(pageFaqs["kingdom-lens"] ?? [])];
+  }
+  if (section === "biblical-principles") {
+    return [
+      base,
+      itemListSchema({
+        name: "Biblical Principles for Public Life",
+        items: principles.map((principle) => ({
+          name: principle.name,
+          url: absoluteUrl(`/biblical-principles/${principle.slug}`),
+          description: principle.summary,
+        })),
+      }),
+    ];
+  }
+
+  return faqs.length ? [base, faqPageSchema(faqs)] : [base];
+}
+
+function pageBreadcrumbs(section: string, slug: string[]) {
+  const crumbs: Array<{ label: string; href?: string }> = [{ label: "Home", href: "/" }];
+  const copy = getPageSeo(section);
+  const sectionLabel = copy.title.split("—")[0]?.trim() ?? copy.title;
+
+  if (slug[1]) {
+    crumbs.push({ label: sectionLabel, href: copy.path });
+    if (section === "leaders") {
+      const leader = hamiltonOfficials.find((item) => item.slug === slug[1]);
+      if (leader) crumbs.push({ label: leader.name, href: `/leaders/${leader.slug}` });
+    } else if (section === "biblical-principles") {
+      const principle = principles.find((item) => item.slug === slug[1]);
+      if (principle) crumbs.push({ label: principle.name, href: `/biblical-principles/${principle.slug}` });
+    }
+  } else {
+    crumbs.push({ label: sectionLabel, href: copy.path });
+  }
+
+  return crumbs;
 }
 
 function Cards({ items }: { items: Array<[string, string, string?]> }) {
@@ -243,7 +332,7 @@ function AdminPage() {
 export default async function InnerPage({ params }: PageProps) {
   const { slug } = await params;
   const section = slug[0];
-  const copy = pageCopy[section] ?? pageCopy.about;
+  const copy = getPageSeo(section);
   let body;
 
   if (section === "why-engage") body = <WhyEngagePage />;
@@ -267,10 +356,12 @@ export default async function InnerPage({ params }: PageProps) {
 
   return (
     <>
+      <JsonLd data={pageStructuredData(section, slug, copy)} />
       <SiteHeader />
       <main className="inner-page">
         <section className="page-hero">
           <div className="page-width">
+            <Breadcrumbs items={pageBreadcrumbs(section, slug)} />
             <span className="eyebrow gold-text">{copy.eyebrow}</span>
             <h1>{copy.title}</h1>
             <p>{copy.description}</p>

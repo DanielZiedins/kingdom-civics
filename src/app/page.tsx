@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowDown, ArrowRight, BookOpen, CheckCircle2, Eye, Heart, Landmark, MapPin, ShieldCheck, Sparkles, Users } from "lucide-react";
+import { FaqSection } from "@/components/seo/faq-section";
+import { JsonLd } from "@/components/seo/json-ld";
 import { SiteFooter, SiteHeader } from "@/components/site-shell";
+import { buildPageMetadata } from "@/lib/seo/metadata";
+import { globalFaqs } from "@/lib/seo/faqs";
+import { faqPageSchema, governmentServiceSchema, webPageSchema } from "@/lib/seo/schema";
+import { DEFAULT_DESCRIPTION, DEFAULT_TITLE } from "@/lib/seo/site";
 import {
   ComparisonPreview,
   GovernmentExplorer,
@@ -13,9 +20,32 @@ import {
 } from "@/components/home-sections";
 import { hamiltonMeta } from "@/lib/data";
 
+export const metadata: Metadata = buildPageMetadata({
+  title: DEFAULT_TITLE,
+  description: DEFAULT_DESCRIPTION,
+  path: "/",
+  keywords: [
+    "Hamilton Ontario civic education",
+    "Christian government education Canada",
+    "who is Hamilton mayor",
+    "Hamilton election 2026",
+  ],
+});
+
 export default function Home() {
   return (
     <>
+      <JsonLd
+        data={[
+          webPageSchema({
+            title: DEFAULT_TITLE,
+            description: DEFAULT_DESCRIPTION,
+            path: "/",
+          }),
+          faqPageSchema(globalFaqs),
+          governmentServiceSchema(),
+        ]}
+      />
       <SiteHeader />
       <main>
         <section className="hero">
@@ -168,6 +198,12 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <FaqSection
+          title="Questions Christians—and search engines—often ask"
+          description="Straight answers about Kingdom Civics, Hamilton government, Scripture, and civic engagement."
+          faqs={globalFaqs}
+        />
 
         <section className="newsletter">
           <div className="page-width newsletter-inner">
