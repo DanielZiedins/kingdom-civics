@@ -4,7 +4,7 @@
 
 Kingdom Civics is a Christian civic education platform published by Thy Kingdom Network. It exists to help the Church seek truth, pray faithfully, discern wisely, and serve humbly in public life.
 
-Website: https://kingdom-civics.vercel.app/
+Website: https://www.kingdomcivics.org/
 Creator: Daniel Ziedins (https://danielziedins.com)
 Language: English (Canada)
 Geographic focus: Hamilton, Ontario, Canada (expanding)
@@ -70,7 +70,7 @@ Engagement includes prayer, learning, advocacy, volunteering, public consultatio
 
 ## Kingdom Lens API
 
-POST https://kingdom-civics.vercel.app/api/kingdom-lens
+POST https://www.kingdomcivics.org/api/kingdom-lens
 Content-Type: application/json
 
 Example request:
@@ -89,7 +89,7 @@ Responses include: answer, sources, scripture references, uncertainties, counter
 
 ## All indexable routes
 
-See sitemap: https://kingdom-civics.vercel.app/sitemap.xml
+See sitemap: https://www.kingdomcivics.org/sitemap.xml
 
 Core routes:
 /, /why-engage, /learn, /issues, /leaders, /elections, /kingdom-lens, /pray, /serve, /trust, /biblical-principles, /compare, /search, /my-civics, /about, /privacy

@@ -51,7 +51,7 @@ export default function OpenGraphImage() {
           </div>
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", fontSize: 22 }}>
-          <span>kingdom-civics.vercel.app</span>
+          <span>www.kingdomcivics.org</span>
           <span>{SITE_TAGLINE}</span>
         </div>
       </div>

@@ -1,5 +1,5 @@
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://kingdom-civics.vercel.app";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.kingdomcivics.org";
 
 export const SITE_NAME = "Kingdom Civics";
 export const SITE_TAGLINE = "Seek Truth. Discern Wisely. Serve Humbly.";
