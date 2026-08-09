@@ -70,7 +70,7 @@ export const pageSeo: Record<string, PageSeo> = {
     eyebrow: "SCRIPTURE · EVIDENCE · WISDOM",
     title: "Kingdom Lens — Christian Civic Research Assistant",
     description:
-      "Ask Kingdom Lens about Hamilton government, leaders, elections, and Scripture. Sourced answers with uncertainty, counter-evidence, and no candidate endorsements.",
+      "Ask Kingdom Lens about government worldwide, biblical principles, Scripture, elections, and live city data. Sourced answers with counterpoints and no endorsements.",
     path: "/kingdom-lens",
     keywords: ["Kingdom Lens", "Christian civic AI", "Hamilton government FAQ", "civic research assistant"],
   },
@@ -127,6 +127,14 @@ export const pageSeo: Record<string, PageSeo> = {
     description: "Save your Hamilton jurisdictions, representatives, elections, learning progress, and prayer list.",
     path: "/my-civics",
     keywords: ["my representatives Hamilton", "civic dashboard"],
+  },
+  cities: {
+    eyebrow: "LIVE CIVIC DATA",
+    title: "City Hubs — Christian Civic Education by City",
+    description:
+      "Explore live public records, officials, and election information for pilot cities—starting with Hamilton, Ontario.",
+    path: "/cities/hamilton-on",
+    keywords: ["Hamilton civic data", "Christian city guide", "local government directory"],
   },
   privacy: {
     eyebrow: "MINIMUM DATA, MAXIMUM DIGNITY",

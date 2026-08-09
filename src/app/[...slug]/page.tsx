@@ -1,14 +1,21 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowRight, BookOpen, CalendarDays, ExternalLink, FileCheck2, Heart, Landmark, MapPin, ShieldCheck } from "lucide-react";
+import { ArticleBody } from "@/components/article-body";
+import { ElectionCountdown } from "@/components/election-countdown";
 import { ComparisonPreview, GlobalSearch, PrincipleCards } from "@/components/home-sections";
-import { KingdomLensChat } from "@/components/kingdom-lens-chat";
+import { KingdomLensPage } from "@/components/kingdom-lens-page";
 import { Breadcrumbs } from "@/components/seo/breadcrumbs";
+import { FaqSection } from "@/components/seo/faq-section";
 import { JsonLd } from "@/components/seo/json-ld";
 import { SiteFooter, SiteHeader } from "@/components/site-shell";
+import { getIssueGuide, issueGuidesContent } from "@/lib/content/issues";
+import { getLearnArticle, learnArticles } from "@/lib/content/learn";
 import { engagementScriptures, whyEngageReasons } from "@/lib/engagement";
-import { allHamiltonLeaders, hamiltonMeta, issueGuides, learnModules, prayerPrompts, principles } from "@/lib/data";
-import { hamiltonCouncillors, hamiltonFederal, hamiltonMayor, hamiltonOfficials } from "@/lib/hamilton";
+import { allHamiltonLeaders, hamiltonMeta, prayerPrompts, principles } from "@/lib/data";
+import { hamiltonCouncillors, hamiltonFederal, hamiltonMayor, hamiltonOfficials, hamiltonProvincial } from "@/lib/hamilton";
+import { getDefaultCity } from "@/lib/jurisdictions/registry";
 import { globalFaqs, pageFaqs } from "@/lib/seo/faqs";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import { getPageMetadata, getPageSeo } from "@/lib/seo/pages";
@@ -16,14 +23,31 @@ import {
   articleSchema,
   electionEventSchema,
   faqPageSchema,
+  howToSchema,
   itemListSchema,
+  learningResourceSchema,
   personSchema,
+  profilePageSchema,
   softwareApplicationSchema,
+  webApiSchema,
   webPageSchema,
 } from "@/lib/seo/schema";
 import { absoluteUrl } from "@/lib/seo/site";
 
-type PageProps = { params: Promise<{ slug: string[] }> };
+type PageProps = {
+  params: Promise<{ slug: string[] }>;
+  searchParams?: Promise<{ q?: string }>;
+};
+
+export async function generateStaticParams() {
+  return [
+    ...hamiltonOfficials.map((o) => ({ slug: ["leaders", o.slug] })),
+    ...principles.map((p) => ({ slug: ["biblical-principles", p.slug] })),
+    ...learnArticles.map((a) => ({ slug: ["learn", a.slug] })),
+    ...issueGuidesContent.map((g) => ({ slug: ["issues", g.slug] })),
+    { slug: ["cities", "hamilton-on"] },
+  ];
+}
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
@@ -49,8 +73,44 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         description: `${principle.summary} Scripture: ${principle.scripture}.`,
         path: `/biblical-principles/${principle.slug}`,
         keywords: [principle.name, "biblical principles government", principle.scripture],
+        type: "article",
       });
     }
+  }
+
+  if (section === "learn" && slug[1]) {
+    const article = getLearnArticle(slug[1]);
+    if (article) {
+      return buildPageMetadata({
+        title: article.title,
+        description: article.description,
+        path: `/learn/${article.slug}`,
+        keywords: [article.category, "Christian civic education", article.title],
+        type: "article",
+      });
+    }
+  }
+
+  if (section === "issues" && slug[1]) {
+    const guide = getIssueGuide(slug[1]);
+    if (guide) {
+      return buildPageMetadata({
+        title: `${guide.title} — Christian Civic Issue Guide`,
+        description: guide.description,
+        path: `/issues/${guide.slug}`,
+        keywords: [...guide.principles, guide.title, "Christian policy"],
+        type: "article",
+      });
+    }
+  }
+
+  if (section === "cities" && slug[1] === "hamilton-on") {
+    return buildPageMetadata({
+      title: "Hamilton, Ontario — Live Civic Data Hub",
+      description: `Live officials, election dates, and official source links for Hamilton, ON. Mayor ${hamiltonMayor.name}, councillors, MPs, and October 26, 2026 election.`,
+      path: "/cities/hamilton-on",
+      keywords: ["Hamilton Ontario", "Hamilton city council", "Hamilton election 2026"],
+    });
   }
 
   return getPageMetadata(section);
@@ -69,7 +129,7 @@ function pageStructuredData(section: string, slug: string[], copy: ReturnType<ty
   }
   if (section === "leaders" && slug[1]) {
     const leader = hamiltonOfficials.find((item) => item.slug === slug[1]);
-    return leader ? [base, personSchema(leader)] : [base, faqPageSchema(pageFaqs.leaders ?? [])];
+    return leader ? [base, personSchema(leader), profilePageSchema(leader)] : [base, faqPageSchema(pageFaqs.leaders ?? [])];
   }
   if (section === "leaders") {
     return [
@@ -86,10 +146,42 @@ function pageStructuredData(section: string, slug: string[], copy: ReturnType<ty
     ];
   }
   if (section === "elections") {
-    return [base, electionEventSchema(), faqPageSchema(pageFaqs.elections ?? [])];
+    return [
+      base,
+      electionEventSchema(),
+      faqPageSchema(pageFaqs.elections ?? []),
+      howToSchema({
+        name: "How to vote in Hamilton's municipal election",
+        description: "Verify registration, ID, and voting methods with official election authorities.",
+        path: "/elections",
+        steps: [
+          "Confirm you are eligible to vote in Hamilton, Ontario.",
+          "Verify registration and ID requirements on the City of Hamilton election page.",
+          "Find your ward using the official ward lookup tool.",
+          "Review candidate information from official nomination records.",
+          "Vote on election day October 26, 2026 or by approved advance/vote-by-mail methods.",
+        ],
+      }),
+    ];
   }
   if (section === "kingdom-lens") {
-    return [base, softwareApplicationSchema(), faqPageSchema(pageFaqs["kingdom-lens"] ?? [])];
+    return [base, softwareApplicationSchema(), webApiSchema(), faqPageSchema(pageFaqs["kingdom-lens"] ?? [])];
+  }
+  if (section === "learn" && slug[1]) {
+    const article = getLearnArticle(slug[1]);
+    return article
+      ? [
+          base,
+          learningResourceSchema({ title: article.title, description: article.description, path: `/learn/${article.slug}` }),
+          articleSchema({ title: article.title, description: article.description, path: `/learn/${article.slug}` }),
+        ]
+      : [base];
+  }
+  if (section === "issues" && slug[1]) {
+    const guide = getIssueGuide(slug[1]);
+    return guide
+      ? [base, articleSchema({ title: guide.title, description: guide.description, path: `/issues/${guide.slug}` })]
+      : [base];
   }
   if (section === "biblical-principles") {
     return [
@@ -121,6 +213,14 @@ function pageBreadcrumbs(section: string, slug: string[]) {
     } else if (section === "biblical-principles") {
       const principle = principles.find((item) => item.slug === slug[1]);
       if (principle) crumbs.push({ label: principle.name, href: `/biblical-principles/${principle.slug}` });
+    } else if (section === "learn") {
+      const article = getLearnArticle(slug[1]);
+      if (article) crumbs.push({ label: article.title, href: `/learn/${article.slug}` });
+    } else if (section === "issues") {
+      const guide = getIssueGuide(slug[1]);
+      if (guide) crumbs.push({ label: guide.title, href: `/issues/${guide.slug}` });
+    } else if (section === "cities") {
+      crumbs.push({ label: "Hamilton, Ontario", href: "/cities/hamilton-on" });
     }
   } else {
     crumbs.push({ label: sectionLabel, href: copy.path });
@@ -129,14 +229,14 @@ function pageBreadcrumbs(section: string, slug: string[]) {
   return crumbs;
 }
 
-function Cards({ items }: { items: Array<[string, string, string?]> }) {
+function LinkCards({ items }: { items: Array<{ href: string; title: string; description: string; tag?: string }> }) {
   return (
     <div className="content-grid">
-      {items.map(([title, description, tag]) => (
-        <Link href={`/search?q=${encodeURIComponent(title)}`} className="content-card" key={title}>
-          {tag && <small>{tag}</small>}
-          <h3>{title}</h3>
-          <p>{description}</p>
+      {items.map((item) => (
+        <Link href={item.href} className="content-card" key={item.href}>
+          {item.tag && <small>{item.tag}</small>}
+          <h3>{item.title}</h3>
+          <p>{item.description}</p>
           <span className="text-link">Explore <ArrowRight size={14} /></span>
         </Link>
       ))}
@@ -144,9 +244,23 @@ function Cards({ items }: { items: Array<[string, string, string?]> }) {
   );
 }
 
+function Cards({ items }: { items: Array<[string, string, string?]> }) {
+  return (
+    <LinkCards
+      items={items.map(([title, description, tag]) => ({
+        href: `/search?q=${encodeURIComponent(title)}`,
+        title,
+        description,
+        tag,
+      }))}
+    />
+  );
+}
+
 function LeadersPage({ detail }: { detail?: string }) {
+  const official = hamiltonOfficials.find((item) => item.slug === detail);
   const leader = allHamiltonLeaders.find((item) => item.slug === detail);
-  if (leader) {
+  if (official && leader) {
     return (
       <div>
         <div className="profile-summary">
@@ -160,13 +274,18 @@ function LeadersPage({ detail }: { detail?: string }) {
             </a>
           </div>
         </div>
-        <div className="profile-tabs">
-          {["Overview", "Positions", "Voting record", "Statements", "Biblical framework", "Sources"].map((tab) => <span key={tab}>{tab}</span>)}
-        </div>
         <div className="content-grid">
-          <div className="content-card"><small>OFFICIAL ROLE</small><h3>{leader.status}</h3><p>Verified from City of Hamilton or parliamentary records.</p></div>
+          <div className="content-card"><small>OFFICIAL ROLE</small><h3>{leader.status}</h3><p>Verified from City of Hamilton or parliamentary records. Kingdom Civics does not evaluate faith or worth.</p></div>
+          <div className="content-card"><small>JURISDICTION</small><h3>{official.level}</h3><p>{official.ward ? `${official.ward} · Hamilton, Ontario` : "Hamilton, Ontario"}</p></div>
           <div className="content-card"><small>LAST VERIFIED</small><h3>{hamiltonMeta.lastVerified}</h3><p>Policy assessments require separate evidence review.</p></div>
-          <div className="content-card"><small>SCRIPTURE</small><h3>1 Timothy 2:1–2</h3><p>Pray for those in authority—including leaders you disagree with.</p></div>
+        </div>
+        <div className="scripture-callout" style={{ marginTop: 24 }}>
+          <Heart />
+          <blockquote>Pray for {leader.name.split(" ").pop()} and all in authority—leaders you agree with and leaders you disagree with.</blockquote>
+          <span>1 TIMOTHY 2:1–2</span>
+        </div>
+        <div style={{ marginTop: 32 }}>
+          <Link href="/kingdom-lens" className="button button-navy">Ask Kingdom Lens about this role <ArrowRight size={14} /></Link>
         </div>
       </div>
     );
@@ -199,6 +318,16 @@ function LeadersPage({ detail }: { detail?: string }) {
           </Link>
         ))}
       </div>
+      <div className="leaders-section-label"><span className="eyebrow">PROVINCIAL MPPs</span></div>
+      <div className="content-grid">
+        {hamiltonProvincial.map((c) => (
+          <Link href={`/leaders/${c.slug}`} className="content-card" key={c.slug}>
+            <small>LIVE · {c.party}</small><h3>{c.name}</h3><p>{c.office} · {c.ward}</p>
+            <span className="text-link">View profile <ArrowRight size={14} /></span>
+          </Link>
+        ))}
+      </div>
+      <FaqSection faqs={pageFaqs.leaders ?? []} title="Hamilton leaders FAQ" description="Common questions about Hamilton elected officials." />
     </>
   );
 }
@@ -209,6 +338,7 @@ function ElectionPage() {
       <div className="election-main">
         <span className="status-chip live-chip">Live · City of Hamilton</span>
         <h2>2026 Hamilton Municipal & School Board Election</h2>
+        <ElectionCountdown />
         <div className="election-date">
           <CalendarDays />
           <div>
@@ -232,6 +362,26 @@ function ElectionPage() {
         <p>Registration, ID requirements, and voting methods must be verified with the City of Hamilton and Elections Ontario.</p>
         <Link href="/trust">How we verify election data <ArrowRight size={14} /></Link>
       </aside>
+      <div style={{ gridColumn: "1 / -1", marginTop: 24 }}>
+        <FaqSection faqs={pageFaqs.elections ?? []} title="Hamilton election FAQ" description="Official election information and voting guidance." />
+      </div>
+    </div>
+  );
+}
+
+function CityHubPage() {
+  const city = getDefaultCity();
+  return (
+    <div>
+      <span className="status-chip live-chip">Live · First city worldwide</span>
+      <h2>{city.name}, {city.region}</h2>
+      <p>{city.tagline}</p>
+      <div className="content-grid" style={{ marginTop: 24 }}>
+        <Link href="/leaders" className="content-card"><small>LIVE</small><h3>Leaders</h3><p>Mayor, councillors, MPs, MPPs with official links</p></Link>
+        <Link href="/elections" className="content-card"><small>2026</small><h3>Election</h3><p>October 26, 2026 municipal & school board</p></Link>
+        <Link href="/learn/hamilton-city-council" className="content-card"><small>LEARN</small><h3>City Council</h3><p>How Hamilton municipal government works</p></Link>
+        <Link href="/kingdom-lens" className="content-card"><small>AI</small><h3>Kingdom Lens</h3><p>Ask civic questions with sources</p></Link>
+      </div>
     </div>
   );
 }
@@ -329,18 +479,49 @@ function AdminPage() {
   return <Cards items={[["Verification queue", "AI-extracted claims await source review.", "RESEARCHER"], ["Hamilton data", `Last verified ${hamiltonMeta.lastVerified}.`, "POLITICAL DATA"]]} />;
 }
 
-export default async function InnerPage({ params }: PageProps) {
+export default async function InnerPage({ params, searchParams }: PageProps) {
   const { slug } = await params;
+  const query = searchParams ? await searchParams : undefined;
   const section = slug[0];
   const copy = getPageSeo(section);
   let body;
 
   if (section === "why-engage") body = <WhyEngagePage />;
-  else if (section === "learn") body = <Cards items={learnModules.map(([title, duration, category]) => [title, `Plain-language lesson · ${duration}`, category])} />;
-  else if (section === "issues") body = <Cards items={issueGuides.map(([title, detail]) => [title, detail, "ISSUE GUIDE"])} />;
+  else if (section === "learn" && slug[1]) {
+    const article = getLearnArticle(slug[1]);
+    if (!article) notFound();
+    body = <ArticleBody scripture={article.scripture} sections={article.sections} />;
+  } else if (section === "learn") {
+    body = (
+      <LinkCards
+        items={learnArticles.map((a) => ({
+          href: `/learn/${a.slug}`,
+          title: a.title,
+          description: a.description,
+          tag: `${a.duration} · ${a.category}`,
+        }))}
+      />
+    );
+  } else if (section === "issues" && slug[1]) {
+    const guide = getIssueGuide(slug[1]);
+    if (!guide) notFound();
+    body = <ArticleBody scripture={guide.scripture} sections={guide.sections} />;
+  } else if (section === "issues") {
+    body = (
+      <LinkCards
+        items={issueGuidesContent.map((g) => ({
+          href: `/issues/${g.slug}`,
+          title: g.title,
+          description: g.description,
+          tag: "ISSUE GUIDE",
+        }))}
+      />
+    );
+  } else if (section === "cities" && slug[1] === "hamilton-on") body = <CityHubPage />;
+  else if (section === "cities") notFound();
   else if (section === "leaders") body = <LeadersPage detail={slug[1]} />;
   else if (section === "elections") body = <ElectionPage />;
-  else if (section === "kingdom-lens") body = <KingdomLensChat />;
+  else if (section === "kingdom-lens") body = <KingdomLensPage searchParams={query} />;
   else if (section === "pray") body = <PrayPage />;
   else if (section === "serve") body = <ServePage />;
   else if (section === "trust") body = <TrustPage />;

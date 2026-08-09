@@ -1,5 +1,6 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { FormEvent, useState } from "react";
 import {
@@ -15,6 +16,7 @@ import { KingdomLensChat } from "@/components/kingdom-lens-chat";
 import { whyEngageReasons } from "@/lib/engagement";
 import { hamiltonCouncillors, hamiltonFederal, hamiltonMayor, hamiltonMeta } from "@/lib/hamilton";
 import { cityLabel, getAllCities, getDefaultCity, matchCityFromInput } from "@/lib/jurisdictions/registry";
+import { learnArticles } from "@/lib/content/learn";
 import { evidenceMatrix, impactAreas, leaders, principles } from "@/lib/data";
 
 export function ImpactGrid() {
@@ -177,8 +179,31 @@ export function PrincipleCards() {
   );
 }
 
+const LazyKingdomLensChat = dynamic(
+  () => import("@/components/kingdom-lens-chat").then((m) => m.KingdomLensChat),
+  {
+    loading: () => <div className="lens-window lens-compact"><p className="lens-placeholder">Loading Kingdom Lens…</p></div>,
+    ssr: false,
+  },
+);
+
 export function LensDemo() {
-  return <KingdomLensChat compact />;
+  return <LazyKingdomLensChat compact />;
+}
+
+export function LearnCards() {
+  return (
+    <div className="content-grid">
+      {learnArticles.map((article) => (
+        <Link href={`/learn/${article.slug}`} className="content-card" key={article.slug}>
+          <small>{article.category}</small>
+          <h3>{article.title}</h3>
+          <p>{article.description}</p>
+          <span className="text-link">Read lesson · {article.duration} <ArrowRight size={14} /></span>
+        </Link>
+      ))}
+    </div>
+  );
 }
 
 export function ComparisonPreview() {

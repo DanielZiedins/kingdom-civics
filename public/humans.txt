@@ -1,0 +1,15 @@
+/* TEAM */
+Creator: Daniel Ziedins — https://www.danielziedins.design
+Organization: Thy Kingdom Network — Kingdom Civics
+Site: https://www.kingdomcivics.org
+
+/* MISSION */
+Global Christian civic education. Biblical principles. Prayer. Service. No partisan endorsements.
+
+/* TECH */
+Stack: Next.js, React, TypeScript, Tailwind CSS
+Standards: HTML5, accessibility, JSON-LD structured data, RSS, llms.txt
+AI guide: /llms.txt
+
+/* CONTACT */
+Trust & corrections: https://www.kingdomcivics.org/trust

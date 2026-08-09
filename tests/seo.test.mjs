@@ -47,3 +47,31 @@ test("global FAQs target Christian civic and Hamilton queries", async () => {
   assert.match(source, /Why should Christians engage/);
   assert.match(source, /Kingdom Lens/);
 });
+
+test("sitemap includes learn and issue article routes", async () => {
+  const source = await readFile(new URL("src/lib/seo/routes.ts", root), "utf8");
+  assert.match(source, /learnRoutes/);
+  assert.match(source, /issueRoutes/);
+  assert.match(source, /\/cities\/hamilton-on/);
+});
+
+test("learn content library has indexable articles", async () => {
+  const source = await readFile(new URL("src/lib/content/learn.ts", root), "utf8");
+  assert.match(source, /how-government-works/);
+  assert.match(source, /hamilton-city-council/);
+});
+
+test("Kingdom Lens chat renders counterpoints and share", async () => {
+  const source = await readFile(new URL("src/components/kingdom-lens-chat.tsx", root), "utf8");
+  assert.match(source, /counterpoints/);
+  assert.match(source, /ShareButton/);
+  assert.match(source, /searchParams\.set\("q"/);
+});
+
+test("RSS feed and custom 404 exist for discoverability", async () => {
+  const feed = await readFile(new URL("src/app/feed.xml/route.ts", root), "utf8");
+  assert.match(feed, /learnArticles/);
+  assert.match(feed, /issueGuidesContent/);
+  const notFound = await readFile(new URL("src/app/not-found.tsx", root), "utf8");
+  assert.match(notFound, /kingdom-lens/);
+});

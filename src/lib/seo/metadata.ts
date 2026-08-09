@@ -62,7 +62,7 @@ export function buildPageMetadata({
       title,
       description,
       images: ogImages.map((image) => image.url),
-      creator: `@${CREATOR.name.replace(/\s+/g, "")}`,
+      site: "@KingdomCivics",
     },
     robots: noIndex
       ? { index: false, follow: false }

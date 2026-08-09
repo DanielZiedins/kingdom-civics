@@ -31,6 +31,10 @@ export const SITE_KEYWORDS = [
   "Hamilton MPs",
   "civic discipleship",
   "Christian citizenship Canada",
+  "how government works",
+  "biblical voting guide",
+  "Christian political engagement global",
+  "civic education for churches",
   "government education church",
   "seek welfare of the city",
   "Kingdom Lens civic AI",
@@ -45,6 +49,13 @@ export const GEO_FOCUS = {
   region: "Worldwide",
   country: "International",
   countryCode: "INT",
+} as const;
+
+export const HAMILTON_GEO = {
+  city: "Hamilton",
+  region: "Ontario",
+  country: "Canada",
+  countryCode: "CA",
 } as const;
 
 export function absoluteUrl(path = "/"): string {

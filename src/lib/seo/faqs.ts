@@ -103,5 +103,36 @@ export const pageFaqs: Record<string, FaqItem[]> = {
       answer:
         "No. Kingdom Lens is a research tool for civic education. It does not generate campaign messaging, endorsements, or partisan talking points.",
     },
+    {
+      question: "Can I share a Kingdom Lens answer?",
+      answer:
+        "Yes. After asking a question, use the Share answer button to copy a link. Others can open the same question on the Kingdom Lens page.",
+    },
+  ],
+  learn: [
+    {
+      question: "What will I learn in Kingdom Civics Academy?",
+      answer:
+        "Plain-language lessons on how government works globally, Canadian and US structures, Hamilton City Council, evaluating political claims, and why Christians engage in civic life—all grounded in Scripture.",
+    },
+    {
+      question: "Do I need to live in Hamilton to use Kingdom Civics?",
+      answer:
+        "No. Biblical principles, prayer resources, and Kingdom Lens work worldwide. Hamilton is our first live city for official leader and election data.",
+    },
+  ],
+  serve: [
+    {
+      question: "How can Christians serve in public life?",
+      answer:
+        "Attend council meetings, join public consultation, volunteer, apply for boards, advocate on issues, and explore elected office as servant leadership—starting where God has placed you.",
+    },
+  ],
+  trust: [
+    {
+      question: "Does Kingdom Civics endorse candidates?",
+      answer:
+        "No. We provide sourced civic education and biblical principles. Assessments describe evidence—not a person's faith, worth, or God's endorsement.",
+    },
   ],
 };

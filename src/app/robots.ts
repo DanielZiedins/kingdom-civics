@@ -42,6 +42,18 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: "cohere-ai",
         allow: "/",
       },
+      {
+        userAgent: "Meta-ExternalAgent",
+        allow: "/",
+      },
+      {
+        userAgent: "OAI-SearchBot",
+        allow: "/",
+      },
+      {
+        userAgent: "CCBot",
+        allow: "/",
+      },
     ],
     sitemap: absoluteUrl("/sitemap.xml"),
     host: absoluteUrl("/"),

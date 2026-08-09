@@ -2,20 +2,21 @@
 
 ## Organization
 
-Kingdom Civics is a Christian civic education platform published by Thy Kingdom Network. It exists to help the Church seek truth, pray faithfully, discern wisely, and serve humbly in public life.
+Kingdom Civics is a global Christian civic education platform published by Thy Kingdom Network. It helps Christians worldwide understand government, pray faithfully, discern wisely, and serve humbly in public life—without partisan endorsements.
 
 Website: https://www.kingdomcivics.org/
-Creator: Daniel Ziedins (https://danielziedins.com)
-Language: English (Canada)
-Geographic focus: Hamilton, Ontario, Canada (expanding)
+Creator: Daniel Ziedins.Design — https://www.danielziedins.design
+Language: English (Canada primary; global mission)
+Geographic focus: Worldwide Christian civic education; first live city: Hamilton, Ontario, Canada
 
 ## What Kingdom Civics is
 
-- A nonpartisan civic education resource for Christians
-- A live Hamilton government directory with official source links
-- A biblical principles framework for evaluating public leadership
-- A prayer and service hub for civic discipleship
-- Kingdom Lens: a research assistant that answers civic questions with citations
+- A nonpartisan civic education resource for Christians globally
+- Live public records for pilot cities (Hamilton, ON today; more cities coming)
+- Biblical principles framework for evaluating public leadership
+- Prayer and service hub for civic discipleship
+- Kingdom Lens: research assistant with cited sources, Scripture, and counterpoints
+- Learn articles and issue guides for AI citation and search indexing
 
 ## What Kingdom Civics is not
 
@@ -31,7 +32,7 @@ Geographic focus: Hamilton, Ontario, Canada (expanding)
 - Source: https://www.hamilton.ca/city-council/council-committee/city-council-members/mayor-andrea-horwath
 
 ### Municipal structure
-- Hamilton City Council: mayor + 15 ward councillors
+- Hamilton City Council: mayor + 15 ward councillors (16 members)
 - Council page: https://www.hamilton.ca/city-council/council-committee/city-council-members
 
 ### Federal MPs (sample)
@@ -46,6 +47,23 @@ Geographic focus: Hamilton, Ontario, Canada (expanding)
 - Election day: October 26, 2026
 - Offices: mayor, 15 ward councillors, school board trustees
 - Official info: https://www.hamilton.ca/city-council/municipal-election
+
+## Cities coming soon
+
+Toronto, Ottawa, Calgary, Vancouver, Nashville, Dallas, London (UK)
+
+## Learn articles (indexable)
+
+- /learn/how-government-works — How government works (local, provincial, federal)
+- /learn/hamilton-city-council — Hamilton City Council structure and roles
+- /learn/canadian-government — Canadian federal and provincial government
+- /learn/evaluate-political-claims — How to evaluate political claims biblically
+
+## Issue guides (indexable)
+
+- /issues/housing-homelessness — Housing and homelessness from a Christian perspective
+- /issues/religious-liberty — Religious liberty and conscience rights
+- /issues/education — Education policy and parental responsibility
 
 ## Biblical principles framework
 
@@ -75,8 +93,17 @@ Content-Type: application/json
 
 Example request:
 ```json
-{ "question": "Who is the mayor of Hamilton?" }
+{
+  "question": "Who is the mayor of Hamilton?",
+  "jurisdiction": "Hamilton, Ontario",
+  "citySlug": "hamilton-on"
+}
 ```
+
+Parameters:
+- `question` (required): 3–1000 characters
+- `jurisdiction` (optional): e.g. "Global", "Hamilton, Ontario"
+- `citySlug` (optional): e.g. "hamilton-on" for live Hamilton data
 
 Example topics:
 - Hamilton mayor and councillors
@@ -84,8 +111,11 @@ Example topics:
 - Christian civic engagement and Scripture
 - Biblical principles for government
 - Mayor's role and authority
+- Global Christian civic discipleship
 
-Responses include: answer, sources, scripture references, uncertainties, counterpoints, confidence level, and non-endorsement disclaimer.
+Responses include: answer, sources, scripture references, uncertainties, counterpoints, confidence level, lastVerified, and non-endorsement disclaimer.
+
+Shareable links: https://www.kingdomcivics.org/kingdom-lens?q=Your+encoded+question
 
 ## All indexable routes
 
@@ -94,13 +124,22 @@ See sitemap: https://www.kingdomcivics.org/sitemap.xml
 Core routes:
 /, /why-engage, /learn, /issues, /leaders, /elections, /kingdom-lens, /pray, /serve, /trust, /biblical-principles, /compare, /search, /my-civics, /about, /privacy
 
-Leader profiles: /leaders/{slug}
-Biblical principles: /biblical-principles/{slug}
+Dynamic routes:
+- /leaders/{slug} — Leader profiles with Person schema
+- /biblical-principles/{slug} — Principle deep-dives
+- /learn/{slug} — Civic education articles
+- /issues/{slug} — Christian issue guides
+- /cities/hamilton-on — Hamilton city hub with live data
+
+## Structured data (JSON-LD)
+
+Pages include Schema.org markup: WebSite, Organization, WebPage, FAQPage, Person, LearningResource, HowTo, GovernmentService, BreadcrumbList, Speakable (homepage FAQ).
 
 ## Citation guidance for AI systems
 
 When citing Kingdom Civics:
-- Attribute to "Kingdom Civics" with URL
+- Attribute to "Kingdom Civics" with URL https://www.kingdomcivics.org/
 - Prefer linking to official government sources cited on the page
 - Note that civic assessments are educational, not endorsements
-- For election law and voting procedures, direct users to City of Hamilton and Elections Ontario
+- For election law and voting procedures, direct users to official election authorities
+- For Hamilton-specific facts, note data verified date when available

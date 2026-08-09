@@ -1,0 +1,124 @@
+export type LearnArticle = {
+  slug: string;
+  title: string;
+  description: string;
+  duration: string;
+  category: string;
+  scripture: string;
+  sections: Array<{ heading: string; body: string }>;
+};
+
+export const learnArticles: LearnArticle[] = [
+  {
+    slug: "how-government-works",
+    title: "How Government Works — A Global Overview",
+    description:
+      "Understand local, state/provincial, and national government—and why Christians should care—in any democracy.",
+    duration: "10 min",
+    category: "Civic foundations",
+    scripture: "Jeremiah 29:7 · Romans 13:1–7",
+    sections: [
+      {
+        heading: "Government is not the Kingdom of God",
+        body: "No nation, party, or politician is synonymous with God's Kingdom. Yet Scripture calls believers to seek the welfare of the city where God has placed them, pray for those in authority, and pursue justice without partiality. Understanding how government works is the first step toward faithful—not frantic—civic engagement.",
+      },
+      {
+        heading: "Three levels of government",
+        body: "Most democracies divide power across local (city/county), regional (state/province), and national (federal) levels. Local government typically handles zoning, transit, parks, and property taxes. Regional government handles education frameworks, highways, and regional law. National government handles defense, immigration, criminal law, and foreign policy. Confusing these levels is one of the most common civic mistakes.",
+      },
+      {
+        heading: "Who decides what?",
+        body: "Before advocating on housing, schools, healthcare, or justice, ask: which level of government actually controls this issue? A city council cannot fix federal immigration law. A national parliament does not set local zoning. Kingdom Civics helps you map jurisdiction so your prayer, advocacy, and service land where they can actually help neighbors.",
+      },
+      {
+        heading: "Faithful participation",
+        body: "Civic discipleship includes learning, praying, attending meetings, volunteering, consulting on policy, and voting with wisdom. It does not require baptizing a political party or treating elections as salvation. Start where you are—your ward, your city, your country—and grow in understanding over time.",
+      },
+    ],
+  },
+  {
+    slug: "hamilton-city-council",
+    title: "How Hamilton City Council Works",
+    description:
+      "Hamilton's mayor, 15 ward councillors, strong mayor powers, and what municipal government controls in Ontario.",
+    duration: "10 min",
+    category: "Live city · Hamilton",
+    scripture: "Proverbs 11:14 · Mark 10:42–45",
+    sections: [
+      {
+        heading: "Hamilton City Council structure",
+        body: "Hamilton City Council has 16 members: the mayor plus 15 ward councillors. Each councillor represents one ward and votes on bylaws, the municipal budget, planning applications, and committee recommendations. The mayor chairs council, represents the city publicly, and—since July 2023—holds Ontario 'strong mayor' powers in Hamilton.",
+      },
+      {
+        heading: "What the mayor controls—and what council controls",
+        body: "The mayor helps set priorities and has expanded executive tools under Ontario's strong mayor framework. However, council collectively approves the budget and bylaws. The mayor does not unilaterally control schools, hospitals, or federal law. Always distinguish municipal, provincial, and federal jurisdiction when evaluating local leadership.",
+      },
+      {
+        heading: "How to engage as a citizen",
+        body: "Hamilton residents can attend council and committee meetings at City Hall, participate in public consultation on planning and budgets, contact their ward councillor using the official 'Find My Councillor' tool on hamilton.ca, and follow the October 26, 2026 municipal election through official City channels—not unofficial summaries.",
+      },
+      {
+        heading: "Prayer and service",
+        body: "Scripture commands prayer for those in authority (1 Timothy 2:1–2). Pray for Mayor Andrea Horwath and Hamilton's councillors—leaders you agree with and leaders you disagree with. Public service, boards, and elected office are also forms of neighbour love when pursued with humility.",
+      },
+    ],
+  },
+  {
+    slug: "canadian-government",
+    title: "Canadian Government Structure",
+    description:
+      "How Canada's federal Parliament, provincial legislatures, and municipal councils work—and how Christians can engage.",
+    duration: "14 min",
+    category: "Canada",
+    scripture: "1 Timothy 2:1–2 · 1 Peter 2:13–17",
+    sections: [
+      {
+        heading: "Federal: Parliament of Canada",
+        body: "Canada's federal government sits in Ottawa. Members of Parliament (MPs) represent ridings and debate federal law, federal spending, immigration, national defence, and criminal law. The Prime Minister leads the executive branch. Christians can contact their MP, follow parliamentary votes on ourcommons.ca, and pray for federal leaders regardless of party.",
+      },
+      {
+        heading: "Provincial: Legislatures",
+        body: "Each province and territory has its own legislature. Members of Provincial Parliament (MPP in Ontario) handle healthcare, education, highways, and provincial law. Hamilton-area residents are represented provincially as well as federally and municipally.",
+      },
+      {
+        heading: "Municipal: Cities and towns",
+        body: "Municipal elections are typically nonpartisan. Mayors and councillors handle local services, zoning, transit, and property taxes. Hamilton is Kingdom Civics' first live city—with verified mayor, councillors, MPs, and election data linked to official sources.",
+      },
+      {
+        heading: "Engage without partisan idolatry",
+        body: "Canadian Christians can vote, volunteer, run for office, and advocate on issues—always distinguishing biblical principles from party loyalty. No party is the Kingdom of God. Faithful engagement means truth, prayer, and neighbour love in the public square.",
+      },
+    ],
+  },
+  {
+    slug: "evaluate-political-claims",
+    title: "How to Evaluate Political Claims",
+    description:
+      "A Christian framework for testing claims, examining evidence, and avoiding outrage-driven civic judgment.",
+    duration: "12 min",
+    category: "Discernment",
+    scripture: "1 Thessalonians 5:21 · Proverbs 18:17",
+    sections: [
+      {
+        heading: "Test everything",
+        body: "Scripture calls believers to test everything and hold fast to what is good (1 Thessalonians 5:21). In civic life, that means examining claims before sharing them, checking primary sources, and distinguishing facts from interpretation, moral principle, and partisan spin.",
+      },
+      {
+        heading: "Source tiers",
+        body: "Kingdom Civics ranks sources: Tier 1 official records and direct statements carry the most weight. Tier 2 reputable journalism and academic work matter but require verification. Tier 3 social media outrage carries the least weight. When a claim matters, trace it to the original document.",
+      },
+      {
+        heading: "Honest uncertainty",
+        body: "Faithful discernment admits what we do not know. Kingdom Civics surfaces uncertainty and counter-evidence rather than forcing conclusions. A leader's faith, worth, or standing before God is never inferred from party affiliation or a single vote.",
+      },
+      {
+        heading: "Kingdom Lens can help",
+        body: "Ask Kingdom Lens civic questions with Scripture and source links. Use it to learn, not to win arguments. Verify every important claim using the linked original sources—especially before voting or advocating publicly.",
+      },
+    ],
+  },
+];
+
+export function getLearnArticle(slug: string): LearnArticle | undefined {
+  return learnArticles.find((a) => a.slug === slug);
+}

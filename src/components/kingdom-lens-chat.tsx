@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import {
   ArrowRight,
   CircleHelp,
@@ -13,6 +13,7 @@ import {
   ShieldCheck,
   Sparkles,
 } from "lucide-react";
+import { ShareButton } from "@/components/share-button";
 import type { LensResponse } from "@/lib/ai/constitution";
 import { cityLabel, getAllCities, getDefaultCity } from "@/lib/jurisdictions/registry";
 
@@ -24,9 +25,9 @@ const globalPrompts = [
   "Does Kingdom Civics endorse political parties?",
 ];
 
-type Props = { compact?: boolean; citySlug?: string };
+type Props = { compact?: boolean; citySlug?: string; initialQuestion?: string };
 
-export function KingdomLensChat({ compact = false, citySlug }: Props) {
+export function KingdomLensChat({ compact = false, citySlug, initialQuestion }: Props) {
   const cities = getAllCities();
   const defaultCity = getDefaultCity();
   const [selectedSlug, setSelectedSlug] = useState(citySlug ?? "global");
@@ -37,7 +38,7 @@ export function KingdomLensChat({ compact = false, citySlug }: Props) {
       ? [...selectedCity.exampleQuestions, ...globalPrompts.slice(0, 2)]
       : globalPrompts;
 
-  const [question, setQuestion] = useState("");
+  const [question, setQuestion] = useState(initialQuestion ?? "");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [response, setResponse] = useState<LensResponse | null>(null);
@@ -51,6 +52,13 @@ export function KingdomLensChat({ compact = false, citySlug }: Props) {
     setLoading(true);
     setError(null);
     if (preset) setQuestion(preset);
+
+    if (typeof window !== "undefined") {
+      const url = new URL(window.location.href);
+      url.searchParams.set("q", text);
+      window.history.replaceState({}, "", url.toString());
+    }
+
     try {
       const res = await fetch("/api/kingdom-lens", {
         method: "POST",
@@ -71,10 +79,24 @@ export function KingdomLensChat({ compact = false, citySlug }: Props) {
     }
   }
 
+  useEffect(() => {
+    if (!initialQuestion || initialQuestion.length < 3) return;
+    const timer = window.setTimeout(() => {
+      void ask(initialQuestion);
+    }, 0);
+    return () => window.clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   function onSubmit(e: FormEvent) {
     e.preventDefault();
     void ask();
   }
+
+  const shareUrl =
+    typeof window !== "undefined" && question
+      ? `${window.location.origin}${window.location.pathname}?q=${encodeURIComponent(question)}`
+      : "";
 
   return (
     <div className={`lens-window ${compact ? "lens-compact" : ""}`}>
@@ -144,6 +166,7 @@ export function KingdomLensChat({ compact = false, citySlug }: Props) {
               <div className="answer-meta">
                 <span><FileCheck2 size={15} /> {response.sources.length} sources</span>
                 <span><ShieldCheck size={15} /> {response.confidence.replace(/_/g, " ")}</span>
+                {response.lastVerified && <span>Verified {response.lastVerified}</span>}
                 {response.uncertainties.length > 0 && (
                   <span><CircleHelp size={15} /> {response.uncertainties.length} unknowns</span>
                 )}
@@ -160,13 +183,28 @@ export function KingdomLensChat({ compact = false, citySlug }: Props) {
                   ))}
                 </ul>
               )}
+              {response.counterpoints && response.counterpoints.length > 0 && (
+                <div className="lens-counterpoints">
+                  <strong>Counterpoints & nuance</strong>
+                  <ul>{response.counterpoints.map((c) => <li key={c}>{c}</li>)}</ul>
+                </div>
+              )}
               {response.uncertainties.length > 0 && (
                 <div className="lens-unknowns">
                   <strong>What remains unknown</strong>
                   <ul>{response.uncertainties.map((u) => <li key={u}>{u}</li>)}</ul>
                 </div>
               )}
-              <Link href="/trust" className="show-work">Show your work <ExternalLink size={14} /></Link>
+              <div className="lens-actions">
+                {shareUrl && (
+                  <ShareButton
+                    title="Kingdom Lens answer"
+                    text={response.answer.slice(0, 120)}
+                    url={shareUrl}
+                  />
+                )}
+                <Link href="/trust" className="show-work">Show your work <ExternalLink size={14} /></Link>
+              </div>
             </>
           ) : (
             <p className="lens-placeholder">

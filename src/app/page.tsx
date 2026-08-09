@@ -6,7 +6,7 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { SiteFooter, SiteHeader } from "@/components/site-shell";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import { globalFaqs } from "@/lib/seo/faqs";
-import { faqPageSchema, governmentServiceSchema, webPageSchema } from "@/lib/seo/schema";
+import { faqPageSchema, governmentServiceSchema, speakableSchema, webPageSchema } from "@/lib/seo/schema";
 import { DEFAULT_DESCRIPTION, DEFAULT_TITLE } from "@/lib/seo/site";
 import {
   ComparisonPreview,
@@ -45,6 +45,7 @@ export default function Home() {
           }),
           faqPageSchema(globalFaqs),
           governmentServiceSchema(),
+          speakableSchema({ path: "/", cssSelectors: [".faq-question", ".faq-answer p"] }),
         ]}
       />
       <SiteHeader />

@@ -1,10 +1,11 @@
 import { principles } from "@/lib/data";
 import type { Official } from "@/lib/hamilton";
-import { hamiltonMeta, hamiltonMayor } from "@/lib/hamilton";
+import { hamiltonMeta } from "@/lib/hamilton";
 import type { FaqItem } from "@/lib/seo/faqs";
 import {
   CREATOR,
   GEO_FOCUS,
+  HAMILTON_GEO,
   PARENT_ORG,
   SITE_NAME,
   SITE_TAGLINE,
@@ -25,15 +26,14 @@ export function organizationSchema(): JsonLd {
     description:
       "Christian civic education with live Hamilton public records, biblical principles, prayer resources, and Kingdom Lens research.",
     slogan: SITE_TAGLINE,
-    areaServed: {
-      "@type": "City",
-      name: GEO_FOCUS.city,
-      containedInPlace: {
-        "@type": "AdministrativeArea",
-        name: GEO_FOCUS.region,
-        containedInPlace: { "@type": "Country", name: GEO_FOCUS.country },
+    areaServed: [
+      { "@type": "Place", name: GEO_FOCUS.region },
+      {
+        "@type": "City",
+        name: HAMILTON_GEO.city,
+        containedInPlace: { "@type": "AdministrativeArea", name: HAMILTON_GEO.region },
       },
-    },
+    ],
     parentOrganization: {
       "@type": "Organization",
       name: PARENT_ORG.name,
@@ -143,8 +143,8 @@ export function personSchema(official: Official): JsonLd {
     url: official.sourceUrl,
     homeLocation: {
       "@type": "City",
-      name: GEO_FOCUS.city,
-      containedInPlace: { "@type": "AdministrativeArea", name: GEO_FOCUS.region },
+      name: HAMILTON_GEO.city,
+      containedInPlace: { "@type": "AdministrativeArea", name: HAMILTON_GEO.region },
     },
   };
 }
@@ -159,8 +159,8 @@ export function electionEventSchema(): JsonLd {
     eventStatus: "https://schema.org/EventScheduled",
     location: {
       "@type": "City",
-      name: GEO_FOCUS.city,
-      containedInPlace: { "@type": "AdministrativeArea", name: GEO_FOCUS.region },
+      name: HAMILTON_GEO.city,
+      containedInPlace: { "@type": "AdministrativeArea", name: HAMILTON_GEO.region },
     },
     organizer: {
       "@type": "GovernmentOrganization",
@@ -204,7 +204,7 @@ export function softwareApplicationSchema(): JsonLd {
     offers: { "@type": "Offer", price: "0", priceCurrency: "CAD" },
     url: absoluteUrl("/kingdom-lens"),
     description:
-      "Civic research assistant for Hamilton government questions, biblical principles, and Christian engagement—with cited sources.",
+      "Global Christian civic research assistant for government questions, biblical principles, and live city data—with cited sources.",
     provider: { "@id": `${SITE_URL}/#organization` },
   };
 }
@@ -235,14 +235,97 @@ export function governmentServiceSchema(): JsonLd {
   return {
     "@context": "https://schema.org",
     "@type": "GovernmentService",
-    name: "Hamilton Civic Education Hub",
+    name: "Global Christian Civic Education",
     serviceType: "Civic education and public records",
-    areaServed: {
-      "@type": "City",
-      name: GEO_FOCUS.city,
-    },
+    areaServed: { "@type": "Place", name: "Worldwide" },
     provider: { "@id": `${SITE_URL}/#organization` },
-    url: absoluteUrl("/leaders"),
-    description: `Live officials for ${hamiltonMeta.city}: Mayor ${hamiltonMayor.name}, councillors, MPs, and election information.`,
+    url: absoluteUrl("/"),
+    description: `Global Christian civic education with live data in ${hamiltonMeta.city} and expanding cities worldwide.`,
+  };
+}
+
+export function learningResourceSchema({
+  title,
+  description,
+  path,
+}: {
+  title: string;
+  description: string;
+  path: string;
+}): JsonLd {
+  return {
+    "@context": "https://schema.org",
+    "@type": "LearningResource",
+    name: title,
+    description,
+    url: absoluteUrl(path),
+    learningResourceType: "Lesson",
+    educationalLevel: "Beginner",
+    inLanguage: "en-CA",
+    provider: { "@id": `${SITE_URL}/#organization` },
+    author: { "@type": "Person", name: CREATOR.name, url: CREATOR.url },
+  };
+}
+
+export function profilePageSchema(official: Official): JsonLd {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    mainEntity: personSchema(official),
+    url: absoluteUrl(`/leaders/${official.slug}`),
+  };
+}
+
+export function howToSchema({
+  name,
+  description,
+  steps,
+  path,
+}: {
+  name: string;
+  description: string;
+  steps: string[];
+  path: string;
+}): JsonLd {
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name,
+    description,
+    url: absoluteUrl(path),
+    step: steps.map((text, index) => ({
+      "@type": "HowToStep",
+      position: index + 1,
+      text,
+    })),
+  };
+}
+
+export function webApiSchema(): JsonLd {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebAPI",
+    name: "Kingdom Lens API",
+    description: "POST civic research questions; returns sourced answers with Scripture and uncertainties.",
+    url: absoluteUrl("/api/kingdom-lens"),
+    documentation: absoluteUrl("/kingdom-lens"),
+  };
+}
+
+export function speakableSchema({
+  path,
+  cssSelectors,
+}: {
+  path: string;
+  cssSelectors: string[];
+}): JsonLd {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    url: absoluteUrl(path),
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: cssSelectors,
+    },
   };
 }

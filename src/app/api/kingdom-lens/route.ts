@@ -19,5 +19,10 @@ export async function POST(request: Request) {
     citySlug: parsed.data.citySlug,
   });
 
-  return NextResponse.json(response, { headers: { "Cache-Control": "no-store" } });
+  const cacheHeader =
+    response.confidence === "no_reliable_evidence"
+      ? "no-store"
+      : "public, s-maxage=3600, stale-while-revalidate=86400";
+
+  return NextResponse.json(response, { headers: { "Cache-Control": cacheHeader } });
 }

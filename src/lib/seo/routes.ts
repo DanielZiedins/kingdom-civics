@@ -1,3 +1,5 @@
+import { learnArticles } from "@/lib/content/learn";
+import { issueGuidesContent } from "@/lib/content/issues";
 import { principles } from "@/lib/data";
 import { hamiltonOfficials } from "@/lib/hamilton";
 import { absoluteUrl } from "@/lib/seo/site";
@@ -25,7 +27,20 @@ export const coreRoutes: SitemapEntry[] = [
   { path: "/my-civics", priority: 0.6, changeFrequency: "weekly" },
   { path: "/about", priority: 0.7, changeFrequency: "monthly" },
   { path: "/privacy", priority: 0.4, changeFrequency: "yearly" },
+  { path: "/cities/hamilton-on", priority: 0.9, changeFrequency: "weekly" },
 ];
+
+export const learnRoutes: SitemapEntry[] = learnArticles.map((article) => ({
+  path: `/learn/${article.slug}`,
+  priority: 0.85,
+  changeFrequency: "monthly" as const,
+}));
+
+export const issueRoutes: SitemapEntry[] = issueGuidesContent.map((guide) => ({
+  path: `/issues/${guide.slug}`,
+  priority: 0.8,
+  changeFrequency: "monthly" as const,
+}));
 
 export const leaderRoutes: SitemapEntry[] = hamiltonOfficials.map((official) => ({
   path: `/leaders/${official.slug}`,
@@ -43,6 +58,8 @@ export const allSitemapEntries: SitemapEntry[] = [
   ...coreRoutes,
   ...leaderRoutes,
   ...principleRoutes,
+  ...learnRoutes,
+  ...issueRoutes,
 ];
 
 export function sitemapUrls(): string[] {
