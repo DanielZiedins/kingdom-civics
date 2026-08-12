@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowRight, BookOpen, CalendarDays, ExternalLink, FileCheck2, Heart, Landmark, MapPin, ShieldCheck } from "lucide-react";
+import { ArrowRight, CalendarDays, ExternalLink, Heart, ShieldCheck } from "lucide-react";
 import { ArticleBody } from "@/components/article-body";
 import { ElectionCountdown } from "@/components/election-countdown";
 import { ComparisonPreview, GlobalSearch, PrincipleCards } from "@/components/home-sections";
 import { KingdomLensPage } from "@/components/kingdom-lens-page";
+import { MyCivicsDashboard } from "@/components/my-civics-dashboard";
+import { ShareButton } from "@/components/share-button";
 import { Breadcrumbs } from "@/components/seo/breadcrumbs";
 import { FaqSection } from "@/components/seo/faq-section";
 import { JsonLd } from "@/components/seo/json-ld";
@@ -233,7 +235,7 @@ function LinkCards({ items }: { items: Array<{ href: string; title: string; desc
   return (
     <div className="content-grid">
       {items.map((item) => (
-        <Link href={item.href} className="content-card" key={item.href}>
+        <Link href={item.href} className="content-card" key={item.href + item.title}>
           {item.tag && <small>{item.tag}</small>}
           <h3>{item.title}</h3>
           <p>{item.description}</p>
@@ -244,23 +246,11 @@ function LinkCards({ items }: { items: Array<{ href: string; title: string; desc
   );
 }
 
-function Cards({ items }: { items: Array<[string, string, string?]> }) {
-  return (
-    <LinkCards
-      items={items.map(([title, description, tag]) => ({
-        href: `/search?q=${encodeURIComponent(title)}`,
-        title,
-        description,
-        tag,
-      }))}
-    />
-  );
-}
-
 function LeadersPage({ detail }: { detail?: string }) {
   const official = hamiltonOfficials.find((item) => item.slug === detail);
   const leader = allHamiltonLeaders.find((item) => item.slug === detail);
   if (official && leader) {
+    const lensQ = encodeURIComponent(`Who is ${leader.name} and what does the ${official.office} do in Hamilton?`);
     return (
       <div>
         <div className="profile-summary">
@@ -269,6 +259,8 @@ function LeadersPage({ detail }: { detail?: string }) {
             <span className="status-chip live-chip">Live · Official record</span>
             <h2>{leader.name}</h2>
             <p>{leader.office} · {leader.party}</p>
+            <p style={{ marginTop: 8, fontSize: 13, color: "var(--stone)" }}>{leader.status}</p>
+            {official.contact && <p style={{ marginTop: 6, fontSize: 13 }}>Contact: {official.contact}</p>}
             <a href={leader.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-link" style={{ marginTop: 12 }}>
               View official source <ExternalLink size={14} />
             </a>
@@ -284,12 +276,17 @@ function LeadersPage({ detail }: { detail?: string }) {
           <blockquote>Pray for {leader.name.split(" ").pop()} and all in authority—leaders you agree with and leaders you disagree with.</blockquote>
           <span>1 TIMOTHY 2:1–2</span>
         </div>
-        <div style={{ marginTop: 32 }}>
-          <Link href="/kingdom-lens" className="button button-navy">Ask Kingdom Lens about this role <ArrowRight size={14} /></Link>
+        <div className="profile-actions" style={{ marginTop: 28, display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
+          <Link href="/pray" className="button button-navy">Pray for this leader <Heart size={14} /></Link>
+          <Link href={`/kingdom-lens?q=${lensQ}`} className="button button-ghost">Ask Kingdom Lens</Link>
+          <ShareButton title={`${leader.name} — Kingdom Civics`} text={`${leader.name}, ${leader.office}`} url={absoluteUrl(`/leaders/${leader.slug}`)} />
+          <Link href="/leaders" className="text-link">All Hamilton leaders <ArrowRight size={14} /></Link>
         </div>
       </div>
     );
   }
+
+  if (detail) notFound();
 
   return (
     <>
@@ -333,6 +330,13 @@ function LeadersPage({ detail }: { detail?: string }) {
 }
 
 function ElectionPage() {
+  const checklist = [
+    "Confirm you are eligible to vote in Hamilton, Ontario.",
+    "Verify registration and ID requirements on the City of Hamilton election page.",
+    "Find your ward using the official ward lookup tool.",
+    "Review candidate information from official nomination records when published.",
+    "Vote on election day October 26, 2026 or by approved advance / vote-by-mail methods.",
+  ];
   return (
     <div className="election-layout">
       <div className="election-main">
@@ -347,14 +351,25 @@ function ElectionPage() {
             <span>Mayor · 15 ward councillors · school board trustees</span>
           </div>
         </div>
-        <Cards items={[
-          ["Mayor", "Citywide · nominations via official process", "OFFICE"],
-          ["Ward Councillor", "15 wards across Hamilton", "OFFICE"],
-          ["School Board Trustee", "Public & separate boards", "OFFICE"],
-        ]} />
-        <a href={hamiltonMeta.electionUrl} target="_blank" rel="noopener noreferrer" className="button button-navy" style={{ marginTop: 24 }}>
-          Official election information <ExternalLink size={14} />
-        </a>
+        <LinkCards
+          items={[
+            { href: "/leaders/andrea-horwath", title: "Mayor", description: "Citywide office — verify candidates on the official election page.", tag: "OFFICE" },
+            { href: "/leaders", title: "Ward Councillor", description: "15 wards across Hamilton — know your current councillor now.", tag: "OFFICE" },
+            { href: hamiltonMeta.electionUrl, title: "School Board Trustee", description: "Public & separate boards — confirm details with the City of Hamilton.", tag: "OFFICE" },
+          ]}
+        />
+        <div className="election-checklist" style={{ marginTop: 28 }}>
+          <h3 style={{ fontFamily: "var(--font-serif)", fontSize: 28, marginBottom: 12 }}>What to verify officially</h3>
+          <ol style={{ margin: 0, paddingLeft: 18, color: "var(--stone)", lineHeight: 1.7 }}>
+            {checklist.map((step) => <li key={step}>{step}</li>)}
+          </ol>
+        </div>
+        <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 24, alignItems: "center" }}>
+          <a href={hamiltonMeta.electionUrl} target="_blank" rel="noopener noreferrer" className="button button-navy">
+            Official election information <ExternalLink size={14} />
+          </a>
+          <ShareButton title="Hamilton Election 2026" text="October 26, 2026 municipal & school board election" url={absoluteUrl("/elections")} />
+        </div>
       </div>
       <aside className="source-aside">
         <ShieldCheck />
@@ -410,6 +425,7 @@ function WhyEngagePage() {
           <div key={s.ref} className="scripture-pill"><strong>{s.ref}</strong><span>{s.text}</span></div>
         ))}
       </div>
+      <FaqSection faqs={pageFaqs["why-engage"] ?? []} title="Civic engagement FAQ" description="Biblical answers to common questions about faith and public life." />
     </div>
   );
 }
@@ -422,21 +438,38 @@ function PrayPage() {
         <blockquote>&ldquo;That we may lead a peaceful and quiet life, godly and dignified in every way.&rdquo;</blockquote>
         <span>1 TIMOTHY 2:2</span>
       </div>
-      <Cards items={prayerPrompts.map(([title, text, scripture]) => [title, text, scripture])} />
+      <div className="content-grid">
+        {prayerPrompts.map(([title, text, scripture]) => (
+          <div className="content-card" key={title}>
+            <small>{scripture}</small>
+            <h3>{title}</h3>
+            <p>{text}</p>
+          </div>
+        ))}
+      </div>
+      <div style={{ marginTop: 28, display: "flex", gap: 14, flexWrap: "wrap" }}>
+        <Link href="/leaders" className="button button-navy">Pray for Hamilton leaders <ArrowRight size={14} /></Link>
+        <Link href="/kingdom-lens?q=How%20should%20Christians%20pray%20for%20leaders" className="button button-ghost">Ask Kingdom Lens</Link>
+      </div>
     </div>
   );
 }
 
 function ServePage() {
   const steps = [
-    ["START", "Learn how Hamilton City Council works and what each level of government controls."],
-    ["SHOW UP", "Attend a council or committee meeting at Hamilton City Hall."],
-    ["SPEAK", "Participate in public consultation on planning, budgets, or bylaws."],
-    ["SERVE", "Volunteer with a community organization serving Hamilton neighbors."],
-    ["LEAD", "Apply for a public board, commission, or advisory committee."],
-    ["RUN", "Explore elected office as servant leadership—not as a culture-war platform."],
+    { tag: "PATHWAY 01", title: "START", body: "Learn how Hamilton City Council works and what each level of government controls.", href: "/learn/hamilton-city-council" },
+    { tag: "PATHWAY 02", title: "SHOW UP", body: "Attend a council or committee meeting at Hamilton City Hall.", href: "/elections" },
+    { tag: "PATHWAY 03", title: "SPEAK", body: "Participate in public consultation on planning, budgets, or bylaws.", href: "/learn/read-a-public-budget" },
+    { tag: "PATHWAY 04", title: "SERVE", body: "Volunteer with a community organization serving Hamilton neighbors.", href: "/issues/poverty-economic-life" },
+    { tag: "PATHWAY 05", title: "LEAD", body: "Apply for a public board, commission, or advisory committee.", href: "/leaders" },
+    { tag: "PATHWAY 06", title: "RUN", body: "Explore elected office as servant leadership—not as a culture-war platform.", href: "/biblical-principles/servant-leadership" },
   ];
-  return <Cards items={steps.map(([title, text], i) => [title, text, `PATHWAY 0${i + 1}`])} />;
+  return (
+    <div>
+      <LinkCards items={steps.map((s) => ({ href: s.href, title: s.title, description: s.body, tag: s.tag }))} />
+      <FaqSection faqs={pageFaqs.serve ?? []} title="Serving in public life" description="Practical questions about Christian civic service." />
+    </div>
+  );
 }
 
 function TrustPage() {
@@ -449,34 +482,105 @@ function TrustPage() {
           <p>We separate factual evidence, theological interpretation, moral principle, prudential judgment, and policy preference. Hamilton live data is sourced from hamilton.ca and official parliamentary pages.</p>
         </div>
       </div>
-      <Cards items={[
-        ["Source standards", "Tier 1 official records and direct statements receive the greatest weight.", "METHODOLOGY"],
-        ["Kingdom Lens constitution", "Twenty-five operating principles prohibit fabrication and partisan equivalence.", "AI"],
-        ["Honest uncertainty", "We do not force conclusions when evidence is limited or contradictory.", "EVIDENCE"],
-        ["Corrections", "Report errors; meaningful corrections retain editor, timestamp, and change history.", "ACCOUNTABILITY"],
-      ]} />
+      <div className="content-grid">
+        <div className="content-card" id="sources">
+          <small>METHODOLOGY</small>
+          <h3>Source standards</h3>
+          <p>Tier 1 official records and direct statements receive the greatest weight. Tier 2 reputable reporting requires verification. Social media outrage carries the least weight.</p>
+        </div>
+        <div className="content-card">
+          <small>AI</small>
+          <h3>Kingdom Lens constitution</h3>
+          <p>Operating principles prohibit fabrication, partisan equivalence, and claiming God endorses a candidate or party.</p>
+        </div>
+        <div className="content-card">
+          <small>EVIDENCE</small>
+          <h3>Honest uncertainty</h3>
+          <p>We do not force conclusions when evidence is limited or contradictory. Counterpoints are a feature, not a failure.</p>
+        </div>
+        <div className="content-card" id="corrections">
+          <small>ACCOUNTABILITY</small>
+          <h3>Corrections</h3>
+          <p>Report errors via the Trust Center. Meaningful corrections should retain what changed and why—so trust can be inspected, not assumed.</p>
+        </div>
+      </div>
+      <FaqSection faqs={pageFaqs.trust ?? []} title="Trust & methodology FAQ" description="How Kingdom Civics handles evidence and corrections." />
     </div>
   );
 }
 
-function MyCivicsPage() {
+function AboutPage() {
   return (
-    <div className="dashboard-grid">
-      <div className="dashboard-card dashboard-wide">
-        <MapPin />
-        <div><small>SAVED LOCATION</small><h3>Hamilton, Ontario</h3><p>3 jurisdictions · {hamiltonCouncillors.length + 1} municipal · {hamiltonFederal.length} federal MPs indexed</p></div>
-        <Link href="/leaders" className="button button-navy">View leaders</Link>
+    <div>
+      <div className="scripture-callout scripture-callout-large">
+        <Heart />
+        <blockquote>Kingdom first. Always. No party, politician, nation, or movement is synonymous with the Kingdom of God.</blockquote>
+        <span>THY KINGDOM NETWORK</span>
       </div>
-      <div className="dashboard-card"><Landmark /><small>NEXT ELECTION</small><h3>October 26, 2026</h3><p>Hamilton municipal & school board</p></div>
-      <div className="dashboard-card"><BookOpen /><small>LEARNING PROGRESS</small><h3>4 of 10 modules</h3><p>Continue: How Hamilton City Council works</p></div>
-      <div className="dashboard-card"><Heart /><small>PRAYER LIST</small><h3>Mayor + councillors</h3><p>Pray for Hamilton leaders this week</p></div>
-      <div className="dashboard-card"><FileCheck2 /><small>SAVED SOURCES</small><h3>hamilton.ca</h3><p>Official municipal records</p></div>
+      <div className="content-grid">
+        <div className="content-card"><small>MISSION</small><h3>Christian civic education worldwide</h3><p>Help the Church understand government, discern leadership, pray faithfully, and serve humbly—without partisan endorsements.</p></div>
+        <div className="content-card"><small>LIVE NOW</small><h3>Hamilton, Ontario</h3><p>Our first live city with mayor, councillors, MPs, MPPs, and the October 26, 2026 municipal election—linked to official sources.</p></div>
+        <div className="content-card"><small>METHOD</small><h3>Scripture · Evidence · Wisdom</h3><p>Kingdom Lens answers questions with citations, Scripture applications, uncertainties, and counterpoints.</p></div>
+        <div className="content-card"><small>CREATOR</small><h3>Daniel Ziedins.Design</h3><p>Built with care for the Church. Visit <a href="https://www.danielziedins.design" target="_blank" rel="noopener noreferrer">danielziedins.design</a>.</p></div>
+      </div>
+      <div style={{ marginTop: 28, display: "flex", gap: 14, flexWrap: "wrap" }}>
+        <Link href="/trust" className="button button-navy">Visit the Trust Center</Link>
+        <Link href="/why-engage" className="button button-ghost">Why engage</Link>
+      </div>
     </div>
+  );
+}
+
+function PrivacyPage() {
+  return (
+    <div className="article-body">
+      <section>
+        <h2>What we collect</h2>
+        <p>Kingdom Civics is designed to collect less. Location or city input is used to look up jurisdictions—not for political profiling or ad targeting. Newsletter “notify me” emails may be stored on your device until a delivery service is connected.</p>
+      </section>
+      <section>
+        <h2>My Civics on this device</h2>
+        <p>Learning progress and prayer markers in My Civics are saved in your browser&apos;s local storage. Clearing site data removes them. No account is required.</p>
+      </section>
+      <section>
+        <h2>Your control</h2>
+        <p>You can stop using optional features at any time. We do not sell political profiles. For questions about this policy, visit the Trust Center.</p>
+      </section>
+      <div className="article-cta">
+        <Link href="/trust" className="button button-navy">Trust Center <ArrowRight size={15} /></Link>
+      </div>
+    </div>
+  );
+}
+
+function PrincipleDetailPage({ slug }: { slug: string }) {
+  const principle = principles.find((p) => p.slug === slug);
+  if (!principle) notFound();
+  return (
+    <ArticleBody
+      scripture={principle.scripture}
+      sections={[
+        { heading: principle.name, body: principle.summary },
+        {
+          heading: "How we use this principle",
+          body: `When assessing public life, Kingdom Civics treats “${principle.name}” as a biblical starting point—not a partisan scorecard. We look for evidence, note uncertainty, and refuse to claim God endorses a candidate or party.`,
+        },
+        {
+          heading: "Practice it",
+          body: "Pray for leaders through this lens. Ask Kingdom Lens how the principle applies to a civic question. Compare claims against primary sources before sharing them.",
+        },
+      ]}
+    />
   );
 }
 
 function AdminPage() {
-  return <Cards items={[["Verification queue", "AI-extracted claims await source review.", "RESEARCHER"], ["Hamilton data", `Last verified ${hamiltonMeta.lastVerified}.`, "POLITICAL DATA"]]} />;
+  return (
+    <div className="content-grid">
+      <div className="content-card"><small>RESEARCHER</small><h3>Verification queue</h3><p>AI-extracted claims await human source review before sensitive assessments publish.</p></div>
+      <div className="content-card"><small>POLITICAL DATA</small><h3>Hamilton data</h3><p>Last verified {hamiltonMeta.lastVerified}. Official records remain the source of truth.</p></div>
+    </div>
+  );
 }
 
 export default async function InnerPage({ params, searchParams }: PageProps) {
@@ -493,14 +597,17 @@ export default async function InnerPage({ params, searchParams }: PageProps) {
     body = <ArticleBody scripture={article.scripture} sections={article.sections} />;
   } else if (section === "learn") {
     body = (
-      <LinkCards
-        items={learnArticles.map((a) => ({
-          href: `/learn/${a.slug}`,
-          title: a.title,
-          description: a.description,
-          tag: `${a.duration} · ${a.category}`,
-        }))}
-      />
+      <>
+        <LinkCards
+          items={learnArticles.map((a) => ({
+            href: `/learn/${a.slug}`,
+            title: a.title,
+            description: a.description,
+            tag: `${a.duration} · ${a.category}`,
+          }))}
+        />
+        <FaqSection faqs={pageFaqs.learn ?? []} title="Learn FAQ" description="How Kingdom Civics teaches civic literacy." />
+      </>
     );
   } else if (section === "issues" && slug[1]) {
     const guide = getIssueGuide(slug[1]);
@@ -525,15 +632,16 @@ export default async function InnerPage({ params, searchParams }: PageProps) {
   else if (section === "pray") body = <PrayPage />;
   else if (section === "serve") body = <ServePage />;
   else if (section === "trust") body = <TrustPage />;
-  else if (section === "search") body = <GlobalSearch />;
+  else if (section === "search") body = <GlobalSearch initialQuery={query?.q ?? ""} />;
   else if (section === "compare") body = <ComparisonPreview />;
   else if (section === "biblical-principles") body = slug[1]
-    ? <Cards items={[[principles.find((p) => p.slug === slug[1])?.name ?? "Principle", principles.find((p) => p.slug === slug[1])?.summary ?? "", "PRINCIPLE"], ["Scripture", principles.find((p) => p.slug === slug[1])?.scripture ?? "", "BIBLICAL TEXT"]]} />
+    ? <PrincipleDetailPage slug={slug[1]} />
     : <PrincipleCards />;
-  else if (section === "my-civics") body = <MyCivicsPage />;
+  else if (section === "my-civics") body = <MyCivicsDashboard />;
   else if (section === "admin") body = <AdminPage />;
-  else if (section === "privacy") body = <Cards items={[["Collect less", "No hidden political profiling.", "PRINCIPLE"], ["Your control", "Export data or delete your account.", "RIGHTS"]]} />;
-  else body = <Cards items={[["Truth", "Claims should be accurate and open to correction."], ["Service", "Public authority is stewardship for neighbors."]]} />;
+  else if (section === "privacy") body = <PrivacyPage />;
+  else if (section === "about") body = <AboutPage />;
+  else notFound();
 
   return (
     <>

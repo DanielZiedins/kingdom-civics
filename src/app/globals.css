@@ -19,13 +19,13 @@
 @theme inline {
   --color-background: var(--cream);
   --color-foreground: var(--ink);
-  --font-sans: "Geist", "Geist Fallback", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-cormorant), Georgia, "Times New Roman", serif;
 }
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { margin: 0; background: var(--cream); color: var(--ink); font-family: "Geist", ui-sans-serif, system-ui, sans-serif; }
+body { margin: 0; background: var(--cream); color: var(--ink); font-family: var(--font-sans); }
 a { color: inherit; text-decoration: none; }
 button, input { font: inherit; }
 button, a { -webkit-tap-highlight-color: transparent; }
@@ -47,6 +47,8 @@ em { color: var(--gold-light); font-weight: 400; }
 .button-ghost { border-color: #c9cbc8; color: var(--navy); }
 .button-outline-light { border-color: #7e8995; color: white; background: rgba(255,255,255,.03); }
 .button-cream { color: var(--navy); background: var(--cream); }
+.button-inverse { border-color: rgba(255,255,255,.45); color: white; background: transparent; }
+.button-inverse:hover { background: rgba(255,255,255,.08); }
 .text-link { display: inline-flex; align-items: center; gap: 8px; color: var(--navy); font-size: 13px; font-weight: 750; border-bottom: 1px solid #b5a37e; padding-bottom: 5px; }
 
 .site-header { position: relative; z-index: 50; background: rgba(250,248,242,.97); color: var(--navy); }
@@ -155,6 +157,7 @@ em { color: var(--gold-light); font-weight: 400; }
 .leader-card:hover { transform: translateY(-4px); box-shadow: 0 14px 36px rgba(21,31,40,.08); }
 .avatar { width: 70px; height: 85px; flex: 0 0 auto; display: grid; place-items: center; font-family: Georgia, serif; font-size: 22px; color: white; background: #607482; }
 .avatar-gold { background: #8d7454; }.avatar-blue { background: #4f6f83; }.avatar-green { background: #527260; }
+.avatar-navy { background: #1a3550; }.avatar-stone { background: #6b737a; }
 .leader-info h3 { font-family: Georgia, serif; font-size: 21px; font-weight: 400; margin: 10px 0 4px; }
 .leader-info p { font-size: 11px; font-weight: 680; margin-bottom: 5px; }
 .leader-info small { font-size: 10px; color: var(--stone); }
@@ -343,12 +346,14 @@ em { color: var(--gold-light); font-weight: 400; }
   .footer-main { grid-template-columns: 1fr 1fr; }.footer-brand { grid-column: 1 / -1; }.footer-bottom { padding-block: 18px; flex-direction: column; gap: 10px; text-align: center; }
   .content-grid { grid-template-columns: 1fr; }
   .election-layout { grid-template-columns: 1fr; }.profile-summary h2 { font-size: 38px; }.profile-summary .avatar { width: 75px; height: 95px; }.dashboard-grid { grid-template-columns: 1fr; }.dashboard-wide { grid-column: auto; grid-template-columns: 1fr; }.dashboard-wide > svg { margin-bottom: 15px; }
+  .not-found-grid { grid-template-columns: 1fr 1fr; }
+  .city-preview-grid { grid-template-columns: 1fr 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
-  .hero-glow { animation: none; }
+  .hero-glow, .orbit-one, .orbit-two, .lens-orb, .pin-one, .pin-two, .pin-three { animation: none; }
 }
 
 /* —— Hamilton live + engagement —— */
@@ -426,6 +431,18 @@ em { color: var(--gold-light); font-weight: 400; }
 .lens-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin-top: 12px; }
 .share-button { display: inline-flex; align-items: center; gap: 6px; padding: 8px 12px; border: 1px solid #3d5164; background: transparent; color: #d8e2e8; font-size: 11px; cursor: pointer; }
 .share-button:hover { background: rgba(255,255,255,.08); }
+.share-button-light { border-color: var(--line); color: var(--navy); background: white; }
+.share-button-light:hover { background: #f7f3ea; border-color: var(--gold); }
+
+.orbit-one { animation: orbit-spin 48s linear infinite; }
+.orbit-two { animation: orbit-spin 36s linear infinite reverse; }
+.lens-orb { animation: lens-pulse 5.5s ease-in-out infinite; }
+.pin-one { animation: pin-fade 1.1s ease both; }
+.pin-two { animation: pin-fade 1.1s ease .15s both; }
+.pin-three { animation: pin-fade 1.1s ease .3s both; }
+@keyframes orbit-spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+@keyframes lens-pulse { 0%, 100% { box-shadow: 0 0 0 12px rgba(255,255,255,.02), 0 25px 80px #05101c; } 50% { box-shadow: 0 0 0 18px rgba(201,164,91,.08), 0 25px 90px #05101c; } }
+@keyframes pin-fade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
 .not-found-page { min-height: 70vh; }
 .not-found-hero { padding: 100px 0 60px; background: var(--navy); color: white; }

@@ -75,3 +75,25 @@ test("RSS feed and custom 404 exist for discoverability", async () => {
   const notFound = await readFile(new URL("src/app/not-found.tsx", root), "utf8");
   assert.match(notFound, /kingdom-lens/);
 });
+
+test("MPP profiles are included in allHamiltonLeaders", async () => {
+  const source = await readFile(new URL("src/lib/data.ts", root), "utf8");
+  assert.match(source, /hamiltonProvincial/);
+  assert.match(source, /impactAreas[\s\S]*href:/);
+});
+
+test("About and Trust pages are real content not search stubs", async () => {
+  const source = await readFile(new URL("src/app/[...slug]/page.tsx", root), "utf8");
+  assert.match(source, /function AboutPage/);
+  assert.match(source, /id="sources"/);
+  assert.match(source, /id="corrections"/);
+  assert.match(source, /function PrincipleDetailPage/);
+  assert.doesNotMatch(source, /function Cards\(/);
+});
+
+test("site search index covers leaders and learn content", async () => {
+  const source = await readFile(new URL("src/lib/search-index.ts", root), "utf8");
+  assert.match(source, /hamiltonOfficials/);
+  assert.match(source, /learnArticles/);
+  assert.match(source, /export function searchSite/);
+});

@@ -117,6 +117,60 @@ export const learnArticles: LearnArticle[] = [
       },
     ],
   },
+  {
+    slug: "levels-of-government",
+    title: "Levels of Government: Local, Regional & National",
+    description:
+      "Map who decides what—so prayer, advocacy, and voting land where they can actually help neighbours.",
+    duration: "12 min",
+    category: "Jurisdictions",
+    scripture: "Romans 13:1–7 · Matthew 22:21",
+    sections: [
+      {
+        heading: "Start with jurisdiction",
+        body: "Civic frustration often comes from aiming at the wrong level of government. A city mayor cannot rewrite national immigration law. A federal parliament does not approve your neighbour's backyard renovation. Faithful engagement begins by asking: who actually has authority here?",
+      },
+      {
+        heading: "Local government",
+        body: "Cities and municipalities typically handle zoning, property taxes, local transit, parks, policing partnerships, and bylaws. This is where housing density, shelter locations, and neighbourhood quality of life are often decided—and where citizens can most easily attend meetings and speak.",
+      },
+      {
+        heading: "Regional / provincial / state",
+        body: "Regional governments usually set education frameworks, healthcare systems, highways, and many social programs. In Canada, provinces hold major power over schools and hospitals. Knowing your MPP or state legislator matters as much as knowing your mayor.",
+      },
+      {
+        heading: "National / federal",
+        body: "National governments typically control defense, immigration, criminal law frameworks, currency, and foreign policy. Christians should pray for these leaders without treating any party as the Kingdom of God.",
+      },
+    ],
+  },
+  {
+    slug: "read-a-public-budget",
+    title: "How to Read a Public Budget",
+    description:
+      "A plain-language guide to following the money in city and provincial budgets—without drowning in jargon.",
+    duration: "15 min",
+    category: "Public finance",
+    scripture: "Luke 14:28 · Proverbs 27:23–24",
+    sections: [
+      {
+        heading: "Budgets reveal priorities",
+        body: "Speeches signal intentions; budgets reveal trade-offs. A public budget shows what a government chooses to fund, cut, defer, or debt-finance. Christians concerned about justice and stewardship should learn to read the documents—not only the headlines.",
+      },
+      {
+        heading: "Find the primary document",
+        body: "Start with the official budget book or open data portal from the city or province—not a campaign flyer. Look for operating vs capital spending, reserves, and multi-year forecasts. Hamilton publishes municipal budget materials on hamilton.ca.",
+      },
+      {
+        heading: "Ask clarifying questions",
+        body: "What grew fastest year over year? What was cut? Which programs serve the vulnerable? Are one-time funds being used for ongoing costs? Who audits the numbers? Honest uncertainty beats confident speculation.",
+      },
+      {
+        heading: "Engage with humility",
+        body: "Budget literacy helps prayer and advocacy become specific. It does not require becoming an accountant—or baptizing one fiscal ideology. Verify claims, attend consultations when possible, and pray for officials making hard trade-offs.",
+      },
+    ],
+  },
 ];
 
 export function getLearnArticle(slug: string): LearnArticle | undefined {

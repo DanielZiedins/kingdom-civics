@@ -201,6 +201,8 @@ export function KingdomLensChat({ compact = false, citySlug, initialQuestion }: 
                     title="Kingdom Lens answer"
                     text={response.answer.slice(0, 120)}
                     url={shareUrl}
+                    label="Share answer"
+                    tone="dark"
                   />
                 )}
                 <Link href="/trust" className="show-work">Show your work <ExternalLink size={14} /></Link>

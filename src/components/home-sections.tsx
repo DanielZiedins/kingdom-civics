@@ -18,12 +18,13 @@ import { hamiltonCouncillors, hamiltonFederal, hamiltonMayor, hamiltonMeta } fro
 import { cityLabel, getAllCities, getDefaultCity, matchCityFromInput } from "@/lib/jurisdictions/registry";
 import { learnArticles } from "@/lib/content/learn";
 import { evidenceMatrix, impactAreas, leaders, principles } from "@/lib/data";
+import { searchIndex, searchSite } from "@/lib/search-index";
 
 export function ImpactGrid() {
   return (
     <div className="impact-grid">
-      {impactAreas.map(({ label, icon: Icon }) => (
-        <Link href={`/issues?topic=${label.toLowerCase()}`} className="impact-item" key={label}>
+      {impactAreas.map(({ label, icon: Icon, href }) => (
+        <Link href={href} className="impact-item" key={label}>
           <Icon size={20} />
           <span>{label}</span>
           <ArrowRight size={15} />
@@ -130,14 +131,20 @@ export function GovernmentExplorer() {
         <div className="jurisdiction-card jurisdiction-muted">
           <div className="demo-label">COMING SOON · {cityLabel(matched).toUpperCase()}</div>
           <p><strong>{matched.name}</strong> is on our roadmap. {matched.tagline}. Meanwhile, explore global civic education, biblical principles, and our live Hamilton data.</p>
-          <Link href="/kingdom-lens" className="text-link">Ask Kingdom Lens <ArrowRight size={15} /></Link>
+          <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginTop: 12 }}>
+            <Link href={`/kingdom-lens?q=${encodeURIComponent(`Tell me how Christians can engage civically in ${matched.name}`)}`} className="text-link">Ask Kingdom Lens about {matched.name} <ArrowRight size={15} /></Link>
+            <Link href="/cities/hamilton-on" className="text-link">See live Hamilton hub <ArrowRight size={15} /></Link>
+          </div>
         </div>
       )}
 
       {shown && !matched && (
         <div className="jurisdiction-card jurisdiction-muted">
           <p>Kingdom Civics is expanding worldwide. <strong>{defaultCity.name}</strong> is our first live city. Try a city above—or ask Kingdom Lens global questions about Scripture, government, and civic engagement.</p>
-          <button type="button" className="inline-link" onClick={() => { setPlace(cityLabel(defaultCity)); setShown(true); }}>Explore {defaultCity.name}</button>
+          <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginTop: 12 }}>
+            <button type="button" className="inline-link" onClick={() => { setPlace(cityLabel(defaultCity)); setShown(true); }}>Explore {defaultCity.name}</button>
+            <Link href={`/kingdom-lens?q=${encodeURIComponent(`How should Christians engage in civic life in ${place || "my city"}?`)}`} className="text-link">Ask about your city <ArrowRight size={15} /></Link>
+          </div>
         </div>
       )}
     </div>
@@ -214,9 +221,10 @@ export function ComparisonPreview() {
         <div>
           <span className="eyebrow">EVIDENCE FRAMEWORK</span>
           <h3>Hamilton Municipal Election · October 26, 2026</h3>
+          <p style={{ margin: "8px 0 0", fontSize: 13, color: "var(--stone)" }}>Candidates not yet fully declared — framework ready.</p>
         </div>
         <button className="filter-button" type="button" onClick={() => setExpanded(!expanded)}>
-          {expanded ? "Show framework" : "How we assess"} <ChevronDown size={15} />
+          {expanded ? "Hide explanation" : "How we assess"} <ChevronDown size={15} />
         </button>
       </div>
       {expanded ? (
@@ -246,42 +254,63 @@ export function ComparisonPreview() {
 
 export function NewsletterForm() {
   const [sent, setSent] = useState(false);
+  const [email, setEmail] = useState("");
   return sent ? (
-    <div className="success-message"><Check size={18} /> You&apos;re on the list. Watch your inbox for thoughtful civic updates.</div>
+    <div className="success-message">
+      <Check size={18} /> Saved on this device. We&apos;ll use this list for local city-launch reminders once email delivery is connected.
+    </div>
   ) : (
-    <form className="newsletter-form" onSubmit={(e) => { e.preventDefault(); setSent(true); }}>
+    <form
+      className="newsletter-form"
+      onSubmit={(e) => {
+        e.preventDefault();
+        try {
+          const existing = JSON.parse(window.localStorage.getItem("kingdom-civics-notify") ?? "[]") as string[];
+          window.localStorage.setItem("kingdom-civics-notify", JSON.stringify([...new Set([...existing, email.trim().toLowerCase()])]));
+        } catch {
+          /* ignore */
+        }
+        setSent(true);
+      }}
+    >
       <label className="sr-only" htmlFor="email">Email address</label>
-      <input id="email" required type="email" placeholder="Your email address" />
-      <button className="button button-gold" type="submit">Stay informed</button>
+      <input
+        id="email"
+        required
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="Notify me when my city goes live"
+      />
+      <button className="button button-gold" type="submit">Notify me</button>
     </form>
   );
 }
 
-export function GlobalSearch() {
-  const [query, setQuery] = useState("");
-  const q = query.toLowerCase();
-  const results = [
-    q.includes("hamilton") || q.includes("mayor") ? ["Andrea Horwath — Mayor of Hamilton", "/leaders/andrea-horwath"] : null,
-    q.includes("election") || q.includes("vote") ? ["Hamilton 2026 Municipal Election", "/elections"] : null,
-    q.includes("pray") || q.includes("leader") ? ["Pray for government leaders", "/pray"] : null,
-    q.includes("christian") || q.includes("engage") || q.includes("why") ? ["Why Christians engage in civic life", "/why-engage"] : null,
-    q.includes("justice") || q.includes("scripture") || q.includes("bible") ? ["Biblical principles framework", "/biblical-principles"] : null,
-    q.includes("government") || q.includes("levels") ? ["How government works", "/learn"] : null,
-    q.includes("lens") || q.includes("ask") ? ["Ask Kingdom Lens", "/kingdom-lens"] : null,
-    q.includes("canada") ? ["Canadian government overview", "/learn"] : null,
-    ["Kingdom Civics global mission", "/about"],
-  ].filter(Boolean) as Array<[string, string]>;
+export function GlobalSearch({ initialQuery = "" }: { initialQuery?: string }) {
+  const [query, setQuery] = useState(initialQuery);
+  const results = searchSite(query, 10);
 
   return (
     <div className="search-panel">
       <Search size={21} />
-      <input autoFocus value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search leaders, Scripture, civic topics, cities…" aria-label="Search" />
+      <input
+        autoFocus
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        placeholder="Search leaders, Scripture, civic topics, cities…"
+        aria-label="Search"
+      />
       <kbd>⌘ K</kbd>
-      {query && (
-        <div className="search-results">
-          {results.slice(0, 8).map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}
-        </div>
-      )}
+      <div className="search-results">
+        {(query ? results : searchIndex.slice(0, 8)).map((hit) => (
+          <Link key={hit.href + hit.title} href={hit.href}>
+            <small style={{ display: "block", fontSize: 10, letterSpacing: ".08em", color: "var(--stone)" }}>{hit.category}</small>
+            {hit.title}
+          </Link>
+        ))}
+        {query && results.length === 0 && <p style={{ padding: "12px 0", color: "var(--stone)" }}>No matches — try “Hamilton”, “pray”, or “housing”.</p>}
+      </div>
     </div>
   );
 }

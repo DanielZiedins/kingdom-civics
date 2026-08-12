@@ -30,15 +30,19 @@ Last updated: 2026-08-08
 ## Learn articles
 
 - /learn/how-government-works
+- /learn/levels-of-government
 - /learn/hamilton-city-council
 - /learn/canadian-government
 - /learn/evaluate-political-claims
+- /learn/read-a-public-budget
 
 ## Issue guides
 
 - /issues/housing-homelessness
 - /issues/religious-liberty
 - /issues/education
+- /issues/poverty-economic-life
+- /issues/technology-privacy
 
 ## Key facts (Hamilton, Ontario — first live city)
 

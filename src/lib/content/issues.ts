@@ -78,6 +78,58 @@ export const issueGuidesContent: IssueGuide[] = [
       },
     ],
   },
+  {
+    slug: "poverty-economic-life",
+    title: "Poverty & Economic Life",
+    description:
+      "A Christian framework for evaluating poverty, work, wages, and economic policy—justice, compassion, and honest evidence.",
+    principles: ["Justice & mercy", "Human dignity", "Wise stewardship"],
+    scripture: "Proverbs 31:8–9 · Deuteronomy 15:7–11",
+    sections: [
+      {
+        heading: "Why economic life is a civic concern",
+        body: "Budgets, taxes, labour rules, and social programs shape whether neighbours can work with dignity, raise families, and escape poverty. These decisions span municipal, provincial, and federal levels—so faithful engagement begins by mapping jurisdiction before advocacy.",
+      },
+      {
+        heading: "Biblical starting points",
+        body: "Scripture holds together concern for the poor, the dignity of work, honest scales, and generosity without partiality. Christians may disagree on mechanisms (tax rates, welfare design, market regulation) while sharing a refusal to ignore the vulnerable or baptize any economic ideology as the gospel.",
+      },
+      {
+        heading: "Questions that clarify",
+        body: "Who bears the cost? Who benefits? What does longitudinal data show? Are incentives aligned with human dignity? Does rhetoric treat opponents as enemies or neighbours? Trace claims to budgets and statutes—not viral clips.",
+      },
+      {
+        heading: "How to engage",
+        body: "Pray for finance ministers, city budget committees, and local agencies. Learn your city's budget calendar. Use Kingdom Lens to clarify which level of government controls a given program, then verify with official sources.",
+      },
+    ],
+  },
+  {
+    slug: "technology-privacy",
+    title: "Technology & Privacy",
+    description:
+      "Biblical principles for digital governance—truth, human dignity, accountability, and limits on surveillance power.",
+    principles: ["Human dignity", "Truth & integrity", "Wise stewardship"],
+    scripture: "Proverbs 11:1 · Psalm 139:1–4",
+    sections: [
+      {
+        heading: "Why tech policy matters for discipleship",
+        body: "Cities and nations increasingly regulate data, AI, platforms, and surveillance. These choices affect free speech, religious practice, parental rights, and neighbour love online. Christians should engage with clarity—not fear or uncritical tech optimism.",
+      },
+      {
+        heading: "Dignity before data",
+        body: "People are not raw material for platforms or governments. Human dignity implies limits on how persons are profiled, scored, or manipulated. Truth-telling requires resisting deepfakes, propaganda, and opaque automated decisions that shape civic life.",
+      },
+      {
+        heading: "Questions for leaders",
+        body: "What data is collected and why? Who audits algorithms? Can citizens challenge automated decisions? How are children protected? Does policy prefer transparency over convenience theater?",
+      },
+      {
+        heading: "Faithful posture",
+        body: "Pray for wisdom for regulators and tech leaders. Learn before sharing. Prefer primary documents over outrage. Kingdom Civics will not reduce complex tech policy to partisan scorecards.",
+      },
+    ],
+  },
 ];
 
 export function getIssueGuide(slug: string): IssueGuide | undefined {

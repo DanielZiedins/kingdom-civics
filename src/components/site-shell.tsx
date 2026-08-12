@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { ChevronRight, Menu, Search, X } from "lucide-react";
 import { footerColumns, navItems } from "@/lib/data";
 
@@ -22,6 +23,19 @@ export function Logo({ inverse = false }: { inverse?: boolean }) {
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    function onKey(e: KeyboardEvent) {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        router.push("/search");
+      }
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [router]);
+
   return (
     <header className="site-header">
       <div className="top-note">
@@ -34,7 +48,7 @@ export function SiteHeader() {
           {navItems.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}
         </nav>
         <div className="nav-actions">
-          <Link href="/search" className="icon-button" aria-label="Search"><Search size={19} /></Link>
+          <Link href="/search" className="icon-button" aria-label="Search (⌘K)"><Search size={19} /></Link>
           <Link href="/my-civics" className="button button-small button-ghost">My Civics</Link>
           <button className="menu-button" onClick={() => setOpen(!open)} aria-label="Toggle menu" aria-expanded={open}>
             {open ? <X /> : <Menu />}
@@ -45,6 +59,7 @@ export function SiteHeader() {
         <nav className="mobile-nav" aria-label="Mobile navigation">
           {navItems.map(([label, href]) => <Link key={href} href={href} onClick={() => setOpen(false)}>{label}<ChevronRight size={16} /></Link>)}
           <Link href="/my-civics" onClick={() => setOpen(false)}>My Civics <ChevronRight size={16} /></Link>
+          <Link href="/search" onClick={() => setOpen(false)}>Search <ChevronRight size={16} /></Link>
         </nav>
       )}
     </header>

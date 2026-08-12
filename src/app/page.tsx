@@ -13,6 +13,7 @@ import {
   GovernmentExplorer,
   ImpactGrid,
   LeaderCards,
+  LearnCards,
   LensDemo,
   NewsletterForm,
   PrincipleCards,
@@ -150,6 +151,19 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="section section-parchment">
+          <div className="page-width split-heading">
+            <div><span className="eyebrow">KINGDOM CIVICS ACADEMY</span><h2>Learn how government<br />actually works.</h2></div>
+            <p>Plain-language lessons on jurisdictions, Canada, Hamilton City Council, budgets, and discernment—built for the Church.</p>
+          </div>
+          <div className="page-width">
+            <LearnCards />
+            <div className="center-link">
+              <Link href="/learn" className="button button-navy">Browse all lessons <ArrowRight size={16} /></Link>
+            </div>
+          </div>
+        </section>
+
         <section className="section section-white">
           <div className="page-width section-heading center-heading narrow-heading">
             <span className="eyebrow">COMPARE WITHOUT MANIPULATION</span>
@@ -212,7 +226,7 @@ export default function Home() {
             <div>
               <span className="eyebrow gold-text">THOUGHTFUL, NOT REACTIVE</span>
               <h2>Stay informed without the outrage.</h2>
-              <p>Hamilton election updates, global learning resources, and ways to pray and serve.</p>
+              <p>Hamilton election updates, city launch alerts, and ways to pray and serve—saved on this device until email delivery is connected.</p>
             </div>
             <NewsletterForm />
           </div>

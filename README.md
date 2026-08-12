@@ -1,21 +1,20 @@
 # Kingdom Civics
 
-Christian civic education for understanding government, examining leadership through transparent biblical principles, praying for those in authority, and serving local communities.
+Global Christian civic education — understand government, discern leadership, pray faithfully, and serve humbly.
 
-**Kingdom first.** The product never treats a party, politician, ideology, nation, or movement as synonymous with the Kingdom of God.
+**Live site:** [https://www.kingdomcivics.org](https://www.kingdomcivics.org)
+
+**Kingdom first.** No party, politician, ideology, nation, or movement is synonymous with the Kingdom of God.
 
 ## What ships in this repository
 
 - Premium responsive homepage and complete navigation
-- Civic learning, issues, leaders, elections, prayer, service, trust, search, comparison, My Civics, and admin demo routes
-- Fictional Harbor City demonstration with explicit sample-data labeling
-- Interactive Kingdom Lens research experience and structured local API
-- Evidence matrix with alignment, tension, uncertainty, and source confidence
-- PostgreSQL/Supabase relational schema, pgvector field, indexes, audit history, and RLS
-- Hard-coded Kingdom Lens constitution
-- SEO metadata, structured data, accessibility, mobile layouts, and reduced-motion support
-
-All visible political data in the launch demo is fictional. This avoids implying that unsourced sample assessments describe real candidates.
+- Learn academy, issue guides, biblical principles, prayer, service, trust, search, comparison, My Civics
+- Live Hamilton, Ontario officials (mayor, councillors, MPs, MPPs) with official source links
+- Kingdom Lens AI research assistant with citations, Scripture, counterpoints, and shareable `?q=` links
+- Election hub for Hamilton’s October 26, 2026 municipal election
+- Full SEO/AEO stack: sitemap, robots for AI crawlers, JSON-LD, `llms.txt`, RSS feed
+- Hard-coded Kingdom Lens constitution (no partisan endorsements)
 
 ## Run locally
 
@@ -29,10 +28,7 @@ Open [http://localhost:3000](http://localhost:3000).
 Production checks:
 
 ```bash
-npm run lint
-npm run typecheck
-npm test
-npm run build
+npm run check
 ```
 
 ## Architecture

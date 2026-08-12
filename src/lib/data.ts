@@ -11,7 +11,7 @@ import {
   Sparkles,
   Users,
 } from "lucide-react";
-import { hamiltonCouncillors, hamiltonFederal, hamiltonMayor, hamiltonMeta } from "@/lib/hamilton";
+import { hamiltonCouncillors, hamiltonFederal, hamiltonMayor, hamiltonMeta, hamiltonProvincial } from "@/lib/hamilton";
 
 export const navItems = [
   ["Why Engage", "/why-engage"],
@@ -25,14 +25,14 @@ export const navItems = [
 ] as const;
 
 export const impactAreas = [
-  { label: "Family", icon: Users },
-  { label: "Education", icon: GraduationCap },
-  { label: "Housing", icon: Home },
-  { label: "Business", icon: Building2 },
-  { label: "Healthcare", icon: HeartHandshake },
-  { label: "Justice", icon: Scale },
-  { label: "Infrastructure", icon: Landmark },
-  { label: "Religious freedom", icon: ShieldCheck },
+  { label: "Family", icon: Users, href: "/kingdom-lens?q=How+should+Christians+think+about+family+policy" },
+  { label: "Education", icon: GraduationCap, href: "/issues/education" },
+  { label: "Housing", icon: Home, href: "/issues/housing-homelessness" },
+  { label: "Business", icon: Building2, href: "/kingdom-lens?q=How+should+Christians+think+about+business+and+economy" },
+  { label: "Healthcare", icon: HeartHandshake, href: "/kingdom-lens?q=Biblical+principles+for+healthcare+policy" },
+  { label: "Justice", icon: Scale, href: "/biblical-principles/justice-mercy" },
+  { label: "Infrastructure", icon: Landmark, href: "/learn/how-government-works" },
+  { label: "Religious freedom", icon: ShieldCheck, href: "/issues/religious-liberty" },
 ];
 
 export const principles = [
@@ -120,6 +120,7 @@ export const allHamiltonLeaders = [
   hamiltonMayor,
   ...hamiltonCouncillors,
   ...hamiltonFederal,
+  ...hamiltonProvincial,
 ].map((o) => ({
   slug: o.slug,
   name: o.name,
@@ -129,6 +130,7 @@ export const allHamiltonLeaders = [
   status: o.status,
   tone: o.tone,
   sourceUrl: o.sourceUrl,
+  contact: o.contact,
   live: true,
 }));
 
@@ -140,23 +142,22 @@ export const evidenceMatrix = [
 ];
 
 export const learnModules = [
-  ["How government works — a global overview", "10 min", "Civic foundations"],
-  ["Levels of government: local, state, and national", "12 min", "Jurisdictions"],
-  ["Canadian government structure", "14 min", "Canada"],
-  ["U.S. government branches explained", "14 min", "United States"],
-  ["How to read a public budget", "18 min", "Public finance"],
-  ["How to evaluate political claims", "12 min", "Discernment"],
-  ["Why Christians engage in civic life", "9 min", "Biblical framework"],
-  ["How Hamilton City Council works", "10 min", "Live city · Hamilton"],
-];
+  ["How government works — a global overview", "10 min", "Civic foundations", "/learn/how-government-works"],
+  ["Levels of government", "12 min", "Jurisdictions", "/learn/levels-of-government"],
+  ["Canadian government structure", "14 min", "Canada", "/learn/canadian-government"],
+  ["How to read a public budget", "15 min", "Public finance", "/learn/read-a-public-budget"],
+  ["How to evaluate political claims", "12 min", "Discernment", "/learn/evaluate-political-claims"],
+  ["How Hamilton City Council works", "10 min", "Live city · Hamilton", "/learn/hamilton-city-council"],
+  ["Why Christians engage in civic life", "9 min", "Biblical framework", "/why-engage"],
+] as const;
 
 export const issueGuides = [
-  ["Housing & homelessness", "Local policy · Human dignity · Stewardship"],
-  ["Religious liberty", "Conscience · Authority · Neighbor love"],
-  ["Education", "Family · Care for children · Responsibility"],
-  ["Poverty & economic life", "Justice · Work · Compassion"],
-  ["Technology & privacy", "Human dignity · Truth · Accountability"],
-];
+  ["Housing & homelessness", "Local policy · Human dignity · Stewardship", "/issues/housing-homelessness"],
+  ["Religious liberty", "Conscience · Authority · Neighbor love", "/issues/religious-liberty"],
+  ["Education", "Family · Care for children · Responsibility", "/issues/education"],
+  ["Poverty & economic life", "Justice · Work · Compassion", "/issues/poverty-economic-life"],
+  ["Technology & privacy", "Human dignity · Truth · Accountability", "/issues/technology-privacy"],
+] as const;
 
 export const prayerPrompts = [
   ["Wisdom", "Give our leaders wisdom that is pure, peaceable, gentle, and open to reason.", "James 1:5; 3:17"],
