@@ -171,6 +171,41 @@ export const learnArticles: LearnArticle[] = [
       },
     ],
   },
+  {
+    slug: "consider-running",
+    title: "Should Christians Consider Running for Office?",
+    description:
+      "A Kingdom-first guide for believers discerning elected office—calling, character, competence, community, and cost—without baptizing a party.",
+    duration: "14 min",
+    category: "Public service",
+    scripture: "Mark 10:42–45 · Micah 6:8 · 1 Timothy 3:1–7",
+    sections: [
+      {
+        heading: "Office is stewardship, not a throne",
+        body: "Jesus taught that Gentile rulers lord it over others—but His disciples must lead by serving (Mark 10:42–45). Considering a run for office begins with that posture: not winning a culture war, not building a personal brand, but stewarding limited authority for the good of neighbours. No office is the Kingdom of God. Running can be faithful—or foolish—depending on motive, timing, and character.",
+      },
+      {
+        heading: "Test the call with five questions",
+        body: "Calling: Do mature believers who know you affirm this? Character: Are you known for truth, humility, and self-control when no one is watching? Competence: Do you understand the office’s real powers and limits? Community: Who will pray, advise, and tell you hard truths? Cost: Can your family, work, and church health survive the scrutiny and pace of campaigning and governing?",
+      },
+      {
+        heading: "Start smaller than the microphone",
+        body: "Most faithful public service begins long before a ballot. Attend meetings. Serve on a board. Volunteer on a campaign for someone you trust. Learn budgets and bylaws. Build relationships across disagreement. If you cannot love neighbours in quiet service, a louder office will not make you more Christlike—it will amplify whatever is already there.",
+      },
+      {
+        heading: "Learn the office before you chase it",
+        body: "Map which level of government you are considering—local, regional, or national—and what that office actually controls. Read nomination rules, ethics codes, and campaign finance requirements from official election authorities. Ask Kingdom Lens to explain the office; then verify every legal detail with primary sources in your jurisdiction.",
+      },
+      {
+        heading: "Run without baptizing a party",
+        body: "Christians may join parties or remain independent depending on local systems. Either way, refuse to treat a party platform as Scripture. Campaign with honesty. Do not invent enemies. Do not claim God endorsed you. Seek justice, love mercy, and walk humbly (Micah 6:8)—especially toward opponents and journalists.",
+      },
+      {
+        heading: "If you lose—or win",
+        body: "Losing an election is not a failed calling if you ran with integrity. Winning is not proof of God’s favour. In either case, keep praying for whoever holds the office, keep serving your city, and keep your identity in Christ—not in a title, a poll number, or a partisan tribe.",
+      },
+    ],
+  },
 ];
 
 export function getLearnArticle(slug: string): LearnArticle | undefined {

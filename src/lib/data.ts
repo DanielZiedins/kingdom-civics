@@ -147,6 +147,7 @@ export const learnModules = [
   ["Canadian government structure", "14 min", "Canada", "/learn/canadian-government"],
   ["How to read a public budget", "15 min", "Public finance", "/learn/read-a-public-budget"],
   ["How to evaluate political claims", "12 min", "Discernment", "/learn/evaluate-political-claims"],
+  ["Should Christians consider running?", "14 min", "Public service", "/learn/consider-running"],
   ["How Hamilton City Council works", "10 min", "Live city · Hamilton", "/learn/hamilton-city-council"],
   ["Why Christians engage in civic life", "9 min", "Biblical framework", "/why-engage"],
 ] as const;

@@ -101,6 +101,44 @@ const globalChunks: KnowledgeChunk[] = [
     confidence: "strong",
   },
   {
+    id: "consider-running",
+    scope: "global",
+    tags: ["run", "running", "candidate", "office", "elected", "campaign", "should i run", "public office", "mayor", "councillor", "school board"],
+    answer:
+      "Christians may faithfully consider running for office as servant leadership—not as a culture-war crusade or personal throne. Test calling, character, competence, community support, and cost to family and church. Start by serving in quieter ways: attend meetings, learn the office’s real powers, study official nomination rules, and build relationships across disagreement. Never claim God endorsed your candidacy. If you lose, keep serving; if you win, steward authority with humility (Mark 10:42–45; Micah 6:8).",
+    principles: ["Servant leadership", "Humility", "Wise stewardship", "Truth"],
+    scripture: [
+      { reference: "Mark 10:42–45", application: "Lead by serving—not by lording power over others." },
+      { reference: "Micah 6:8", application: "Do justice, love mercy, walk humbly—especially under public scrutiny." },
+    ],
+    sources: [
+      { id: "kc-run", title: "Should Christians Consider Running?", publisher: "Kingdom Civics", url: "/learn/consider-running", tier: 2 },
+      { id: "kc-serve", title: "Serve Pathways", publisher: "Kingdom Civics", url: "/serve", tier: 2 },
+    ],
+    uncertainties: ["Legal nomination rules, financing rules, and eligibility vary by country and office—verify with official election authorities."],
+    counterpoints: ["Not every burden on society is solved by Christians holding office; local church faithfulness and quiet neighbour-love remain primary."],
+    confidence: "strong",
+  },
+  {
+    id: "discern-leaders-principles",
+    scope: "global",
+    tags: ["discern", "evaluate", "leader", "candidate", "support", "kingdom principles", "alignment", "who to support", "vote for"],
+    answer:
+      "Kingdom Civics helps Christians examine public leadership through biblical principles—truth, human dignity, justice and mercy, servant leadership, conscience, and wise stewardship—using evidence, not vibes or party branding. Ask Kingdom Lens about an office, a claim, or a policy; then inspect sources. We do not score people as “most Christian,” endorse candidates, or claim God backs a campaign. Faithful support means informed prayer, honest evaluation, and humble action where God has placed you.",
+    principles: ["Truth", "Justice", "Servant leadership", "Kingdom citizenship"],
+    scripture: [
+      { reference: "1 Thessalonians 5:21", application: "Test everything; hold fast to what is good." },
+      { reference: "Proverbs 18:17", application: "The first to speak seems right until another examines him." },
+    ],
+    sources: [
+      { id: "kc-principles", title: "Biblical Principles Framework", publisher: "Kingdom Civics", url: "/biblical-principles", tier: 2 },
+      { id: "kc-lens", title: "Kingdom Lens", publisher: "Kingdom Civics", url: "/kingdom-lens", tier: 2 },
+    ],
+    uncertainties: ["Incomplete public records and campaign rhetoric often leave genuine unknowns."],
+    counterpoints: ["Shared biblical principles do not guarantee identical policy conclusions among faithful Christians."],
+    confidence: "strong",
+  },
+  {
     id: "levels-of-government",
     scope: "global",
     tags: ["levels", "local", "municipal", "provincial", "state", "federal", "national", "who decides", "jurisdiction"],

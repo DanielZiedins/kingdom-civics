@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowDown, ArrowRight, BookOpen, CheckCircle2, Eye, Heart, Landmark, MapPin, ShieldCheck, Sparkles, Users } from "lucide-react";
+import { ArrowDown, ArrowRight, BookOpen, CheckCircle2, Eye, Heart, Landmark, ShieldCheck, Sparkles, Users } from "lucide-react";
 import { FaqSection } from "@/components/seo/faq-section";
 import { JsonLd } from "@/components/seo/json-ld";
 import { SiteFooter, SiteHeader } from "@/components/site-shell";
@@ -10,9 +10,10 @@ import { faqPageSchema, governmentServiceSchema, speakableSchema, webPageSchema 
 import { DEFAULT_DESCRIPTION, DEFAULT_TITLE } from "@/lib/seo/site";
 import {
   ComparisonPreview,
+  ConsiderRunningSection,
+  DiscernLeadersSection,
   GovernmentExplorer,
   ImpactGrid,
-  LeaderCards,
   LearnCards,
   LensDemo,
   NewsletterForm,
@@ -30,7 +31,8 @@ export const metadata: Metadata = buildPageMetadata({
     "biblical government principles",
     "global Christian citizenship",
     "Kingdom Lens civic AI",
-    "Hamilton Ontario live data",
+    "Christians running for office",
+    "discern political leaders biblically",
   ],
 });
 
@@ -59,22 +61,25 @@ export default function Home() {
             <div className="hero-copy">
               <span className="eyebrow gold-text">GLOBAL CHRISTIAN CIVIC EDUCATION</span>
               <h1>Understand government.<br />Discern leadership.<br /><em>Seek the Kingdom.</em></h1>
-              <p>Trustworthy civic education for every nation and city—transparent biblical principles, Kingdom Lens research, and live public records. Hamilton, Ontario is our first live city.</p>
+              <p>
+                For Christians in every nation—learn how government works, examine leaders through Jesus&apos; Kingdom principles,
+                pray faithfully, get involved, and discern whether to serve or run. Kingdom Lens helps you ask with sources—not slogans.
+              </p>
               <div className="hero-actions">
-                <Link href="#explore" className="button button-gold"><MapPin size={17} /> Find your government</Link>
-                <Link href="/kingdom-lens" className="button button-outline-light"><Sparkles size={17} /> Ask Kingdom Lens</Link>
+                <Link href="/kingdom-lens" className="button button-gold"><Sparkles size={17} /> Ask Kingdom Lens</Link>
+                <Link href="#consider-running" className="button button-outline-light"><Users size={17} /> Thinking of running?</Link>
               </div>
               <div className="hero-trust">
                 <ShieldCheck size={17} />
-                <span>See the sources behind every conclusion.</span>
+                <span>Evidence over endorsements. Kingdom first—always.</span>
                 <Link href="/trust">Our methodology <ArrowRight size={14} /></Link>
               </div>
             </div>
             <div className="hero-visual" aria-label="Kingdom Civics civic map illustration">
               <div className="orbit orbit-one" /><div className="orbit orbit-two" /><div className="map-lines" />
               <div className="civic-pin pin-one"><Landmark size={21} /><span>Every nation<small>Local to federal</small></span></div>
-              <div className="civic-pin pin-two"><Users size={21} /><span>Your leaders<small>Where you live</small></span></div>
-              <div className="civic-pin pin-three"><BookOpen size={21} /><span>Scripture<small>Timeless principles</small></span></div>
+              <div className="civic-pin pin-two"><Users size={21} /><span>Your leaders<small>Discern with wisdom</small></span></div>
+              <div className="civic-pin pin-three"><BookOpen size={21} /><span>Scripture<small>Kingdom principles</small></span></div>
               <div className="lens-orb"><div><Eye size={27} /><span>KINGDOM<br /><strong>LENS</strong></span></div><small>EVIDENCE · SCRIPTURE · WISDOM</small></div>
             </div>
           </div>
@@ -93,7 +98,7 @@ export default function Home() {
         <section id="impact" className="section section-light">
           <div className="page-width split-heading">
             <div><span className="eyebrow">CIVIC LIFE, MADE CLEAR</span><h2>Government affects<br />more than elections.</h2></div>
-            <p>From zoning near your home to school governance and federal law, public decisions shape daily life. <em>&ldquo;Seek the welfare of the city&rdquo;</em> (Jeremiah 29:7) begins with understanding who decides what.</p>
+            <p>From zoning near your home to school governance and federal law, public decisions shape daily life. <em>&ldquo;Seek the welfare of the city&rdquo;</em> (Jeremiah 29:7) begins with understanding who decides what—wherever you live.</p>
           </div>
           <div className="page-width"><ImpactGrid /></div>
         </section>
@@ -103,37 +108,25 @@ export default function Home() {
             <div className="section-copy">
               <span className="eyebrow gold-text-dark">START WHERE YOU ARE</span>
               <h2>Explore your government.</h2>
-              <p>Kingdom Civics is built for the whole world—with live official data rolling out city by city. Hamilton, Ontario is live now; Toronto, Nashville, London, and more are coming.</p>
+              <p>Kingdom Civics is built for the whole world. Search your city, learn the levels of government, and ask Kingdom Lens—while live official directories expand city by city.</p>
               <ul className="check-list">
-                <li><CheckCircle2 /> Understand local, state, and national government</li>
-                <li><CheckCircle2 /> Find who represents you—wherever you live</li>
+                <li><CheckCircle2 /> Understand local, regional, and national government</li>
+                <li><CheckCircle2 /> Ask AI about leaders and offices where you live</li>
                 <li><CheckCircle2 /> Follow elections with official source links</li>
               </ul>
-              <small className="demo-note live-note">Hamilton live · Verified {hamiltonMeta.lastVerified} · More cities on the way</small>
+              <small className="demo-note live-note">Pilot live city: Hamilton, ON · Verified {hamiltonMeta.lastVerified} · More cities coming</small>
             </div>
             <GovernmentExplorer />
           </div>
         </section>
 
-        <section className="section section-white">
-          <div className="page-width section-heading center-heading">
-            <span className="eyebrow">PUBLIC LEADERSHIP</span>
-            <h2>Meet your leaders.</h2>
-            <p>Know who serves, what their office controls, and how to contact them—with links to official records. Live now in Hamilton; expanding globally.</p>
-          </div>
-          <div className="page-width">
-            <LeaderCards />
-            <div className="center-link">
-              <Link href="/leaders" className="button button-navy">View all Hamilton leaders <ArrowRight size={16} /></Link>
-            </div>
-          </div>
-        </section>
+        <DiscernLeadersSection />
 
         <section className="section section-navy lens-section">
           <div className="page-width section-heading section-heading-light">
             <span className="eyebrow gold-text">AI-ASSISTED CIVIC RESEARCH</span>
-            <h2>Ask questions. <em>Inspect the evidence.</em></h2>
-            <p>Kingdom Lens answers civic questions worldwide—from Scripture and biblical principles to live Hamilton data.</p>
+            <h2>Ask about leadership anywhere. <em>Inspect the evidence.</em></h2>
+            <p>Kingdom Lens answers worldwide questions about government, Scripture, and public life—with citations, counterpoints, and no candidate endorsements.</p>
           </div>
           <div className="page-width"><LensDemo /></div>
         </section>
@@ -141,7 +134,7 @@ export default function Home() {
         <section className="section section-light">
           <div className="page-width split-heading">
             <div><span className="eyebrow">A TRANSPARENT FOUNDATION</span><h2>Principles before<br />politics.</h2></div>
-            <p>Our framework begins with Scripture-linked principles, not candidates. We distinguish biblical teaching, interpretation, prudential judgment, and policy preference.</p>
+            <p>Our framework begins with Scripture-linked principles, not candidates. Use them to discern who to pray for, support, challenge, or follow into public service.</p>
           </div>
           <div className="page-width">
             <PrincipleCards />
@@ -151,10 +144,12 @@ export default function Home() {
           </div>
         </section>
 
+        <ConsiderRunningSection />
+
         <section className="section section-parchment">
           <div className="page-width split-heading">
             <div><span className="eyebrow">KINGDOM CIVICS ACADEMY</span><h2>Learn how government<br />actually works.</h2></div>
-            <p>Plain-language lessons on jurisdictions, Canada, Hamilton City Council, budgets, and discernment—built for the Church.</p>
+            <p>Plain-language lessons on jurisdictions, budgets, discernment, and whether to run—built for the Church worldwide.</p>
           </div>
           <div className="page-width">
             <LearnCards />
@@ -168,7 +163,7 @@ export default function Home() {
           <div className="page-width section-heading center-heading narrow-heading">
             <span className="eyebrow">COMPARE WITHOUT MANIPULATION</span>
             <h2>Evidence, not endorsements.</h2>
-            <p>We surface alignment, tension, uncertainty, and counter-evidence—then let you inspect the original sources.</p>
+            <p>When races heat up, we surface alignment, tension, uncertainty, and counter-evidence—then let you inspect original sources.</p>
           </div>
           <div className="page-width"><ComparisonPreview /></div>
         </section>
@@ -189,8 +184,8 @@ export default function Home() {
             <div className="panel-content">
               <Users size={27} />
               <span className="eyebrow gold-text">PUBLIC LEADERSHIP IS SERVICE</span>
-              <h2>Serve humbly.</h2>
-              <p>Attend council meetings, join public consultation, volunteer, apply for boards—or explore elected office as servant leadership.</p>
+              <h2>Serve—or run—humbly.</h2>
+              <p>Attend meetings, join consultation, volunteer, apply for boards—or explore elected office as servant leadership for your neighbours.</p>
               <div className="serve-path">
                 {["Start", "Show up", "Speak", "Serve", "Lead", "Run"].map((item, i) => <span key={item}><b>{i + 1}</b>{item}</span>)}
               </div>
@@ -217,7 +212,7 @@ export default function Home() {
 
         <FaqSection
           title="Questions Christians—and search engines—often ask"
-          description="Straight answers about Kingdom Civics, global civic engagement, Scripture, and live city data."
+          description="Straight answers about Kingdom Civics, global civic engagement, Scripture, and discerning public leadership."
           faqs={globalFaqs}
         />
 
@@ -226,7 +221,7 @@ export default function Home() {
             <div>
               <span className="eyebrow gold-text">THOUGHTFUL, NOT REACTIVE</span>
               <h2>Stay informed without the outrage.</h2>
-              <p>Hamilton election updates, city launch alerts, and ways to pray and serve—saved on this device until email delivery is connected.</p>
+              <p>City launch alerts, learning resources, and ways to pray, serve, and run well—saved on this device until email delivery is connected.</p>
             </div>
             <NewsletterForm />
           </div>

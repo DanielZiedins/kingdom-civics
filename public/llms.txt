@@ -35,6 +35,7 @@ Last updated: 2026-08-08
 - /learn/canadian-government
 - /learn/evaluate-political-claims
 - /learn/read-a-public-budget
+- /learn/consider-running
 
 ## Issue guides
 

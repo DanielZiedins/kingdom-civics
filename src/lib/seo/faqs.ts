@@ -125,7 +125,12 @@ export const pageFaqs: Record<string, FaqItem[]> = {
     {
       question: "How can Christians serve in public life?",
       answer:
-        "Attend council meetings, join public consultation, volunteer, apply for boards, advocate on issues, and explore elected office as servant leadership—starting where God has placed you.",
+        "Attend meetings, join public consultation, volunteer, apply for boards, advocate on issues, and explore elected office as servant leadership—starting where God has placed you.",
+    },
+    {
+      question: "Should Christians run for political office?",
+      answer:
+        "Some may—as stewardship, not as a culture war. Test calling, character, competence, community support, and cost. Learn the office’s real powers, verify official nomination rules, and never claim God endorsed your candidacy. See /learn/consider-running.",
     },
   ],
   trust: [

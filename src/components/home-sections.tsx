@@ -11,6 +11,7 @@ import {
   Landmark,
   MapPin,
   Search,
+  Sparkles,
 } from "lucide-react";
 import { KingdomLensChat } from "@/components/kingdom-lens-chat";
 import { whyEngageReasons } from "@/lib/engagement";
@@ -210,6 +211,89 @@ export function LearnCards() {
         </Link>
       ))}
     </div>
+  );
+}
+
+export function DiscernLeadersSection() {
+  const prompts = [
+    { q: "How should I evaluate a leader using biblical principles?", label: "Evaluate with Scripture" },
+    { q: "What does servant leadership look like in public office?", label: "Servant leadership" },
+    { q: "How do I find who represents me in my city?", label: "Find my representatives" },
+    { q: "What questions should I ask before supporting a candidate?", label: "Before you support" },
+  ];
+  return (
+    <section className="section section-discern" id="discern">
+      <div className="page-width discern-layout">
+        <div className="discern-copy">
+          <span className="eyebrow gold-text-dark">WORLDWIDE DISCERNMENT</span>
+          <h2>Know who leads—and how they align with Kingdom principles.</h2>
+          <p>
+            Kingdom Civics is built for Christians everywhere. Use Kingdom Lens to examine offices, claims, and public records through
+            truth, dignity, justice, servant leadership, conscience, and stewardship—so you can pray wisely, support thoughtfully, get involved, and refuse partisan idolatry.
+          </p>
+          <ul className="check-list">
+            <li><Check size={16} /> Ask about leaders and offices in your city or country</li>
+            <li><Check size={16} /> Compare claims against Scripture-linked principles</li>
+            <li><Check size={16} /> Inspect sources—never settle for vibes or party branding</li>
+            <li><Check size={16} /> Remember: evidence, not endorsements; Kingdom first</li>
+          </ul>
+          <div className="discern-actions">
+            <Link href="/kingdom-lens" className="button button-navy"><Sparkles size={16} /> Ask Kingdom Lens</Link>
+            <Link href="/biblical-principles" className="text-link">See the principles framework <ArrowRight size={14} /></Link>
+          </div>
+        </div>
+        <div className="discern-prompts">
+          <small className="eyebrow">TRY ASKING</small>
+          {prompts.map((item) => (
+            <Link key={item.q} href={`/kingdom-lens?q=${encodeURIComponent(item.q)}`} className="discern-prompt-card">
+              <Sparkles size={16} />
+              <span>{item.label}</span>
+              <ArrowRight size={15} />
+            </Link>
+          ))}
+          <p className="discern-note">We never score people as “most Christian” or claim God endorses a candidate. Discernment is about principles and evidence.</p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function ConsiderRunningSection() {
+  const steps = [
+    { n: "01", title: "Examine motives", body: "Is this servant leadership—or a desire to win, punish, or be seen?" },
+    { n: "02", title: "Test character", body: "Ask trusted believers who know your private life, not just your opinions." },
+    { n: "03", title: "Learn the office", body: "Map powers, limits, budgets, and nomination rules before you campaign." },
+    { n: "04", title: "Start serving now", body: "Show up, volunteer, join a board—prove faithfulness in quiet places first." },
+    { n: "05", title: "Count the cost", body: "Family, church, work, reputation, and spiritual health matter more than a title." },
+    { n: "06", title: "Run with humility", body: "Tell the truth. Love opponents. Never baptize a party or claim God’s endorsement." },
+  ];
+  return (
+    <section className="section section-run" id="consider-running">
+      <div className="page-width">
+        <div className="run-hero-copy">
+          <span className="eyebrow">CALLED TO SERVE?</span>
+          <h2>Thinking about running for office?</h2>
+          <p>
+            Some Christians are called to seek elected office as stewardship for their neighbours. Kingdom Civics helps you discern wisely—
+            with Scripture, practical steps, and no fantasy that politics saves the world.
+          </p>
+        </div>
+        <div className="run-grid">
+          {steps.map((step) => (
+            <article className="run-card" key={step.n}>
+              <span>{step.n}</span>
+              <h3>{step.title}</h3>
+              <p>{step.body}</p>
+            </article>
+          ))}
+        </div>
+        <div className="run-cta">
+          <Link href="/learn/consider-running" className="button button-navy">Read the full guide <ArrowRight size={15} /></Link>
+          <Link href="/kingdom-lens?q=Should%20Christians%20consider%20running%20for%20office" className="button button-ghost">Ask Kingdom Lens</Link>
+          <Link href="/serve" className="text-link">Explore the serve pathway <ArrowRight size={14} /></Link>
+        </div>
+      </div>
+    </section>
   );
 }
 

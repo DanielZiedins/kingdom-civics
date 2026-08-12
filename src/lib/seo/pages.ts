@@ -84,11 +84,11 @@ export const pageSeo: Record<string, PageSeo> = {
   },
   serve: {
     eyebrow: "PUBLIC LEADERSHIP IS SERVICE",
-    title: "Serve in Public Life — Christian Pathways to Civic Leadership",
+    title: "Serve in Public Life — Or Consider Running",
     description:
-      "Attend Hamilton council meetings, join consultations, volunteer, apply for boards, or explore elected office as servant leadership.",
+      "A worldwide pathway for Christians: learn government, show up, speak, serve on boards, discern leaders—and consider elected office as servant leadership.",
     path: "/serve",
-    keywords: ["Christian public service", "run for city council", "volunteer Hamilton government"],
+    keywords: ["Christian public service", "Christians running for office", "servant leadership politics", "run for city council"],
   },
   trust: {
     eyebrow: "TRANSPARENCY BY DESIGN",

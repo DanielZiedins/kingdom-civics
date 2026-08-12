@@ -39,7 +39,7 @@ export function SiteHeader() {
   return (
     <header className="site-header">
       <div className="top-note">
-        <span>Global Christian civic education · Hamilton, ON live · Seek truth. Pray faithfully. Serve humbly.</span>
+        <span>Global Christian civic education · Discern leadership worldwide · Seek truth. Pray faithfully. Serve humbly.</span>
         <Link href="/trust">See how our research works <ChevronRight size={13} /></Link>
       </div>
       <div className="nav-wrap">

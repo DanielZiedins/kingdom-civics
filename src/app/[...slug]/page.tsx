@@ -448,7 +448,7 @@ function PrayPage() {
         ))}
       </div>
       <div style={{ marginTop: 28, display: "flex", gap: 14, flexWrap: "wrap" }}>
-        <Link href="/leaders" className="button button-navy">Pray for Hamilton leaders <ArrowRight size={14} /></Link>
+        <Link href="/pray" className="button button-navy">Open prayer prompts <ArrowRight size={14} /></Link>
         <Link href="/kingdom-lens?q=How%20should%20Christians%20pray%20for%20leaders" className="button button-ghost">Ask Kingdom Lens</Link>
       </div>
     </div>
@@ -457,17 +457,26 @@ function PrayPage() {
 
 function ServePage() {
   const steps = [
-    { tag: "PATHWAY 01", title: "START", body: "Learn how Hamilton City Council works and what each level of government controls.", href: "/learn/hamilton-city-council" },
-    { tag: "PATHWAY 02", title: "SHOW UP", body: "Attend a council or committee meeting at Hamilton City Hall.", href: "/elections" },
-    { tag: "PATHWAY 03", title: "SPEAK", body: "Participate in public consultation on planning, budgets, or bylaws.", href: "/learn/read-a-public-budget" },
-    { tag: "PATHWAY 04", title: "SERVE", body: "Volunteer with a community organization serving Hamilton neighbors.", href: "/issues/poverty-economic-life" },
-    { tag: "PATHWAY 05", title: "LEAD", body: "Apply for a public board, commission, or advisory committee.", href: "/leaders" },
-    { tag: "PATHWAY 06", title: "RUN", body: "Explore elected office as servant leadership—not as a culture-war platform.", href: "/biblical-principles/servant-leadership" },
+    { tag: "PATHWAY 01", title: "START", body: "Learn how levels of government work where you live—and what each office actually controls.", href: "/learn/levels-of-government" },
+    { tag: "PATHWAY 02", title: "SHOW UP", body: "Attend a council, school board, or town hall meeting. Faithful service begins in the room.", href: "/learn/how-government-works" },
+    { tag: "PATHWAY 03", title: "SPEAK", body: "Participate in public consultation on planning, budgets, or bylaws with evidence and humility.", href: "/learn/read-a-public-budget" },
+    { tag: "PATHWAY 04", title: "SERVE", body: "Volunteer with organizations serving neighbors—or apply for a public board or advisory committee.", href: "/issues/poverty-economic-life" },
+    { tag: "PATHWAY 05", title: "DISCERN", body: "Examine leaders and offices through Kingdom principles—truth, dignity, justice, and servant leadership.", href: "/biblical-principles" },
+    { tag: "PATHWAY 06", title: "RUN", body: "Considering elected office? Test calling, character, competence, community, and cost—then verify official rules.", href: "/learn/consider-running" },
   ];
   return (
     <div>
+      <div className="scripture-callout" style={{ marginBottom: 28 }}>
+        <Heart />
+        <blockquote>&ldquo;Whoever would be great among you must be your servant.&rdquo;</blockquote>
+        <span>MARK 10:43</span>
+      </div>
       <LinkCards items={steps.map((s) => ({ href: s.href, title: s.title, description: s.body, tag: s.tag }))} />
-      <FaqSection faqs={pageFaqs.serve ?? []} title="Serving in public life" description="Practical questions about Christian civic service." />
+      <div className="run-cta" style={{ marginTop: 32 }}>
+        <Link href="/learn/consider-running" className="button button-navy">Should I consider running? <ArrowRight size={14} /></Link>
+        <Link href="/kingdom-lens?q=Should%20Christians%20consider%20running%20for%20office" className="button button-ghost">Ask Kingdom Lens</Link>
+      </div>
+      <FaqSection faqs={pageFaqs.serve ?? []} title="Serving in public life" description="Practical questions about Christian civic service and running for office." />
     </div>
   );
 }

@@ -7,7 +7,7 @@ export const SITE_TAGLINE = "Seek Truth. Discern Wisely. Serve Humbly.";
 export const DEFAULT_TITLE = `${SITE_NAME} — ${SITE_TAGLINE}`;
 
 export const DEFAULT_DESCRIPTION =
-  "Global Christian civic education for every nation and city. Biblical principles, prayer resources, Kingdom Lens AI research, and live public records—starting with Hamilton, Ontario. Help believers understand government, discern leadership, and serve humbly.";
+  "Global Christian civic education for every nation. Use Kingdom Lens AI to examine leaders through Jesus’ Kingdom principles, learn how government works, pray faithfully, get involved—and discern whether to serve or run for office.";
 
 export const CREATOR = {
   name: "Daniel Ziedins.Design",
@@ -38,6 +38,9 @@ export const SITE_KEYWORDS = [
   "government education church",
   "seek welfare of the city",
   "Kingdom Lens civic AI",
+  "Christians running for office",
+  "discern political leaders biblically",
+  "servant leadership public office",
   "nonpartisan Christian politics",
   "public leadership prayer",
   "Hamilton city council",

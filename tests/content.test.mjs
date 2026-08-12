@@ -15,6 +15,16 @@ test("homepage promotes Hamilton live data and Christian engagement", async () =
   assert.match(source, /Hamilton/i);
   assert.match(source, /WhyEngageSection/);
   assert.match(source, /Jeremiah 29:7/);
+  assert.match(source, /DiscernLeadersSection/);
+  assert.match(source, /ConsiderRunningSection/);
+  assert.doesNotMatch(source, /LeaderCards/);
+  assert.doesNotMatch(source, /Meet your leaders/);
+});
+
+test("consider-running learn article exists", async () => {
+  const source = await readFile(new URL("src/lib/content/learn.ts", root), "utf8");
+  assert.match(source, /consider-running/);
+  assert.match(source, /Should Christians Consider Running/);
 });
 
 test("Hamilton officials include mayor and councillors", async () => {
