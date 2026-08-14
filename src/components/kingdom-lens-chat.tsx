@@ -98,6 +98,17 @@ export function KingdomLensChat({ compact = false, citySlug, initialQuestion }: 
       ? `${window.location.origin}${window.location.pathname}?q=${encodeURIComponent(question)}`
       : "";
 
+  const followUps = response
+    ? [
+        "How should Christians pray for leaders?",
+        "What biblical principles apply here?",
+        selectedCity?.status === "live"
+          ? `Who is the mayor of ${selectedCity.name}?`
+          : "Should Christians consider running for office?",
+        response.uncertainties[0] ? `What do we still not know about: ${response.uncertainties[0].slice(0, 60)}` : "How do levels of government work?",
+      ].filter((item, index, arr) => arr.indexOf(item) === index).slice(0, 3)
+    : [];
+
   return (
     <div className={`lens-window ${compact ? "lens-compact" : ""}`}>
       <div className="lens-sidebar">
@@ -207,6 +218,18 @@ export function KingdomLensChat({ compact = false, citySlug, initialQuestion }: 
                 )}
                 <Link href="/trust" className="show-work">Show your work <ExternalLink size={14} /></Link>
               </div>
+              {followUps.length > 0 && (
+                <div className="lens-followups">
+                  <strong>Ask a follow-up</strong>
+                  <div className="prompt-row">
+                    {followUps.map((chip) => (
+                      <button key={chip} type="button" onClick={() => void ask(chip)} disabled={loading}>
+                        {chip}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
             </>
           ) : (
             <p className="lens-placeholder">

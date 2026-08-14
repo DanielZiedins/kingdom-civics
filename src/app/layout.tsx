@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Geist, Geist_Mono } from "next/font/google";
+import { Cormorant_Garamond, Geist } from "next/font/google";
 import { JsonLd } from "@/components/seo/json-ld";
 import { rootMetadata } from "@/lib/seo/metadata";
 import { organizationSchema, websiteSchema } from "@/lib/seo/schema";
@@ -8,18 +8,15 @@ import "./globals.css";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  display: "swap",
 });
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["500", "600", "700"],
   style: ["normal", "italic"],
+  display: "swap",
 });
 
 export const metadata: Metadata = rootMetadata;
@@ -38,7 +35,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en-CA"
-      className={`${geistSans.variable} ${geistMono.variable} ${cormorant.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${cormorant.variable} h-full antialiased`}
     >
       <head>
         <link rel="author" href="https://www.danielziedins.design" />
@@ -46,6 +43,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <link rel="alternate" type="application/rss+xml" title="Kingdom Civics" href="/feed.xml" />
       </head>
       <body className="min-h-full flex flex-col">
+        <a href="#main-content" className="skip-link">Skip to content</a>
         <JsonLd data={[organizationSchema(), websiteSchema()]} />
         {children}
       </body>

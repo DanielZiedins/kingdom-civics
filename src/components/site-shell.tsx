@@ -23,6 +23,7 @@ export function Logo({ inverse = false }: { inverse?: boolean }) {
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -31,13 +32,29 @@ export function SiteHeader() {
         e.preventDefault();
         router.push("/search");
       }
+      if (e.key === "Escape") setOpen(false);
     }
+    function onScroll() {
+      setScrolled(window.scrollY > 8);
+    }
+    onScroll();
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      window.removeEventListener("scroll", onScroll);
+    };
   }, [router]);
 
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
   return (
-    <header className="site-header">
+    <header className={`site-header ${scrolled ? "site-header-scrolled" : ""}`}>
       <div className="top-note">
         <span>Global Christian civic education · Discern leadership worldwide · Seek truth. Pray faithfully. Serve humbly.</span>
         <Link href="/trust">See how our research works <ChevronRight size={13} /></Link>
@@ -56,11 +73,14 @@ export function SiteHeader() {
         </div>
       </div>
       {open && (
-        <nav className="mobile-nav" aria-label="Mobile navigation">
-          {navItems.map(([label, href]) => <Link key={href} href={href} onClick={() => setOpen(false)}>{label}<ChevronRight size={16} /></Link>)}
-          <Link href="/my-civics" onClick={() => setOpen(false)}>My Civics <ChevronRight size={16} /></Link>
-          <Link href="/search" onClick={() => setOpen(false)}>Search <ChevronRight size={16} /></Link>
-        </nav>
+        <>
+          <button type="button" className="mobile-nav-backdrop" aria-label="Close menu" onClick={() => setOpen(false)} />
+          <nav className="mobile-nav" aria-label="Mobile navigation">
+            {navItems.map(([label, href]) => <Link key={href} href={href} onClick={() => setOpen(false)}>{label}<ChevronRight size={16} /></Link>)}
+            <Link href="/my-civics" onClick={() => setOpen(false)}>My Civics <ChevronRight size={16} /></Link>
+            <Link href="/search" onClick={() => setOpen(false)}>Search <ChevronRight size={16} /></Link>
+          </nav>
+        </>
       )}
     </header>
   );

@@ -21,6 +21,7 @@ import {
   WhyEngageSection,
 } from "@/components/home-sections";
 import { hamiltonMeta } from "@/lib/data";
+import { getPrayerOfTheDay } from "@/lib/prayer-day";
 
 export const metadata: Metadata = buildPageMetadata({
   title: DEFAULT_TITLE,
@@ -37,6 +38,7 @@ export const metadata: Metadata = buildPageMetadata({
 });
 
 export default function Home() {
+  const prayer = getPrayerOfTheDay();
   return (
     <>
       <JsonLd
@@ -52,7 +54,7 @@ export default function Home() {
         ]}
       />
       <SiteHeader />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <section className="hero">
           <div className="hero-glow" />
           <div className="hero-glow hero-glow-secondary" />
@@ -177,6 +179,11 @@ export default function Home() {
               <blockquote>&ldquo;I urge that supplications, prayers, intercessions, and thanksgivings be made… for kings and all who are in high positions.&rdquo;</blockquote>
               <small>1 TIMOTHY 2:1–2</small>
               <p>Pray for the leaders where God has placed you—mayors, councillors, MPs, presidents, and prime ministers.</p>
+              <div className="home-prayer-today">
+                <small>TODAY&apos;S FOCUS</small>
+                <strong>{prayer.title}</strong>
+                <span>{prayer.scripture}</span>
+              </div>
               <Link href="/pray" className="button button-cream">Open the Prayer Center <ArrowRight size={16} /></Link>
             </div>
           </div>

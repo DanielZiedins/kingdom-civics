@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowRight, CalendarDays, ExternalLink, Heart, ShieldCheck } from "lucide-react";
 import { ArticleBody } from "@/components/article-body";
+import { CivicChecklist } from "@/components/civic-checklist";
 import { ElectionCountdown } from "@/components/election-countdown";
 import { ComparisonPreview, GlobalSearch, PrincipleCards } from "@/components/home-sections";
 import { KingdomLensPage } from "@/components/kingdom-lens-page";
@@ -16,6 +17,7 @@ import { getIssueGuide, issueGuidesContent } from "@/lib/content/issues";
 import { getLearnArticle, learnArticles } from "@/lib/content/learn";
 import { engagementScriptures, whyEngageReasons } from "@/lib/engagement";
 import { allHamiltonLeaders, hamiltonMeta, prayerPrompts, principles } from "@/lib/data";
+import { getPrayerOfTheDay } from "@/lib/prayer-day";
 import { hamiltonCouncillors, hamiltonFederal, hamiltonMayor, hamiltonOfficials, hamiltonProvincial } from "@/lib/hamilton";
 import { getDefaultCity } from "@/lib/jurisdictions/registry";
 import { globalFaqs, pageFaqs } from "@/lib/seo/faqs";
@@ -431,14 +433,21 @@ function WhyEngagePage() {
 }
 
 function PrayPage() {
+  const today = getPrayerOfTheDay();
   return (
     <div>
+      <div className="prayer-of-day">
+        <small className="eyebrow">PRAYER OF THE DAY</small>
+        <h2>{today.title}</h2>
+        <p>{today.text}</p>
+        <span>{today.scripture}</span>
+      </div>
       <div className="scripture-callout">
         <Heart />
         <blockquote>&ldquo;That we may lead a peaceful and quiet life, godly and dignified in every way.&rdquo;</blockquote>
         <span>1 TIMOTHY 2:2</span>
       </div>
-      <div className="content-grid">
+      <div className="content-grid" id="prompts">
         {prayerPrompts.map(([title, text, scripture]) => (
           <div className="content-card" key={title}>
             <small>{scripture}</small>
@@ -447,9 +456,10 @@ function PrayPage() {
           </div>
         ))}
       </div>
-      <div style={{ marginTop: 28, display: "flex", gap: 14, flexWrap: "wrap" }}>
-        <Link href="/pray" className="button button-navy">Open prayer prompts <ArrowRight size={14} /></Link>
+      <div className="stack-actions">
+        <Link href="#prompts" className="button button-navy">Browse all prompts <ArrowRight size={14} /></Link>
         <Link href="/kingdom-lens?q=How%20should%20Christians%20pray%20for%20leaders" className="button button-ghost">Ask Kingdom Lens</Link>
+        <Link href="/my-civics" className="text-link">Track prayer in My Civics <ArrowRight size={14} /></Link>
       </div>
     </div>
   );
@@ -603,7 +613,7 @@ export default async function InnerPage({ params, searchParams }: PageProps) {
   else if (section === "learn" && slug[1]) {
     const article = getLearnArticle(slug[1]);
     if (!article) notFound();
-    body = <ArticleBody scripture={article.scripture} sections={article.sections} />;
+    body = <ArticleBody scripture={article.scripture} sections={article.sections} slug={article.slug} />;
   } else if (section === "learn") {
     body = (
       <>
@@ -646,7 +656,14 @@ export default async function InnerPage({ params, searchParams }: PageProps) {
   else if (section === "biblical-principles") body = slug[1]
     ? <PrincipleDetailPage slug={slug[1]} />
     : <PrincipleCards />;
-  else if (section === "my-civics") body = <MyCivicsDashboard />;
+  else if (section === "my-civics") body = (
+    <>
+      <MyCivicsDashboard />
+      <div style={{ marginTop: 28 }}>
+        <CivicChecklist />
+      </div>
+    </>
+  );
   else if (section === "admin") body = <AdminPage />;
   else if (section === "privacy") body = <PrivacyPage />;
   else if (section === "about") body = <AboutPage />;
@@ -656,7 +673,7 @@ export default async function InnerPage({ params, searchParams }: PageProps) {
     <>
       <JsonLd data={pageStructuredData(section, slug, copy)} />
       <SiteHeader />
-      <main className="inner-page">
+      <main id="main-content" className="inner-page" tabIndex={-1}>
         <section className="page-hero">
           <div className="page-width">
             <Breadcrumbs items={pageBreadcrumbs(section, slug)} />

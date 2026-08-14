@@ -13,7 +13,6 @@ import {
   Search,
   Sparkles,
 } from "lucide-react";
-import { KingdomLensChat } from "@/components/kingdom-lens-chat";
 import { whyEngageReasons } from "@/lib/engagement";
 import { hamiltonCouncillors, hamiltonFederal, hamiltonMayor, hamiltonMeta } from "@/lib/hamilton";
 import { cityLabel, getAllCities, getDefaultCity, matchCityFromInput } from "@/lib/jurisdictions/registry";
@@ -190,7 +189,16 @@ export function PrincipleCards() {
 const LazyKingdomLensChat = dynamic(
   () => import("@/components/kingdom-lens-chat").then((m) => m.KingdomLensChat),
   {
-    loading: () => <div className="lens-window lens-compact"><p className="lens-placeholder">Loading Kingdom Lens…</p></div>,
+    loading: () => (
+      <div className="lens-window lens-compact lens-skeleton" aria-busy="true" aria-label="Loading Kingdom Lens">
+        <div className="lens-skel-sidebar" />
+        <div className="lens-skel-chat">
+          <div className="lens-skel-line" />
+          <div className="lens-skel-line short" />
+          <div className="lens-skel-block" />
+        </div>
+      </div>
+    ),
     ssr: false,
   },
 );
@@ -304,33 +312,34 @@ export function ComparisonPreview() {
       <div className="comparison-head">
         <div>
           <span className="eyebrow">EVIDENCE FRAMEWORK</span>
-          <h3>Hamilton Municipal Election · October 26, 2026</h3>
-          <p style={{ margin: "8px 0 0", fontSize: 13, color: "var(--stone)" }}>Candidates not yet fully declared — framework ready.</p>
+          <h3>Evidence before endorsements</h3>
+          <p style={{ margin: "8px 0 0", fontSize: 13, color: "var(--stone)" }}>
+            A transparent framework for examining public leadership—ready wherever you live.
+          </p>
         </div>
-        <button className="filter-button" type="button" onClick={() => setExpanded(!expanded)}>
+        <button className="filter-button" type="button" onClick={() => setExpanded(!expanded)} aria-expanded={expanded}>
           {expanded ? "Hide explanation" : "How we assess"} <ChevronDown size={15} />
         </button>
       </div>
-      {expanded ? (
+      <div className="comparison-table comparison-single">
+        <div className="comparison-row comparison-labels"><strong>Biblical principle</strong><strong>Assessment approach</strong></div>
+        {evidenceMatrix.map((row) => (
+          <div className="comparison-row" key={row.principle}>
+            <strong>{row.principle}</strong>
+            <span className={`assessment ${row.state}`}><i />{row.note}</span>
+          </div>
+        ))}
+      </div>
+      {expanded && (
         <div className="comparison-foot" style={{ borderTop: "1px solid var(--line)", margin: 0 }}>
           <CircleHelp size={16} />
-          <p>When candidates declare, Kingdom Civics will document alignment, tension, uncertainty, and counter-evidence—not a “Christian score.”</p>
-        </div>
-      ) : (
-        <div className="comparison-table comparison-single">
-          <div className="comparison-row comparison-labels"><strong>Biblical principle</strong><strong>Assessment approach</strong></div>
-          {evidenceMatrix.map((row) => (
-            <div className="comparison-row" key={row.principle}>
-              <strong>{row.principle}</strong>
-              <span className={`assessment ${row.state}`}><i />{row.note}</span>
-            </div>
-          ))}
+          <p>When candidates declare, Kingdom Civics documents alignment, tension, uncertainty, and counter-evidence—not a “Christian score.”</p>
         </div>
       )}
       <div className="comparison-foot">
         <CircleHelp size={16} />
         <p>Assessments describe available evidence—not a person&apos;s faith, worth, or God&apos;s endorsement.</p>
-        <Link href="/elections">Hamilton election hub <ArrowRight size={14} /></Link>
+        <Link href="/biblical-principles">Biblical principles <ArrowRight size={14} /></Link>
       </div>
     </div>
   );
@@ -385,7 +394,7 @@ export function GlobalSearch({ initialQuery = "" }: { initialQuery?: string }) {
         placeholder="Search leaders, Scripture, civic topics, cities…"
         aria-label="Search"
       />
-      <kbd>⌘ K</kbd>
+      <kbd className="search-kbd" aria-hidden="true">⌘K opens search</kbd>
       <div className="search-results">
         {(query ? results : searchIndex.slice(0, 8)).map((hit) => (
           <Link key={hit.href + hit.title} href={hit.href}>
@@ -398,5 +407,3 @@ export function GlobalSearch({ initialQuery = "" }: { initialQuery?: string }) {
     </div>
   );
 }
-
-export { KingdomLensChat };

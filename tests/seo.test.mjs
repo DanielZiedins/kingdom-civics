@@ -97,3 +97,22 @@ test("site search index covers leaders and learn content", async () => {
   assert.match(source, /learnArticles/);
   assert.match(source, /export function searchSite/);
 });
+
+test("performance and a11y upgrades are present", async () => {
+  const layout = await readFile(new URL("src/app/layout.tsx", root), "utf8");
+  assert.match(layout, /skip-link/);
+  assert.match(layout, /display: "swap"/);
+  assert.doesNotMatch(layout, /Geist_Mono/);
+  const config = await readFile(new URL("next.config.ts", root), "utf8");
+  assert.match(config, /headers/);
+  assert.match(config, /poweredByHeader: false/);
+});
+
+test("prayer of the day and civic checklist exist", async () => {
+  const prayer = await readFile(new URL("src/lib/prayer-day.ts", root), "utf8");
+  assert.match(prayer, /getPrayerOfTheDay/);
+  const checklist = await readFile(new URL("src/components/civic-checklist.tsx", root), "utf8");
+  assert.match(checklist, /Faithful civic rhythm/i);
+  const lens = await readFile(new URL("src/components/kingdom-lens-chat.tsx", root), "utf8");
+  assert.match(lens, /Ask a follow-up/);
+});

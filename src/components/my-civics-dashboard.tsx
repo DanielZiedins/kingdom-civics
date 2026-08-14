@@ -5,19 +5,24 @@ import { useEffect, useState } from "react";
 import { BookOpen, FileCheck2, Heart, Landmark, MapPin } from "lucide-react";
 import { ElectionCountdown } from "@/components/election-countdown";
 import { learnArticles } from "@/lib/content/learn";
-import { hamiltonCouncillors, hamiltonFederal, hamiltonMayor, hamiltonMeta } from "@/lib/hamilton";
+import { getPrayerOfTheDay } from "@/lib/prayer-day";
+import { hamiltonCouncillors, hamiltonFederal, hamiltonMeta } from "@/lib/hamilton";
 
 const STORAGE_KEY = "kingdom-civics-my-civics";
 
 type SavedState = {
   city: string;
-  prayedForMayor: boolean;
+  prayedDate: string;
   completedLearn: string[];
 };
 
+function todayKey() {
+  return new Date().toISOString().slice(0, 10);
+}
+
 const defaults: SavedState = {
   city: "Hamilton, Ontario",
-  prayedForMayor: false,
+  prayedDate: "",
   completedLearn: [],
 };
 
@@ -26,7 +31,12 @@ function readSaved(): SavedState {
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY);
     if (!raw) return defaults;
-    return { ...defaults, ...JSON.parse(raw) };
+    const parsed = JSON.parse(raw) as Partial<SavedState> & { prayedForMayor?: boolean };
+    return {
+      ...defaults,
+      ...parsed,
+      prayedDate: parsed.prayedDate ?? (parsed.prayedForMayor ? todayKey() : ""),
+    };
   } catch {
     return defaults;
   }
@@ -35,6 +45,8 @@ function readSaved(): SavedState {
 export function MyCivicsDashboard() {
   const [state, setState] = useState<SavedState>(defaults);
   const [hydrated, setHydrated] = useState(false);
+  const prayer = getPrayerOfTheDay();
+  const prayedToday = state.prayedDate === todayKey();
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
@@ -62,7 +74,7 @@ export function MyCivicsDashboard() {
             {hamiltonCouncillors.length + 1} municipal · {hamiltonFederal.length} federal MPs indexed · Verified {hamiltonMeta.lastVerified}
           </p>
         </div>
-        <Link href="/leaders" className="button button-navy">View leaders</Link>
+        <Link href="/cities/hamilton-on" className="button button-navy">City hub</Link>
       </div>
 
       <div className="dashboard-card">
@@ -78,7 +90,7 @@ export function MyCivicsDashboard() {
         <small>LEARNING PROGRESS</small>
         <h3>{state.completedLearn.length} of {learnArticles.length} lessons</h3>
         <p>Continue: {nextLesson.title}</p>
-        <div style={{ display: "flex", gap: 10, marginTop: 12, flexWrap: "wrap" }}>
+        <div className="stack-actions" style={{ marginTop: 12 }}>
           <Link href={`/learn/${nextLesson.slug}`} className="button button-small button-navy">Continue</Link>
           <button
             type="button"
@@ -99,16 +111,16 @@ export function MyCivicsDashboard() {
 
       <div className="dashboard-card">
         <Heart />
-        <small>PRAYER LIST</small>
-        <h3>Mayor {hamiltonMayor.name.split(" ").pop()}</h3>
-        <p>{state.prayedForMayor ? "Prayed this session — thank you." : "Pray for Hamilton leaders this week."}</p>
+        <small>PRAYER OF THE DAY</small>
+        <h3>{prayer.title}</h3>
+        <p>{prayedToday ? "Prayed today — thank you." : prayer.text}</p>
         <button
           type="button"
           className="button button-small button-ghost"
           style={{ marginTop: 12 }}
-          onClick={() => setState((s) => ({ ...s, prayedForMayor: true }))}
+          onClick={() => setState((s) => ({ ...s, prayedDate: todayKey() }))}
         >
-          {state.prayedForMayor ? "Prayed ✓" : "Mark as prayed"}
+          {prayedToday ? "Prayed today ✓" : "Mark prayed today"}
         </button>
         <Link href="/pray" className="text-link" style={{ marginTop: 12 }}>Open Prayer Center</Link>
       </div>
@@ -117,7 +129,7 @@ export function MyCivicsDashboard() {
         <FileCheck2 />
         <small>OFFICIAL SOURCES</small>
         <h3>hamilton.ca</h3>
-        <p>Primary municipal records for live Hamilton data.</p>
+        <p>Primary municipal records for the live Hamilton pilot.</p>
         <a href={hamiltonMeta.officialSite} target="_blank" rel="noopener noreferrer" className="text-link" style={{ marginTop: 12 }}>
           Visit official site
         </a>
