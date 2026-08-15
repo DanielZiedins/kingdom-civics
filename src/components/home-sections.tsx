@@ -266,6 +266,55 @@ export function DiscernLeadersSection() {
   );
 }
 
+export function StatsStrip() {
+  const stats = [
+    ["9+", "Civic lessons"],
+    ["6", "Issue guides"],
+    ["24", "Glossary terms"],
+    ["1", "Live city · Hamilton"],
+    ["∞", "Nations via Kingdom Lens"],
+  ];
+  return (
+    <section className="stats-strip" aria-label="Kingdom Civics at a glance">
+      <div className="page-width stats-strip-inner">
+        {stats.map(([n, label]) => (
+          <div key={label}>
+            <strong>{n}</strong>
+            <span>{label}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+export function ChurchInviteSection() {
+  return (
+    <section className="section church-invite" id="for-churches">
+      <div className="page-width church-invite-grid">
+        <div>
+          <span className="eyebrow gold-text-dark">FOR PASTORS &amp; SMALL GROUPS</span>
+          <h2>Bring civic discipleship to your church.</h2>
+          <p>
+            A free four-week outline: why we engage, how government works, how to discern with Scripture,
+            and how to pray, serve, or run—without partisan pulpits.
+          </p>
+          <div className="stack-actions">
+            <Link href="/for-churches" className="button button-navy">Open the church kit <ArrowRight size={16} /></Link>
+            <Link href="/learn/talk-politics-in-church" className="text-link">Talk politics without splitting the body <ArrowRight size={14} /></Link>
+          </div>
+        </div>
+        <div className="church-invite-card">
+          <small>THIS MONTH</small>
+          <h3>Find who represents you—then pray by name.</h3>
+          <p>Official government lookup tools for Canada, the US, the UK, and more. Never unofficial lists.</p>
+          <Link href="/find-representatives" className="button button-gold">Find your representatives <ArrowRight size={15} /></Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function ConsiderRunningSection() {
   const steps = [
     { n: "01", title: "Examine motives", body: "Is this servant leadership—or a desire to win, punish, or be seen?" },

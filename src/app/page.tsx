@@ -11,6 +11,7 @@ import { DEFAULT_DESCRIPTION, DEFAULT_TITLE } from "@/lib/seo/site";
 import {
   ComparisonPreview,
   ConsiderRunningSection,
+  ChurchInviteSection,
   DiscernLeadersSection,
   GovernmentExplorer,
   ImpactGrid,
@@ -18,6 +19,7 @@ import {
   LensDemo,
   NewsletterForm,
   PrincipleCards,
+  StatsStrip,
   WhyEngageSection,
 } from "@/components/home-sections";
 import { hamiltonMeta } from "@/lib/data";
@@ -50,7 +52,7 @@ export default function Home() {
           }),
           faqPageSchema(globalFaqs),
           governmentServiceSchema(),
-          speakableSchema({ path: "/", cssSelectors: [".faq-question", ".faq-answer p"] }),
+          speakableSchema({ path: "/", cssSelectors: [".faq-question", ".faq-answer p", ".hero-copy h1"] }),
         ]}
       />
       <SiteHeader />
@@ -96,6 +98,7 @@ export default function Home() {
         </section>
 
         <WhyEngageSection />
+        <StatsStrip />
 
         <section id="impact" className="section section-light">
           <div className="page-width split-heading">
@@ -147,6 +150,7 @@ export default function Home() {
         </section>
 
         <ConsiderRunningSection />
+        <ChurchInviteSection />
 
         <section className="section section-parchment">
           <div className="page-width split-heading">

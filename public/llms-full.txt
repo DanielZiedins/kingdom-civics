@@ -62,6 +62,7 @@ Toronto, Ottawa, Calgary, Vancouver, Nashville, Dallas, London (UK)
 - /learn/evaluate-political-claims — How to evaluate political claims biblically
 - /learn/read-a-public-budget — How to read a public budget
 - /learn/consider-running — Should Christians consider running for office
+- /learn/talk-politics-in-church — How to talk about politics in church without splitting the body
 
 ## Issue guides (indexable)
 
@@ -75,6 +76,8 @@ Toronto, Ottawa, Calgary, Vancouver, Nashville, Dallas, London (UK)
 ## Glossary
 
 - /glossary — Plain-language civic terms (ward, bylaw, riding, nomination, jurisdiction)
+- /for-churches — Free four-week civic discipleship kit for pastors and small groups
+- /find-representatives — Official government lookup tools (Canada, US, UK, Australia)
 
 ## Biblical principles framework
 
@@ -133,7 +136,7 @@ Shareable links: https://www.kingdomcivics.org/kingdom-lens?q=Your+encoded+quest
 See sitemap: https://www.kingdomcivics.org/sitemap.xml
 
 Core routes:
-/, /why-engage, /learn, /issues, /glossary, /leaders, /elections, /kingdom-lens, /pray, /serve, /trust, /biblical-principles, /compare, /search, /my-civics, /about, /privacy
+/, /why-engage, /learn, /issues, /glossary, /for-churches, /find-representatives, /leaders, /elections, /kingdom-lens, /pray, /serve, /trust, /biblical-principles, /compare, /search, /my-civics, /about, /privacy
 
 Dynamic routes:
 - /leaders/{slug} — Leader profiles with Person schema

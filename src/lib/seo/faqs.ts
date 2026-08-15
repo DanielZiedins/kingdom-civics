@@ -53,6 +53,18 @@ export const globalFaqs: FaqItem[] = [
       "Pray for wisdom, integrity, justice, mercy, and peace for leaders at every level—including those you disagree with. 1 Timothy 2:1–2 urges supplications, prayers, intercessions, and thanksgivings for kings and all in high positions, that we may lead peaceful and godly lives.",
     keywords: ["pray for leaders", "1 Timothy 2:1-2"],
   },
+  {
+    question: "How can churches teach civic engagement without becoming partisan?",
+    answer:
+      "Teach Scripture-linked principles, pray for all in authority, use official sources, and refuse pulpit endorsements. Kingdom Civics offers a free four-week church kit, lessons, and Kingdom Lens—so congregations can form civic disciples without baptizing a party.",
+    keywords: ["civic education for churches", "church political engagement"],
+  },
+  {
+    question: "How do I find who represents me in government?",
+    answer:
+      "Use official lookup tools: Elections Canada and ourcommons.ca in Canada, house.gov and senate.gov in the US, members.parliament.uk in the UK. Kingdom Civics lists these tools at /find-representatives and provides live Hamilton, Ontario officials. Never rely on unofficial social media lists.",
+    keywords: ["find my MP", "who is my representative", "find my councillor"],
+  },
 ];
 
 export const pageFaqs: Record<string, FaqItem[]> = {
@@ -138,6 +150,42 @@ export const pageFaqs: Record<string, FaqItem[]> = {
       question: "Does Kingdom Civics endorse candidates?",
       answer:
         "No. We provide sourced civic education and biblical principles. Assessments describe evidence—not a person's faith, worth, or God's endorsement.",
+    },
+  ],
+  glossary: [
+    {
+      question: "What is a ward in municipal government?",
+      answer:
+        "A ward is a geographic district within a city used to elect a local councillor. Knowing your ward tells you who represents your neighbourhood at city hall. See the Kingdom Civics glossary for related terms such as riding, bylaw, and jurisdiction.",
+    },
+    {
+      question: "What is the difference between a riding and a ward?",
+      answer:
+        "A ward is typically a municipal electoral district. A riding (or constituency) is a provincial or federal electoral district. They have different boundaries and elect different offices.",
+    },
+  ],
+  "for-churches": [
+    {
+      question: "Can our church use Kingdom Civics for small groups?",
+      answer:
+        "Yes. The four-week outline on /for-churches links free lessons, prayer prompts, and Kingdom Lens practice. It is educational, not a partisan curriculum, and does not require an account.",
+    },
+    {
+      question: "Should pastors endorse candidates from the pulpit?",
+      answer:
+        "Kingdom Civics recommends against pulpit endorsements. Teach biblical principles, pray for all in authority, and let members make prudential judgments. No candidate is synonymous with the Kingdom of God.",
+    },
+  ],
+  "find-representatives": [
+    {
+      question: "How do I find my Member of Parliament in Canada?",
+      answer:
+        "Use the official House of Commons member lookup at ourcommons.ca, or Elections Canada tools. Enter your postal code on a government domain—not a campaign site.",
+    },
+    {
+      question: "How do I find my US Representative?",
+      answer:
+        "Use house.gov/representatives/find-your-representative for the House and senate.gov for Senators. USA.gov also links to state and local official directories.",
     },
   ],
 };

@@ -1,3 +1,4 @@
+import { glossaryTerms } from "@/lib/content/glossary";
 import { learnArticles } from "@/lib/content/learn";
 import { issueGuidesContent } from "@/lib/content/issues";
 import { principles } from "@/lib/data";
@@ -15,6 +16,8 @@ export const searchIndex: SearchHit[] = [
   { title: "Home — Kingdom Civics", href: "/", keywords: "home kingdom civics global", category: "Site" },
   { title: "Why Christians engage in civic life", href: "/why-engage", keywords: "christian engage government culture jeremiah vote", category: "Engage" },
   { title: "Civic glossary", href: "/glossary", keywords: "glossary ward bylaw riding nomination terms", category: "Learn" },
+  { title: "Civic education for churches", href: "/for-churches", keywords: "church pastor small group civic discipleship pulpit", category: "Church" },
+  { title: "Find who represents you", href: "/find-representatives", keywords: "find my mp representative councillor senate congress lookup", category: "Leaders" },
   { title: "Hamilton leaders directory", href: "/leaders", keywords: "mayor councillor mp mpp hamilton leaders", category: "Leaders" },
   { title: "Hamilton 2026 municipal election", href: "/elections", keywords: "election vote 2026 october hamilton ballot", category: "Elections" },
   { title: "Ask Kingdom Lens", href: "/kingdom-lens", keywords: "ai lens ask question scripture research", category: "AI" },
@@ -35,6 +38,12 @@ export const searchIndex: SearchHit[] = [
     href: `/issues/${g.slug}`,
     keywords: `${g.title} ${g.principles.join(" ")} issue policy`.toLowerCase(),
     category: "Issues",
+  })),
+  ...glossaryTerms.map((t) => ({
+    title: t.term,
+    href: `/glossary#${t.term.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`,
+    keywords: `${t.term} ${t.definition} glossary`.toLowerCase(),
+    category: "Glossary",
   })),
   ...principles.map((p) => ({
     title: p.name,

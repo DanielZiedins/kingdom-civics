@@ -40,6 +40,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <head>
         <link rel="author" href="https://www.danielziedins.design" />
         <link rel="help" href="/llms.txt" type="text/plain" title="LLM site guide" />
+        <link rel="alternate" type="text/plain" title="AI discovery" href="/ai.txt" />
         <link rel="alternate" type="application/rss+xml" title="Kingdom Civics" href="/feed.xml" />
       </head>
       <body className="min-h-full flex flex-col">

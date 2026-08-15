@@ -149,6 +149,7 @@ export const learnModules = [
   ["How to read a public budget", "15 min", "Public finance", "/learn/read-a-public-budget"],
   ["How to evaluate political claims", "12 min", "Discernment", "/learn/evaluate-political-claims"],
   ["Should Christians consider running?", "14 min", "Public service", "/learn/consider-running"],
+  ["Talking politics in church", "12 min", "Church & culture", "/learn/talk-politics-in-church"],
   ["How Hamilton City Council works", "10 min", "Live city · Hamilton", "/learn/hamilton-city-council"],
   ["Why Christians engage in civic life", "9 min", "Biblical framework", "/why-engage"],
 ] as const;
@@ -173,11 +174,11 @@ export const prayerPrompts = [
 export const footerColumns = [
   {
     title: "Explore",
-    links: [["Why Engage", "/why-engage"], ["Learn", "/learn"], ["Issues", "/issues"], ["Glossary", "/glossary"], ["Leaders", "/leaders"]],
+    links: [["Why Engage", "/why-engage"], ["Learn", "/learn"], ["Issues", "/issues"], ["Glossary", "/glossary"], ["For Churches", "/for-churches"]],
   },
   {
     title: "Practice",
-    links: [["Kingdom Lens", "/kingdom-lens"], ["Pray", "/pray"], ["Serve", "/serve"], ["My Civics", "/my-civics"]],
+    links: [["Kingdom Lens", "/kingdom-lens"], ["Pray", "/pray"], ["Serve", "/serve"], ["Find representatives", "/find-representatives"], ["My Civics", "/my-civics"]],
   },
   {
     title: "Trust",

@@ -133,3 +133,27 @@ test("command palette glossary and leaders directory ship", async () => {
   const issues = await readFile(new URL("src/lib/content/issues.ts", root), "utf8");
   assert.match(issues, /justice-mercy/);
 });
+
+test("church kit find-representatives and AEO surfaces exist", async () => {
+  const routes = await readFile(new URL("src/lib/seo/routes.ts", root), "utf8");
+  assert.match(routes, /\/for-churches/);
+  assert.match(routes, /\/find-representatives/);
+  const churches = await readFile(new URL("src/components/church-kit.tsx", root), "utf8");
+  assert.match(churches, /Four-week small group outline/);
+  const lookups = await readFile(new URL("src/lib/content/lookups.ts", root), "utf8");
+  assert.match(lookups, /house.gov/);
+  assert.match(lookups, /ourcommons.ca/);
+  const schema = await readFile(new URL("src/lib/seo/schema.ts", root), "utf8");
+  assert.match(schema, /definedTermSetSchema/);
+  assert.match(schema, /courseSchema/);
+  const robots = await readFile(new URL("src/app/robots.ts", root), "utf8");
+  assert.match(robots, /Amazonbot/);
+  const ai = await readFile(new URL("public/ai.txt", root), "utf8");
+  assert.match(ai, /llms.txt/);
+  const og = await readFile(new URL("src/app/og/route.tsx", root), "utf8");
+  assert.match(og, /ImageResponse/);
+  const cite = await readFile(new URL("src/components/cite-this.tsx", root), "utf8");
+  assert.match(cite, /Cite this page/);
+  const talk = await readFile(new URL("src/lib/content/learn.ts", root), "utf8");
+  assert.match(talk, /talk-politics-in-church/);
+});

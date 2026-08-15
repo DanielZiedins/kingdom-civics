@@ -159,6 +159,34 @@ export const pageSeo: Record<string, PageSeo> = {
     path: "/glossary",
     keywords: ["civic glossary", "what is a ward", "bylaw definition", "Christian civic terms"],
   },
+  "for-churches": {
+    eyebrow: "CIVIC DISCIPLESHIP FOR THE CHURCH",
+    title: "Civic Education for Churches — Small Groups, Pastors & Prayer",
+    description:
+      "A free four-week church kit for civic discipleship: lessons, discussion, prayer, and Kingdom Lens—without partisan pulpits or candidate endorsements.",
+    path: "/for-churches",
+    keywords: [
+      "civic education for churches",
+      "small group politics Christian",
+      "how churches talk about politics",
+      "pastor civic engagement guide",
+      "Christian church voter education",
+    ],
+  },
+  "find-representatives": {
+    eyebrow: "OFFICIAL LOOKUP FIRST",
+    title: "Find Who Represents You — Official Government Directories",
+    description:
+      "Official tools to find your MP, MPP, US Representative, Senator, UK MP, and local councillor—then pray, learn the office, and discern with Kingdom principles.",
+    path: "/find-representatives",
+    keywords: [
+      "find my MP",
+      "who is my representative",
+      "find my councillor",
+      "find my US representative by ZIP",
+      "who represents me in government",
+    ],
+  },
   admin: {
     eyebrow: "RESEARCH OPERATIONS",
     title: "Verification Workspace",
@@ -180,5 +208,6 @@ export function getPageMetadata(section: string): Metadata {
     path: seo.path,
     keywords: seo.keywords,
     noIndex: section === "admin",
+    geo: section === "leaders" || section === "elections" ? "hamilton" : undefined,
   });
 }

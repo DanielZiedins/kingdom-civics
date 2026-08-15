@@ -287,6 +287,32 @@ const globalChunks: KnowledgeChunk[] = [
     counterpoints: ["Not every believer is called to public office—but all are called to faithfulness where they are."],
     confidence: "strong",
   },
+  {
+    id: "churches-civic",
+    scope: "global",
+    tags: ["church", "pastor", "small group", "pulpit", "congregation", "sunday", "discipleship"],
+    answer:
+      "Churches can teach civic discipleship without becoming campaign offices. Use Scripture (Jeremiah 29:7; 1 Timothy 2:1–2), pray for all in authority, refuse pulpit endorsements, and train people to check primary sources. Kingdom Civics offers a free four-week church kit at /for-churches and a lesson on talking about politics without splitting the body.",
+    principles: ["Unity", "Truth", "Kingdom first"],
+    scripture: [{ reference: "James 1:19", application: "Be quick to hear, slow to speak, and slow to anger—especially in election seasons." }],
+    sources: [{ id: "kc-churches", title: "For Churches", publisher: "Kingdom Civics", url: "/for-churches", tier: 2 }],
+    uncertainties: ["Local legal rules for churches and political activity vary by country."],
+    counterpoints: ["Silence is not always unity; unformed disciples will still be catechized by partisan media."],
+    confidence: "strong",
+  },
+  {
+    id: "find-reps",
+    scope: "global",
+    tags: ["find", "who represents", "lookup", "my mp", "my representative", "zip", "postal", "councillor"],
+    answer:
+      "Find who represents you with official government tools only: ourcommons.ca and Elections Canada in Canada; house.gov and senate.gov in the US; members.parliament.uk in the UK. Kingdom Civics lists these at /find-representatives and publishes live Hamilton, Ontario officials. After you have names, pray for them and learn what the office actually controls.",
+    principles: ["Truth", "Accountability", "Prayer for leaders"],
+    scripture: [{ reference: "1 Timothy 2:1–2", application: "Pray for those in authority by name once you know who they are." }],
+    sources: [{ id: "kc-find", title: "Find Representatives", publisher: "Kingdom Civics", url: "/find-representatives", tier: 2 }],
+    uncertainties: ["Boundaries change after redistricting—always confirm with current official maps."],
+    counterpoints: [],
+    confidence: "strong",
+  },
 ];
 
 const hamiltonChunks: KnowledgeChunk[] = [

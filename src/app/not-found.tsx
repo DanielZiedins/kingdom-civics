@@ -4,8 +4,8 @@ import { SiteFooter, SiteHeader } from "@/components/site-shell";
 
 const quickLinks = [
   { href: "/kingdom-lens", label: "Kingdom Lens", icon: Compass, description: "Ask a civic question with cited sources" },
-  { href: "/learn", label: "Learn", icon: BookOpen, description: "How government works — civic education" },
-  { href: "/leaders", label: "Hamilton Leaders", icon: MapPin, description: "Mayor, councillors, MPs, and MPPs" },
+  { href: "/for-churches", label: "For churches", icon: BookOpen, description: "Four-week civic discipleship kit" },
+  { href: "/find-representatives", label: "Find representatives", icon: MapPin, description: "Official lookup tools worldwide" },
   { href: "/search", label: "Search", icon: Search, description: "Find pages across Kingdom Civics" },
 ];
 

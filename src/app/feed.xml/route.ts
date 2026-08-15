@@ -1,5 +1,6 @@
 import { issueGuidesContent } from "@/lib/content/issues";
 import { learnArticles } from "@/lib/content/learn";
+import { principles } from "@/lib/data";
 import { SITE_NAME, absoluteUrl } from "@/lib/seo/site";
 
 function escapeXml(value: string): string {
@@ -25,6 +26,24 @@ export function GET() {
       path: `/issues/${guide.slug}`,
       category: "Issue guide",
     })),
+    ...principles.map((principle) => ({
+      title: principle.name,
+      description: principle.summary,
+      path: `/biblical-principles/${principle.slug}`,
+      category: "Biblical principle",
+    })),
+    {
+      title: "Civic education for churches",
+      description: "A free four-week church kit for civic discipleship without partisan pulpits.",
+      path: "/for-churches",
+      category: "Church",
+    },
+    {
+      title: "Find who represents you",
+      description: "Official government lookup tools for MPs, representatives, and councillors.",
+      path: "/find-representatives",
+      category: "Leaders",
+    },
   ];
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -45,7 +64,7 @@ export function GET() {
       <description>${escapeXml(item.description)}</description>
       <guid isPermaLink="true">${absoluteUrl(item.path)}</guid>
       <category>${escapeXml(item.category)}</category>
-      <pubDate>${new Date().toUTCString()}</pubDate>
+      <pubDate>Sat, 15 Aug 2026 12:00:00 GMT</pubDate>
     </item>`,
       )
       .join("")}

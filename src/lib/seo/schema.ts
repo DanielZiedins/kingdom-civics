@@ -44,12 +44,20 @@ export function organizationSchema(): JsonLd {
       name: CREATOR.name,
       url: CREATOR.url,
     },
+    logo: {
+      "@type": "ImageObject",
+      url: absoluteUrl("/icon"),
+    },
+    sameAs: [CREATOR.url],
     knowsAbout: [
       "Christian civic education",
       "Hamilton Ontario government",
       "Biblical principles in public life",
       "Municipal elections",
       "Prayer for government leaders",
+      "Civic discipleship for churches",
+      "Finding elected representatives",
+      "Kingdom Lens civic AI",
     ],
   };
 }
@@ -339,5 +347,54 @@ export function speakableSchema({
       "@type": "SpeakableSpecification",
       cssSelector: cssSelectors,
     },
+  };
+}
+
+export function definedTermSetSchema(
+  terms: Array<{ term: string; definition: string }>,
+): JsonLd {
+  return {
+    "@context": "https://schema.org",
+    "@type": "DefinedTermSet",
+    name: "Kingdom Civics Glossary",
+    url: absoluteUrl("/glossary"),
+    hasDefinedTerm: terms.map((item) => ({
+      "@type": "DefinedTerm",
+      name: item.term,
+      description: item.definition,
+      inDefinedTermSet: absoluteUrl("/glossary"),
+    })),
+  };
+}
+
+export function courseSchema({
+  name,
+  description,
+  path,
+  lessons,
+}: {
+  name: string;
+  description: string;
+  path: string;
+  lessons: Array<{ name: string; url: string }>;
+}): JsonLd {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    name,
+    description,
+    url: absoluteUrl(path),
+    provider: { "@id": `${SITE_URL}/#organization` },
+    inLanguage: "en-CA",
+    isAccessibleForFree: true,
+    hasCourseInstance: {
+      "@type": "CourseInstance",
+      courseMode: "online",
+    },
+    hasPart: lessons.map((lesson) => ({
+      "@type": "LearningResource",
+      name: lesson.name,
+      url: lesson.url,
+    })),
   };
 }

@@ -4,7 +4,7 @@
 
 Kingdom Civics helps Christians worldwide understand government, discern leadership, pray faithfully, and serve humbly—without partisan endorsements.
 
-Last updated: 2026-08-12
+Last updated: 2026-08-15
 
 ## Canonical site
 
@@ -17,6 +17,8 @@ Last updated: 2026-08-12
 - [Learn](https://www.kingdomcivics.org/learn): Civic education lessons (government, Canada, US, Hamilton)
 - [Issues](https://www.kingdomcivics.org/issues): Christian issue guides (housing, justice, religious liberty, education)
 - [Civic Glossary](https://www.kingdomcivics.org/glossary): Plain-language civic terms (ward, bylaw, riding, nomination)
+- [For Churches](https://www.kingdomcivics.org/for-churches): Free four-week civic discipleship kit for pastors and small groups
+- [Find Representatives](https://www.kingdomcivics.org/find-representatives): Official government lookup tools worldwide
 - [Hamilton Leaders](https://www.kingdomcivics.org/leaders): Mayor, councillors, MPs, MPPs with official links
 - [Hamilton City Hub](https://www.kingdomcivics.org/cities/hamilton-on): Live Hamilton civic data
 - [Hamilton Elections](https://www.kingdomcivics.org/elections): October 26, 2026 municipal election
@@ -38,6 +40,7 @@ Last updated: 2026-08-12
 - /learn/evaluate-political-claims
 - /learn/read-a-public-budget
 - /learn/consider-running
+- /learn/talk-politics-in-church
 
 ## Issue guides
 

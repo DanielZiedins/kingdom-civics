@@ -233,6 +233,37 @@ export const learnArticles: LearnArticle[] = [
       },
     ],
   },
+  {
+    slug: "talk-politics-in-church",
+    title: "How to Talk About Politics in Church Without Splitting the Body",
+    description:
+      "A practical discipleship guide for pastors and small groups: truth-telling, prayer, primary sources, and unity without partisan pulpits.",
+    duration: "12 min",
+    category: "Church & culture",
+    scripture: "James 1:19 · Ephesians 4:15 · 1 Timothy 2:1–2",
+    sections: [
+      {
+        heading: "The church is not a campaign office",
+        body: "Christians must speak about public life because neighbours are affected by law, budgets, and justice. But the gathered church is not a PAC. Teaching civic discipleship means forming people who can tell the truth, pray for leaders, and disagree without treating a party as the gospel.",
+      },
+      {
+        heading: "Slow speech is a spiritual discipline",
+        body: "James 1:19 still applies on election weeks: be quick to hear, slow to speak, slow to anger. Before sharing a claim, ask which level of government controls the issue, what the primary source says, and whether you are loving the person across the aisle as an image-bearer.",
+      },
+      {
+        heading: "Principles before personalities",
+        body: "Start with Scripture-linked principles—truth, dignity, justice, servant leadership, conscience, stewardship—then examine evidence. Personality-first conversations collapse into tribes. Principle-first conversations can survive disagreement.",
+      },
+      {
+        heading: "A simple group practice",
+        body: "Read one Kingdom Civics lesson. Pray 1 Timothy 2 for named offices. Ask Kingdom Lens one question and inspect the counterpoints together. End by naming a next step: attend a meeting, write a councillor, or refuse a rumour.",
+      },
+      {
+        heading: "When heat rises",
+        body: "Elders can set house rules: no candidate endorsements from the pulpit, no forwarding unverified clips, no treating dissenters as enemies of God. Unity is not silence; it is refusing to let Caesar catechize the church.",
+      },
+    ],
+  },
 ];
 
 export function getLearnArticle(slug: string): LearnArticle | undefined {

@@ -16,6 +16,7 @@ type PageMetaInput = {
   keywords?: string[];
   type?: "website" | "article";
   noIndex?: boolean;
+  geo?: "hamilton";
   images?: Array<{ url: string; alt: string; width?: number; height?: number }>;
 };
 
@@ -26,14 +27,15 @@ export function buildPageMetadata({
   keywords = [],
   type = "website",
   noIndex = false,
+  geo,
   images,
 }: PageMetaInput): Metadata {
   const canonical = absoluteUrl(path);
   const mergedKeywords = [...new Set([...SITE_KEYWORDS, ...keywords])];
   const ogImages = images ?? [
     {
-      url: absoluteUrl("/opengraph-image"),
-      alt: `${SITE_NAME} — ${SITE_TAGLINE}`,
+      url: absoluteUrl(`/og?title=${encodeURIComponent(title)}&kicker=${encodeURIComponent(SITE_NAME)}`),
+      alt: `${title} — ${SITE_NAME}`,
       width: 1200,
       height: 630,
     },
@@ -77,10 +79,14 @@ export function buildPageMetadata({
             "max-video-preview": -1,
           },
         },
-    other: {
-      "geo.region": "CA-ON",
-      "geo.placename": "Hamilton",
-    },
+    ...(geo === "hamilton"
+      ? {
+          other: {
+            "geo.region": "CA-ON",
+            "geo.placename": "Hamilton",
+          },
+        }
+      : {}),
   };
 }
 

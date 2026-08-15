@@ -3,8 +3,11 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowRight, CalendarDays, ExternalLink, Heart, ShieldCheck } from "lucide-react";
 import { ArticleBody } from "@/components/article-body";
+import { ChurchKit } from "@/components/church-kit";
+import { CiteThis } from "@/components/cite-this";
 import { CivicChecklist } from "@/components/civic-checklist";
 import { ElectionCountdown } from "@/components/election-countdown";
+import { FindRepresentatives } from "@/components/find-representatives";
 import { ComparisonPreview, GlobalSearch, PrincipleCards } from "@/components/home-sections";
 import { KingdomLensPage } from "@/components/kingdom-lens-page";
 import { MyCivicsDashboard } from "@/components/my-civics-dashboard";
@@ -15,6 +18,7 @@ import { Breadcrumbs } from "@/components/seo/breadcrumbs";
 import { FaqSection } from "@/components/seo/faq-section";
 import { JsonLd } from "@/components/seo/json-ld";
 import { SiteFooter, SiteHeader } from "@/components/site-shell";
+import { glossaryTerms } from "@/lib/content/glossary";
 import { getIssueGuide, issueGuidesContent } from "@/lib/content/issues";
 import { getLearnArticle, learnArticles } from "@/lib/content/learn";
 import { engagementScriptures, whyEngageReasons } from "@/lib/engagement";
@@ -27,6 +31,8 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 import { getPageMetadata, getPageSeo } from "@/lib/seo/pages";
 import {
   articleSchema,
+  courseSchema,
+  definedTermSetSchema,
   electionEventSchema,
   faqPageSchema,
   howToSchema,
@@ -53,6 +59,8 @@ export async function generateStaticParams() {
     ...issueGuidesContent.map((g) => ({ slug: ["issues", g.slug] })),
     ...getAllCities().map((c) => ({ slug: ["cities", c.slug] })),
     { slug: ["glossary"] },
+    { slug: ["for-churches"] },
+    { slug: ["find-representatives"] },
   ];
 }
 
@@ -68,6 +76,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         description: `${leader.name} serves as ${leader.office}${leader.ward ? ` (${leader.ward})` : ""} in Hamilton, Ontario. Official record, role, and source links from Kingdom Civics.`,
         path: `/leaders/${leader.slug}`,
         keywords: [leader.name, leader.office, "Hamilton Ontario", leader.party ?? "nonpartisan"],
+        geo: "hamilton",
       });
     }
   }
@@ -121,6 +130,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
           : `${city.tagline}. Explore global civic education and ask Kingdom Lens while we prepare live data.`,
         path: `/cities/${city.slug}`,
         keywords: [city.name, city.region, "Christian civic education", city.country],
+        geo: city.slug === "hamilton-on" ? "hamilton" : undefined,
       });
     }
   }
@@ -137,7 +147,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return getPageMetadata(section);
 }
 
-function pageStructuredData(section: string, slug: string[], copy: ReturnType<typeof getPageSeo>) {
+function pageStructuredData(section: string, slug: string[], copy: { title: string; description: string; path: string }) {
   const faqs = [...(pageFaqs[section] ?? []), ...globalFaqs.slice(0, 3)];
   const base = webPageSchema({
     title: copy.title,
@@ -198,6 +208,55 @@ function pageStructuredData(section: string, slug: string[], copy: ReturnType<ty
         ]
       : [base];
   }
+  if (section === "learn") {
+    return [
+      base,
+      courseSchema({
+        name: "Kingdom Civics Academy",
+        description: copy.description,
+        path: "/learn",
+        lessons: learnArticles.map((a) => ({ name: a.title, url: absoluteUrl(`/learn/${a.slug}`) })),
+      }),
+      faqPageSchema(pageFaqs.learn ?? []),
+    ];
+  }
+  if (section === "glossary") {
+    return [base, definedTermSetSchema(glossaryTerms), faqPageSchema(pageFaqs.glossary ?? [])];
+  }
+  if (section === "for-churches") {
+    return [
+      base,
+      howToSchema({
+        name: "How churches can teach civic discipleship",
+        description: "A four-week outline for pastors and small groups—without partisan pulpits.",
+        path: "/for-churches",
+        steps: [
+          "Teach why Christians engage using Jeremiah 29:7 and 1 Timothy 2.",
+          "Map how government works at local, regional, and national levels.",
+          "Practice discernment with biblical principles and primary sources.",
+          "Pray, serve, or consider public office as neighbour-love.",
+        ],
+      }),
+      faqPageSchema(pageFaqs["for-churches"] ?? []),
+    ];
+  }
+  if (section === "find-representatives") {
+    return [
+      base,
+      howToSchema({
+        name: "How to find who represents you",
+        description: "Use official government lookup tools, then pray and learn the office.",
+        path: "/find-representatives",
+        steps: [
+          "Choose your country.",
+          "Open the official government lookup tool.",
+          "Write down the names and offices.",
+          "Pray for those leaders and learn what the office actually controls.",
+        ],
+      }),
+      faqPageSchema(pageFaqs["find-representatives"] ?? []),
+    ];
+  }
   if (section === "issues" && slug[1]) {
     const guide = getIssueGuide(slug[1]);
     return guide
@@ -219,6 +278,50 @@ function pageStructuredData(section: string, slug: string[], copy: ReturnType<ty
   }
 
   return faqs.length ? [base, faqPageSchema(faqs)] : [base];
+}
+
+function heroCopy(section: string, slug: string[]) {
+  if (section === "learn" && slug[1]) {
+    const article = getLearnArticle(slug[1]);
+    if (article) {
+      return { eyebrow: article.category.toUpperCase(), title: article.title, description: article.description, path: `/learn/${article.slug}` };
+    }
+  }
+  if (section === "issues" && slug[1]) {
+    const guide = getIssueGuide(slug[1]);
+    if (guide) {
+      return { eyebrow: "ISSUE GUIDE", title: guide.title, description: guide.description, path: `/issues/${guide.slug}` };
+    }
+  }
+  if (section === "biblical-principles" && slug[1]) {
+    const principle = principles.find((item) => item.slug === slug[1]);
+    if (principle) {
+      return { eyebrow: "BIBLICAL PRINCIPLE", title: principle.name, description: principle.summary, path: `/biblical-principles/${principle.slug}` };
+    }
+  }
+  if (section === "leaders" && slug[1]) {
+    const leader = hamiltonOfficials.find((item) => item.slug === slug[1]);
+    if (leader) {
+      return {
+        eyebrow: "HAMILTON OFFICIAL",
+        title: leader.name,
+        description: `${leader.office}${leader.ward ? ` · ${leader.ward}` : ""} — official record with source links.`,
+        path: `/leaders/${leader.slug}`,
+      };
+    }
+  }
+  if (section === "cities" && slug[1]) {
+    const city = getCity(slug[1]);
+    if (city) {
+      return {
+        eyebrow: city.status === "live" ? "LIVE CITY HUB" : "CITY COMING SOON",
+        title: `${city.name}, ${city.region}`,
+        description: city.tagline,
+        path: `/cities/${city.slug}`,
+      };
+    }
+  }
+  return getPageSeo(section);
 }
 
 function pageBreadcrumbs(section: string, slug: string[]) {
@@ -596,6 +699,8 @@ function PrincipleDetailPage({ slug }: { slug: string }) {
   if (!principle) notFound();
   return (
     <ArticleBody
+      kind="principle"
+      slug={principle.slug}
       scripture={principle.scripture}
       sections={[
         { heading: principle.name, body: principle.summary },
@@ -625,7 +730,8 @@ export default async function InnerPage({ params, searchParams }: PageProps) {
   const { slug } = await params;
   const query = searchParams ? await searchParams : undefined;
   const section = slug[0];
-  const copy = getPageSeo(section);
+  const copy = heroCopy(section, slug);
+  const path = "path" in copy && copy.path ? copy.path : getPageSeo(section).path;
   let body;
 
   if (section === "why-engage") body = <WhyEngagePage />;
@@ -650,7 +756,7 @@ export default async function InnerPage({ params, searchParams }: PageProps) {
   } else if (section === "issues" && slug[1]) {
     const guide = getIssueGuide(slug[1]);
     if (!guide) notFound();
-    body = <ArticleBody scripture={guide.scripture} sections={guide.sections} kind="issue" />;
+    body = <ArticleBody scripture={guide.scripture} sections={guide.sections} slug={guide.slug} kind="issue" />;
   } else if (section === "issues") {
     body = (
       <LinkCards
@@ -665,6 +771,8 @@ export default async function InnerPage({ params, searchParams }: PageProps) {
   } else if (section === "cities" && slug[1]) body = <CityHubPage citySlug={slug[1]} />;
   else if (section === "cities") notFound();
   else if (section === "glossary") body = <GlossaryPage />;
+  else if (section === "for-churches") body = <ChurchKit />;
+  else if (section === "find-representatives") body = <FindRepresentatives />;
   else if (section === "leaders") body = <LeadersPage detail={slug[1]} />;
   else if (section === "elections") body = <ElectionPage />;
   else if (section === "kingdom-lens") body = <KingdomLensPage searchParams={query} />;
@@ -700,6 +808,10 @@ export default async function InnerPage({ params, searchParams }: PageProps) {
             <span className="eyebrow gold-text">{copy.eyebrow}</span>
             <h1>{copy.title}</h1>
             <p>{copy.description}</p>
+            <div className="page-hero-tools">
+              <ShareButton title={copy.title} text={copy.description} url={absoluteUrl(path)} />
+              <CiteThis title={copy.title} path={path} />
+            </div>
           </div>
         </section>
         <section className="page-body"><div className="page-width">{body}</div></section>

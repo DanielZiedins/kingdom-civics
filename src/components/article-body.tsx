@@ -87,6 +87,16 @@ export function ArticleBody({
               <p>{section.body}</p>
             </section>
           ))}
+          <div className="article-discuss">
+            <h3>Discuss together</h3>
+            <ol>
+              {sections.slice(0, 3).map((section) => (
+                <li key={section.heading}>How does “{section.heading}” apply where God has placed you?</li>
+              ))}
+              <li>What would it look like to pray 1 Timothy 2:1–2 for a named office this week?</li>
+            </ol>
+            <Link href="/for-churches" className="text-link">Church &amp; small-group kit <ArrowRight size={14} /></Link>
+          </div>
           <div className="article-cta">
             <Link href="/kingdom-lens" className="button button-navy">
               Ask Kingdom Lens <ArrowRight size={15} />
