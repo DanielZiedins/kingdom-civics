@@ -8,6 +8,8 @@ import { ElectionCountdown } from "@/components/election-countdown";
 import { ComparisonPreview, GlobalSearch, PrincipleCards } from "@/components/home-sections";
 import { KingdomLensPage } from "@/components/kingdom-lens-page";
 import { MyCivicsDashboard } from "@/components/my-civics-dashboard";
+import { GlossaryExplorer } from "@/components/glossary-explorer";
+import { LeadersDirectory } from "@/components/leaders-directory";
 import { ShareButton } from "@/components/share-button";
 import { Breadcrumbs } from "@/components/seo/breadcrumbs";
 import { FaqSection } from "@/components/seo/faq-section";
@@ -18,8 +20,8 @@ import { getLearnArticle, learnArticles } from "@/lib/content/learn";
 import { engagementScriptures, whyEngageReasons } from "@/lib/engagement";
 import { allHamiltonLeaders, hamiltonMeta, prayerPrompts, principles } from "@/lib/data";
 import { getPrayerOfTheDay } from "@/lib/prayer-day";
-import { hamiltonCouncillors, hamiltonFederal, hamiltonMayor, hamiltonOfficials, hamiltonProvincial } from "@/lib/hamilton";
-import { getDefaultCity } from "@/lib/jurisdictions/registry";
+import { hamiltonOfficials } from "@/lib/hamilton";
+import { getAllCities, getCity } from "@/lib/jurisdictions/registry";
 import { globalFaqs, pageFaqs } from "@/lib/seo/faqs";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import { getPageMetadata, getPageSeo } from "@/lib/seo/pages";
@@ -49,7 +51,8 @@ export async function generateStaticParams() {
     ...principles.map((p) => ({ slug: ["biblical-principles", p.slug] })),
     ...learnArticles.map((a) => ({ slug: ["learn", a.slug] })),
     ...issueGuidesContent.map((g) => ({ slug: ["issues", g.slug] })),
-    { slug: ["cities", "hamilton-on"] },
+    ...getAllCities().map((c) => ({ slug: ["cities", c.slug] })),
+    { slug: ["glossary"] },
   ];
 }
 
@@ -108,12 +111,26 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     }
   }
 
-  if (section === "cities" && slug[1] === "hamilton-on") {
+  if (section === "cities" && slug[1]) {
+    const city = getCity(slug[1]);
+    if (city) {
+      return buildPageMetadata({
+        title: `${city.name}, ${city.region} — Christian Civic Hub`,
+        description: city.status === "live"
+          ? `Live officials, election dates, and official source links for ${city.name}, ${city.region}.`
+          : `${city.tagline}. Explore global civic education and ask Kingdom Lens while we prepare live data.`,
+        path: `/cities/${city.slug}`,
+        keywords: [city.name, city.region, "Christian civic education", city.country],
+      });
+    }
+  }
+
+  if (section === "glossary") {
     return buildPageMetadata({
-      title: "Hamilton, Ontario — Live Civic Data Hub",
-      description: `Live officials, election dates, and official source links for Hamilton, ON. Mayor ${hamiltonMayor.name}, councillors, MPs, and October 26, 2026 election.`,
-      path: "/cities/hamilton-on",
-      keywords: ["Hamilton Ontario", "Hamilton city council", "Hamilton election 2026"],
+      title: "Civic Glossary — Christian Civic Terms Explained",
+      description: "Plain-language definitions of ward, bylaw, riding, nomination, jurisdiction, and more—for Christians learning public life.",
+      path: "/glossary",
+      keywords: ["civic glossary", "what is a ward", "bylaw meaning", "Christian civic education"],
     });
   }
 
@@ -224,7 +241,8 @@ function pageBreadcrumbs(section: string, slug: string[]) {
       const guide = getIssueGuide(slug[1]);
       if (guide) crumbs.push({ label: guide.title, href: `/issues/${guide.slug}` });
     } else if (section === "cities") {
-      crumbs.push({ label: "Hamilton, Ontario", href: "/cities/hamilton-on" });
+      const city = getCity(slug[1]);
+      crumbs.push({ label: city ? `${city.name}, ${city.region}` : "Cities", href: city ? `/cities/${city.slug}` : undefined });
     }
   } else {
     crumbs.push({ label: sectionLabel, href: copy.path });
@@ -233,17 +251,26 @@ function pageBreadcrumbs(section: string, slug: string[]) {
   return crumbs;
 }
 
-function LinkCards({ items }: { items: Array<{ href: string; title: string; description: string; tag?: string }> }) {
+function LinkCards({ items }: { items: Array<{ href: string; title: string; description: string; tag?: string; external?: boolean }> }) {
   return (
     <div className="content-grid">
-      {items.map((item) => (
-        <Link href={item.href} className="content-card" key={item.href + item.title}>
-          {item.tag && <small>{item.tag}</small>}
-          <h3>{item.title}</h3>
-          <p>{item.description}</p>
-          <span className="text-link">Explore <ArrowRight size={14} /></span>
-        </Link>
-      ))}
+      {items.map((item) =>
+        item.external ? (
+          <a href={item.href} className="content-card" key={item.href + item.title} target="_blank" rel="noopener noreferrer">
+            {item.tag && <small>{item.tag}</small>}
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+            <span className="text-link">Explore <ArrowRight size={14} /></span>
+          </a>
+        ) : (
+          <Link href={item.href} className="content-card" key={item.href + item.title}>
+            {item.tag && <small>{item.tag}</small>}
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+            <span className="text-link">Explore <ArrowRight size={14} /></span>
+          </Link>
+        ),
+      )}
     </div>
   );
 }
@@ -289,46 +316,7 @@ function LeadersPage({ detail }: { detail?: string }) {
   }
 
   if (detail) notFound();
-
-  return (
-    <>
-      <div className="leaders-section-label"><span className="eyebrow">MAYOR</span></div>
-      <div className="content-grid">
-        <Link href={`/leaders/${hamiltonMayor.slug}`} className="content-card">
-          <small>LIVE</small><h3>{hamiltonMayor.name}</h3><p>{hamiltonMayor.office} · {hamiltonMayor.status}</p>
-          <span className="text-link">View profile <ArrowRight size={14} /></span>
-        </Link>
-      </div>
-      <div className="leaders-section-label"><span className="eyebrow">WARD COUNCILLORS · {hamiltonCouncillors.length}</span></div>
-      <div className="content-grid">
-        {hamiltonCouncillors.map((c) => (
-          <Link href={`/leaders/${c.slug}`} className="content-card" key={c.slug}>
-            <small>LIVE · {c.ward}</small><h3>{c.name}</h3><p>{c.office}</p>
-            <span className="text-link">View profile <ArrowRight size={14} /></span>
-          </Link>
-        ))}
-      </div>
-      <div className="leaders-section-label"><span className="eyebrow">FEDERAL MPs</span></div>
-      <div className="content-grid">
-        {hamiltonFederal.map((c) => (
-          <Link href={`/leaders/${c.slug}`} className="content-card" key={c.slug}>
-            <small>LIVE · {c.party}</small><h3>{c.name}</h3><p>{c.office} · {c.ward}</p>
-            <span className="text-link">View profile <ArrowRight size={14} /></span>
-          </Link>
-        ))}
-      </div>
-      <div className="leaders-section-label"><span className="eyebrow">PROVINCIAL MPPs</span></div>
-      <div className="content-grid">
-        {hamiltonProvincial.map((c) => (
-          <Link href={`/leaders/${c.slug}`} className="content-card" key={c.slug}>
-            <small>LIVE · {c.party}</small><h3>{c.name}</h3><p>{c.office} · {c.ward}</p>
-            <span className="text-link">View profile <ArrowRight size={14} /></span>
-          </Link>
-        ))}
-      </div>
-      <FaqSection faqs={pageFaqs.leaders ?? []} title="Hamilton leaders FAQ" description="Common questions about Hamilton elected officials." />
-    </>
-  );
+  return <LeadersDirectory />;
 }
 
 function ElectionPage() {
@@ -357,7 +345,7 @@ function ElectionPage() {
           items={[
             { href: "/leaders/andrea-horwath", title: "Mayor", description: "Citywide office — verify candidates on the official election page.", tag: "OFFICE" },
             { href: "/leaders", title: "Ward Councillor", description: "15 wards across Hamilton — know your current councillor now.", tag: "OFFICE" },
-            { href: hamiltonMeta.electionUrl, title: "School Board Trustee", description: "Public & separate boards — confirm details with the City of Hamilton.", tag: "OFFICE" },
+            { href: hamiltonMeta.electionUrl, title: "School Board Trustee", description: "Public & separate boards — confirm details with the City of Hamilton.", tag: "OFFICE", external: true },
           ]}
         />
         <div className="election-checklist" style={{ marginTop: 28 }}>
@@ -386,21 +374,52 @@ function ElectionPage() {
   );
 }
 
-function CityHubPage() {
-  const city = getDefaultCity();
+function CityHubPage({ citySlug }: { citySlug: string }) {
+  const city = getCity(citySlug);
+  if (!city) notFound();
+
+  if (city.status === "live") {
+    return (
+      <div>
+        <span className="status-chip live-chip">Live · First city worldwide</span>
+        <h2>{city.name}, {city.region}</h2>
+        <p>{city.tagline}</p>
+        <div className="content-grid" style={{ marginTop: 24 }}>
+          <Link href="/leaders" className="content-card"><small>LIVE</small><h3>Leaders</h3><p>Mayor, councillors, MPs, MPPs with official links</p></Link>
+          <Link href="/elections" className="content-card"><small>2026</small><h3>Election</h3><p>October 26, 2026 municipal & school board</p></Link>
+          <Link href="/learn/hamilton-city-council" className="content-card"><small>LEARN</small><h3>City Council</h3><p>How Hamilton municipal government works</p></Link>
+          <Link href="/kingdom-lens" className="content-card"><small>AI</small><h3>Kingdom Lens</h3><p>Ask civic questions with sources</p></Link>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div>
-      <span className="status-chip live-chip">Live · First city worldwide</span>
+    <div className="city-coming-soon">
+      <span className="status-chip">Coming soon</span>
       <h2>{city.name}, {city.region}</h2>
-      <p>{city.tagline}</p>
+      <p>{city.tagline}. Live official directories are rolling out city by city. Meanwhile, learn how government works, examine Kingdom principles, and ask Kingdom Lens about civic life in {city.name}.</p>
       <div className="content-grid" style={{ marginTop: 24 }}>
-        <Link href="/leaders" className="content-card"><small>LIVE</small><h3>Leaders</h3><p>Mayor, councillors, MPs, MPPs with official links</p></Link>
-        <Link href="/elections" className="content-card"><small>2026</small><h3>Election</h3><p>October 26, 2026 municipal & school board</p></Link>
-        <Link href="/learn/hamilton-city-council" className="content-card"><small>LEARN</small><h3>City Council</h3><p>How Hamilton municipal government works</p></Link>
-        <Link href="/kingdom-lens" className="content-card"><small>AI</small><h3>Kingdom Lens</h3><p>Ask civic questions with sources</p></Link>
+        {city.exampleQuestions?.map((q) => (
+          <Link key={q} href={`/kingdom-lens?q=${encodeURIComponent(q)}`} className="content-card">
+            <small>ASK LENS</small>
+            <h3>{q}</h3>
+            <p>Get a sourced starting answer—then verify with official records.</p>
+          </Link>
+        ))}
+        <Link href="/learn/levels-of-government" className="content-card"><small>LEARN</small><h3>Levels of government</h3><p>Map who decides what before you advocate.</p></Link>
+        <Link href="/learn/consider-running" className="content-card"><small>SERVE</small><h3>Considering running?</h3><p>A Kingdom-first discernment guide for public office.</p></Link>
+      </div>
+      <div className="stack-actions">
+        <Link href={`/kingdom-lens?q=${encodeURIComponent(`How should Christians engage civically in ${city.name}?`)}`} className="button button-navy">Ask about {city.name}</Link>
+        <Link href="/cities/hamilton-on" className="button button-ghost">See live Hamilton hub</Link>
       </div>
     </div>
   );
+}
+
+function GlossaryPage() {
+  return <GlossaryExplorer />;
 }
 
 function WhyEngagePage() {
@@ -631,7 +650,7 @@ export default async function InnerPage({ params, searchParams }: PageProps) {
   } else if (section === "issues" && slug[1]) {
     const guide = getIssueGuide(slug[1]);
     if (!guide) notFound();
-    body = <ArticleBody scripture={guide.scripture} sections={guide.sections} />;
+    body = <ArticleBody scripture={guide.scripture} sections={guide.sections} kind="issue" />;
   } else if (section === "issues") {
     body = (
       <LinkCards
@@ -643,8 +662,9 @@ export default async function InnerPage({ params, searchParams }: PageProps) {
         }))}
       />
     );
-  } else if (section === "cities" && slug[1] === "hamilton-on") body = <CityHubPage />;
+  } else if (section === "cities" && slug[1]) body = <CityHubPage citySlug={slug[1]} />;
   else if (section === "cities") notFound();
+  else if (section === "glossary") body = <GlossaryPage />;
   else if (section === "leaders") body = <LeadersPage detail={slug[1]} />;
   else if (section === "elections") body = <ElectionPage />;
   else if (section === "kingdom-lens") body = <KingdomLensPage searchParams={query} />;

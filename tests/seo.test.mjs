@@ -52,7 +52,9 @@ test("sitemap includes learn and issue article routes", async () => {
   const source = await readFile(new URL("src/lib/seo/routes.ts", root), "utf8");
   assert.match(source, /learnRoutes/);
   assert.match(source, /issueRoutes/);
-  assert.match(source, /\/cities\/hamilton-on/);
+  assert.match(source, /cityRoutes/);
+  assert.match(source, /getAllCities/);
+  assert.match(source, /\/glossary/);
 });
 
 test("learn content library has indexable articles", async () => {
@@ -115,4 +117,19 @@ test("prayer of the day and civic checklist exist", async () => {
   assert.match(checklist, /Faithful civic rhythm/i);
   const lens = await readFile(new URL("src/components/kingdom-lens-chat.tsx", root), "utf8");
   assert.match(lens, /Ask a follow-up/);
+});
+
+test("command palette glossary and leaders directory ship", async () => {
+  const cmdk = await readFile(new URL("src/components/command-palette.tsx", root), "utf8");
+  assert.match(cmdk, /CommandPalette/);
+  assert.match(cmdk, /metaKey/);
+  const glossary = await readFile(new URL("src/lib/content/glossary.ts", root), "utf8");
+  assert.match(glossary, /glossaryTerms/);
+  assert.match(glossary, /Ward/);
+  const leaders = await readFile(new URL("src/components/leaders-directory.tsx", root), "utf8");
+  assert.match(leaders, /LeadersDirectory/);
+  const learn = await readFile(new URL("src/lib/content/learn.ts", root), "utf8");
+  assert.match(learn, /us-government/);
+  const issues = await readFile(new URL("src/lib/content/issues.ts", root), "utf8");
+  assert.match(issues, /justice-mercy/);
 });

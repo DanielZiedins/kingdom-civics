@@ -130,6 +130,32 @@ export const issueGuidesContent: IssueGuide[] = [
       },
     ],
   },
+  {
+    slug: "justice-mercy",
+    title: "Criminal Justice & Mercy",
+    description:
+      "Biblical principles for evaluating policing, courts, prisons, and reform—justice without partiality, mercy without naivety.",
+    principles: ["Justice & mercy", "Human dignity", "Truth & integrity"],
+    scripture: "Micah 6:8 · Isaiah 1:17 · Proverbs 31:8–9",
+    sections: [
+      {
+        heading: "Why justice systems matter to discipleship",
+        body: "Policing, prosecution, courts, and corrections shape whether neighbours experience safety, fairness, and hope. Christians called to do justice and love mercy cannot ignore how public systems treat both victims and offenders—or how rhetoric can replace evidence.",
+      },
+      {
+        heading: "Biblical tensions held together",
+        body: "Scripture affirms restraining evil, protecting the vulnerable, truthful testimony, and limits on revenge. Mercy does not erase accountability; justice does not erase the image of God in every person. Faithful Christians may disagree on specific reforms while sharing these starting points.",
+      },
+      {
+        heading: "Questions that clarify",
+        body: "What do official crime and clearance data show? Who is harmed by the status quo? What outcomes do proposed reforms claim—and how will we measure them? Are victims heard? Are due process and equal protection real in practice?",
+      },
+      {
+        heading: "How to engage",
+        body: "Pray for officers, judges, prosecutors, defence counsel, and those in custody. Attend public safety consultations. Learn which level of government controls which lever. Use Kingdom Lens for framing—then verify with primary sources before advocating.",
+      },
+    ],
+  },
 ];
 
 export function getIssueGuide(slug: string): IssueGuide | undefined {

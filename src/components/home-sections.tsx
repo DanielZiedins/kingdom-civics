@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import {
   ArrowRight,
   Check,
@@ -384,6 +384,14 @@ export function GlobalSearch({ initialQuery = "" }: { initialQuery?: string }) {
   const [query, setQuery] = useState(initialQuery);
   const results = searchSite(query, 10);
 
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const url = new URL(window.location.href);
+    if (query.trim()) url.searchParams.set("q", query.trim());
+    else url.searchParams.delete("q");
+    window.history.replaceState({}, "", url.toString());
+  }, [query]);
+
   return (
     <div className="search-panel">
       <Search size={21} />
@@ -394,7 +402,7 @@ export function GlobalSearch({ initialQuery = "" }: { initialQuery?: string }) {
         placeholder="Search leaders, Scripture, civic topics, cities…"
         aria-label="Search"
       />
-      <kbd className="search-kbd" aria-hidden="true">⌘K opens search</kbd>
+      <kbd className="search-kbd" aria-hidden="true">⌘K</kbd>
       <div className="search-results">
         {(query ? results : searchIndex.slice(0, 8)).map((hit) => (
           <Link key={hit.href + hit.title} href={hit.href}>

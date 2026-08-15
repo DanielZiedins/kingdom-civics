@@ -217,6 +217,22 @@ const globalChunks: KnowledgeChunk[] = [
     confidence: "strong",
   },
   {
+    id: "justice-mercy",
+    scope: "global",
+    tags: ["justice", "mercy", "courts", "police", "policing", "criminal", "prison", "vulnerable", "impartial"],
+    answer:
+      "Micah 6:8 calls God's people to do justice, love mercy, and walk humbly. In public life that means supporting fair laws, impartial courts, protection of the vulnerable, and restraint against abuse of power—without equating any party platform with the Kingdom of God. Christians should examine policing, sentencing, and rehabilitation policies with both truth and compassion, verifying claims against primary sources.",
+    principles: ["Justice", "Mercy", "Human dignity"],
+    scripture: [
+      { reference: "Micah 6:8", application: "Do justice, love mercy, walk humbly with God." },
+      { reference: "Isaiah 1:17", application: "Learn to do good; seek justice; correct oppression." },
+    ],
+    sources: [{ id: "kc-justice", title: "Justice & Mercy Issue Guide", publisher: "Kingdom Civics", url: "/issues/justice-mercy", tier: 2 }],
+    uncertainties: ["Specific criminal justice reforms require local legal and empirical analysis."],
+    counterpoints: ["Justice without mercy can become harsh; mercy without justice can abandon victims."],
+    confidence: "moderate",
+  },
+  {
     id: "religious-liberty",
     scope: "global",
     tags: ["religious", "freedom", "liberty", "conscience", "worship", "church", "faith", "persecution"],

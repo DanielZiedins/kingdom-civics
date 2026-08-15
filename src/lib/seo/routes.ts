@@ -2,6 +2,7 @@ import { learnArticles } from "@/lib/content/learn";
 import { issueGuidesContent } from "@/lib/content/issues";
 import { principles } from "@/lib/data";
 import { hamiltonOfficials } from "@/lib/hamilton";
+import { getAllCities } from "@/lib/jurisdictions/registry";
 import { absoluteUrl } from "@/lib/seo/site";
 
 export type SitemapEntry = {
@@ -22,13 +23,19 @@ export const coreRoutes: SitemapEntry[] = [
   { path: "/serve", priority: 0.85, changeFrequency: "monthly" },
   { path: "/trust", priority: 0.8, changeFrequency: "monthly" },
   { path: "/biblical-principles", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/glossary", priority: 0.85, changeFrequency: "monthly" },
   { path: "/compare", priority: 0.75, changeFrequency: "weekly" },
   { path: "/search", priority: 0.6, changeFrequency: "monthly" },
   { path: "/my-civics", priority: 0.6, changeFrequency: "weekly" },
   { path: "/about", priority: 0.7, changeFrequency: "monthly" },
   { path: "/privacy", priority: 0.4, changeFrequency: "yearly" },
-  { path: "/cities/hamilton-on", priority: 0.9, changeFrequency: "weekly" },
 ];
+
+export const cityRoutes: SitemapEntry[] = getAllCities().map((city) => ({
+  path: `/cities/${city.slug}`,
+  priority: city.status === "live" ? 0.9 : 0.7,
+  changeFrequency: "weekly" as const,
+}));
 
 export const learnRoutes: SitemapEntry[] = learnArticles.map((article) => ({
   path: `/learn/${article.slug}`,
@@ -56,6 +63,7 @@ export const principleRoutes: SitemapEntry[] = principles.map((principle) => ({
 
 export const allSitemapEntries: SitemapEntry[] = [
   ...coreRoutes,
+  ...cityRoutes,
   ...leaderRoutes,
   ...principleRoutes,
   ...learnRoutes,

@@ -2,6 +2,7 @@ import { learnArticles } from "@/lib/content/learn";
 import { issueGuidesContent } from "@/lib/content/issues";
 import { principles } from "@/lib/data";
 import { hamiltonOfficials } from "@/lib/hamilton";
+import { getAllCities } from "@/lib/jurisdictions/registry";
 
 export type SearchHit = {
   title: string;
@@ -13,6 +14,7 @@ export type SearchHit = {
 export const searchIndex: SearchHit[] = [
   { title: "Home — Kingdom Civics", href: "/", keywords: "home kingdom civics global", category: "Site" },
   { title: "Why Christians engage in civic life", href: "/why-engage", keywords: "christian engage government culture jeremiah vote", category: "Engage" },
+  { title: "Civic glossary", href: "/glossary", keywords: "glossary ward bylaw riding nomination terms", category: "Learn" },
   { title: "Hamilton leaders directory", href: "/leaders", keywords: "mayor councillor mp mpp hamilton leaders", category: "Leaders" },
   { title: "Hamilton 2026 municipal election", href: "/elections", keywords: "election vote 2026 october hamilton ballot", category: "Elections" },
   { title: "Ask Kingdom Lens", href: "/kingdom-lens", keywords: "ai lens ask question scripture research", category: "AI" },
@@ -20,7 +22,6 @@ export const searchIndex: SearchHit[] = [
   { title: "Serve in public life", href: "/serve", keywords: "serve volunteer board run office", category: "Serve" },
   { title: "Trust Center methodology", href: "/trust", keywords: "trust sources methodology corrections", category: "Trust" },
   { title: "About Kingdom Civics", href: "/about", keywords: "about mission thy kingdom network", category: "About" },
-  { title: "Hamilton city hub", href: "/cities/hamilton-on", keywords: "hamilton ontario city hub live data", category: "Cities" },
   { title: "Privacy policy", href: "/privacy", keywords: "privacy data location", category: "Legal" },
   { title: "Compare candidates framework", href: "/compare", keywords: "compare candidates evidence", category: "Compare" },
   ...learnArticles.map((a) => ({
@@ -40,6 +41,12 @@ export const searchIndex: SearchHit[] = [
     href: `/biblical-principles/${p.slug}`,
     keywords: `${p.name} ${p.scripture} biblical principle`.toLowerCase(),
     category: "Principles",
+  })),
+  ...getAllCities().map((c) => ({
+    title: `${c.name}, ${c.region}`,
+    href: `/cities/${c.slug}`,
+    keywords: `${c.name} ${c.region} ${c.country} city hub`.toLowerCase(),
+    category: "Cities",
   })),
   ...hamiltonOfficials.map((o) => ({
     title: `${o.name} — ${o.office}${o.ward ? ` · ${o.ward}` : ""}`,

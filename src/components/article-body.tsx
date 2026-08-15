@@ -2,24 +2,32 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check, List } from "lucide-react";
 import { ReadingProgress } from "@/components/reading-progress";
+import { learnArticles } from "@/lib/content/learn";
+import { issueGuidesContent } from "@/lib/content/issues";
 
 const LEARN_KEY = "kingdom-civics-my-civics";
+
+function toId(heading: string) {
+  return heading.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+}
 
 export function ArticleBody({
   scripture,
   sections,
   slug,
+  kind = "learn",
 }: {
   scripture: string;
   sections: Array<{ heading: string; body: string }>;
   slug?: string;
+  kind?: "learn" | "issue" | "principle";
 }) {
   const [done, setDone] = useState(false);
 
   useEffect(() => {
-    if (!slug) return;
+    if (!slug || kind !== "learn") return;
     const t = window.setTimeout(() => {
       try {
         const raw = window.localStorage.getItem(LEARN_KEY);
@@ -30,13 +38,13 @@ export function ArticleBody({
       }
     }, 0);
     return () => window.clearTimeout(t);
-  }, [slug]);
+  }, [slug, kind]);
 
   function markComplete() {
-    if (!slug) return;
+    if (!slug || kind !== "learn") return;
     try {
       const raw = window.localStorage.getItem(LEARN_KEY);
-      const parsed = raw ? JSON.parse(raw) as { completedLearn?: string[]; city?: string; prayedForMayor?: boolean } : {};
+      const parsed = raw ? JSON.parse(raw) as { completedLearn?: string[] } : {};
       const completedLearn = [...new Set([...(parsed.completedLearn ?? []), slug])];
       window.localStorage.setItem(LEARN_KEY, JSON.stringify({ ...parsed, completedLearn }));
       setDone(true);
@@ -45,37 +53,74 @@ export function ArticleBody({
     }
   }
 
+  const relatedLearn = learnArticles.filter((a) => a.slug !== slug).slice(0, 2);
+  const relatedIssues = issueGuidesContent.slice(0, 2);
+
   return (
     <>
       <ReadingProgress />
-      <article className="article-body">
-        <div className="article-scripture">
-          <small>SCRIPTURE</small>
-          <span>{scripture}</span>
-        </div>
-        {sections.map((section) => {
-          const id = section.heading.toLowerCase().replace(/[^a-z0-9]+/g, "-");
-          return (
-            <section key={section.heading} id={id}>
+      <div className="article-layout">
+        <aside className="article-toc" aria-label="On this page">
+          <strong><List size={14} /> On this page</strong>
+          <nav>
+            {sections.map((section) => (
+              <a key={section.heading} href={`#${toId(section.heading)}`}>{section.heading}</a>
+            ))}
+          </nav>
+        </aside>
+        <article className="article-body">
+          <details className="article-toc-mobile">
+            <summary>On this page</summary>
+            <nav>
+              {sections.map((section) => (
+                <a key={section.heading} href={`#${toId(section.heading)}`}>{section.heading}</a>
+              ))}
+            </nav>
+          </details>
+          <div className="article-scripture">
+            <small>SCRIPTURE</small>
+            <span>{scripture}</span>
+          </div>
+          {sections.map((section) => (
+            <section key={section.heading} id={toId(section.heading)}>
               <h2>{section.heading}</h2>
               <p>{section.body}</p>
             </section>
-          );
-        })}
-        <div className="article-cta">
-          <Link href="/kingdom-lens" className="button button-navy">
-            Ask Kingdom Lens <ArrowRight size={15} />
-          </Link>
-          {slug && (
-            <button type="button" className="button button-ghost" onClick={markComplete} disabled={done}>
-              {done ? <><Check size={15} /> Saved to My Civics</> : "Mark lesson complete"}
-            </button>
-          )}
-          <Link href="/biblical-principles" className="text-link">
-            Explore biblical principles <ArrowRight size={14} />
-          </Link>
-        </div>
-      </article>
+          ))}
+          <div className="article-cta">
+            <Link href="/kingdom-lens" className="button button-navy">
+              Ask Kingdom Lens <ArrowRight size={15} />
+            </Link>
+            {slug && kind === "learn" && (
+              <button type="button" className="button button-ghost" onClick={markComplete} disabled={done}>
+                {done ? <><Check size={15} /> Saved to My Civics</> : "Mark lesson complete"}
+              </button>
+            )}
+            <Link href="/biblical-principles" className="text-link">
+              Explore biblical principles <ArrowRight size={14} />
+            </Link>
+          </div>
+          <div className="article-related">
+            <h3>Keep learning</h3>
+            <div className="article-related-grid">
+              {relatedLearn.map((a) => (
+                <Link key={a.slug} href={`/learn/${a.slug}`} className="content-card">
+                  <small>LEARN</small>
+                  <h4>{a.title}</h4>
+                  <p>{a.description}</p>
+                </Link>
+              ))}
+              {relatedIssues.map((g) => (
+                <Link key={g.slug} href={`/issues/${g.slug}`} className="content-card">
+                  <small>ISSUE</small>
+                  <h4>{g.title}</h4>
+                  <p>{g.description}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </article>
+      </div>
     </>
   );
 }

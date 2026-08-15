@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import { ChevronRight, Menu, Search, X } from "lucide-react";
+import { CommandPalette } from "@/components/command-palette";
 import { footerColumns, navItems } from "@/lib/data";
 
 export function Logo({ inverse = false }: { inverse?: boolean }) {
@@ -24,14 +24,9 @@ export function Logo({ inverse = false }: { inverse?: boolean }) {
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const router = useRouter();
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
-        e.preventDefault();
-        router.push("/search");
-      }
       if (e.key === "Escape") setOpen(false);
     }
     function onScroll() {
@@ -44,7 +39,7 @@ export function SiteHeader() {
       window.removeEventListener("keydown", onKey);
       window.removeEventListener("scroll", onScroll);
     };
-  }, [router]);
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -54,6 +49,7 @@ export function SiteHeader() {
   }, [open]);
 
   return (
+    <>
     <header className={`site-header ${scrolled ? "site-header-scrolled" : ""}`}>
       <div className="top-note">
         <span>Global Christian civic education · Discern leadership worldwide · Seek truth. Pray faithfully. Serve humbly.</span>
@@ -65,7 +61,14 @@ export function SiteHeader() {
           {navItems.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}
         </nav>
         <div className="nav-actions">
-          <Link href="/search" className="icon-button" aria-label="Search (⌘K)"><Search size={19} /></Link>
+          <button
+            type="button"
+            className="icon-button"
+            aria-label="Search (⌘K)"
+            onClick={() => window.dispatchEvent(new Event("kingdom-civics:open-search"))}
+          >
+            <Search size={19} />
+          </button>
           <Link href="/my-civics" className="button button-small button-ghost">My Civics</Link>
           <button className="menu-button" onClick={() => setOpen(!open)} aria-label="Toggle menu" aria-expanded={open}>
             {open ? <X /> : <Menu />}
@@ -83,6 +86,8 @@ export function SiteHeader() {
         </>
       )}
     </header>
+    <CommandPalette />
+    </>
   );
 }
 

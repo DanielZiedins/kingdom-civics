@@ -30,7 +30,7 @@ export const impactAreas = [
   { label: "Housing", icon: Home, href: "/issues/housing-homelessness" },
   { label: "Business", icon: Building2, href: "/kingdom-lens?q=How+should+Christians+think+about+business+and+economy" },
   { label: "Healthcare", icon: HeartHandshake, href: "/kingdom-lens?q=Biblical+principles+for+healthcare+policy" },
-  { label: "Justice", icon: Scale, href: "/biblical-principles/justice-mercy" },
+  { label: "Justice", icon: Scale, href: "/issues/justice-mercy" },
   { label: "Infrastructure", icon: Landmark, href: "/learn/how-government-works" },
   { label: "Religious freedom", icon: ShieldCheck, href: "/issues/religious-liberty" },
 ];
@@ -145,6 +145,7 @@ export const learnModules = [
   ["How government works — a global overview", "10 min", "Civic foundations", "/learn/how-government-works"],
   ["Levels of government", "12 min", "Jurisdictions", "/learn/levels-of-government"],
   ["Canadian government structure", "14 min", "Canada", "/learn/canadian-government"],
+  ["US government structure", "14 min", "United States", "/learn/us-government"],
   ["How to read a public budget", "15 min", "Public finance", "/learn/read-a-public-budget"],
   ["How to evaluate political claims", "12 min", "Discernment", "/learn/evaluate-political-claims"],
   ["Should Christians consider running?", "14 min", "Public service", "/learn/consider-running"],
@@ -158,6 +159,7 @@ export const issueGuides = [
   ["Education", "Family · Care for children · Responsibility", "/issues/education"],
   ["Poverty & economic life", "Justice · Work · Compassion", "/issues/poverty-economic-life"],
   ["Technology & privacy", "Human dignity · Truth · Accountability", "/issues/technology-privacy"],
+  ["Justice & mercy", "Courts · Policing · Vulnerable neighbors", "/issues/justice-mercy"],
 ] as const;
 
 export const prayerPrompts = [
@@ -171,7 +173,7 @@ export const prayerPrompts = [
 export const footerColumns = [
   {
     title: "Explore",
-    links: [["Why Engage", "/why-engage"], ["Learn", "/learn"], ["Issues", "/issues"], ["Leaders", "/leaders"], ["Elections", "/elections"]],
+    links: [["Why Engage", "/why-engage"], ["Learn", "/learn"], ["Issues", "/issues"], ["Glossary", "/glossary"], ["Leaders", "/leaders"]],
   },
   {
     title: "Practice",

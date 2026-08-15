@@ -151,6 +151,14 @@ export const pageSeo: Record<string, PageSeo> = {
     path: "/about",
     keywords: ["about Kingdom Civics", "Thy Kingdom Network"],
   },
+  glossary: {
+    eyebrow: "PLAIN LANGUAGE",
+    title: "Civic Glossary — Terms Every Christian Should Know",
+    description:
+      "Ward, bylaw, riding, nomination, jurisdiction, and more—explained clearly for faithful civic engagement.",
+    path: "/glossary",
+    keywords: ["civic glossary", "what is a ward", "bylaw definition", "Christian civic terms"],
+  },
   admin: {
     eyebrow: "RESEARCH OPERATIONS",
     title: "Verification Workspace",

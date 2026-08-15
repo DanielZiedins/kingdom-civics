@@ -55,15 +55,26 @@ Toronto, Ottawa, Calgary, Vancouver, Nashville, Dallas, London (UK)
 ## Learn articles (indexable)
 
 - /learn/how-government-works — How government works (local, provincial, federal)
+- /learn/levels-of-government — Levels of government and who decides what
 - /learn/hamilton-city-council — Hamilton City Council structure and roles
 - /learn/canadian-government — Canadian federal and provincial government
+- /learn/us-government — US federal government structure for Christians
 - /learn/evaluate-political-claims — How to evaluate political claims biblically
+- /learn/read-a-public-budget — How to read a public budget
+- /learn/consider-running — Should Christians consider running for office
 
 ## Issue guides (indexable)
 
 - /issues/housing-homelessness — Housing and homelessness from a Christian perspective
 - /issues/religious-liberty — Religious liberty and conscience rights
 - /issues/education — Education policy and parental responsibility
+- /issues/poverty-economic-life — Poverty and economic life
+- /issues/technology-privacy — Technology and privacy
+- /issues/justice-mercy — Justice and mercy in public life
+
+## Glossary
+
+- /glossary — Plain-language civic terms (ward, bylaw, riding, nomination, jurisdiction)
 
 ## Biblical principles framework
 
@@ -122,14 +133,14 @@ Shareable links: https://www.kingdomcivics.org/kingdom-lens?q=Your+encoded+quest
 See sitemap: https://www.kingdomcivics.org/sitemap.xml
 
 Core routes:
-/, /why-engage, /learn, /issues, /leaders, /elections, /kingdom-lens, /pray, /serve, /trust, /biblical-principles, /compare, /search, /my-civics, /about, /privacy
+/, /why-engage, /learn, /issues, /glossary, /leaders, /elections, /kingdom-lens, /pray, /serve, /trust, /biblical-principles, /compare, /search, /my-civics, /about, /privacy
 
 Dynamic routes:
 - /leaders/{slug} — Leader profiles with Person schema
 - /biblical-principles/{slug} — Principle deep-dives
 - /learn/{slug} — Civic education articles
 - /issues/{slug} — Christian issue guides
-- /cities/hamilton-on — Hamilton city hub with live data
+- /cities/{slug} — City hubs (Hamilton live; others coming soon)
 
 ## Structured data (JSON-LD)
 

@@ -4,7 +4,7 @@
 
 Kingdom Civics helps Christians worldwide understand government, discern leadership, pray faithfully, and serve humbly—without partisan endorsements.
 
-Last updated: 2026-08-08
+Last updated: 2026-08-12
 
 ## Canonical site
 
@@ -14,8 +14,9 @@ Last updated: 2026-08-08
 
 - [Home](https://www.kingdomcivics.org/): Global Christian civic education hub
 - [Why Engage](https://www.kingdomcivics.org/why-engage): Biblical case for Christian civic engagement
-- [Learn](https://www.kingdomcivics.org/learn): Civic education lessons (government, Canada, Hamilton)
-- [Issues](https://www.kingdomcivics.org/issues): Christian issue guides (housing, religious liberty, education)
+- [Learn](https://www.kingdomcivics.org/learn): Civic education lessons (government, Canada, US, Hamilton)
+- [Issues](https://www.kingdomcivics.org/issues): Christian issue guides (housing, justice, religious liberty, education)
+- [Civic Glossary](https://www.kingdomcivics.org/glossary): Plain-language civic terms (ward, bylaw, riding, nomination)
 - [Hamilton Leaders](https://www.kingdomcivics.org/leaders): Mayor, councillors, MPs, MPPs with official links
 - [Hamilton City Hub](https://www.kingdomcivics.org/cities/hamilton-on): Live Hamilton civic data
 - [Hamilton Elections](https://www.kingdomcivics.org/elections): October 26, 2026 municipal election
@@ -33,6 +34,7 @@ Last updated: 2026-08-08
 - /learn/levels-of-government
 - /learn/hamilton-city-council
 - /learn/canadian-government
+- /learn/us-government
 - /learn/evaluate-political-claims
 - /learn/read-a-public-budget
 - /learn/consider-running
@@ -44,6 +46,7 @@ Last updated: 2026-08-08
 - /issues/education
 - /issues/poverty-economic-life
 - /issues/technology-privacy
+- /issues/justice-mercy
 
 ## Key facts (Hamilton, Ontario — first live city)
 

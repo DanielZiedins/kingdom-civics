@@ -206,6 +206,33 @@ export const learnArticles: LearnArticle[] = [
       },
     ],
   },
+  {
+    slug: "us-government",
+    title: "U.S. Government — A Christian’s Map",
+    description:
+      "A plain-language guide to local, state, and federal government in the United States—so prayer and advocacy land in the right place.",
+    duration: "14 min",
+    category: "United States",
+    scripture: "Romans 13:1–7 · Matthew 22:21",
+    sections: [
+      {
+        heading: "Three layers (and many variations)",
+        body: "The United States divides power among local (city/county), state (governor and legislature), and federal (President and Congress) levels. Exact structures vary by state—some cities have strong mayors; others use council-manager systems. Faithful engagement begins by mapping who decides what where you live.",
+      },
+      {
+        heading: "Federal basics",
+        body: "Congress writes federal law; the President executes and shapes administration; courts interpret. Immigration, national defense, interstate commerce, and many civil rights frameworks sit primarily at the federal level. National media often overstates how much of daily life Congress controls.",
+      },
+      {
+        heading: "State and local power",
+        body: "States typically run education frameworks, much of criminal law, professional licensing, and major infrastructure. Cities and counties handle zoning, local policing partnerships, property taxes, and neighbourhood services. School boards often deserve as much attention as presidential races.",
+      },
+      {
+        heading: "Kingdom posture in a polarized republic",
+        body: "Christians in the US should refuse to baptize a party. Use biblical principles—truth, dignity, justice, servant leadership, conscience, stewardship—then examine evidence. Ask Kingdom Lens to clarify an office; verify with official sources; pray for leaders you did not vote for.",
+      },
+    ],
+  },
 ];
 
 export function getLearnArticle(slug: string): LearnArticle | undefined {

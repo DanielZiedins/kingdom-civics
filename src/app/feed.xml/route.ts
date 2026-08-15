@@ -45,6 +45,7 @@ export function GET() {
       <description>${escapeXml(item.description)}</description>
       <guid isPermaLink="true">${absoluteUrl(item.path)}</guid>
       <category>${escapeXml(item.category)}</category>
+      <pubDate>${new Date().toUTCString()}</pubDate>
     </item>`,
       )
       .join("")}

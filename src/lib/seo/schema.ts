@@ -213,10 +213,14 @@ export function articleSchema({
   title,
   description,
   path,
+  datePublished = "2026-08-08",
+  dateModified = "2026-08-15",
 }: {
   title: string;
   description: string;
   path: string;
+  datePublished?: string;
+  dateModified?: string;
 }): JsonLd {
   return {
     "@context": "https://schema.org",
@@ -224,6 +228,8 @@ export function articleSchema({
     headline: title,
     description,
     url: absoluteUrl(path),
+    datePublished,
+    dateModified,
     author: { "@type": "Person", name: CREATOR.name, url: CREATOR.url },
     publisher: { "@id": `${SITE_URL}/#organization` },
     about: principles.map((principle) => principle.name),
@@ -248,10 +254,14 @@ export function learningResourceSchema({
   title,
   description,
   path,
+  datePublished = "2026-08-08",
+  dateModified = "2026-08-15",
 }: {
   title: string;
   description: string;
   path: string;
+  datePublished?: string;
+  dateModified?: string;
 }): JsonLd {
   return {
     "@context": "https://schema.org",
@@ -259,6 +269,8 @@ export function learningResourceSchema({
     name: title,
     description,
     url: absoluteUrl(path),
+    datePublished,
+    dateModified,
     learningResourceType: "Lesson",
     educationalLevel: "Beginner",
     inLanguage: "en-CA",
