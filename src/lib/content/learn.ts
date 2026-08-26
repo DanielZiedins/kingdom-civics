@@ -264,6 +264,87 @@ export const learnArticles: LearnArticle[] = [
       },
     ],
   },
+  {
+    slug: "contact-your-representative",
+    title: "How to Contact Your Representative",
+    description:
+      "A practical, respectful guide to writing or calling an MP, councillor, or representative—truthful, brief, and free of contempt.",
+    duration: "8 min",
+    category: "Practice",
+    scripture: "Colossians 4:6 · Proverbs 15:1",
+    sections: [
+      {
+        heading: "Why contact matters",
+        body: "Elected offices receive far more silence than mail. A clear, sourced, courteous message is neighbour-love and civic stewardship. Rage emails and copied outrage templates are easy to ignore. Specific, local, honest notes are harder to dismiss.",
+      },
+      {
+        heading: "Find the right office first",
+        body: "A city councillor cannot change federal immigration law. A member of Parliament does not set your local zoning. Use official lookup tools, then name the office that actually controls the issue. Kingdom Civics lists those tools at /find-representatives.",
+      },
+      {
+        heading: "A simple structure",
+        body: "Who you are and where you live. The specific decision or bill. What you are asking (support, oppose, clarify, meet). One or two facts from primary sources. A sentence of respect for the difficulty of the office. Thank them. Keep it under a page.",
+      },
+      {
+        heading: "Tone is discipleship",
+        body: "Let your speech be gracious, seasoned with salt (Colossians 4:6). Do not threaten, mock, or claim God voted your way. You can be firm about justice without treating an official as an enemy. If you cannot write without contempt, pray first and send later.",
+      },
+    ],
+  },
+  {
+    slug: "attend-a-council-meeting",
+    title: "How to Attend a Council Meeting",
+    description:
+      "What to expect at city hall: agendas, delegations, public comment, and how Christians can show up without performing for a camera.",
+    duration: "9 min",
+    category: "Practice",
+    scripture: "Proverbs 11:14 · James 1:19",
+    sections: [
+      {
+        heading: "Why the room matters",
+        body: "Most civic outcomes are shaped in ordinary meetings—not viral debates. Zoning, budgets, transit, and shelter policy are decided by people sitting at a table you can usually watch. Showing up is how you learn who actually holds the gavel.",
+      },
+      {
+        heading: "Before you go",
+        body: "Read the agenda on the official city site. Note the item you care about and which committee or council is hearing it. Check delegation or public-comment deadlines. Dress like a neighbour, not a mascot. Bring a notebook. Silence your phone.",
+      },
+      {
+        heading: "While you are there",
+        body: "Listen more than you speak. Notice procedure, staff reports, and who asks clarifying questions. If you delegate, stay inside your time, stick to the item, cite sources, and address the chair. Do not heckle. Faithfulness in the room is often quieter than activism online.",
+      },
+      {
+        heading: "After you leave",
+        body: "Pray for the officials you just watched. Follow the vote in the minutes. Share what you learned with your small group—without turning neighbours into villains. Then decide a next step: write, volunteer, or return next month.",
+      },
+    ],
+  },
+  {
+    slug: "vote-with-conscience",
+    title: "How to Vote with a Clear Conscience",
+    description:
+      "A Kingdom-first voting guide: principles, evidence, prayer, and honesty about disagreement—without candidate scorecards or party baptisms.",
+    duration: "11 min",
+    category: "Discernment",
+    scripture: "James 1:5 · Romans 14:5 · Micah 6:8",
+    sections: [
+      {
+        heading: "Voting is stewardship, not salvation",
+        body: "A ballot is one act of neighbour-love in a fallen world. It is not a sacrament. It does not prove you belong to Christ. Refusing to treat elections as cosmic good-versus-evil is part of keeping the Kingdom first.",
+      },
+      {
+        heading: "Start with principles, then evidence",
+        body: "Name the biblical starting points you will not abandon—truth, dignity, justice, mercy, servant leadership, conscience, stewardship. Then examine platforms, voting records, and primary sources. Do not reverse the order: personality first produces tribes; principles first can survive disagreement.",
+      },
+      {
+        heading: "Prudential judgment is allowed",
+        body: "Faithful Christians may weigh the same facts and mark different ballots (Romans 14:5). That is not apostasy. It is an honest admission that many policies are disputed applications, not gospel articles. Leave room in the church for that humility.",
+      },
+      {
+        heading: "A pre-ballot checklist",
+        body: "Have I prayed for wisdom? Do I know which offices are on this ballot? Have I read something besides my favourite feed? Can I explain my choice without contempt? Will I pray for whoever wins? If any answer is no, slow down.",
+      },
+    ],
+  },
 ];
 
 export function getLearnArticle(slug: string): LearnArticle | undefined {

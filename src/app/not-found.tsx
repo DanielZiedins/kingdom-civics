@@ -3,8 +3,8 @@ import { ArrowRight, BookOpen, Compass, MapPin, Search } from "lucide-react";
 import { SiteFooter, SiteHeader } from "@/components/site-shell";
 
 const quickLinks = [
-  { href: "/kingdom-lens", label: "Kingdom Lens", icon: Compass, description: "Ask a civic question with cited sources" },
-  { href: "/for-churches", label: "For churches", icon: BookOpen, description: "Four-week civic discipleship kit" },
+  { href: "/start", label: "Start here", icon: Compass, description: "Five-step civic discipleship path" },
+  { href: "/scripture", label: "Scripture", icon: BookOpen, description: "Bible verses about government" },
   { href: "/find-representatives", label: "Find representatives", icon: MapPin, description: "Official lookup tools worldwide" },
   { href: "/search", label: "Search", icon: Search, description: "Find pages across Kingdom Civics" },
 ];

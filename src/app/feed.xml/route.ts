@@ -44,6 +44,18 @@ export function GET() {
       path: "/find-representatives",
       category: "Leaders",
     },
+    {
+      title: "Start here — Christian civic discipleship",
+      description: "A five-step path: learn, find representatives, pray, discern, and serve.",
+      path: "/start",
+      category: "Start",
+    },
+    {
+      title: "Bible verses about government and public life",
+      description: "Jeremiah 29:7, 1 Timothy 2, Micah 6:8, Romans 13, and more—for civic discipleship.",
+      path: "/scripture",
+      category: "Scripture",
+    },
   ];
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>

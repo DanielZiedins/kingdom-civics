@@ -268,11 +268,11 @@ export function DiscernLeadersSection() {
 
 export function StatsStrip() {
   const stats = [
-    ["9+", "Civic lessons"],
-    ["6", "Issue guides"],
-    ["24", "Glossary terms"],
-    ["1", "Live city · Hamilton"],
-    ["∞", "Nations via Kingdom Lens"],
+    ["12", "Civic lessons"],
+    ["10", "Issue guides"],
+    ["16", "Scripture entries"],
+    ["29", "Glossary terms"],
+    ["∞", "Nations via Lens"],
   ];
   return (
     <section className="stats-strip" aria-label="Kingdom Civics at a glance">

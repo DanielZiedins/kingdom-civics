@@ -26,6 +26,8 @@ export const coreRoutes: SitemapEntry[] = [
   { path: "/glossary", priority: 0.85, changeFrequency: "monthly" },
   { path: "/for-churches", priority: 0.9, changeFrequency: "monthly" },
   { path: "/find-representatives", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/scripture", priority: 0.92, changeFrequency: "monthly" },
+  { path: "/start", priority: 0.95, changeFrequency: "monthly" },
   { path: "/compare", priority: 0.75, changeFrequency: "weekly" },
   { path: "/search", priority: 0.6, changeFrequency: "monthly" },
   { path: "/my-civics", priority: 0.6, changeFrequency: "weekly" },

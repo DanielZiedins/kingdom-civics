@@ -53,8 +53,19 @@ export function ArticleBody({
     }
   }
 
-  const relatedLearn = learnArticles.filter((a) => a.slug !== slug).slice(0, 2);
-  const relatedIssues = issueGuidesContent.slice(0, 2);
+  const othersLearn = learnArticles.filter((a) => a.slug !== slug);
+  const othersIssues = issueGuidesContent.filter((g) => g.slug !== slug);
+  const seed = slug ? slug.split("").reduce((n, ch) => n + ch.charCodeAt(0), 0) : 0;
+  const relatedLearn = othersLearn.length
+    ? [othersLearn[seed % othersLearn.length], othersLearn[(seed + 3) % othersLearn.length]].filter(
+        (item, i, arr) => arr.findIndex((x) => x.slug === item.slug) === i,
+      ).slice(0, 2)
+    : [];
+  const relatedIssues = othersIssues.length
+    ? [othersIssues[seed % othersIssues.length], othersIssues[(seed + 2) % othersIssues.length]].filter(
+        (item, i, arr) => arr.findIndex((x) => x.slug === item.slug) === i,
+      ).slice(0, 2)
+    : [];
 
   return (
     <>

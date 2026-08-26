@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Geist } from "next/font/google";
+import { BackToTop } from "@/components/back-to-top";
 import { JsonLd } from "@/components/seo/json-ld";
 import { rootMetadata } from "@/lib/seo/metadata";
 import { organizationSchema, websiteSchema } from "@/lib/seo/schema";
@@ -47,6 +48,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <a href="#main-content" className="skip-link">Skip to content</a>
         <JsonLd data={[organizationSchema(), websiteSchema()]} />
         {children}
+        <BackToTop />
       </body>
     </html>
   );

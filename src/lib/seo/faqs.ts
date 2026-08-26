@@ -65,6 +65,12 @@ export const globalFaqs: FaqItem[] = [
       "Use official lookup tools: Elections Canada and ourcommons.ca in Canada, house.gov and senate.gov in the US, members.parliament.uk in the UK. Kingdom Civics lists these tools at /find-representatives and provides live Hamilton, Ontario officials. Never rely on unofficial social media lists.",
     keywords: ["find my MP", "who is my representative", "find my councillor"],
   },
+  {
+    question: "What does the Bible say about government and voting?",
+    answer:
+      "Key passages include Jeremiah 29:7, 1 Timothy 2:1–2, Micah 6:8, Romans 13, Matthew 22:21, and Acts 5:29. The Bible does not baptize a modern party. Voting is stewardship, not salvation. Explore the index at /scripture and the conscience guide at /learn/vote-with-conscience.",
+    keywords: ["bible verses about government", "bible and voting", "scripture politics"],
+  },
 ];
 
 export const pageFaqs: Record<string, FaqItem[]> = {
@@ -186,6 +192,30 @@ export const pageFaqs: Record<string, FaqItem[]> = {
       question: "How do I find my US Representative?",
       answer:
         "Use house.gov/representatives/find-your-representative for the House and senate.gov for Senators. USA.gov also links to state and local official directories.",
+    },
+  ],
+  scripture: [
+    {
+      question: "What does the Bible say about government?",
+      answer:
+        "Scripture calls believers to seek the city's welfare (Jeremiah 29:7), pray for those in authority (1 Timothy 2:1–2), do justice and love mercy (Micah 6:8), honour governing authorities within limits (Romans 13), and obey God when human law conflicts with divine command (Acts 5:29). See /scripture.",
+    },
+    {
+      question: "Are there Bible verses about voting?",
+      answer:
+        "The Bible does not describe modern ballots, but it does command wisdom, justice, truth-telling, and love of neighbour—which apply to voting. Kingdom Civics treats voting as stewardship, not salvation. See /learn/vote-with-conscience.",
+    },
+  ],
+  start: [
+    {
+      question: "I'm new. Where should a Christian start with civic life?",
+      answer:
+        "Learn how government works, find who represents you with official tools, pray for those names, ask Kingdom Lens one question, then show up at a meeting or serve locally. The five-step path is at /start.",
+    },
+    {
+      question: "Do I have to run for office to be faithful?",
+      answer:
+        "No. Some are called to elected office as stewardship. All are called to prayer, truth-telling, and neighbour-love. Running is one path among many—see /learn/consider-running and /serve.",
     },
   ],
 };

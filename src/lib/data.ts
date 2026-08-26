@@ -25,13 +25,13 @@ export const navItems = [
 ] as const;
 
 export const impactAreas = [
-  { label: "Family", icon: Users, href: "/kingdom-lens?q=How+should+Christians+think+about+family+policy" },
+  { label: "Family", icon: Users, href: "/issues/family-children" },
   { label: "Education", icon: GraduationCap, href: "/issues/education" },
   { label: "Housing", icon: Home, href: "/issues/housing-homelessness" },
-  { label: "Business", icon: Building2, href: "/kingdom-lens?q=How+should+Christians+think+about+business+and+economy" },
-  { label: "Healthcare", icon: HeartHandshake, href: "/kingdom-lens?q=Biblical+principles+for+healthcare+policy" },
+  { label: "Business", icon: Building2, href: "/issues/poverty-economic-life" },
+  { label: "Healthcare", icon: HeartHandshake, href: "/issues/healthcare" },
   { label: "Justice", icon: Scale, href: "/issues/justice-mercy" },
-  { label: "Infrastructure", icon: Landmark, href: "/learn/how-government-works" },
+  { label: "Infrastructure", icon: Landmark, href: "/issues/creation-stewardship" },
   { label: "Religious freedom", icon: ShieldCheck, href: "/issues/religious-liberty" },
 ];
 
@@ -150,6 +150,9 @@ export const learnModules = [
   ["How to evaluate political claims", "12 min", "Discernment", "/learn/evaluate-political-claims"],
   ["Should Christians consider running?", "14 min", "Public service", "/learn/consider-running"],
   ["Talking politics in church", "12 min", "Church & culture", "/learn/talk-politics-in-church"],
+  ["How to contact your representative", "8 min", "Practice", "/learn/contact-your-representative"],
+  ["How to attend a council meeting", "9 min", "Practice", "/learn/attend-a-council-meeting"],
+  ["How to vote with a clear conscience", "11 min", "Discernment", "/learn/vote-with-conscience"],
   ["How Hamilton City Council works", "10 min", "Live city · Hamilton", "/learn/hamilton-city-council"],
   ["Why Christians engage in civic life", "9 min", "Biblical framework", "/why-engage"],
 ] as const;
@@ -161,6 +164,10 @@ export const issueGuides = [
   ["Poverty & economic life", "Justice · Work · Compassion", "/issues/poverty-economic-life"],
   ["Technology & privacy", "Human dignity · Truth · Accountability", "/issues/technology-privacy"],
   ["Justice & mercy", "Courts · Policing · Vulnerable neighbors", "/issues/justice-mercy"],
+  ["Family & children", "Household · Dignity · Responsibility", "/issues/family-children"],
+  ["Immigration & the stranger", "Welcome · Justice · Rule of law", "/issues/immigration-stranger"],
+  ["Creation & stewardship", "Land · Water · Future neighbours", "/issues/creation-stewardship"],
+  ["Healthcare", "Dignity · Mercy · Stewardship of bodies", "/issues/healthcare"],
 ] as const;
 
 export const prayerPrompts = [
@@ -169,16 +176,19 @@ export const prayerPrompts = [
   ["Humility", "Guard leaders from pride and form in them a posture of service.", "Micah 6:8"],
   ["Peace", "Grant quiet and peaceful lives marked by godliness and dignity.", "1 Timothy 2:1–2"],
   ["Your city", "Pray for the mayor, councillors, and representatives serving where God has placed you.", "Jeremiah 29:7"],
+  ["Truth", "Guard public speech from lies, slander, and viral falsehoods. Let leaders and citizens love the truth.", "Ephesians 4:25"],
+  ["The vulnerable", "Give those in authority courage to defend the poor, the stranger, the widow, and the child.", "Proverbs 31:8–9"],
+  ["Unity", "Keep the church from splitting over prudential ballots. Teach us to disagree without contempt.", "Ephesians 4:3"],
 ];
 
 export const footerColumns = [
   {
     title: "Explore",
-    links: [["Why Engage", "/why-engage"], ["Learn", "/learn"], ["Issues", "/issues"], ["Glossary", "/glossary"], ["For Churches", "/for-churches"]],
+    links: [["Why Engage", "/why-engage"], ["Learn", "/learn"], ["Scripture", "/scripture"], ["Glossary", "/glossary"], ["For Churches", "/for-churches"]],
   },
   {
     title: "Practice",
-    links: [["Kingdom Lens", "/kingdom-lens"], ["Pray", "/pray"], ["Serve", "/serve"], ["Find representatives", "/find-representatives"], ["My Civics", "/my-civics"]],
+    links: [["Start here", "/start"], ["Kingdom Lens", "/kingdom-lens"], ["Pray", "/pray"], ["Serve", "/serve"], ["Find representatives", "/find-representatives"]],
   },
   {
     title: "Trust",

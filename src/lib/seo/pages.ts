@@ -187,6 +187,32 @@ export const pageSeo: Record<string, PageSeo> = {
       "who represents me in government",
     ],
   },
+  scripture: {
+    eyebrow: "THE WORD BEFORE THE FEED",
+    title: "Bible Verses about Government, Voting & Public Life",
+    description:
+      "Jeremiah 29:7, 1 Timothy 2, Micah 6:8, Romans 13, and more—explained for Christian civic discipleship without partisan proof-texting.",
+    path: "/scripture",
+    keywords: [
+      "bible verses about government",
+      "scripture on politics",
+      "jeremiah 29:7 meaning civic",
+      "what does the bible say about voting",
+      "pray for leaders scripture",
+    ],
+  },
+  start: {
+    eyebrow: "BEGIN HERE",
+    title: "Start Here — Christian Civic Discipleship in Five Steps",
+    description:
+      "Learn how government works, find who represents you, pray by name, discern with Kingdom Lens, and serve—or consider running—with humility.",
+    path: "/start",
+    keywords: [
+      "how to start civic engagement Christian",
+      "Christian citizenship for beginners",
+      "civic discipleship steps",
+    ],
+  },
   admin: {
     eyebrow: "RESEARCH OPERATIONS",
     title: "Verification Workspace",

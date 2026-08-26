@@ -8,6 +8,8 @@ import { CiteThis } from "@/components/cite-this";
 import { CivicChecklist } from "@/components/civic-checklist";
 import { ElectionCountdown } from "@/components/election-countdown";
 import { FindRepresentatives } from "@/components/find-representatives";
+import { ScriptureIndex } from "@/components/scripture-index";
+import { StartHere } from "@/components/start-here";
 import { ComparisonPreview, GlobalSearch, PrincipleCards } from "@/components/home-sections";
 import { KingdomLensPage } from "@/components/kingdom-lens-page";
 import { MyCivicsDashboard } from "@/components/my-civics-dashboard";
@@ -21,6 +23,8 @@ import { SiteFooter, SiteHeader } from "@/components/site-shell";
 import { glossaryTerms } from "@/lib/content/glossary";
 import { getIssueGuide, issueGuidesContent } from "@/lib/content/issues";
 import { getLearnArticle, learnArticles } from "@/lib/content/learn";
+import { civicScriptures } from "@/lib/content/scripture";
+import { startSteps } from "@/lib/content/start";
 import { engagementScriptures, whyEngageReasons } from "@/lib/engagement";
 import { allHamiltonLeaders, hamiltonMeta, prayerPrompts, principles } from "@/lib/data";
 import { getPrayerOfTheDay } from "@/lib/prayer-day";
@@ -61,6 +65,8 @@ export async function generateStaticParams() {
     { slug: ["glossary"] },
     { slug: ["for-churches"] },
     { slug: ["find-representatives"] },
+    { slug: ["scripture"] },
+    { slug: ["start"] },
   ];
 }
 
@@ -255,6 +261,32 @@ function pageStructuredData(section: string, slug: string[], copy: { title: stri
         ],
       }),
       faqPageSchema(pageFaqs["find-representatives"] ?? []),
+    ];
+  }
+  if (section === "scripture") {
+    return [
+      base,
+      itemListSchema({
+        name: "Bible verses about government and civic life",
+        items: civicScriptures.map((item) => ({
+          name: item.ref,
+          url: absoluteUrl(`/scripture#${item.ref.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`),
+          description: item.application,
+        })),
+      }),
+      faqPageSchema(pageFaqs.scripture ?? []),
+    ];
+  }
+  if (section === "start") {
+    return [
+      base,
+      howToSchema({
+        name: "How to start Christian civic discipleship",
+        description: "A five-step path: learn government, find representatives, pray, discern, and serve.",
+        path: "/start",
+        steps: startSteps.map((s) => `${s.title}: ${s.body}`),
+      }),
+      faqPageSchema(pageFaqs.start ?? []),
     ];
   }
   if (section === "issues" && slug[1]) {
@@ -773,6 +805,8 @@ export default async function InnerPage({ params, searchParams }: PageProps) {
   else if (section === "glossary") body = <GlossaryPage />;
   else if (section === "for-churches") body = <ChurchKit />;
   else if (section === "find-representatives") body = <FindRepresentatives />;
+  else if (section === "scripture") body = <ScriptureIndex />;
+  else if (section === "start") body = <StartHere />;
   else if (section === "leaders") body = <LeadersPage detail={slug[1]} />;
   else if (section === "elections") body = <ElectionPage />;
   else if (section === "kingdom-lens") body = <KingdomLensPage searchParams={query} />;

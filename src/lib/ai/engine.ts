@@ -313,6 +313,58 @@ const globalChunks: KnowledgeChunk[] = [
     counterpoints: [],
     confidence: "strong",
   },
+  {
+    id: "vote-conscience",
+    scope: "global",
+    tags: ["vote", "ballot", "conscience", "how should christians vote", "voting guide"],
+    answer:
+      "Voting is stewardship, not salvation. Start with biblical principles (truth, dignity, justice, mercy, servant leadership, conscience, stewardship), then examine evidence from primary sources. Faithful Christians may mark different ballots (Romans 14:5). Pray for wisdom, know which offices are on the ballot, and pray for whoever wins. See /learn/vote-with-conscience.",
+    principles: ["Wisdom", "Humility", "Kingdom first"],
+    scripture: [{ reference: "James 1:5", application: "If any lacks wisdom, let him ask God." }],
+    sources: [{ id: "kc-vote", title: "Vote with a Clear Conscience", publisher: "Kingdom Civics", url: "/learn/vote-with-conscience", tier: 2 }],
+    uncertainties: ["Specific ballots require local official information."],
+    counterpoints: ["Non-voting can also be a conscientious act; it is not the only faithful option, nor automatically more holy."],
+    confidence: "moderate",
+  },
+  {
+    id: "contact-rep",
+    scope: "global",
+    tags: ["contact", "write", "email", "call", "letter", "mp", "councillor", "representative"],
+    answer:
+      "Contact the office that actually controls the issue. Be brief, local, sourced, and respectful. Name who you are, what you ask, and one or two facts from primary sources. Contemptuous templates are easy to ignore. See /learn/contact-your-representative and /find-representatives.",
+    principles: ["Truth", "Neighbor love", "Humility"],
+    scripture: [{ reference: "Colossians 4:6", application: "Let your speech be gracious, seasoned with salt." }],
+    sources: [{ id: "kc-contact", title: "How to Contact Your Representative", publisher: "Kingdom Civics", url: "/learn/contact-your-representative", tier: 2 }],
+    uncertainties: ["Contact methods and staff capacity vary by office."],
+    counterpoints: [],
+    confidence: "strong",
+  },
+  {
+    id: "immigration",
+    scope: "global",
+    tags: ["immigration", "immigrant", "refugee", "stranger", "border", "migrant", "sojourner"],
+    answer:
+      "Scripture commands love for the stranger (Leviticus 19:33–34) and treats governing authorities as servants who restrain disorder (Romans 13). Christians err when they keep only one note. Treat persons as image-bearers, ask which level of government controls the lever, and verify claims with official data—not viral clips. See /issues/immigration-stranger.",
+    principles: ["Human dignity", "Justice", "Mercy"],
+    scripture: [{ reference: "Leviticus 19:34", application: "Love the stranger as yourself; you were strangers in Egypt." }],
+    sources: [{ id: "kc-imm", title: "Immigration & the Stranger", publisher: "Kingdom Civics", url: "/issues/immigration-stranger", tier: 2 }],
+    uncertainties: ["National legal frameworks differ widely; always verify with official immigration authorities."],
+    counterpoints: ["Compassion without law can harm the vulnerable; law without compassion can crush the stranger."],
+    confidence: "moderate",
+  },
+  {
+    id: "healthcare",
+    scope: "global",
+    tags: ["health", "healthcare", "hospital", "medicine", "sick", "doctor", "medicare"],
+    answer:
+      "Healthcare is civic discipleship because bodies matter. Evaluate policy by human dignity, care for the poor and elderly, conscience protections, and honest data—not party mascots. Learn which level of government funds or regulates the issue. See /issues/healthcare.",
+    principles: ["Human dignity", "Mercy", "Stewardship"],
+    scripture: [{ reference: "Matthew 25:36", application: "I was sick and you visited me." }],
+    sources: [{ id: "kc-health", title: "Healthcare & Human Dignity", publisher: "Kingdom Civics", url: "/issues/healthcare", tier: 2 }],
+    uncertainties: ["Health systems and funding models vary by country."],
+    counterpoints: ["Faithful Christians may disagree on funding mechanisms while sharing concern for the sick."],
+    confidence: "moderate",
+  },
 ];
 
 const hamiltonChunks: KnowledgeChunk[] = [

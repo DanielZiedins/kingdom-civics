@@ -29,6 +29,11 @@ export const glossaryTerms: GlossaryTerm[] = [
   { term: "Separation of powers", definition: "A constitutional design dividing authority among legislative, executive, and judicial branches to limit concentrated power.", related: "/learn/us-government" },
   { term: "Counter-evidence", definition: "Facts or sources that complicate a preferred conclusion. Kingdom Lens surfaces counterpoints so discernment stays honest.", related: "/kingdom-lens" },
   { term: "Vote of confidence / non-confidence", definition: "In parliamentary systems, a vote testing whether the government retains the legislature’s support—can trigger resignation or election.", related: "/learn/canadian-government" },
+  { term: "Delegation / public comment", definition: "A timed opportunity for a resident to speak to council or a committee on an agenda item. Rules and deadlines are set by the clerk—not by social media.", related: "/learn/attend-a-council-meeting" },
+  { term: "Official plan", definition: "A municipal document setting long-range land use and growth policy. Zoning bylaws implement it in more detail.", related: "/issues/creation-stewardship" },
+  { term: "School board", definition: "An elected (or sometimes appointed) body governing public or separate schools—often as locally consequential as city council.", related: "/issues/education" },
+  { term: "Conscience vote", definition: "A vote where a legislator is not bound by party discipline. Rare in some systems; common language in moral debates.", related: "/learn/vote-with-conscience" },
+  { term: "Primary residence / eligible elector", definition: "Legal tests for who may vote or run in a local election. Always confirm with the official election authority.", related: "/elections" },
 ];
 
 export function getGlossaryTerm(slug: string): GlossaryTerm | undefined {

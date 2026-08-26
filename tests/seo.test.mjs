@@ -157,3 +157,23 @@ test("church kit find-representatives and AEO surfaces exist", async () => {
   const talk = await readFile(new URL("src/lib/content/learn.ts", root), "utf8");
   assert.match(talk, /talk-politics-in-church/);
 });
+
+test("start path scripture index and new civic content ship", async () => {
+  const routes = await readFile(new URL("src/lib/seo/routes.ts", root), "utf8");
+  assert.match(routes, /\/start/);
+  assert.match(routes, /\/scripture/);
+  const start = await readFile(new URL("src/lib/content/start.ts", root), "utf8");
+  assert.match(start, /startSteps/);
+  const scripture = await readFile(new URL("src/lib/content/scripture.ts", root), "utf8");
+  assert.match(scripture, /Jeremiah 29:7/);
+  const learn = await readFile(new URL("src/lib/content/learn.ts", root), "utf8");
+  assert.match(learn, /vote-with-conscience/);
+  assert.match(learn, /contact-your-representative/);
+  const issues = await readFile(new URL("src/lib/content/issues.ts", root), "utf8");
+  assert.match(issues, /immigration-stranger/);
+  assert.match(issues, /healthcare/);
+  const home = await readFile(new URL("src/app/page.tsx", root), "utf8");
+  assert.match(home, /StartPath/);
+  const top = await readFile(new URL("src/components/back-to-top.tsx", root), "utf8");
+  assert.match(top, /BackToTop/);
+});

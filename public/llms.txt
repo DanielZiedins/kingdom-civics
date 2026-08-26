@@ -4,7 +4,7 @@
 
 Kingdom Civics helps Christians worldwide understand government, discern leadership, pray faithfully, and serve humbly—without partisan endorsements.
 
-Last updated: 2026-08-15
+Last updated: 2026-08-26
 
 ## Canonical site
 
@@ -19,6 +19,8 @@ Last updated: 2026-08-15
 - [Civic Glossary](https://www.kingdomcivics.org/glossary): Plain-language civic terms (ward, bylaw, riding, nomination)
 - [For Churches](https://www.kingdomcivics.org/for-churches): Free four-week civic discipleship kit for pastors and small groups
 - [Find Representatives](https://www.kingdomcivics.org/find-representatives): Official government lookup tools worldwide
+- [Start here](https://www.kingdomcivics.org/start): Five-step civic discipleship path
+- [Scripture index](https://www.kingdomcivics.org/scripture): Bible verses about government, voting, and public life
 - [Hamilton Leaders](https://www.kingdomcivics.org/leaders): Mayor, councillors, MPs, MPPs with official links
 - [Hamilton City Hub](https://www.kingdomcivics.org/cities/hamilton-on): Live Hamilton civic data
 - [Hamilton Elections](https://www.kingdomcivics.org/elections): October 26, 2026 municipal election
@@ -41,6 +43,9 @@ Last updated: 2026-08-15
 - /learn/read-a-public-budget
 - /learn/consider-running
 - /learn/talk-politics-in-church
+- /learn/contact-your-representative
+- /learn/attend-a-council-meeting
+- /learn/vote-with-conscience
 
 ## Issue guides
 
@@ -50,6 +55,10 @@ Last updated: 2026-08-15
 - /issues/poverty-economic-life
 - /issues/technology-privacy
 - /issues/justice-mercy
+- /issues/family-children
+- /issues/immigration-stranger
+- /issues/creation-stewardship
+- /issues/healthcare
 
 ## Key facts (Hamilton, Ontario — first live city)
 

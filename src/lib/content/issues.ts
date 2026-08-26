@@ -156,6 +156,110 @@ export const issueGuidesContent: IssueGuide[] = [
       },
     ],
   },
+  {
+    slug: "family-children",
+    title: "Family & Children",
+    description:
+      "Biblical principles for evaluating family, child welfare, education, and household policy—without treating the state as a parent or the family as a fortress.",
+    principles: ["Human dignity", "Wise stewardship", "Servant leadership"],
+    scripture: "Psalm 127:3 · Deuteronomy 6:6–7 · James 1:27",
+    sections: [
+      {
+        heading: "Why family is a civic issue",
+        body: "Households are the first school of love, work, and authority. Public policy on schools, child welfare, housing, and work hours either supports or strains that calling. Christians should care because children are not political mascots—they are image-bearers.",
+      },
+      {
+        heading: "Held in tension",
+        body: "Parents have a primary duty to form children (Deuteronomy 6). The state has a duty to restrain abuse and protect the vulnerable (Romans 13; James 1:27). Neither 'the family can do no wrong' nor 'the state knows best' is a Christian slogan.",
+      },
+      {
+        heading: "Questions that clarify",
+        body: "Does this policy treat children as persons or as scores? Does it support parents who want to raise children well? Does it protect those in danger without casually dissolving families? What do primary outcomes show—not campaign ads?",
+      },
+      {
+        heading: "Faithful engagement",
+        body: "Serve families around you. Learn school-board and municipal levers. Pray for teachers, social workers, and judges. Refuse contempt for parents who make different prudential choices while still telling the truth about harm.",
+      },
+    ],
+  },
+  {
+    slug: "immigration-stranger",
+    title: "Immigration & the Stranger",
+    description:
+      "How Christians think about borders, welcome, and the stranger—holding justice, mercy, and the rule of law without partisan slogans.",
+    principles: ["Human dignity", "Justice & mercy", "Truth & integrity"],
+    scripture: "Leviticus 19:33–34 · Hebrews 13:2 · Romans 13:1–4",
+    sections: [
+      {
+        heading: "Two biblical notes at once",
+        body: "Scripture commands love for the stranger and sojourner. It also treats governing authorities as servants who restrain disorder. Christians err when they keep only one note: open-ended contempt for migrants, or contempt for any border at all.",
+      },
+      {
+        heading: "Persons, not props",
+        body: "Every migrant, official, and neighbour at the border is an image-bearer. Policy debates that dehumanize people—or that ignore victims of trafficking, smuggling, and strained local services—fail a dignity test before they fail a political test.",
+      },
+      {
+        heading: "Questions for any proposal",
+        body: "Which level of government controls this? What do official data show about flows, processing, housing, and crime—not viral clips? How are refugees, workers, and unlawful entries distinguished in law? What happens to the vulnerable in the status quo?",
+      },
+      {
+        heading: "How to engage",
+        body: "Pray for those who cross borders and those who keep them. Support local welcome that is truthful, not naive. Write the office that actually holds the lever. Kingdom Civics will not baptize a party platform as 'the Christian position' on immigration.",
+      },
+    ],
+  },
+  {
+    slug: "creation-stewardship",
+    title: "Creation & Stewardship",
+    description:
+      "Land, water, air, and cities as a trust—biblical stewardship for environmental and infrastructure policy without treating nature as a god or a dump.",
+    principles: ["Wise stewardship", "Human dignity", "Justice & mercy"],
+    scripture: "Genesis 2:15 · Psalm 24:1 · Proverbs 13:22",
+    sections: [
+      {
+        heading: "The earth is the Lord's",
+        body: "Creation is gift and trust, not raw material for whoever shouts loudest. Working and keeping the garden (Genesis 2:15) includes how cities zone land, treat water, and budget for infrastructure that outlives one election cycle.",
+      },
+      {
+        heading: "Not a partisan mascot",
+        body: "Some treat environmental concern as left-coded; others treat industry as right-coded. Scripture is older than both. Stewardship asks whether we are wasting, poisoning, or hoarding what neighbours—including future ones—need to live.",
+      },
+      {
+        heading: "Questions that clarify",
+        body: "What do official environmental and budget documents show? Who bears the cost of pollution or of sudden policy shocks? Are the poor protected? Is the proposal measurable, or is it a slogan? Which level of government actually regulates this?",
+      },
+      {
+        heading: "Practice",
+        body: "Learn your city's official plan and water reports. Pray for planners and regulators. Prefer primary science and statutes over influencer reels. Faithful Christians may disagree on instruments while sharing the duty to keep the garden.",
+      },
+    ],
+  },
+  {
+    slug: "healthcare",
+    title: "Healthcare & Human Dignity",
+    description:
+      "Biblical principles for evaluating healthcare policy—the sick, the poor, the unborn, and the elderly—without treating medicine as a partisan mascot.",
+    principles: ["Human dignity", "Justice & mercy", "Wise stewardship"],
+    scripture: "Matthew 25:36 · Luke 10:33–37 · Psalm 82:3–4",
+    sections: [
+      {
+        heading: "Why healthcare is civic discipleship",
+        body: "Bodies matter. Access to care, the treatment of the vulnerable, and the ethics of medical power all sit at the intersection of neighbour-love and public authority. Christians cannot outsource these questions to slogans.",
+      },
+      {
+        heading: "Dignity before systems",
+        body: "Every patient bears God's image—unborn, elderly, disabled, poor, and opponent. Systems should serve persons, not the reverse. Faithful disagreement about funding models is real; contempt for the sick is not a Christian option.",
+      },
+      {
+        heading: "Questions that clarify",
+        body: "Who is left out of care today? What do official health and budget data show? Which level of government actually funds or regulates this? Are conscience protections for clinicians and patients real? What harms would a proposed change create as well as prevent?",
+      },
+      {
+        heading: "How to engage",
+        body: "Pray for clinicians, public-health officials, and those waiting for care. Learn the jurisdictional map before advocating. Prefer primary statutes and outcomes over campaign ads. Kingdom Civics will not baptize a party healthcare platform as the gospel.",
+      },
+    ],
+  },
 ];
 
 export function getIssueGuide(slug: string): IssueGuide | undefined {

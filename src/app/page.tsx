@@ -22,6 +22,7 @@ import {
   StatsStrip,
   WhyEngageSection,
 } from "@/components/home-sections";
+import { StartPath } from "@/components/start-path";
 import { hamiltonMeta } from "@/lib/data";
 import { getPrayerOfTheDay } from "@/lib/prayer-day";
 
@@ -70,8 +71,8 @@ export default function Home() {
                 pray faithfully, get involved, and discern whether to serve or run. Kingdom Lens helps you ask with sources—not slogans.
               </p>
               <div className="hero-actions">
-                <Link href="/kingdom-lens" className="button button-gold"><Sparkles size={17} /> Ask Kingdom Lens</Link>
-                <Link href="#consider-running" className="button button-outline-light"><Users size={17} /> Thinking of running?</Link>
+                <Link href="/start" className="button button-gold"><Sparkles size={17} /> Start here</Link>
+                <Link href="/kingdom-lens" className="button button-outline-light">Ask Kingdom Lens</Link>
               </div>
               <div className="hero-trust">
                 <ShieldCheck size={17} />
@@ -99,6 +100,23 @@ export default function Home() {
 
         <WhyEngageSection />
         <StatsStrip />
+
+        <section id="start" className="section section-parchment">
+          <div className="page-width split-heading">
+            <div>
+              <span className="eyebrow gold-text-dark">BEGIN HERE</span>
+              <h2>A five-step path into faithful civic life.</h2>
+            </div>
+            <p>Learn the office. Find the names. Pray. Inspect evidence. Then show up. No partisan curriculum—just a clear way to start.</p>
+          </div>
+          <div className="page-width">
+            <StartPath />
+            <div className="center-link" style={{ marginTop: 28 }}>
+              <Link href="/start" className="button button-navy">Open the full start guide <ArrowRight size={16} /></Link>
+              <Link href="/scripture" className="text-link">Bible verses on government <ArrowRight size={14} /></Link>
+            </div>
+          </div>
+        </section>
 
         <section id="impact" className="section section-light">
           <div className="page-width split-heading">

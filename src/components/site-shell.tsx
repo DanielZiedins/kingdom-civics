@@ -80,6 +80,7 @@ export function SiteHeader() {
           <button type="button" className="mobile-nav-backdrop" aria-label="Close menu" onClick={() => setOpen(false)} />
           <nav className="mobile-nav" aria-label="Mobile navigation">
             {navItems.map(([label, href]) => <Link key={href} href={href} onClick={() => setOpen(false)}>{label}<ChevronRight size={16} /></Link>)}
+            <Link href="/start" onClick={() => setOpen(false)}>Start here <ChevronRight size={16} /></Link>
             <Link href="/my-civics" onClick={() => setOpen(false)}>My Civics <ChevronRight size={16} /></Link>
             <Link href="/search" onClick={() => setOpen(false)}>Search <ChevronRight size={16} /></Link>
           </nav>

@@ -1,3 +1,4 @@
+import { civicScriptures } from "@/lib/content/scripture";
 import { glossaryTerms } from "@/lib/content/glossary";
 import { learnArticles } from "@/lib/content/learn";
 import { issueGuidesContent } from "@/lib/content/issues";
@@ -18,6 +19,8 @@ export const searchIndex: SearchHit[] = [
   { title: "Civic glossary", href: "/glossary", keywords: "glossary ward bylaw riding nomination terms", category: "Learn" },
   { title: "Civic education for churches", href: "/for-churches", keywords: "church pastor small group civic discipleship pulpit", category: "Church" },
   { title: "Find who represents you", href: "/find-representatives", keywords: "find my mp representative councillor senate congress lookup", category: "Leaders" },
+  { title: "Start here — five-step civic path", href: "/start", keywords: "start beginner civic discipleship how to begin", category: "Start" },
+  { title: "Bible verses about government", href: "/scripture", keywords: "bible verses government voting jeremiah micah romans timothy scripture", category: "Scripture" },
   { title: "Hamilton leaders directory", href: "/leaders", keywords: "mayor councillor mp mpp hamilton leaders", category: "Leaders" },
   { title: "Hamilton 2026 municipal election", href: "/elections", keywords: "election vote 2026 october hamilton ballot", category: "Elections" },
   { title: "Ask Kingdom Lens", href: "/kingdom-lens", keywords: "ai lens ask question scripture research", category: "AI" },
@@ -44,6 +47,12 @@ export const searchIndex: SearchHit[] = [
     href: `/glossary#${t.term.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`,
     keywords: `${t.term} ${t.definition} glossary`.toLowerCase(),
     category: "Glossary",
+  })),
+  ...civicScriptures.map((s) => ({
+    title: s.ref,
+    href: `/scripture#${s.ref.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`,
+    keywords: `${s.ref} ${s.keywords.join(" ")} ${s.text}`.toLowerCase(),
+    category: "Scripture",
   })),
   ...principles.map((p) => ({
     title: p.name,

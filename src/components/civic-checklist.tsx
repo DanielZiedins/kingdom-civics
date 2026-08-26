@@ -7,7 +7,8 @@ import { Check, Circle } from "lucide-react";
 const STORAGE_KEY = "kingdom-civics-checklist";
 
 const items = [
-  { id: "ward", label: "Know who represents you locally", href: "/kingdom-lens?q=How+do+I+find+who+represents+me" },
+  { id: "ward", label: "Know who represents you locally", href: "/find-representatives" },
+  { id: "start", label: "Walk the five-step start path", href: "/start" },
   { id: "pray", label: "Pray for a leader this week", href: "/pray" },
   { id: "learn", label: "Read one civic lesson", href: "/learn" },
   { id: "lens", label: "Ask Kingdom Lens a real question", href: "/kingdom-lens" },
