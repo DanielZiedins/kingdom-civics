@@ -260,6 +260,32 @@ export const issueGuidesContent: IssueGuide[] = [
       },
     ],
   },
+  {
+    slug: "work-wages-rest",
+    title: "Work, Wages & Rest",
+    description:
+      "Biblical principles for labour, pay, enterprise, and Sabbath rest in public policy—without baptizing a party economic platform.",
+    principles: ["Human dignity", "Justice & mercy", "Wise stewardship"],
+    scripture: "Deuteronomy 24:14–15 · Colossians 3:23 · Exodus 20:8–11",
+    sections: [
+      {
+        heading: "Work is more than a GDP line",
+        body: "Scripture honours labour, condemns withholding wages, and commands rest. Economic policy that treats people as units of output fails a biblical test—even if it wins an election. Neighbours need work, fair dealing, and a life that is not only production.",
+      },
+      {
+        heading: "Hold several truths together",
+        body: "Diligence is good. Exploitation is not. Enterprise can serve neighbours. So can just labour law. Sabbath rest is not laziness; it is a confession that God, not the market or the state, is Lord. Faithful Christians may disagree on instruments—minimum wages, tax design, union law—while sharing these starting points.",
+      },
+      {
+        heading: "Questions that clarify",
+        body: "Who cannot find dignified work? Who is overworked without rest? What do official labour and budget data show? Which level of government actually sets this rule? Does the proposal help the poor, or mainly a slogan? What unintended harms would it create?",
+      },
+      {
+        heading: "How to engage",
+        body: "Pray for workers, employers, and labour officials. Learn the jurisdictional map. Prefer statutes and outcomes over campaign ads. Kingdom Civics will not baptize a party jobs plan as the gospel. See /issues/poverty-economic-life.",
+      },
+    ],
+  },
 ];
 
 export function getIssueGuide(slug: string): IssueGuide | undefined {

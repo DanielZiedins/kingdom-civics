@@ -17,6 +17,9 @@ import { whyEngageReasons } from "@/lib/engagement";
 import { hamiltonCouncillors, hamiltonFederal, hamiltonMayor, hamiltonMeta } from "@/lib/hamilton";
 import { cityLabel, getAllCities, getDefaultCity, matchCityFromInput } from "@/lib/jurisdictions/registry";
 import { learnArticles } from "@/lib/content/learn";
+import { issueGuidesContent } from "@/lib/content/issues";
+import { civicScriptures } from "@/lib/content/scripture";
+import { glossaryTerms } from "@/lib/content/glossary";
 import { evidenceMatrix, impactAreas, leaders, principles } from "@/lib/data";
 import { searchIndex, searchSite } from "@/lib/search-index";
 
@@ -268,10 +271,10 @@ export function DiscernLeadersSection() {
 
 export function StatsStrip() {
   const stats = [
-    ["12", "Civic lessons"],
-    ["10", "Issue guides"],
-    ["16", "Scripture entries"],
-    ["29", "Glossary terms"],
+    [String(learnArticles.length), "Civic lessons"],
+    [String(issueGuidesContent.length), "Issue guides"],
+    [String(civicScriptures.length), "Scripture entries"],
+    [String(glossaryTerms.length), "Glossary terms"],
     ["∞", "Nations via Lens"],
   ];
   return (

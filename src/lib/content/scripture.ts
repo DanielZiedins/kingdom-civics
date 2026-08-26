@@ -119,4 +119,36 @@ export const civicScriptures: ScriptureEntry[] = [
     related: "/issues/creation-stewardship",
     keywords: ["creation care government", "genesis 2:15 stewardship"],
   },
+  {
+    ref: "1 Peter 2:13–17",
+    text: "Be subject for the Lord's sake to every human institution… Honor everyone. Love the brotherhood. Fear God. Honor the emperor.",
+    application: "Honour is not worship. Fear God first, then give earthly offices their proper respect—including ones you did not choose.",
+    related: "/learn/how-government-works",
+    keywords: ["1 peter 2 government", "honor the emperor bible", "submit to human institutions"],
+  },
+  {
+    ref: "Amos 5:24",
+    text: "But let justice roll down like waters, and righteousness like an ever-flowing stream.",
+    application: "Worship without justice is noise. Public life that ignores the oppressed fails a prophetic test, whatever the party brand.",
+    related: "/issues/justice-mercy",
+    keywords: ["amos 5:24 justice", "let justice roll down bible politics"],
+  },
+  {
+    ref: "Deuteronomy 16:18–20",
+    text: "You shall appoint judges and officers… You shall not pervert justice. You shall not show partiality, and you shall not accept a bribe.",
+    application: "Courts and appointments matter. Partiality and corrupt gain are not merely 'politics as usual'—they are condemned.",
+    related: "/issues/justice-mercy",
+    keywords: ["deuteronomy 16 judges", "bible against bribery", "impartial justice scripture"],
+  },
+  {
+    ref: "Psalm 72:1–4",
+    text: "Give the king your justice, O God… May he defend the cause of the poor of the people, give deliverance to the children of the needy.",
+    application: "Pray that those in high office would protect the poor and the child—not only the well-connected.",
+    related: "/pray",
+    keywords: ["psalm 72 leaders", "pray for the king justice poor"],
+  },
 ];
+
+export function scriptureAnchor(ref: string) {
+  return ref.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+}

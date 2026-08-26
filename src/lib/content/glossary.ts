@@ -34,6 +34,9 @@ export const glossaryTerms: GlossaryTerm[] = [
   { term: "School board", definition: "An elected (or sometimes appointed) body governing public or separate schools—often as locally consequential as city council.", related: "/issues/education" },
   { term: "Conscience vote", definition: "A vote where a legislator is not bound by party discipline. Rare in some systems; common language in moral debates.", related: "/learn/vote-with-conscience" },
   { term: "Primary residence / eligible elector", definition: "Legal tests for who may vote or run in a local election. Always confirm with the official election authority.", related: "/elections" },
+  { term: "Quorum", definition: "The minimum number of members who must be present for a council, board, or legislature to transact business. Without quorum, votes usually cannot proceed.", related: "/learn/attend-a-council-meeting" },
+  { term: "Access to information / FOI", definition: "A legal process to request government records. Useful for budgets, contracts, and correspondence—prefer official request forms over rumours.", related: "/trust" },
+  { term: "First-past-the-post", definition: "An electoral system where the candidate with the most votes in a district wins, even without a majority. Common in Canada, the UK, and US single-member districts.", related: "/learn/levels-of-government" },
 ];
 
 export function getGlossaryTerm(slug: string): GlossaryTerm | undefined {

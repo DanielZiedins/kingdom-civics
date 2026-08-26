@@ -57,6 +57,8 @@ export function organizationSchema(): JsonLd {
       "Prayer for government leaders",
       "Civic discipleship for churches",
       "Finding elected representatives",
+      "Bible verses about government",
+      "Christian voting and conscience",
       "Kingdom Lens civic AI",
     ],
   };

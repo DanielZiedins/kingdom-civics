@@ -131,7 +131,7 @@ export const pageFaqs: Record<string, FaqItem[]> = {
     {
       question: "What will I learn in Kingdom Civics Academy?",
       answer:
-        "Plain-language lessons on how government works globally, Canadian and US structures, Hamilton City Council, evaluating political claims, and why Christians engage in civic life—all grounded in Scripture.",
+        "Plain-language lessons on how government works globally, Canadian and US structures, contacting representatives, attending meetings, voting with conscience, praying through elections, school boards, and Hamilton City Council—all grounded in Scripture.",
     },
     {
       question: "Do I need to live in Hamilton to use Kingdom Civics?",
@@ -216,6 +216,13 @@ export const pageFaqs: Record<string, FaqItem[]> = {
       question: "Do I have to run for office to be faithful?",
       answer:
         "No. Some are called to elected office as stewardship. All are called to prayer, truth-telling, and neighbour-love. Running is one path among many—see /learn/consider-running and /serve.",
+    },
+  ],
+  pray: [
+    {
+      question: "How should Christians pray during an election?",
+      answer:
+        "Pray for voters, election officials, candidates you oppose, and whoever wins. 1 Timothy 2 does not expire on election night. A full pattern is at /learn/pray-for-an-election.",
     },
   ],
 };

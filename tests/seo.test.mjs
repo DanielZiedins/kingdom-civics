@@ -169,11 +169,17 @@ test("start path scripture index and new civic content ship", async () => {
   const learn = await readFile(new URL("src/lib/content/learn.ts", root), "utf8");
   assert.match(learn, /vote-with-conscience/);
   assert.match(learn, /contact-your-representative/);
+  assert.match(learn, /pray-for-an-election/);
+  assert.match(learn, /school-boards/);
   const issues = await readFile(new URL("src/lib/content/issues.ts", root), "utf8");
   assert.match(issues, /immigration-stranger/);
   assert.match(issues, /healthcare/);
+  assert.match(issues, /work-wages-rest/);
   const home = await readFile(new URL("src/app/page.tsx", root), "utf8");
   assert.match(home, /StartPath/);
+  assert.match(home, /CivicRhythm/);
   const top = await readFile(new URL("src/components/back-to-top.tsx", root), "utf8");
   assert.match(top, /BackToTop/);
+  const rhythm = await readFile(new URL("src/lib/content/rhythm.ts", root), "utf8");
+  assert.match(rhythm, /getRhythmOfTheDay/);
 });

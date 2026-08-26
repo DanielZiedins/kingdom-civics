@@ -5,7 +5,6 @@ import {
   DEFAULT_TITLE,
   SITE_KEYWORDS,
   SITE_NAME,
-  SITE_TAGLINE,
   absoluteUrl,
 } from "@/lib/seo/site";
 

@@ -23,7 +23,7 @@ import { SiteFooter, SiteHeader } from "@/components/site-shell";
 import { glossaryTerms } from "@/lib/content/glossary";
 import { getIssueGuide, issueGuidesContent } from "@/lib/content/issues";
 import { getLearnArticle, learnArticles } from "@/lib/content/learn";
-import { civicScriptures } from "@/lib/content/scripture";
+import { civicScriptures, scriptureAnchor } from "@/lib/content/scripture";
 import { startSteps } from "@/lib/content/start";
 import { engagementScriptures, whyEngageReasons } from "@/lib/engagement";
 import { allHamiltonLeaders, hamiltonMeta, prayerPrompts, principles } from "@/lib/data";
@@ -206,13 +206,62 @@ function pageStructuredData(section: string, slug: string[], copy: { title: stri
   }
   if (section === "learn" && slug[1]) {
     const article = getLearnArticle(slug[1]);
-    return article
-      ? [
-          base,
-          learningResourceSchema({ title: article.title, description: article.description, path: `/learn/${article.slug}` }),
-          articleSchema({ title: article.title, description: article.description, path: `/learn/${article.slug}` }),
-        ]
-      : [base];
+    if (!article) return [base];
+    const data = [
+      base,
+      learningResourceSchema({ title: article.title, description: article.description, path: `/learn/${article.slug}` }),
+      articleSchema({ title: article.title, description: article.description, path: `/learn/${article.slug}` }),
+    ];
+    const howTos: Record<string, { name: string; steps: string[] }> = {
+      "contact-your-representative": {
+        name: "How to contact your representative",
+        steps: [
+          "Find the office that actually controls the issue using official lookup tools.",
+          "State who you are, where you live, and the specific decision you are writing about.",
+          "Ask clearly, cite one or two primary sources, and keep the note under a page.",
+          "Write with respect and without claiming God voted your way.",
+        ],
+      },
+      "attend-a-council-meeting": {
+        name: "How to attend a council meeting",
+        steps: [
+          "Read the official agenda and note the item you care about.",
+          "Check delegation or public-comment deadlines with the clerk.",
+          "Listen more than you speak; address the chair and stay on the item.",
+          "Pray for the officials you watched and follow the vote in the minutes.",
+        ],
+      },
+      "pray-for-an-election": {
+        name: "How to pray for an election",
+        steps: [
+          "List the offices on the ballot so prayer is specific.",
+          "Pray for voters, election officials, candidates you oppose, and church unity.",
+          "Ask for wisdom, integrity of speech, protection of the vulnerable, and a peaceable process.",
+          "After results, pray for the winners by name and return to neighbour-love.",
+        ],
+      },
+      "vote-with-conscience": {
+        name: "How to vote with a clear conscience",
+        steps: [
+          "Name biblical starting points you will not abandon.",
+          "Examine platforms and primary sources—not only a favourite feed.",
+          "Pray for wisdom and know which offices are on this ballot.",
+          "Vote without contempt, then pray for whoever wins.",
+        ],
+      },
+    };
+    const howto = howTos[article.slug];
+    if (howto) {
+      data.push(
+        howToSchema({
+          name: howto.name,
+          description: article.description,
+          path: `/learn/${article.slug}`,
+          steps: howto.steps,
+        }),
+      );
+    }
+    return data;
   }
   if (section === "learn") {
     return [
@@ -270,7 +319,7 @@ function pageStructuredData(section: string, slug: string[], copy: { title: stri
         name: "Bible verses about government and civic life",
         items: civicScriptures.map((item) => ({
           name: item.ref,
-          url: absoluteUrl(`/scripture#${item.ref.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`),
+          url: absoluteUrl(`/scripture#${scriptureAnchor(item.ref)}`),
           description: item.application,
         })),
       }),
@@ -611,10 +660,11 @@ function PrayPage() {
         ))}
       </div>
       <div className="stack-actions">
-        <Link href="#prompts" className="button button-navy">Browse all prompts <ArrowRight size={14} /></Link>
+        <Link href="/learn/pray-for-an-election" className="button button-navy">How to pray for an election <ArrowRight size={14} /></Link>
         <Link href="/kingdom-lens?q=How%20should%20Christians%20pray%20for%20leaders" className="button button-ghost">Ask Kingdom Lens</Link>
-        <Link href="/my-civics" className="text-link">Track prayer in My Civics <ArrowRight size={14} /></Link>
+        <Link href="/scripture" className="text-link">Scripture on government <ArrowRight size={14} /></Link>
       </div>
+      <FaqSection faqs={pageFaqs.pray ?? []} title="Prayer for leaders FAQ" description="How to intercede without baptizing a ballot." />
     </div>
   );
 }
@@ -622,7 +672,7 @@ function PrayPage() {
 function ServePage() {
   const steps = [
     { tag: "PATHWAY 01", title: "START", body: "Learn how levels of government work where you live—and what each office actually controls.", href: "/learn/levels-of-government" },
-    { tag: "PATHWAY 02", title: "SHOW UP", body: "Attend a council, school board, or town hall meeting. Faithful service begins in the room.", href: "/learn/how-government-works" },
+    { tag: "PATHWAY 02", title: "SHOW UP", body: "Attend a council, school board, or town hall meeting. Faithful service begins in the room.", href: "/learn/attend-a-council-meeting" },
     { tag: "PATHWAY 03", title: "SPEAK", body: "Participate in public consultation on planning, budgets, or bylaws with evidence and humility.", href: "/learn/read-a-public-budget" },
     { tag: "PATHWAY 04", title: "SERVE", body: "Volunteer with organizations serving neighbors—or apply for a public board or advisory committee.", href: "/issues/poverty-economic-life" },
     { tag: "PATHWAY 05", title: "DISCERN", body: "Examine leaders and offices through Kingdom principles—truth, dignity, justice, and servant leadership.", href: "/biblical-principles" },

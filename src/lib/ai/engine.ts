@@ -365,6 +365,45 @@ const globalChunks: KnowledgeChunk[] = [
     counterpoints: ["Faithful Christians may disagree on funding mechanisms while sharing concern for the sick."],
     confidence: "moderate",
   },
+  {
+    id: "pray-election",
+    scope: "global",
+    tags: ["pray election", "election prayer", "how to pray during an election", "pray for candidates"],
+    answer:
+      "Prayer is civic work. 1 Timothy 2 does not wait until you like the candidates. Pray for voters to love truth, for officials administering the vote, for candidates you oppose, and for the church not to split over prudential ballots. After results, pray for the winners by name. See /learn/pray-for-an-election and /pray.",
+    principles: ["Prayer for leaders", "Humility", "Peace"],
+    scripture: [{ reference: "1 Timothy 2:1–2", application: "Pray for kings and all in high positions—including those you did not support." }],
+    sources: [{ id: "kc-pray-elex", title: "How to Pray for an Election", publisher: "Kingdom Civics", url: "/learn/pray-for-an-election", tier: 2 }],
+    uncertainties: [],
+    counterpoints: ["Prayer does not replace showing up, voting, or serving neighbours."],
+    confidence: "strong",
+  },
+  {
+    id: "school-boards",
+    scope: "global",
+    tags: ["school board", "trustee", "education board", "school election", "parents"],
+    answer:
+      "School board trustees are often elected on the same day as mayors. They help set local education policy and budgets but do not usually write the entire education statute. Find your board on official sites, read agendas, attend meetings, and vote with a formed conscience. See /learn/school-boards and /issues/education.",
+    principles: ["Family responsibility", "Human dignity", "Wise stewardship"],
+    scripture: [{ reference: "Deuteronomy 6:6–7", application: "Parents are charged to form children in the way of the Lord—public schools still require civic wisdom." }],
+    sources: [{ id: "kc-boards", title: "School Boards", publisher: "Kingdom Civics", url: "/learn/school-boards", tier: 2 }],
+    uncertainties: ["Board powers and election rules vary widely by country and province/state."],
+    counterpoints: ["Not every education fight belongs at the board table; some sit with ministries or classrooms."],
+    confidence: "moderate",
+  },
+  {
+    id: "work-wages",
+    scope: "global",
+    tags: ["work", "wages", "jobs", "labour", "labor", "minimum wage", "sabbath", "rest"],
+    answer:
+      "Scripture honours labour, condemns withholding wages, and commands rest. Evaluate economic policy by dignity, justice, and whether neighbours can live—not by party slogans. Faithful Christians may disagree on instruments. See /issues/work-wages-rest.",
+    principles: ["Human dignity", "Justice", "Stewardship"],
+    scripture: [{ reference: "Deuteronomy 24:15", application: "You shall give the hired worker his wages; do not let the sun go down on them." }],
+    sources: [{ id: "kc-work", title: "Work, Wages & Rest", publisher: "Kingdom Civics", url: "/issues/work-wages-rest", tier: 2 }],
+    uncertainties: ["Labour law is highly jurisdiction-specific."],
+    counterpoints: ["Enterprise can serve neighbours; so can just labour law. Keep both notes."],
+    confidence: "moderate",
+  },
 ];
 
 const hamiltonChunks: KnowledgeChunk[] = [

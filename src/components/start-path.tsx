@@ -7,7 +7,7 @@ export function StartPath({ compact = false }: { compact?: boolean }) {
     <ol className={`start-path ${compact ? "start-path-compact" : ""}`}>
       {startSteps.map((step) => (
         <li key={step.n}>
-          <Link href={step.href} className="start-step">
+          <Link href={step.href} className="start-step" prefetch>
             <span className="start-step-n">{step.n}</span>
             <span className="start-step-body">
               <small>{step.tag}</small>

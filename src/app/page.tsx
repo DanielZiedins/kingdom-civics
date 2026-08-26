@@ -22,6 +22,7 @@ import {
   StatsStrip,
   WhyEngageSection,
 } from "@/components/home-sections";
+import { CivicRhythm } from "@/components/civic-rhythm";
 import { StartPath } from "@/components/start-path";
 import { hamiltonMeta } from "@/lib/data";
 import { getPrayerOfTheDay } from "@/lib/prayer-day";
@@ -111,6 +112,7 @@ export default function Home() {
           </div>
           <div className="page-width">
             <StartPath />
+            <CivicRhythm />
             <div className="center-link" style={{ marginTop: 28 }}>
               <Link href="/start" className="button button-navy">Open the full start guide <ArrowRight size={16} /></Link>
               <Link href="/scripture" className="text-link">Bible verses on government <ArrowRight size={14} /></Link>

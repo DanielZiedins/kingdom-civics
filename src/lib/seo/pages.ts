@@ -35,7 +35,7 @@ export const pageSeo: Record<string, PageSeo> = {
     eyebrow: "ISSUES LIBRARY",
     title: "Christian Perspectives on Public Policy Issues",
     description:
-      "Examine housing, education, justice, religious freedom, and more with biblical principles, primary sources, and honest disagreement.",
+      "Examine housing, education, justice, religious freedom, work, healthcare, and more with biblical principles, primary sources, and honest disagreement.",
     path: "/issues",
     keywords: ["Christian policy issues", "biblical worldview politics", "faith and public policy"],
   },

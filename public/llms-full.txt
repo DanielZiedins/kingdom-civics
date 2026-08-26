@@ -66,6 +66,8 @@ Toronto, Ottawa, Calgary, Vancouver, Nashville, Dallas, London (UK)
 - /learn/contact-your-representative — How to contact your representative
 - /learn/attend-a-council-meeting — How to attend a council meeting
 - /learn/vote-with-conscience — How to vote with a clear conscience
+- /learn/pray-for-an-election — How to pray for an election
+- /learn/school-boards — School boards and Christian families
 
 ## Issue guides (indexable)
 
@@ -79,6 +81,7 @@ Toronto, Ottawa, Calgary, Vancouver, Nashville, Dallas, London (UK)
 - /issues/immigration-stranger — Immigration and the stranger
 - /issues/creation-stewardship — Creation and stewardship
 - /issues/healthcare — Healthcare and human dignity
+- /issues/work-wages-rest — Work, wages, and rest
 
 ## Glossary
 

@@ -26,11 +26,17 @@ export function StartHere() {
           <p>A short, respectful template for contacting officials with truth and humility.</p>
           <span className="text-link">Read the lesson <ArrowRight size={14} /></span>
         </Link>
-        <Link href="/glossary" className="content-card">
-          <small>LANGUAGE</small>
-          <h3>Learn the terms</h3>
-          <p>Ward, bylaw, riding, jurisdiction—plain language so you are not lost in the room.</p>
-          <span className="text-link">Open the glossary <ArrowRight size={14} /></span>
+        <Link href="/learn/attend-a-council-meeting" className="content-card">
+          <small>PRACTICE</small>
+          <h3>Attend a meeting</h3>
+          <p>Agendas, delegations, and how to show up at city hall without performing for a camera.</p>
+          <span className="text-link">Read the lesson <ArrowRight size={14} /></span>
+        </Link>
+        <Link href="/learn/pray-for-an-election" className="content-card">
+          <small>PRAYER</small>
+          <h3>Pray through an election</h3>
+          <p>Intercede for voters, officials, and whoever wins—without baptizing a ballot.</p>
+          <span className="text-link">Open the guide <ArrowRight size={14} /></span>
         </Link>
       </div>
       <FaqSection

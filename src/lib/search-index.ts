@@ -1,4 +1,4 @@
-import { civicScriptures } from "@/lib/content/scripture";
+import { civicScriptures, scriptureAnchor } from "@/lib/content/scripture";
 import { glossaryTerms } from "@/lib/content/glossary";
 import { learnArticles } from "@/lib/content/learn";
 import { issueGuidesContent } from "@/lib/content/issues";
@@ -50,7 +50,7 @@ export const searchIndex: SearchHit[] = [
   })),
   ...civicScriptures.map((s) => ({
     title: s.ref,
-    href: `/scripture#${s.ref.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`,
+    href: `/scripture#${scriptureAnchor(s.ref)}`,
     keywords: `${s.ref} ${s.keywords.join(" ")} ${s.text}`.toLowerCase(),
     category: "Scripture",
   })),

@@ -345,6 +345,60 @@ export const learnArticles: LearnArticle[] = [
       },
     ],
   },
+  {
+    slug: "pray-for-an-election",
+    title: "How to Pray for an Election",
+    description:
+      "A Scripture-shaped election prayer guide: pray for voters, officials, opponents, and whoever wins—without baptizing a ballot.",
+    duration: "8 min",
+    category: "Prayer",
+    scripture: "1 Timothy 2:1–2 · James 1:5 · Philippians 4:6–7",
+    sections: [
+      {
+        heading: "Prayer is civic work",
+        body: "1 Timothy 2 does not wait until you like the candidates. Supplications, prayers, intercessions, and thanksgivings belong to every election season. Panic-posting is not a fruit of the Spirit. Intercession is.",
+      },
+      {
+        heading: "Pray wider than your tribe",
+        body: "Pray for voters to love truth. Pray for officials administering the vote. Pray for candidates you oppose to be kept from harm and from deceit. Pray for the church not to split over prudential ballots. If you cannot name an opponent before God without contempt, start there.",
+      },
+      {
+        heading: "A simple pattern",
+        body: "Wisdom (James 1:5). Integrity of speech. Protection of the vulnerable. Peaceable process. Humility for whoever wins. Thanksgiving that Christ remains King. Keep a list of offices on this ballot so prayer is specific, not vague.",
+      },
+      {
+        heading: "After the results",
+        body: "The command does not expire on election night. Pray for the winners by name. Refuse revenge fantasies. Return to neighbour-love: learn the office, attend a meeting, and keep seeking the city's welfare. See /pray and /scripture.",
+      },
+    ],
+  },
+  {
+    slug: "school-boards",
+    title: "School Boards — Why They Matter for Christian Families",
+    description:
+      "How school boards work, what trustees actually control, and how Christians can engage education governance without culture-war theatre.",
+    duration: "10 min",
+    category: "Education",
+    scripture: "Deuteronomy 6:6–7 · Proverbs 22:6 · Matthew 19:14",
+    sections: [
+      {
+        heading: "Often as local as city hall",
+        body: "In many places, school board trustees are elected on the same day as mayors and councillors. They help set budgets, policies, and local direction for public or separate boards. Confusing them with a provincial education minister or a classroom teacher wastes advocacy.",
+      },
+      {
+        heading: "What boards usually control—and what they don't",
+        body: "Boards typically oversee local policy, hiring frameworks, facilities, and how provincial or state curriculum is implemented. They do not write the entire education statute. Before you campaign or pray, map the jurisdiction. Official board sites beat influencer summaries.",
+      },
+      {
+        heading: "Faithful presence",
+        body: "Parents, teachers, and neighbours can attend public meetings, read agendas, ask clarifying questions, and vote with a formed conscience. Contempt for teachers or for parents is not discipleship. Children bear God's image—policy fights that forget them have already failed.",
+      },
+      {
+        heading: "A calm checklist",
+        body: "Find your board with official tools. Learn which seats are on the next ballot. Read one policy or budget summary from the primary source. Pray for trustees by name. If you speak, stay on the item, stay inside the time, and refuse to treat neighbours as enemies of God. See /issues/education and /learn/attend-a-council-meeting.",
+      },
+    ],
+  },
 ];
 
 export function getLearnArticle(slug: string): LearnArticle | undefined {
