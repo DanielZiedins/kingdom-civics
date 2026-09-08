@@ -52,8 +52,8 @@ export function SiteHeader() {
     <>
     <header className={`site-header ${scrolled ? "site-header-scrolled" : ""}`}>
       <div className="top-note">
-        <span>Global Christian civic education · Discern leadership worldwide · Seek truth. Pray faithfully. Serve humbly.</span>
-        <Link href="/trust">See how our research works <ChevronRight size={13} /></Link>
+        <span>Hamilton votes Oct 26 · Advance polls begin Oct 3 · Official sources only</span>
+        <Link href="/elections">Election hub <ChevronRight size={13} /></Link>
       </div>
       <div className="nav-wrap">
         <Logo />

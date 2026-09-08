@@ -23,6 +23,7 @@ import {
   WhyEngageSection,
 } from "@/components/home-sections";
 import { CivicRhythm } from "@/components/civic-rhythm";
+import { ElectionSeason } from "@/components/election-season";
 import { StartPath } from "@/components/start-path";
 import { hamiltonMeta } from "@/lib/data";
 import { getPrayerOfTheDay } from "@/lib/prayer-day";
@@ -101,6 +102,7 @@ export default function Home() {
 
         <WhyEngageSection />
         <StatsStrip />
+        <ElectionSeason />
 
         <section id="start" className="section section-parchment">
           <div className="page-width split-heading">

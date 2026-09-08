@@ -768,3 +768,35 @@ em { color: var(--gold-light); font-weight: 400; }
   .start-step > svg { display: none; }
   .civic-rhythm { grid-template-columns: 1fr; }
 }
+
+@view-transition { navigation: auto; }
+
+.election-season { background: linear-gradient(180deg, #0b1b2c 0%, #12283c 100%); color: white; }
+.election-season h2 { color: white; }
+.election-season p { color: #c5d0d7; max-width: 620px; font-size: 16px; line-height: 1.7; }
+.election-season-grid { display: grid; grid-template-columns: 1.3fr .7fr; gap: 36px; align-items: center; }
+.election-season-list { color: #dbe1e4; }
+.election-season-list svg { color: var(--gold-light); }
+.election-season .text-link { color: var(--gold-light); border-bottom-color: rgba(224,194,126,.45); }
+.election-season-card { padding: 22px; border: 1px solid rgba(201,164,91,.4); background: rgba(255,255,255,.03); }
+.election-season-card .election-countdown { background: transparent; border: 0; padding: 0; margin: 0 0 16px; color: white; }
+.election-season-card .election-countdown strong { color: var(--gold-light); }
+.election-season-card .election-countdown span { color: #c5d0d7; }
+.election-key-dates { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin: 8px 0 28px; }
+.election-key-dates article { padding: 16px 18px; border: 1px solid var(--line); background: white; }
+.election-key-dates small { letter-spacing: .1em; font-size: 9px; color: #9a7431; }
+.election-key-dates strong { display: block; font-family: var(--font-serif); font-size: 18px; margin: 6px 0 8px; color: var(--navy); }
+.election-key-dates p { margin: 0; font-size: 13px; line-height: 1.55; color: var(--stone); }
+.lens-prompts { margin-bottom: 22px; }
+.lens-prompts small { display: inline-flex; align-items: center; gap: 8px; letter-spacing: .1em; font-size: 10px; color: #9a7431; margin-bottom: 10px; }
+.lens-prompt-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.lens-prompt { padding: 8px 12px; border: 1px solid var(--line); background: white; font-size: 13px; color: var(--navy); }
+.lens-prompt:hover { border-color: var(--gold); }
+
+@media (max-width: 980px) {
+  .election-season-grid, .election-key-dates { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @view-transition { navigation: none; }
+}

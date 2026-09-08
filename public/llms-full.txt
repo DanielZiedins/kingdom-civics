@@ -25,7 +25,7 @@ Geographic focus: Worldwide Christian civic education; first live city: Hamilton
 - Not affiliated with any political party
 - Not claiming any politician has God's endorsement
 
-## Hamilton live data (verified 2026-08-08)
+## Hamilton live data (verified 2026-09-08)
 
 ### Mayor
 - Andrea Horwath — Mayor of Hamilton
@@ -68,6 +68,8 @@ Toronto, Ottawa, Calgary, Vancouver, Nashville, Dallas, London (UK)
 - /learn/vote-with-conscience — How to vote with a clear conscience
 - /learn/pray-for-an-election — How to pray for an election
 - /learn/school-boards — School boards and Christian families
+- /learn/prepare-for-municipal-election — How to prepare for a municipal election
+- /learn/share-politics-online — How to share politics online without harming your neighbour
 
 ## Issue guides (indexable)
 
@@ -82,6 +84,7 @@ Toronto, Ottawa, Calgary, Vancouver, Nashville, Dallas, London (UK)
 - /issues/creation-stewardship — Creation and stewardship
 - /issues/healthcare — Healthcare and human dignity
 - /issues/work-wages-rest — Work, wages, and rest
+- /issues/truth-public-speech — Truth, media, and public speech
 
 ## Glossary
 

@@ -147,6 +147,27 @@ export const civicScriptures: ScriptureEntry[] = [
     related: "/pray",
     keywords: ["psalm 72 leaders", "pray for the king justice poor"],
   },
+  {
+    ref: "Exodus 20:16",
+    text: "You shall not bear false witness against your neighbor.",
+    application: "Campaign ads, group chats, and forwarded clips are still speech before God. Do not share what you have not checked.",
+    related: "/learn/share-politics-online",
+    keywords: ["false witness politics", "bible verses about lying in politics", "exodus 20:16 civic"],
+  },
+  {
+    ref: "Romans 12:18",
+    text: "If possible, so far as it depends on you, live peaceably with all.",
+    application: "Peaceable presence is not cowardice. It is refusing to treat neighbours as enemies while you still tell the truth.",
+    related: "/learn/talk-politics-in-church",
+    keywords: ["live peaceably bible", "romans 12:18 politics", "christian civic peace"],
+  },
+  {
+    ref: "Luke 10:27",
+    text: "You shall love the Lord your God… and your neighbor as yourself.",
+    application: "Civic choices are neighbour-love with a budget. Ask who is helped, who is harmed, and whether you would accept the same rule applied to you.",
+    related: "/why-engage",
+    keywords: ["love your neighbor politics", "luke 10:27 government", "great commandment civic life"],
+  },
 ];
 
 export function scriptureAnchor(ref: string) {

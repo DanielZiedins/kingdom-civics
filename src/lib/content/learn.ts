@@ -399,6 +399,60 @@ export const learnArticles: LearnArticle[] = [
       },
     ],
   },
+  {
+    slug: "prepare-for-municipal-election",
+    title: "How to Prepare for a Municipal Election",
+    description:
+      "A practical Kingdom-first checklist for Hamilton’s October 26, 2026 municipal and school board election—eligibility, voters list, advance polls, and discernment without endorsements.",
+    duration: "9 min",
+    category: "Elections",
+    scripture: "1 Timothy 2:1–2 · Proverbs 18:17 · James 1:5",
+    sections: [
+      {
+        heading: "This is not a federal campaign",
+        body: "Municipal ballots elect a mayor, a ward councillor, and school board trustees. They do not elect a prime minister. Confusing levels produces panic and wasted prayer. Learn the offices, then use official City of Hamilton pages—not influencer lists—as your source of truth.",
+      },
+      {
+        heading: "Confirm you can vote",
+        body: "In Hamilton you typically must be a Canadian citizen, at least 18, and a resident, owner, or tenant (or spouse of an owner/tenant) who is not prohibited from voting. Tenants who have moved should especially confirm the voters list. Amendments are made in person with ID at the Clerk’s office or a municipal service centre through October 24, 2026—or at a poll. Verify every rule on hamilton.ca.",
+      },
+      {
+        heading: "Know the calendar",
+        body: "Nominations closed August 21, 2026; candidates were certified August 24. Community polls: September 26–27. Advance polls: October 3–4, 10–11, and 17–18. Election day: Monday, October 26. The City has stated there are no online or mail-in ballots for this municipal election. Proxy voting exists for those who cannot attend any voting day—read the official proxy rules before assuming.",
+      },
+      {
+        heading: "Discern without baptizing a ballot",
+        body: "Read certified candidates from the City, not a forwarded graphic. Ask what the office actually controls. Pray for officials administering the vote and for whoever wins. Voting is stewardship, not salvation. See /elections, /learn/vote-with-conscience, and /learn/pray-for-an-election.",
+      },
+    ],
+  },
+  {
+    slug: "share-politics-online",
+    title: "How to Share Politics Online without Harming Your Neighbour",
+    description:
+      "A discipleship guide for posts, forwards, and group chats: truth-telling, slow speech, and refusing to treat image-bearers as content.",
+    duration: "8 min",
+    category: "Discernment",
+    scripture: "Exodus 20:16 · James 1:19 · Ephesians 4:25 · Proverbs 18:17",
+    sections: [
+      {
+        heading: "Your feed is a discipleship environment",
+        body: "Most civic formation now happens on a phone. Viral clips catechize faster than sermons. If you would not say it to a neighbour’s face, do not publish it as a caption. False witness is still false witness when it is a screenshot.",
+      },
+      {
+        heading: "A pause before you post",
+        body: "Is this a primary source or a recap? Which office actually controls the issue? Would I still share this if the target were in my small group? Can I name the uncertainty? If any answer is no, wait. Proverbs 18:17 still applies: the first clip often looks right until someone examines it.",
+      },
+      {
+        heading: "Correction is holiness, not humiliation",
+        body: "When you share something false, delete or correct it in the same thread. Do not bury the update. Loving truth more than being first is a public witness. Contempt, pile-ons, and ‘ratio’ culture are not spiritual gifts.",
+      },
+      {
+        heading: "Practice",
+        body: "Mute more than you mock. Share official links. Ask Kingdom Lens, then verify. Bless people who disagree without treating them as enemies of God. See /learn/evaluate-political-claims and /issues/technology-privacy.",
+      },
+    ],
+  },
 ];
 
 export function getLearnArticle(slug: string): LearnArticle | undefined {

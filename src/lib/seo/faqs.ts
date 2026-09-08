@@ -102,12 +102,17 @@ export const pageFaqs: Record<string, FaqItem[]> = {
     {
       question: "What offices are on the ballot in Hamilton's 2026 election?",
       answer:
-        "Voters elect the mayor, one councillor per ward (15 wards), and school board trustees for public and separate boards. Candidate nominations are confirmed through the official municipal process.",
+        "Voters elect the mayor, one councillor per ward (15 wards), and school board trustees for public and separate boards. Nominations closed August 21, 2026. Read certified candidates on the City of Hamilton election site.",
     },
     {
       question: "How do I register to vote in Hamilton?",
       answer:
-        "Voter registration, identification requirements, and voting methods must be verified with the City of Hamilton and Elections Ontario. Use the official election page linked from Kingdom Civics rather than unofficial summaries.",
+        "Confirm eligibility, then check or amend the voters list in person with ID at the City Clerk or a municipal service centre through October 24, 2026—or at a poll. There are no online or mail-in ballots for this municipal election. Verify every rule at hamilton.ca.",
+    },
+    {
+      question: "When are Hamilton advance polls in 2026?",
+      answer:
+        "Advance polls are October 3–4, 10–11, and 17–18, 2026. Community polls: September 26–27. Election day is Monday, October 26, 2026. Confirm locations and hours with the City Clerk.",
     },
   ],
   "kingdom-lens": [

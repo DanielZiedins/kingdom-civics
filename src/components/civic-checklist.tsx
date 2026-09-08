@@ -13,6 +13,7 @@ const items = [
   { id: "learn", label: "Read one civic lesson", href: "/learn" },
   { id: "lens", label: "Ask Kingdom Lens a real question", href: "/kingdom-lens" },
   { id: "scripture", label: "Read one civic Scripture", href: "/scripture" },
+  { id: "election", label: "Prepare for the municipal election", href: "/elections" },
   { id: "serve", label: "Explore a serve pathway step", href: "/serve" },
   { id: "run", label: "Consider whether to run—or support someone who should", href: "/learn/consider-running" },
 ] as const;

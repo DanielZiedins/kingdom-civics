@@ -37,6 +37,8 @@ export const glossaryTerms: GlossaryTerm[] = [
   { term: "Quorum", definition: "The minimum number of members who must be present for a council, board, or legislature to transact business. Without quorum, votes usually cannot proceed.", related: "/learn/attend-a-council-meeting" },
   { term: "Access to information / FOI", definition: "A legal process to request government records. Useful for budgets, contracts, and correspondence—prefer official request forms over rumours.", related: "/trust" },
   { term: "First-past-the-post", definition: "An electoral system where the candidate with the most votes in a district wins, even without a majority. Common in Canada, the UK, and US single-member districts.", related: "/learn/levels-of-government" },
+  { term: "Voters list", definition: "The official roll of eligible electors. In Hamilton, amendments for 2026 are made in person with ID through October 24, or at a poll.", related: "/elections" },
+  { term: "Proxy vote", definition: "A legal process allowing an eligible elector who cannot vote on any voting day to appoint another eligible elector. Rules are set by the election authority—not by social media.", related: "/elections" },
 ];
 
 export function getGlossaryTerm(slug: string): GlossaryTerm | undefined {

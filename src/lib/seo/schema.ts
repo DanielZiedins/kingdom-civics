@@ -223,7 +223,7 @@ export function articleSchema({
   title,
   description,
   path,
-  datePublished = "2026-08-08",
+  datePublished = "2026-09-08",
   dateModified = "2026-08-15",
 }: {
   title: string;
@@ -264,7 +264,7 @@ export function learningResourceSchema({
   title,
   description,
   path,
-  datePublished = "2026-08-08",
+  datePublished = "2026-09-08",
   dateModified = "2026-08-15",
 }: {
   title: string;

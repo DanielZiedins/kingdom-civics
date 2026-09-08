@@ -58,14 +58,16 @@ export function ArticleBody({
   const seed = slug ? slug.split("").reduce((n, ch) => n + ch.charCodeAt(0), 0) : 0;
   const relatedLearn = othersLearn.length
     ? [othersLearn[seed % othersLearn.length], othersLearn[(seed + 3) % othersLearn.length]].filter(
-        (item, i, arr) => arr.findIndex((x) => x.slug === item.slug) === i,
+        (item, i, arr): item is NonNullable<typeof item> => Boolean(item) && arr.findIndex((x) => x?.slug === item.slug) === i,
       ).slice(0, 2)
     : [];
   const relatedIssues = othersIssues.length
     ? [othersIssues[seed % othersIssues.length], othersIssues[(seed + 2) % othersIssues.length]].filter(
-        (item, i, arr) => arr.findIndex((x) => x.slug === item.slug) === i,
+        (item, i, arr): item is NonNullable<typeof item> => Boolean(item) && arr.findIndex((x) => x?.slug === item.slug) === i,
       ).slice(0, 2)
     : [];
+  const wordCount = sections.reduce((n, s) => n + s.body.split(/\s+/).length, 0);
+  const minutes = Math.max(1, Math.round(wordCount / 180));
 
   return (
     <>
@@ -89,7 +91,7 @@ export function ArticleBody({
             </nav>
           </details>
           <div className="article-scripture">
-            <small>SCRIPTURE</small>
+            <small>SCRIPTURE · {minutes} MIN READ</small>
             <span>{scripture}</span>
           </div>
           {sections.map((section) => (

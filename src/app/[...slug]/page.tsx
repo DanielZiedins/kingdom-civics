@@ -4,23 +4,20 @@ import Link from "next/link";
 import { ArrowRight, CalendarDays, ExternalLink, Heart, ShieldCheck } from "lucide-react";
 import { ArticleBody } from "@/components/article-body";
 import { ChurchKit } from "@/components/church-kit";
-import { CiteThis } from "@/components/cite-this";
 import { CivicChecklist } from "@/components/civic-checklist";
 import { ElectionCountdown } from "@/components/election-countdown";
 import { FindRepresentatives } from "@/components/find-representatives";
+import { InnerPageShell } from "@/components/inner-page-shell";
 import { ScriptureIndex } from "@/components/scripture-index";
 import { StartHere } from "@/components/start-here";
-import { ComparisonPreview, GlobalSearch, PrincipleCards } from "@/components/home-sections";
-import { KingdomLensPage } from "@/components/kingdom-lens-page";
+import { ComparisonPreview, PrincipleCards } from "@/components/home-sections";
 import { MyCivicsDashboard } from "@/components/my-civics-dashboard";
 import { GlossaryExplorer } from "@/components/glossary-explorer";
 import { LeadersDirectory } from "@/components/leaders-directory";
 import { ShareButton } from "@/components/share-button";
-import { Breadcrumbs } from "@/components/seo/breadcrumbs";
 import { FaqSection } from "@/components/seo/faq-section";
-import { JsonLd } from "@/components/seo/json-ld";
-import { SiteFooter, SiteHeader } from "@/components/site-shell";
 import { glossaryTerms } from "@/lib/content/glossary";
+import { hamiltonElection } from "@/lib/content/election";
 import { getIssueGuide, issueGuidesContent } from "@/lib/content/issues";
 import { getLearnArticle, learnArticles } from "@/lib/content/learn";
 import { civicScriptures, scriptureAnchor } from "@/lib/content/scripture";
@@ -44,29 +41,46 @@ import {
   learningResourceSchema,
   personSchema,
   profilePageSchema,
-  softwareApplicationSchema,
-  webApiSchema,
   webPageSchema,
 } from "@/lib/seo/schema";
 import { absoluteUrl } from "@/lib/seo/site";
 
 type PageProps = {
   params: Promise<{ slug: string[] }>;
-  searchParams?: Promise<{ q?: string }>;
 };
 
+export const dynamic = "force-static";
+
 export async function generateStaticParams() {
+  const core = [
+    "why-engage",
+    "learn",
+    "issues",
+    "leaders",
+    "elections",
+    "pray",
+    "serve",
+    "trust",
+    "compare",
+    "biblical-principles",
+    "my-civics",
+    "about",
+    "privacy",
+    "glossary",
+    "for-churches",
+    "find-representatives",
+    "scripture",
+    "start",
+    "admin",
+  ].map((section) => ({ slug: [section] }));
+
   return [
+    ...core,
     ...hamiltonOfficials.map((o) => ({ slug: ["leaders", o.slug] })),
     ...principles.map((p) => ({ slug: ["biblical-principles", p.slug] })),
     ...learnArticles.map((a) => ({ slug: ["learn", a.slug] })),
     ...issueGuidesContent.map((g) => ({ slug: ["issues", g.slug] })),
     ...getAllCities().map((c) => ({ slug: ["cities", c.slug] })),
-    { slug: ["glossary"] },
-    { slug: ["for-churches"] },
-    { slug: ["find-representatives"] },
-    { slug: ["scripture"] },
-    { slug: ["start"] },
   ];
 }
 
@@ -193,16 +207,13 @@ function pageStructuredData(section: string, slug: string[], copy: { title: stri
         path: "/elections",
         steps: [
           "Confirm you are eligible to vote in Hamilton, Ontario.",
-          "Verify registration and ID requirements on the City of Hamilton election page.",
-          "Find your ward using the official ward lookup tool.",
-          "Review candidate information from official nomination records.",
-          "Vote on election day October 26, 2026 or by approved advance/vote-by-mail methods.",
+          "Find your ward and confirm or amend the voters list with the City Clerk.",
+          "Read certified candidates from the official City of Hamilton list.",
+          "Vote at a community poll, an October advance poll, or on Monday, October 26, 2026.",
+          "There are no online or mail-in ballots for this municipal election—verify proxy rules if you cannot attend.",
         ],
       }),
     ];
-  }
-  if (section === "kingdom-lens") {
-    return [base, softwareApplicationSchema(), webApiSchema(), faqPageSchema(pageFaqs["kingdom-lens"] ?? [])];
   }
   if (section === "learn" && slug[1]) {
     const article = getLearnArticle(slug[1]);
@@ -247,6 +258,24 @@ function pageStructuredData(section: string, slug: string[], copy: { title: stri
           "Examine platforms and primary sources—not only a favourite feed.",
           "Pray for wisdom and know which offices are on this ballot.",
           "Vote without contempt, then pray for whoever wins.",
+        ],
+      },
+      "prepare-for-municipal-election": {
+        name: "How to prepare for Hamilton's municipal election",
+        steps: [
+          "Confirm eligibility and your ward using official City of Hamilton tools.",
+          "Amend the voters list in person with ID if needed, by October 24, 2026.",
+          "Read certified candidates from the City—not a forwarded graphic.",
+          "Vote at a community poll, advance poll, or on October 26, then pray for whoever wins.",
+        ],
+      },
+      "share-politics-online": {
+        name: "How to share politics online without harming your neighbour",
+        steps: [
+          "Ask whether the claim is a primary source or a recap.",
+          "Name which office actually controls the issue.",
+          "Refuse to post what you would not say to a neighbour's face.",
+          "Correct yourself in the same thread if you shared something false.",
         ],
       },
     };
@@ -505,31 +534,51 @@ function LeadersPage({ detail }: { detail?: string }) {
 
 function ElectionPage() {
   const checklist = [
-    "Confirm you are eligible to vote in Hamilton, Ontario.",
-    "Verify registration and ID requirements on the City of Hamilton election page.",
-    "Find your ward using the official ward lookup tool.",
-    "Review candidate information from official nomination records when published.",
-    "Vote on election day October 26, 2026 or by approved advance / vote-by-mail methods.",
+    "Confirm you are an eligible elector in Hamilton (citizen, 18+, resident/owner/tenant or spouse, not prohibited).",
+    "Find your ward with official City mapping, then write down the offices on your ballot.",
+    "If needed, amend the voters list in person with ID by October 24, 2026—or at a poll.",
+    "Read certified candidates from the City of Hamilton, not a forwarded graphic.",
+    "Vote at a community poll (Sept 26–27), an advance poll in October, or on Monday, October 26.",
   ];
   return (
     <div className="election-layout">
       <div className="election-main">
-        <span className="status-chip live-chip">Live · City of Hamilton</span>
+        <span className="status-chip live-chip">Live · City of Hamilton · Verified {hamiltonMeta.lastVerified}</span>
         <h2>2026 Hamilton Municipal & School Board Election</h2>
-        <ElectionCountdown />
+        <ElectionCountdown date={hamiltonElection.date} label="Hamilton voting day" />
         <div className="election-date">
           <CalendarDays />
           <div>
             <small>ELECTION DAY</small>
-            <strong>October 26, 2026</strong>
-            <span>Mayor · 15 ward councillors · school board trustees</span>
+            <strong>{hamiltonElection.weekdayLabel}</strong>
+            <span>{hamiltonElection.offices}</span>
           </div>
+        </div>
+        <div className="election-key-dates">
+          <article>
+            <small>VOTERS LIST</small>
+            <strong>Amend in person by {hamiltonElection.votersListAmendUntil}</strong>
+            <p>City Clerk or a municipal service centre, with ID. You can also be added at a poll.</p>
+          </article>
+          <article>
+            <small>ADVANCE POLLS</small>
+            <strong>{hamiltonElection.advancePolls.join(" · ")}</strong>
+            <p>Vote in your ward before election day. Community polls: {hamiltonElection.communityPolls}.</p>
+          </article>
+          <article>
+            <small>IMPORTANT</small>
+            <strong>No online or mail-in ballots</strong>
+            <p>The City has stated this municipal election is in-person. Proxy voting has official rules—verify before assuming.</p>
+          </article>
         </div>
         <LinkCards
           items={[
-            { href: "/leaders/andrea-horwath", title: "Mayor", description: "Citywide office — verify candidates on the official election page.", tag: "OFFICE" },
-            { href: "/leaders", title: "Ward Councillor", description: "15 wards across Hamilton — know your current councillor now.", tag: "OFFICE" },
-            { href: hamiltonMeta.electionUrl, title: "School Board Trustee", description: "Public & separate boards — confirm details with the City of Hamilton.", tag: "OFFICE", external: true },
+            { href: hamiltonElection.urls.eligibility, title: "Voter eligibility", description: "Official rules for who may vote in Hamilton's municipal election.", tag: "OFFICIAL", external: true },
+            { href: hamiltonElection.urls.candidates, title: "Certified candidates", description: "Nominations closed August 21. Read the City's certified list—not a campaign graphic.", tag: "OFFICIAL", external: true },
+            { href: hamiltonElection.urls.voters, title: "Where and how to vote", description: "Advance polls, election day, and proxy information from the City Clerk.", tag: "OFFICIAL", external: true },
+            { href: "/learn/prepare-for-municipal-election", title: "Prepare with a Kingdom-first checklist", description: "Eligibility, calendar, and discernment without baptizing a ballot.", tag: "LESSON" },
+            { href: "/learn/vote-with-conscience", title: "Vote with a clear conscience", description: "Principles, evidence, prayer—and honesty about disagreement.", tag: "LESSON" },
+            { href: "/learn/pray-for-an-election", title: "Pray through the election", description: "Intercede for voters, officials, opponents, and whoever wins.", tag: "PRAYER" },
           ]}
         />
         <div className="election-checklist" style={{ marginTop: 28 }}>
@@ -539,7 +588,7 @@ function ElectionPage() {
           </ol>
         </div>
         <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 24, alignItems: "center" }}>
-          <a href={hamiltonMeta.electionUrl} target="_blank" rel="noopener noreferrer" className="button button-navy">
+          <a href={hamiltonElection.urls.hub} target="_blank" rel="noopener noreferrer" className="button button-navy">
             Official election information <ExternalLink size={14} />
           </a>
           <ShareButton title="Hamilton Election 2026" text="October 26, 2026 municipal & school board election" url={absoluteUrl("/elections")} />
@@ -548,7 +597,10 @@ function ElectionPage() {
       <aside className="source-aside">
         <ShieldCheck />
         <h3>Use official information</h3>
-        <p>Registration, ID requirements, and voting methods must be verified with the City of Hamilton and Elections Ontario.</p>
+        <p>
+          The Clerk&apos;s office is at City Hall, 71 Main Street West. Call {hamiltonElection.clerkPhone} or email {hamiltonElection.clerkEmail}.
+          Kingdom Civics does not publish unofficial candidate scorecards.
+        </p>
         <Link href="/trust">How we verify election data <ArrowRight size={14} /></Link>
       </aside>
       <div style={{ gridColumn: "1 / -1", marginTop: 24 }}>
@@ -808,9 +860,8 @@ function AdminPage() {
   );
 }
 
-export default async function InnerPage({ params, searchParams }: PageProps) {
+export default async function InnerPage({ params }: PageProps) {
   const { slug } = await params;
-  const query = searchParams ? await searchParams : undefined;
   const section = slug[0];
   const copy = heroCopy(section, slug);
   const path = "path" in copy && copy.path ? copy.path : getPageSeo(section).path;
@@ -859,11 +910,9 @@ export default async function InnerPage({ params, searchParams }: PageProps) {
   else if (section === "start") body = <StartHere />;
   else if (section === "leaders") body = <LeadersPage detail={slug[1]} />;
   else if (section === "elections") body = <ElectionPage />;
-  else if (section === "kingdom-lens") body = <KingdomLensPage searchParams={query} />;
   else if (section === "pray") body = <PrayPage />;
   else if (section === "serve") body = <ServePage />;
   else if (section === "trust") body = <TrustPage />;
-  else if (section === "search") body = <GlobalSearch initialQuery={query?.q ?? ""} />;
   else if (section === "compare") body = <ComparisonPreview />;
   else if (section === "biblical-principles") body = slug[1]
     ? <PrincipleDetailPage slug={slug[1]} />
@@ -882,25 +931,15 @@ export default async function InnerPage({ params, searchParams }: PageProps) {
   else notFound();
 
   return (
-    <>
-      <JsonLd data={pageStructuredData(section, slug, copy)} />
-      <SiteHeader />
-      <main id="main-content" className="inner-page" tabIndex={-1}>
-        <section className="page-hero">
-          <div className="page-width">
-            <Breadcrumbs items={pageBreadcrumbs(section, slug)} />
-            <span className="eyebrow gold-text">{copy.eyebrow}</span>
-            <h1>{copy.title}</h1>
-            <p>{copy.description}</p>
-            <div className="page-hero-tools">
-              <ShareButton title={copy.title} text={copy.description} url={absoluteUrl(path)} />
-              <CiteThis title={copy.title} path={path} />
-            </div>
-          </div>
-        </section>
-        <section className="page-body"><div className="page-width">{body}</div></section>
-      </main>
-      <SiteFooter />
-    </>
+    <InnerPageShell
+      eyebrow={copy.eyebrow}
+      title={copy.title}
+      description={copy.description}
+      path={path}
+      breadcrumbs={pageBreadcrumbs(section, slug)}
+      jsonLd={pageStructuredData(section, slug, copy)}
+    >
+      {body}
+    </InnerPageShell>
   );
 }

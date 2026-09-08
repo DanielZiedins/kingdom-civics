@@ -286,6 +286,32 @@ export const issueGuidesContent: IssueGuide[] = [
       },
     ],
   },
+  {
+    slug: "truth-public-speech",
+    title: "Truth, Media & Public Speech",
+    description:
+      "Biblical principles for public truth-telling, media, and civic speech—without treating every controversy as a holy war.",
+    principles: ["Truth & integrity", "Human dignity", "Conscience & worship"],
+    scripture: "Exodus 20:16 · Ephesians 4:25 · Proverbs 12:22",
+    sections: [
+      {
+        heading: "Truth is not a team colour",
+        body: "Scripture forbids false witness and loves truthful speech. Public life depends on records, testimony, and the possibility of correction. Christians err when they excuse lies because ‘our side’ told them, or when they treat every disputed claim as apostasy.",
+      },
+      {
+        heading: "Media is a power, not a sacrament",
+        body: "Outlets, platforms, and influencers shape what neighbours fear and hope. Prefer primary sources, name uncertainty, and refuse to share what you have not checked. Freedom of speech is a civic good; it is not a licence to bear false witness.",
+      },
+      {
+        heading: "Questions that clarify",
+        body: "What is the original document? Who benefits if this spreads? What would a fair-minded opponent say? Which level of government actually holds the lever? Am I protecting a person made in God’s image—or performing for a tribe?",
+      },
+      {
+        heading: "How to engage",
+        body: "Pray for journalists, clerks, and officials who keep records. Correct yourself in public. Teach your church to slow down before forwarding. See /learn/share-politics-online and /learn/evaluate-political-claims.",
+      },
+    ],
+  },
 ];
 
 export function getIssueGuide(slug: string): IssueGuide | undefined {

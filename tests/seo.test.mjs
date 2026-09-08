@@ -38,7 +38,9 @@ test("inner pages use rich SEO metadata helpers", async () => {
   const source = await readFile(new URL("src/app/[...slug]/page.tsx", root), "utf8");
   assert.match(source, /getPageMetadata/);
   assert.match(source, /personSchema/);
-  assert.match(source, /Breadcrumbs/);
+  assert.match(source, /InnerPageShell/);
+  const shell = await readFile(new URL("src/components/inner-page-shell.tsx", root), "utf8");
+  assert.match(shell, /Breadcrumbs/);
 });
 
 test("global FAQs target Christian civic and Hamilton queries", async () => {
@@ -182,4 +184,12 @@ test("start path scripture index and new civic content ship", async () => {
   assert.match(top, /BackToTop/);
   const rhythm = await readFile(new URL("src/lib/content/rhythm.ts", root), "utf8");
   assert.match(rhythm, /getRhythmOfTheDay/);
+  assert.match(learn, /prepare-for-municipal-election/);
+  assert.match(learn, /share-politics-online/);
+  assert.match(issues, /truth-public-speech/);
+  assert.match(home, /ElectionSeason/);
+  const lens = await readFile(new URL("src/app/kingdom-lens/page.tsx", root), "utf8");
+  assert.match(lens, /LensPrompts/);
+  const election = await readFile(new URL("src/lib/content/election.ts", root), "utf8");
+  assert.match(election, /advancePolls/);
 });

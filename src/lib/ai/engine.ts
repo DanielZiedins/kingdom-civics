@@ -404,6 +404,48 @@ const globalChunks: KnowledgeChunk[] = [
     counterpoints: ["Enterprise can serve neighbours; so can just labour law. Keep both notes."],
     confidence: "moderate",
   },
+  {
+    id: "prepare-election",
+    scope: "hamilton",
+    tags: ["prepare", "voters list", "advance poll", "ballot", "october 26", "how to vote hamilton", "register to vote hamilton"],
+    answer:
+      "Prepare for Hamilton's October 26, 2026 municipal election with official sources: confirm eligibility, find your ward, amend the voters list in person by October 24 if needed, read certified candidates from the City, and vote at a community poll, advance poll, or on election day. There are no online or mail-in ballots. See /elections and /learn/prepare-for-municipal-election.",
+    principles: ["Truth", "Civic responsibility", "Kingdom first"],
+    scripture: [{ reference: "Proverbs 18:17", application: "Examine the first claim—especially campaign graphics—before you share or vote." }],
+    sources: [
+      { id: "ham-elex-hub", title: "Municipal Election", publisher: "City of Hamilton", url: hamiltonMeta.electionUrl, tier: 1 },
+      { id: "kc-prep", title: "How to Prepare for a Municipal Election", publisher: "Kingdom Civics", url: "/learn/prepare-for-municipal-election", tier: 2 },
+    ],
+    uncertainties: ["Polling locations and hours are published by the City Clerk—confirm closer to each voting day."],
+    counterpoints: [],
+    confidence: "strong",
+  },
+  {
+    id: "share-online",
+    scope: "global",
+    tags: ["social media", "share", "post", "forward", "viral", "false witness", "group chat"],
+    answer:
+      "Your feed is a discipleship environment. Do not share what you have not checked. Ask whether the claim is a primary source, which office controls the issue, and whether you would say it to a neighbour's face. Correct yourself in the same thread if you were wrong. See /learn/share-politics-online.",
+    principles: ["Truth", "Neighbor love", "Humility"],
+    scripture: [{ reference: "Exodus 20:16", application: "You shall not bear false witness—even in a screenshot." }],
+    sources: [{ id: "kc-share", title: "Share Politics Online", publisher: "Kingdom Civics", url: "/learn/share-politics-online", tier: 2 }],
+    uncertainties: [],
+    counterpoints: ["Silence is not always wisdom; truthful, sourced speech can still serve neighbours."],
+    confidence: "strong",
+  },
+  {
+    id: "truth-speech",
+    scope: "global",
+    tags: ["media", "news", "truth", "speech", "misinformation", "false witness", "journalism"],
+    answer:
+      "Truth is not a team colour. Prefer primary sources, name uncertainty, and refuse to excuse lies because they help 'our side.' Freedom of speech is a civic good; it is not a licence to bear false witness. See /issues/truth-public-speech.",
+    principles: ["Truth", "Human dignity", "Conscience"],
+    scripture: [{ reference: "Ephesians 4:25", application: "Put away falsehood; speak truth with your neighbour." }],
+    sources: [{ id: "kc-truth", title: "Truth, Media & Public Speech", publisher: "Kingdom Civics", url: "/issues/truth-public-speech", tier: 2 }],
+    uncertainties: ["Media law and platform rules vary by country."],
+    counterpoints: ["Not every disputed claim is a lie; some are honest disagreement about evidence."],
+    confidence: "moderate",
+  },
 ];
 
 const hamiltonChunks: KnowledgeChunk[] = [
@@ -435,7 +477,7 @@ const hamiltonChunks: KnowledgeChunk[] = [
     id: "hamilton-election",
     scope: "hamilton",
     tags: ["election", "vote", "2026", "october", "municipal", "nomination", "hamilton"],
-    answer: `Hamilton's next municipal and school board election is scheduled for October 26, 2026. Offices typically include mayor, ward councillors, and school board trustees. Registration deadlines, identification requirements, and voting methods must be verified with the City of Hamilton and Elections Ontario—not third-party summaries.`,
+    answer: `Hamilton's next municipal and school board election is Monday, October 26, 2026. Offices: mayor, 15 ward councillors, and school board trustees. Nominations closed August 21, 2026; candidates were certified August 24. Community polls: September 26–27. Advance polls: October 3–4, 10–11, and 17–18. The City has stated there are no online or mail-in ballots. Eligible voters can amend the voters list in person with ID through October 24, 2026, or at a poll. Verify everything at hamilton.ca—not social media.`,
     principles: ["Truth", "Civic responsibility", "Peaceful order"],
     scripture: [{ reference: "1 Timothy 2:1–2", application: "Christians can pray for peaceful civic life while participating lawfully in the process." }],
     sources: [{ id: "hamilton-election", title: "2026 Municipal Election", publisher: "City of Hamilton", url: hamiltonMeta.electionUrl, tier: 1 }],
