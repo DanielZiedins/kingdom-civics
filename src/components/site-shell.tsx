@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ChevronRight, Menu, Search, X } from "lucide-react";
 import { CommandPalette } from "@/components/command-palette";
+import { getBannerCopy } from "@/lib/content/election";
 import { footerColumns, navItems } from "@/lib/data";
 
 export function Logo({ inverse = false }: { inverse?: boolean }) {
@@ -24,6 +25,7 @@ export function Logo({ inverse = false }: { inverse?: boolean }) {
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [banner, setBanner] = useState("Community polls Sep 26–27 · 10 a.m.–6 p.m. · Bring ID");
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
@@ -33,6 +35,7 @@ export function SiteHeader() {
       setScrolled(window.scrollY > 8);
     }
     onScroll();
+    setBanner(getBannerCopy());
     window.addEventListener("keydown", onKey);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => {
@@ -52,7 +55,7 @@ export function SiteHeader() {
     <>
     <header className={`site-header ${scrolled ? "site-header-scrolled" : ""}`}>
       <div className="top-note">
-        <span>Hamilton votes Oct 26 · Advance polls begin Oct 3 · Official sources only</span>
+        <span>{banner}</span>
         <Link href="/elections">Election hub <ChevronRight size={13} /></Link>
       </div>
       <div className="nav-wrap">

@@ -27,6 +27,8 @@ export const SITE_KEYWORDS = [
   "Hamilton Ontario mayor",
   "Hamilton city councillors",
   "Hamilton municipal election 2026",
+  "Hamilton community polls",
+  "what to bring to vote Hamilton",
   "Andrea Horwath Hamilton",
   "Hamilton MPs",
   "civic discipleship",

@@ -4,7 +4,7 @@
 
 Kingdom Civics helps Christians worldwide understand government, discern leadership, pray faithfully, and serve humbly—without partisan endorsements.
 
-Last updated: 2026-09-08
+Last updated: 2026-09-17
 
 ## Canonical site
 
@@ -23,7 +23,7 @@ Last updated: 2026-09-08
 - [Scripture index](https://www.kingdomcivics.org/scripture): Bible verses about government, voting, and public life
 - [Hamilton Leaders](https://www.kingdomcivics.org/leaders): Mayor, councillors, MPs, MPPs with official links
 - [Hamilton City Hub](https://www.kingdomcivics.org/cities/hamilton-on): Live Hamilton civic data
-- [Hamilton Elections](https://www.kingdomcivics.org/elections): October 26, 2026 municipal election
+- [Hamilton Elections](https://www.kingdomcivics.org/elections): October 26, 2026 municipal election · community polls Sep 26–27
 - [Kingdom Lens](https://www.kingdomcivics.org/kingdom-lens): Ask civic questions with cited sources and Scripture
 - [Biblical Principles](https://www.kingdomcivics.org/biblical-principles): Framework for evaluating public life
 - [Pray](https://www.kingdomcivics.org/pray): Prayer prompts for government leaders
@@ -50,6 +50,8 @@ Last updated: 2026-09-08
 - /learn/school-boards
 - /learn/prepare-for-municipal-election
 - /learn/share-politics-online
+- /learn/what-to-bring-to-the-poll
+- /learn/discern-local-candidates
 
 ## Issue guides
 
@@ -65,14 +67,19 @@ Last updated: 2026-09-08
 - /issues/healthcare
 - /issues/work-wages-rest
 - /issues/truth-public-speech
+- /issues/disability-access
 
 ## Key facts (Hamilton, Ontario — first live city)
 
 - Mayor: Andrea Horwath (City of Hamilton)
 - City Council: 15 ward councillors + mayor (16 members)
 - Next municipal election: October 26, 2026
+- Community polls: September 26–27, 2026, 10 a.m.–6 p.m.
+- Advance polls: October 3–4, 10–11, 17–18, 2026, 10 a.m.–6 p.m.
+- Voter information card is not required; bring valid ID
+- Vote at any poll in your ward
 - Official city site: https://www.hamilton.ca
-- Data last verified: 2026-09-08
+- Data last verified: 2026-09-17
 
 ## Key facts (global mission)
 

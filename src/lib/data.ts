@@ -155,6 +155,8 @@ export const learnModules = [
   ["How to vote with a clear conscience", "11 min", "Discernment", "/learn/vote-with-conscience"],
   ["How to pray for an election", "8 min", "Prayer", "/learn/pray-for-an-election"],
   ["How to prepare for a municipal election", "9 min", "Elections", "/learn/prepare-for-municipal-election"],
+  ["What to bring to the poll", "7 min", "Elections", "/learn/what-to-bring-to-the-poll"],
+  ["Discern local candidates", "9 min", "Discernment", "/learn/discern-local-candidates"],
   ["Sharing politics online", "8 min", "Discernment", "/learn/share-politics-online"],
   ["School boards and Christian families", "10 min", "Education", "/learn/school-boards"],
   ["How Hamilton City Council works", "10 min", "Live city · Hamilton", "/learn/hamilton-city-council"],
@@ -174,6 +176,7 @@ export const issueGuides = [
   ["Healthcare", "Dignity · Mercy · Stewardship of bodies", "/issues/healthcare"],
   ["Work, wages & rest", "Labour · Dignity · Sabbath", "/issues/work-wages-rest"],
   ["Truth, media & speech", "False witness · Primary sources · Neighbour-love", "/issues/truth-public-speech"],
+  ["Disability, access & civic life", "Dignity · Accessibility · Showing up", "/issues/disability-access"],
 ] as const;
 
 export const prayerPrompts = [

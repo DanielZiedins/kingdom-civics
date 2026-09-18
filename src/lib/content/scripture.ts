@@ -168,6 +168,20 @@ export const civicScriptures: ScriptureEntry[] = [
     related: "/why-engage",
     keywords: ["love your neighbor politics", "luke 10:27 government", "great commandment civic life"],
   },
+  {
+    ref: "Psalm 82:3–4",
+    text: "Give justice to the weak and the fatherless; maintain the right of the afflicted and the destitute.",
+    application: "Civic power is tested by whether the weak can actually reach the poll, the clinic, and the court—not only by a slogan.",
+    related: "/issues/disability-access",
+    keywords: ["psalm 82 justice weak", "bible disability civic life", "defend the weak government"],
+  },
+  {
+    ref: "Leviticus 19:14",
+    text: "You shall not curse the deaf or put a stumbling block before the blind, but you shall fear your God.",
+    application: "Inaccessible buildings, hidden hours, and contempt for disabled neighbours are not ‘just logistics.’ They are a moral issue.",
+    related: "/issues/disability-access",
+    keywords: ["leviticus 19:14 accessibility", "stumbling block bible civic", "disability scripture government"],
+  },
 ];
 
 export function scriptureAnchor(ref: string) {

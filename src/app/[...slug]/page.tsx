@@ -18,6 +18,8 @@ import { ShareButton } from "@/components/share-button";
 import { FaqSection } from "@/components/seo/faq-section";
 import { glossaryTerms } from "@/lib/content/glossary";
 import { hamiltonElection } from "@/lib/content/election";
+import { PollReady } from "@/components/poll-ready";
+import { VotingCalendar } from "@/components/voting-calendar";
 import { getIssueGuide, issueGuidesContent } from "@/lib/content/issues";
 import { getLearnArticle, learnArticles } from "@/lib/content/learn";
 import { civicScriptures, scriptureAnchor } from "@/lib/content/scripture";
@@ -207,9 +209,9 @@ function pageStructuredData(section: string, slug: string[], copy: { title: stri
         path: "/elections",
         steps: [
           "Confirm you are eligible to vote in Hamilton, Ontario.",
-          "Find your ward and confirm or amend the voters list with the City Clerk.",
+          "Find your ward with the City's official map and bring valid ID—a voter card is not required.",
           "Read certified candidates from the official City of Hamilton list.",
-          "Vote at a community poll, an October advance poll, or on Monday, October 26, 2026.",
+          "Vote at a community poll (Sep 26–27, 10 a.m.–6 p.m.), an advance poll, or on Monday, October 26, 2026. Any poll in your ward.",
           "There are no online or mail-in ballots for this municipal election—verify proxy rules if you cannot attend.",
         ],
       }),
@@ -276,6 +278,24 @@ function pageStructuredData(section: string, slug: string[], copy: { title: stri
           "Name which office actually controls the issue.",
           "Refuse to post what you would not say to a neighbour's face.",
           "Correct yourself in the same thread if you shared something false.",
+        ],
+      },
+      "what-to-bring-to-the-poll": {
+        name: "What to bring to vote in Hamilton",
+        steps: [
+          "Bring valid identification. A voter information card is helpful, not required.",
+          "Confirm your ward with the City's official Find my Ward tool.",
+          "Vote at any poll in your ward during published hours.",
+          "If you are missing from the list, ask to be added at the poll with ID.",
+        ],
+      },
+      "discern-local-candidates": {
+        name: "How to discern local candidates without a scorecard",
+        steps: [
+          "Name the offices on your ballot: mayor, ward councillor, and school board trustees.",
+          "Read certified candidates from the City of Hamilton—not a forwarded graphic.",
+          "Ask what each office actually controls and examine primary sources.",
+          "Pray for wisdom, then vote without contempt or claiming God marked your ballot.",
         ],
       },
     };
@@ -535,10 +555,11 @@ function LeadersPage({ detail }: { detail?: string }) {
 function ElectionPage() {
   const checklist = [
     "Confirm you are an eligible elector in Hamilton (citizen, 18+, resident/owner/tenant or spouse, not prohibited).",
-    "Find your ward with official City mapping, then write down the offices on your ballot.",
+    "Find your ward with the City’s official map. You may vote at any poll in that ward.",
+    "Bring valid ID. A voter information card is helpful, not required.",
     "If needed, amend the voters list in person with ID by October 24, 2026—or at a poll.",
     "Read certified candidates from the City of Hamilton, not a forwarded graphic.",
-    "Vote at a community poll (Sept 26–27), an advance poll in October, or on Monday, October 26.",
+    "Vote at a community poll (Sep 26–27, 10 a.m.–6 p.m.), an advance poll, or on Monday, October 26.",
   ];
   return (
     <div className="election-layout">
@@ -554,6 +575,8 @@ function ElectionPage() {
             <span>{hamiltonElection.offices}</span>
           </div>
         </div>
+        <VotingCalendar />
+        <PollReady />
         <div className="election-key-dates">
           <article>
             <small>VOTERS LIST</small>
@@ -561,21 +584,40 @@ function ElectionPage() {
             <p>City Clerk or a municipal service centre, with ID. You can also be added at a poll.</p>
           </article>
           <article>
-            <small>ADVANCE POLLS</small>
-            <strong>{hamiltonElection.advancePolls.join(" · ")}</strong>
-            <p>Vote in your ward before election day. Community polls: {hamiltonElection.communityPolls}.</p>
+            <small>CITY HALL</small>
+            <strong>Special voting {hamiltonElection.cityHallSpecial}</strong>
+            <p>The City has listed special voting at City Hall. Confirm hours on hamilton.ca before you go.</p>
           </article>
           <article>
             <small>IMPORTANT</small>
             <strong>No online or mail-in ballots</strong>
-            <p>The City has stated this municipal election is in-person. Proxy voting has official rules—verify before assuming.</p>
+            <p>This municipal election is in-person. Proxy voting has official rules—verify before assuming.</p>
           </article>
         </div>
+        <h3 className="election-subhead">School boards on this ballot</h3>
+        <ul className="election-boards">
+          {hamiltonElection.schoolBoards.map((board) => (
+            <li key={board}>{board}</li>
+          ))}
+        </ul>
+        <h3 className="election-subhead">City voter outreach remaining</h3>
+        <ul className="election-outreach">
+          {hamiltonElection.outreach.map((event) => (
+            <li key={event.place}>
+              <strong>{event.date}</strong>
+              <span>{event.place} · {event.hours}</span>
+            </li>
+          ))}
+        </ul>
+        <p className="election-outreach-note">Confirm every outreach hour and location on hamilton.ca. Kingdom Civics does not replace the Clerk.</p>
         <LinkCards
           items={[
+            { href: hamiltonElection.urls.findWard, title: "Find my ward", description: "Official City of Hamilton ward lookup. You may vote at any poll in your ward.", tag: "OFFICIAL", external: true },
             { href: hamiltonElection.urls.eligibility, title: "Voter eligibility", description: "Official rules for who may vote in Hamilton's municipal election.", tag: "OFFICIAL", external: true },
             { href: hamiltonElection.urls.candidates, title: "Certified candidates", description: "Nominations closed August 21. Read the City's certified list—not a campaign graphic.", tag: "OFFICIAL", external: true },
-            { href: hamiltonElection.urls.voters, title: "Where and how to vote", description: "Advance polls, election day, and proxy information from the City Clerk.", tag: "OFFICIAL", external: true },
+            { href: hamiltonElection.urls.voters, title: "Where and how to vote", description: "Community polls, advance polls, election day, and proxy information from the City Clerk.", tag: "OFFICIAL", external: true },
+            { href: "/learn/what-to-bring-to-the-poll", title: "What to bring to the poll", description: "ID, hours, any-poll-in-your-ward, and what the City has actually said.", tag: "LESSON" },
+            { href: "/learn/discern-local-candidates", title: "Discern local candidates", description: "Offices, jurisdiction, and official lists—without an influencer scorecard.", tag: "LESSON" },
             { href: "/learn/prepare-for-municipal-election", title: "Prepare with a Kingdom-first checklist", description: "Eligibility, calendar, and discernment without baptizing a ballot.", tag: "LESSON" },
             { href: "/learn/vote-with-conscience", title: "Vote with a clear conscience", description: "Principles, evidence, prayer—and honesty about disagreement.", tag: "LESSON" },
             { href: "/learn/pray-for-an-election", title: "Pray through the election", description: "Intercede for voters, officials, opponents, and whoever wins.", tag: "PRAYER" },

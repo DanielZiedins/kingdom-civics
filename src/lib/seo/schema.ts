@@ -179,7 +179,25 @@ export function electionEventSchema(): JsonLd {
     },
     url: absoluteUrl("/elections"),
     description:
-      "Hamilton municipal and school board election for mayor, ward councillors, and trustees.",
+      "Hamilton municipal and school board election for mayor, ward councillors, and trustees. Community polls September 26–27, 10 a.m.–6 p.m. Advance polls October 3–4, 10–11, and 17–18.",
+    subEvent: [
+      {
+        "@type": "Event",
+        name: "Hamilton community polls",
+        startDate: "2026-09-26",
+        endDate: "2026-09-27",
+        eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+        location: { "@type": "City", name: HAMILTON_GEO.city },
+      },
+      {
+        "@type": "Event",
+        name: "Hamilton advance polls",
+        startDate: "2026-10-03",
+        endDate: "2026-10-18",
+        eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+        location: { "@type": "City", name: HAMILTON_GEO.city },
+      },
+    ],
   };
 }
 
@@ -223,8 +241,8 @@ export function articleSchema({
   title,
   description,
   path,
-  datePublished = "2026-09-08",
-  dateModified = "2026-08-15",
+  datePublished = "2026-09-17",
+  dateModified = "2026-09-17",
 }: {
   title: string;
   description: string;
@@ -264,8 +282,8 @@ export function learningResourceSchema({
   title,
   description,
   path,
-  datePublished = "2026-09-08",
-  dateModified = "2026-08-15",
+  datePublished = "2026-09-17",
+  dateModified = "2026-09-17",
 }: {
   title: string;
   description: string;

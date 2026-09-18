@@ -409,7 +409,7 @@ const globalChunks: KnowledgeChunk[] = [
     scope: "hamilton",
     tags: ["prepare", "voters list", "advance poll", "ballot", "october 26", "how to vote hamilton", "register to vote hamilton"],
     answer:
-      "Prepare for Hamilton's October 26, 2026 municipal election with official sources: confirm eligibility, find your ward, amend the voters list in person by October 24 if needed, read certified candidates from the City, and vote at a community poll, advance poll, or on election day. There are no online or mail-in ballots. See /elections and /learn/prepare-for-municipal-election.",
+      "Prepare for Hamilton's October 26, 2026 municipal election with official sources: confirm eligibility, find your ward, bring valid ID (a voter card is not required), amend the voters list in person by October 24 if needed, read certified candidates from the City, and vote at any poll in your ward—community polls Sep 26–27 (10 a.m.–6 p.m.), advance polls, or election day. There are no online or mail-in ballots. See /elections and /learn/what-to-bring-to-the-poll.",
     principles: ["Truth", "Civic responsibility", "Kingdom first"],
     scripture: [{ reference: "Proverbs 18:17", application: "Examine the first claim—especially campaign graphics—before you share or vote." }],
     sources: [
@@ -446,6 +446,51 @@ const globalChunks: KnowledgeChunk[] = [
     counterpoints: ["Not every disputed claim is a lie; some are honest disagreement about evidence."],
     confidence: "moderate",
   },
+  {
+    id: "poll-ready",
+    scope: "hamilton",
+    tags: ["bring", "id", "identification", "voter card", "poll", "community poll", "what to bring", "hours", "10 a.m."],
+    answer:
+      "To vote in Hamilton's 2026 municipal election, bring valid identification. The City has said a voter information card is helpful, not required. You may vote at any polling station in your ward. Community polls: September 26–27, 10 a.m.–6 p.m. Advance polls: October 3–4, 10–11, and 17–18, also 10 a.m.–6 p.m. There are no online or mail-in ballots. Confirm locations on hamilton.ca. See /learn/what-to-bring-to-the-poll.",
+    principles: ["Truth", "Civic responsibility", "Neighbor love"],
+    scripture: [{ reference: "Romans 13:7", application: "Give to each what is owed—including lawful civic duties carried out without contempt." }],
+    sources: [
+      { id: "ham-voters", title: "Voters", publisher: "City of Hamilton", url: "https://www.hamilton.ca/city-council/municipal-election/voters", tier: 1 },
+      { id: "kc-poll", title: "What to Bring to the Poll", publisher: "Kingdom Civics", url: "/learn/what-to-bring-to-the-poll", tier: 2 },
+    ],
+    uncertainties: ["Exact polling addresses and any ballot-on-demand hours are published by the Clerk and can change."],
+    counterpoints: [],
+    confidence: "strong",
+  },
+  {
+    id: "discern-candidates",
+    scope: "global",
+    tags: ["discern", "candidate", "scorecard", "who should i vote", "local candidates", "municipal ballot"],
+    answer:
+      "Start with the office, not the personality. A mayor, ward councillor, and school board trustee control different things. Read certified candidate lists from the official election authority—not a forwarded graphic. Ask whether claims match the office's real powers. Faithful Christians may mark different names. Kingdom Civics does not publish endorsements or unofficial scorecards. See /learn/discern-local-candidates.",
+    principles: ["Truth", "Prudential judgment", "Kingdom first"],
+    scripture: [
+      { reference: "Proverbs 18:17", application: "The first to speak seems right until another examines him." },
+      { reference: "James 1:5", application: "Ask God for wisdom when the ballot requires prudential judgment." },
+    ],
+    sources: [{ id: "kc-discern", title: "Discern Local Candidates", publisher: "Kingdom Civics", url: "/learn/discern-local-candidates", tier: 2 }],
+    uncertainties: ["Candidate filings and ballot order must be confirmed on official pages."],
+    counterpoints: ["Silence is not always faithfulness; informed voting can still be neighbour-love."],
+    confidence: "strong",
+  },
+  {
+    id: "disability-access",
+    scope: "global",
+    tags: ["disability", "access", "accessibility", "wheelchair", "blind", "poll access"],
+    answer:
+      "Public life is not only for the quick and the well. Scripture forbids putting a stumbling block before the blind and commands defence of the weak. Access to a polling place, a council chamber, and a sidewalk is neighbour-love with a budget. Ask which level of government actually holds the lever, and prefer official accessibility information. See /issues/disability-access.",
+    principles: ["Human dignity", "Justice", "Neighbor love"],
+    scripture: [{ reference: "Psalm 82:3–4", application: "Give justice to the weak; maintain the right of the afflicted." }],
+    sources: [{ id: "kc-access", title: "Disability, Access & Civic Life", publisher: "Kingdom Civics", url: "/issues/disability-access", tier: 2 }],
+    uncertainties: ["Accessibility rules and polling-place details are jurisdiction-specific."],
+    counterpoints: [],
+    confidence: "moderate",
+  },
 ];
 
 const hamiltonChunks: KnowledgeChunk[] = [
@@ -477,11 +522,11 @@ const hamiltonChunks: KnowledgeChunk[] = [
     id: "hamilton-election",
     scope: "hamilton",
     tags: ["election", "vote", "2026", "october", "municipal", "nomination", "hamilton"],
-    answer: `Hamilton's next municipal and school board election is Monday, October 26, 2026. Offices: mayor, 15 ward councillors, and school board trustees. Nominations closed August 21, 2026; candidates were certified August 24. Community polls: September 26–27. Advance polls: October 3–4, 10–11, and 17–18. The City has stated there are no online or mail-in ballots. Eligible voters can amend the voters list in person with ID through October 24, 2026, or at a poll. Verify everything at hamilton.ca—not social media.`,
+    answer: `Hamilton's next municipal and school board election is Monday, October 26, 2026. Offices: mayor, 15 ward councillors, and school board trustees. Nominations closed August 21, 2026; candidates were certified August 24. Community polls: September 26–27, 10 a.m.–6 p.m. Advance polls: October 3–4, 10–11, and 17–18, 10 a.m.–6 p.m. You may vote at any poll in your ward. A voter card is not required—bring valid ID. The City has stated there are no online or mail-in ballots. Eligible voters can amend the voters list in person with ID through October 24, 2026, or at a poll. Verify everything at hamilton.ca—not social media.`,
     principles: ["Truth", "Civic responsibility", "Peaceful order"],
     scripture: [{ reference: "1 Timothy 2:1–2", application: "Christians can pray for peaceful civic life while participating lawfully in the process." }],
     sources: [{ id: "hamilton-election", title: "2026 Municipal Election", publisher: "City of Hamilton", url: hamiltonMeta.electionUrl, tier: 1 }],
-    uncertainties: ["Declared candidates and final ballot information will emerge through the official nomination period."],
+    uncertainties: ["Polling locations, ballot-on-demand hours, and any last-minute Clerk notices should be confirmed on hamilton.ca."],
     counterpoints: ["Voting is one form of civic participation; consultation, volunteering, and public service also matter."],
     confidence: "strong",
   },

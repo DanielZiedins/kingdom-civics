@@ -8,6 +8,8 @@ const prompts = [
   "How do I find who represents me?",
   "How should our church talk about politics?",
   "How do I pray for an election?",
+  "What should I bring to vote in Hamilton?",
+  "How do I discern local candidates?",
 ];
 
 export function LensPrompts() {

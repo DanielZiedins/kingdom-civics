@@ -57,11 +57,13 @@ export const pageSeo: Record<string, PageSeo> = {
     eyebrow: "OFFICIAL INFORMATION FIRST",
     title: "Hamilton Municipal Election 2026 — Dates & Offices",
     description:
-      "Hamilton's October 26, 2026 municipal and school board election: mayor, 15 ward councillors, trustees, advance polls, voters-list steps, and official City of Hamilton links.",
+      "Hamilton's October 26, 2026 municipal and school board election: community polls Sep 26–27 (10 a.m.–6 p.m.), advance polls, voter ID, Find my Ward, and official City of Hamilton links.",
     path: "/elections",
     keywords: [
       "Hamilton election 2026",
       "Hamilton municipal election date",
+      "Hamilton community polls September 26",
+      "what to bring to vote Hamilton",
       "vote Hamilton Ontario",
       "Hamilton mayor election",
     ],

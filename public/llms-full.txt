@@ -25,7 +25,7 @@ Geographic focus: Worldwide Christian civic education; first live city: Hamilton
 - Not affiliated with any political party
 - Not claiming any politician has God's endorsement
 
-## Hamilton live data (verified 2026-09-08)
+## Hamilton live data (verified 2026-09-17)
 
 ### Mayor
 - Andrea Horwath — Mayor of Hamilton
@@ -45,8 +45,13 @@ Geographic focus: Worldwide Christian civic education; first live city: Hamilton
 ### Election
 - 2026 Hamilton Municipal & School Board Election
 - Election day: October 26, 2026
+- Community polls: September 26–27, 2026, 10 a.m.–6 p.m.
+- Advance polls: October 3–4, 10–11, 17–18, 2026, 10 a.m.–6 p.m.
+- Voter information card is not required; bring valid ID
+- Vote at any poll in your ward
 - Offices: mayor, 15 ward councillors, school board trustees
 - Official info: https://www.hamilton.ca/city-council/municipal-election
+- Find my ward: https://www.hamilton.ca/city-council/municipal-election/voters/find-my-ward
 
 ## Cities coming soon
 
@@ -70,6 +75,8 @@ Toronto, Ottawa, Calgary, Vancouver, Nashville, Dallas, London (UK)
 - /learn/school-boards — School boards and Christian families
 - /learn/prepare-for-municipal-election — How to prepare for a municipal election
 - /learn/share-politics-online — How to share politics online without harming your neighbour
+- /learn/what-to-bring-to-the-poll — What to bring to vote in Hamilton
+- /learn/discern-local-candidates — How to discern local candidates without a scorecard
 
 ## Issue guides (indexable)
 
@@ -85,6 +92,7 @@ Toronto, Ottawa, Calgary, Vancouver, Nashville, Dallas, London (UK)
 - /issues/healthcare — Healthcare and human dignity
 - /issues/work-wages-rest — Work, wages, and rest
 - /issues/truth-public-speech — Truth, media, and public speech
+- /issues/disability-access — Disability, access, and civic life
 
 ## Glossary
 

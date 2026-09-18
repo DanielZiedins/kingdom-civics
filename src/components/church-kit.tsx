@@ -100,6 +100,12 @@ export function ChurchKit() {
           <p>Ask one civic question as a group. Inspect sources, Scripture, uncertainties, and counterpoints—then refuse to stop at slogans.</p>
           <Link href="/kingdom-lens" className="text-link">Open Kingdom Lens <ArrowRight size={14} /></Link>
         </div>
+        <div className="content-card">
+          <small>HAMILTON · ELECTION</small>
+          <h3>Prepare the congregation to vote without a scorecard</h3>
+          <p>Community polls are September 26–27. Teach ID, ward maps, and prayer—not pulpit endorsements. Point people to hamilton.ca.</p>
+          <Link href="/learn/what-to-bring-to-the-poll" className="text-link">Poll-ready guide <ArrowRight size={14} /></Link>
+        </div>
       </div>
 
       <h2 className="church-kit-h2">Guardrails for churches</h2>

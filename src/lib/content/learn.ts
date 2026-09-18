@@ -453,6 +453,60 @@ export const learnArticles: LearnArticle[] = [
       },
     ],
   },
+  {
+    slug: "what-to-bring-to-the-poll",
+    title: "What to Bring to the Poll — Hamilton 2026",
+    description:
+      "Official-first poll-day guidance for Hamilton: identification, voter cards, any-poll-in-your-ward voting, community and advance poll hours, and what the City has actually said.",
+    duration: "7 min",
+    category: "Elections",
+    scripture: "1 Timothy 2:1–2 · Proverbs 18:17 · Romans 13:7",
+    sections: [
+      {
+        heading: "Show up with ID, not a rumour",
+        body: "The City of Hamilton has said you do not need a voter information card to vote. Bring valid identification. A mailed card is helpful if you have it, but it is not the ticket. If you are missing from the voters list, you can usually be added at the poll with ID. Confirm current ID rules on hamilton.ca before you go—do not trust a forwarded graphic.",
+      },
+      {
+        heading: "You may vote at any poll in your ward",
+        body: "For this municipal election the City has stated you can vote at any polling station in your ward, not only a single assigned building. Community polls run September 26–27 from 10 a.m. to 6 p.m. Advance polls run October 3–4, 10–11, and 17–18, also 10 a.m. to 6 p.m. Election day is Monday, October 26. Find your ward with the City’s official map, then confirm locations closer to each voting day.",
+      },
+      {
+        heading: "What this election is not",
+        body: "There are no online or mail-in ballots for Hamilton’s 2026 municipal and school board election. Proxy voting exists for people who cannot attend any voting day—read the Clerk’s rules before assuming. Ballot-on-demand sites (including campuses and some social-service locations) have their own hours; the City has said those hours vary. Special voting at City Hall is listed for October 16–23. Verify every exception on hamilton.ca.",
+      },
+      {
+        heading: "A Kingdom-first posture at the poll",
+        body: "Arrive early enough to wait without treating staff as opponents. Thank the people administering the vote. You will mark a mayor, a ward councillor, and school board trustees—not a prime minister. Voting is stewardship, not salvation. See /elections, /learn/discern-local-candidates, and /learn/pray-for-an-election.",
+      },
+    ],
+  },
+  {
+    slug: "discern-local-candidates",
+    title: "How to Discern Local Candidates without a Scorecard",
+    description:
+      "A Kingdom-first way to read a municipal ballot: offices, jurisdiction, official candidate lists, character, and school boards—without endorsements or influencer scorecards.",
+    duration: "9 min",
+    category: "Discernment",
+    scripture: "Proverbs 18:17 · James 1:5 · Micah 6:8 · Mark 10:42–45",
+    sections: [
+      {
+        heading: "Start with the office, not the personality",
+        body: "A mayor, a ward councillor, and a school board trustee control different things. Confusing them produces panic and wasted prayer. Ask: what does this office actually decide? Municipal ballots do not elect a prime minister, set criminal law, or write the entire education statute. Map jurisdiction before you map slogans.",
+      },
+      {
+        heading: "Read the City’s list, not a forwarded graphic",
+        body: "Nominations for Hamilton’s 2026 election closed August 21; candidates were certified August 24. Kingdom Civics does not publish unofficial scorecards. Open the City of Hamilton certified candidate pages. Note who filed for mayor, your ward, and each school board you are eligible to vote for. If a claim cannot be traced to an official record or a candidate’s own words, wait.",
+      },
+      {
+        heading: "Questions that form a conscience",
+        body: "Does this person tell the truth under pressure? Do they treat opponents as image-bearers? What is their record—or, if new, their concrete proposals—on housing, stewardship, and the vulnerable? Which level of government actually holds the lever they campaign on? Faithful Christians may mark different names. That is not apostasy; it is prudential judgment. James 1:5 still applies.",
+      },
+      {
+        heading: "School boards belong on the same ballot",
+        body: "Hamilton elects trustees for the Hamilton-Wentworth District School Board, the Hamilton-Wentworth Catholic District School Board, Conseil scolaire Viamonde, and Conseil scolaire catholique MonAvenir. Eligibility for each ballot is set by the City—not by a church bulletin. Learn the board, then vote. See /learn/school-boards, /learn/vote-with-conscience, and /elections.",
+      },
+    ],
+  },
 ];
 
 export function getLearnArticle(slug: string): LearnArticle | undefined {

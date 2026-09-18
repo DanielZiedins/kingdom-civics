@@ -51,5 +51,34 @@ export const civicRhythm = [
 ] as const;
 
 export function getRhythmOfTheDay(date = new Date()) {
-  return civicRhythm[date.getUTCDay()];
+  const weekday = new Intl.DateTimeFormat("en-US", {
+    weekday: "short",
+    timeZone: "America/Toronto",
+  }).format(date);
+  const dayIndex = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].indexOf(weekday);
+  const base = civicRhythm[dayIndex === -1 ? date.getDay() : dayIndex];
+  const start = Date.parse("2026-09-26T10:00:00-04:00");
+  const end = Date.parse("2026-09-27T18:00:00-04:00");
+  const now = date.getTime();
+  if (now < end && start - now < 12 * 86400000) {
+    if (weekday === "Thu") {
+      return {
+        ...base,
+        title: "Confirm your ward before community polls.",
+        body: "Use the City’s Find my Ward tool, then read the poll-ready checklist. A voter card is helpful, not required.",
+        href: "/elections",
+        cta: "Open the election hub",
+      };
+    }
+    if (weekday === "Fri" || weekday === "Sat" || weekday === "Sun") {
+      return {
+        ...base,
+        title: "Community polls this weekend.",
+        body: "Hamilton community polls are September 26–27, 10 a.m.–6 p.m. Vote at any poll in your ward. Bring valid ID.",
+        href: "/learn/what-to-bring-to-the-poll",
+        cta: "What to bring to the poll",
+      };
+    }
+  }
+  return base;
 }

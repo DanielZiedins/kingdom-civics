@@ -22,7 +22,7 @@ export const searchIndex: SearchHit[] = [
   { title: "Start here — five-step civic path", href: "/start", keywords: "start beginner civic discipleship how to begin", category: "Start" },
   { title: "Bible verses about government", href: "/scripture", keywords: "bible verses government voting jeremiah micah romans timothy scripture", category: "Scripture" },
   { title: "Hamilton leaders directory", href: "/leaders", keywords: "mayor councillor mp mpp hamilton leaders", category: "Leaders" },
-  { title: "Hamilton 2026 municipal election", href: "/elections", keywords: "election vote 2026 october hamilton ballot", category: "Elections" },
+  { title: "Hamilton 2026 municipal election", href: "/elections", keywords: "election vote 2026 october hamilton ballot community polls advance poll voter id ward", category: "Elections" },
   { title: "Ask Kingdom Lens", href: "/kingdom-lens", keywords: "ai lens ask question scripture research", category: "AI" },
   { title: "Pray for government leaders", href: "/pray", keywords: "pray prayer leaders timothy wisdom", category: "Pray" },
   { title: "Serve in public life", href: "/serve", keywords: "serve volunteer board run office", category: "Serve" },

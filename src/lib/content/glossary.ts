@@ -39,6 +39,9 @@ export const glossaryTerms: GlossaryTerm[] = [
   { term: "First-past-the-post", definition: "An electoral system where the candidate with the most votes in a district wins, even without a majority. Common in Canada, the UK, and US single-member districts.", related: "/learn/levels-of-government" },
   { term: "Voters list", definition: "The official roll of eligible electors. In Hamilton, amendments for 2026 are made in person with ID through October 24, or at a poll.", related: "/elections" },
   { term: "Proxy vote", definition: "A legal process allowing an eligible elector who cannot vote on any voting day to appoint another eligible elector. Rules are set by the election authority—not by social media.", related: "/elections" },
+  { term: "Community poll", definition: "Early voting days in selected buildings and accessible locations before regular advance polls. In Hamilton 2026: September 26–27, 10 a.m.–6 p.m.", related: "/elections" },
+  { term: "Voter information card", definition: "A mailed notice that you are on the voters list. In Hamilton 2026 the City has said the card is helpful, not required—bring valid ID.", related: "/learn/what-to-bring-to-the-poll" },
+  { term: "Ballot on demand", definition: "A voting setup that prints a ballot at certain sites (often campuses or service locations) rather than stocking every possible ballot in advance. Hours vary—confirm with the Clerk.", related: "/elections" },
 ];
 
 export function getGlossaryTerm(slug: string): GlossaryTerm | undefined {

@@ -1,9 +1,17 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowRight, Sunrise } from "lucide-react";
 import { getRhythmOfTheDay } from "@/lib/content/rhythm";
 
 export function CivicRhythm() {
-  const today = getRhythmOfTheDay();
+  const [today, setToday] = useState(() => getRhythmOfTheDay());
+
+  useEffect(() => {
+    setToday(getRhythmOfTheDay());
+  }, []);
+
   return (
     <aside className="civic-rhythm" aria-label="This week's civic rhythm">
       <Sunrise size={22} />

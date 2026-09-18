@@ -312,6 +312,32 @@ export const issueGuidesContent: IssueGuide[] = [
       },
     ],
   },
+  {
+    slug: "disability-access",
+    title: "Disability, Access & Civic Life",
+    description:
+      "Biblical principles for accessibility, disability, and public participation—so neighbours can reach the poll, the meeting, and the common good.",
+    principles: ["Human dignity", "Justice & mercy", "Wise stewardship"],
+    scripture: "Psalm 82:3–4 · Leviticus 19:14 · Luke 14:13–14",
+    sections: [
+      {
+        heading: "Image-bearers who cannot take the stairs",
+        body: "Public life is not only for the quick, the sighted, and the well. Scripture forbids putting a stumbling block before the blind and commands defence of the weak. Access to a polling place, a council chamber, a sidewalk, and a clinic is neighbour-love with a budget—not a niche cause.",
+      },
+      {
+        heading: "Ask which office actually holds the lever",
+        body: "Municipal government often shapes curb cuts, transit, buildings, and local recreation. Provincial and federal law shape health supports, income programs, and rights frameworks. Confusing those levels wastes advocacy. Prefer official accessibility standards and published hours over rumours about ‘they won’t let you vote.’",
+      },
+      {
+        heading: "Questions that clarify",
+        body: "Can a neighbour using a wheelchair reach this poll, meeting, or service counter? Are hours and locations published in time to plan? Who is left out of consultation because the room is inaccessible—or the process is only online? What do official accessibility reports show, not only a campaign clip?",
+      },
+      {
+        heading: "Hamilton, this season",
+        body: "The City has placed community polls in selected buildings and accessible locations, with hours of 10 a.m.–6 p.m. on September 26–27. Confirm locations and any accessibility supports on hamilton.ca. Pray for election workers and for neighbours who need extra time or help. See /learn/what-to-bring-to-the-poll and /elections.",
+      },
+    ],
+  },
 ];
 
 export function getIssueGuide(slug: string): IssueGuide | undefined {

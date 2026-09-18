@@ -38,6 +38,12 @@ export function StartHere() {
           <p>Intercede for voters, officials, and whoever wins—without baptizing a ballot.</p>
           <span className="text-link">Open the guide <ArrowRight size={14} /></span>
         </Link>
+        <Link href="/learn/what-to-bring-to-the-poll" className="content-card">
+          <small>HAMILTON</small>
+          <h3>What to bring to the poll</h3>
+          <p>Community polls Sep 26–27, 10 a.m.–6 p.m. Bring ID. Vote at any poll in your ward.</p>
+          <span className="text-link">Poll-ready checklist <ArrowRight size={14} /></span>
+        </Link>
       </div>
       <FaqSection
         faqs={pageFaqs.start ?? []}
