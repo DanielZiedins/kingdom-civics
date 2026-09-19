@@ -3,8 +3,10 @@
 import { useEffect, useState } from "react";
 import { getNextVotingWindow, votingWindows } from "@/lib/content/election";
 
+type VotingWindowId = (typeof votingWindows)[number]["id"];
+
 export function VotingCalendar() {
-  const [nextId, setNextId] = useState(votingWindows[0].id);
+  const [nextId, setNextId] = useState<VotingWindowId>(votingWindows[0].id);
 
   useEffect(() => {
     setNextId(getNextVotingWindow().id);
