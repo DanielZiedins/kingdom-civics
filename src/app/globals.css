@@ -843,9 +843,38 @@ em { color: var(--gold-light); font-weight: 400; }
 .election-outreach li { margin-bottom: 6px; }
 .election-outreach strong { color: var(--navy); margin-right: 8px; }
 .election-outreach-note { margin: -8px 0 22px; font-size: 13px; color: var(--stone); }
+.weekend-vote {
+  display: grid;
+  grid-template-columns: 1.4fr .8fr;
+  gap: 22px;
+  margin: 28px 0 8px;
+  padding: 22px;
+  border: 1px solid rgba(201,164,91,.55);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(201,164,91,.18), transparent 42%),
+    linear-gradient(160deg, #12283c, #0b1b2c);
+  color: white;
+}
+.weekend-vote small { letter-spacing: .12em; font-size: 10px; color: var(--gold-light); }
+.weekend-vote h3 { font-family: var(--font-serif); font-size: clamp(28px, 4vw, 40px); line-height: 1; margin: 8px 0 12px; color: white; }
+.weekend-vote p { margin: 0 0 12px; color: #d5dee4; font-size: 15px; line-height: 1.6; max-width: 62ch; }
+.weekend-vote .text-link, .weekend-vote .weekend-copy { color: var(--gold-light); border: 0; border-bottom: 1px solid rgba(224,194,126,.45); background: none; padding: 0 0 5px; cursor: pointer; font: inherit; font-size: 13px; font-weight: 750; }
+.weekend-days { display: grid; gap: 10px; }
+.weekend-days article {
+  display: grid;
+  gap: 4px;
+  padding: 16px 18px;
+  border: 1px solid rgba(224,194,126,.35);
+  background: rgba(255,255,255,.04);
+}
+.weekend-days svg { color: var(--gold-light); }
+.weekend-days strong { font-family: var(--font-serif); font-size: 32px; line-height: 1; }
+.weekend-days span { color: #d5dee4; font-size: 14px; }
+.election-season .weekend-vote { margin-top: 28px; }
 
 @media (max-width: 1100px) {
   .voting-calendar { grid-template-columns: 1fr 1fr; }
+  .weekend-vote { grid-template-columns: 1fr; }
 }
 @media (max-width: 700px) {
   .voting-calendar { grid-template-columns: 1fr; }

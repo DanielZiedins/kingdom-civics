@@ -23,7 +23,7 @@ export const hamiltonMeta = {
   officialSite: "https://www.hamilton.ca",
   councilUrl: "https://www.hamilton.ca/city-council/council-committee/city-council-members",
   electionUrl: "https://www.hamilton.ca/city-council/municipal-election",
-  lastVerified: "2026-09-17",
+  lastVerified: "2026-09-24",
 };
 
 export const hamiltonMayor: Official = {

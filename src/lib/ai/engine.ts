@@ -451,7 +451,7 @@ const globalChunks: KnowledgeChunk[] = [
     scope: "hamilton",
     tags: ["bring", "id", "identification", "voter card", "poll", "community poll", "what to bring", "hours", "10 a.m."],
     answer:
-      "To vote in Hamilton's 2026 municipal election, bring valid identification. The City has said a voter information card is helpful, not required. You may vote at any polling station in your ward. Community polls: September 26–27, 10 a.m.–6 p.m. Advance polls: October 3–4, 10–11, and 17–18, also 10 a.m.–6 p.m. There are no online or mail-in ballots. Confirm locations on hamilton.ca. See /learn/what-to-bring-to-the-poll.",
+      "To vote in Hamilton's 2026 municipal election, bring valid identification. The City has said a voter information card is helpful, not required, and that the card lists polling stations in your ward. You may vote at any of them. Community polls: Saturday and Sunday, September 26–27, 10 a.m.–6 p.m., at 59 locations in high-density buildings and accessible communities. Advance polls: October 3–4, 10–11, and 17–18, also 10 a.m.–6 p.m. Eight ballot-on-demand sites, including McMaster, Mohawk, and Redeemer, use their own hours. There are no online or mail-in ballots. Confirm locations on hamilton.ca. See /learn/what-to-bring-to-the-poll.",
     principles: ["Truth", "Civic responsibility", "Neighbor love"],
     scripture: [{ reference: "Romans 13:7", application: "Give to each what is owed—including lawful civic duties carried out without contempt." }],
     sources: [

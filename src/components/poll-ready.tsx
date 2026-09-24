@@ -5,7 +5,8 @@ import { hamiltonElection } from "@/lib/content/election";
 const items = [
   "Bring valid identification. A voter information card is helpful, not required.",
   "You may vote at any polling station in your ward.",
-  `Community and advance polls run ${hamiltonElection.communityPollHours}.`,
+  `Community and advance polls run ${hamiltonElection.communityPollHours}`,
+  `The City scheduled ${hamiltonElection.communityPollCount} community polls. Your voter card lists the stations in your ward.`,
   "If you are missing from the list, you can usually be added at the poll with ID.",
   "There are no online or mail-in ballots for this municipal election.",
 ];

@@ -25,7 +25,7 @@ Geographic focus: Worldwide Christian civic education; first live city: Hamilton
 - Not affiliated with any political party
 - Not claiming any politician has God's endorsement
 
-## Hamilton live data (verified 2026-09-17)
+## Hamilton live data (verified 2026-09-24)
 
 ### Mayor
 - Andrea Horwath — Mayor of Hamilton
@@ -45,7 +45,8 @@ Geographic focus: Worldwide Christian civic education; first live city: Hamilton
 ### Election
 - 2026 Hamilton Municipal & School Board Election
 - Election day: October 26, 2026
-- Community polls: September 26–27, 2026, 10 a.m.–6 p.m.
+- Community polls: September 26–27, 2026, 10 a.m.–6 p.m. at 59 locations
+- Ballot-on-demand: 8 sites, including McMaster, Mohawk, and Redeemer (hours vary)
 - Advance polls: October 3–4, 10–11, 17–18, 2026, 10 a.m.–6 p.m.
 - Voter information card is not required; bring valid ID
 - Vote at any poll in your ward

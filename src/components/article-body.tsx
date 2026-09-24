@@ -53,19 +53,25 @@ export function ArticleBody({
     }
   }
 
-  const othersLearn = learnArticles.filter((a) => a.slug !== slug);
-  const othersIssues = issueGuidesContent.filter((g) => g.slug !== slug);
-  const seed = slug ? slug.split("").reduce((n, ch) => n + ch.charCodeAt(0), 0) : 0;
-  const relatedLearn = othersLearn.length
-    ? [othersLearn[seed % othersLearn.length], othersLearn[(seed + 3) % othersLearn.length]].filter(
-        (item, i, arr): item is NonNullable<typeof item> => Boolean(item) && arr.findIndex((x) => x?.slug === item.slug) === i,
-      ).slice(0, 2)
-    : [];
-  const relatedIssues = othersIssues.length
-    ? [othersIssues[seed % othersIssues.length], othersIssues[(seed + 2) % othersIssues.length]].filter(
-        (item, i, arr): item is NonNullable<typeof item> => Boolean(item) && arr.findIndex((x) => x?.slug === item.slug) === i,
-      ).slice(0, 2)
-    : [];
+  const currentLearn = learnArticles.find((a) => a.slug === slug);
+  const preferredLearn = (currentLearn?.relatedSlugs ?? [])
+    .map((related) => learnArticles.find((a) => a.slug === related))
+    .filter((item): item is NonNullable<typeof item> => Boolean(item));
+  const sameCategory = learnArticles.filter(
+    (a) => a.slug !== slug && a.category === currentLearn?.category && !preferredLearn.some((item) => item.slug === a.slug),
+  );
+  const relatedLearn = [...preferredLearn, ...sameCategory, ...learnArticles.filter((a) => a.slug !== slug)]
+    .filter((item, index, list) => list.findIndex((other) => other.slug === item.slug) === index)
+    .slice(0, 2);
+  const currentIssue = issueGuidesContent.find((g) => g.slug === slug);
+  const relatedIssues = [...issueGuidesContent]
+    .filter((g) => g.slug !== slug)
+    .sort((a, b) => {
+      const overlap = (guide: typeof a) =>
+        guide.principles.filter((principle) => currentIssue?.principles.includes(principle)).length;
+      return overlap(b) - overlap(a);
+    })
+    .slice(0, 2);
   const wordCount = sections.reduce((n, s) => n + s.body.split(/\s+/).length, 0);
   const minutes = Math.max(1, Math.round(wordCount / 180));
 

@@ -25,7 +25,7 @@ export function Logo({ inverse = false }: { inverse?: boolean }) {
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [banner, setBanner] = useState("Community polls Sep 26–27 · 10 a.m.–6 p.m. · Bring ID");
+  const [banner, setBanner] = useState("This weekend · Community polls Sat–Sun · 10 a.m.–6 p.m. · Bring ID");
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {

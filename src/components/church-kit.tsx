@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, BookOpen, Heart, ShieldCheck, Users } from "lucide-react";
 import { FaqSection } from "@/components/seo/faq-section";
+import { WeekendVote } from "@/components/weekend-vote";
 import { pageFaqs } from "@/lib/seo/faqs";
 
 const weeks = [
@@ -45,6 +46,7 @@ export function ChurchKit() {
         <blockquote>&ldquo;Seek the welfare of the city where I have sent you… for in its welfare you will find your welfare.&rdquo;</blockquote>
         <span>JEREMIAH 29:7</span>
       </div>
+      <WeekendVote />
       <div className="content-grid church-kit-intro">
         <article className="content-card">
           <Users size={20} />

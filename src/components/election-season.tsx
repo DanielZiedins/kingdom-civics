@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, ExternalLink } from "lucide-react";
 import { ElectionCountdown } from "@/components/election-countdown";
+import { WeekendVote } from "@/components/weekend-vote";
 import { hamiltonElection } from "@/lib/content/election";
 
 export function ElectionSeason() {
@@ -9,14 +10,14 @@ export function ElectionSeason() {
       <div className="page-width election-season-grid">
         <div>
           <span className="eyebrow gold-text">HAMILTON · ELECTION SEASON</span>
-          <h2 id="election-season-heading">Community polls start September 26. Bring ID—not a party script.</h2>
+          <h2 id="election-season-heading">This weekend, Hamilton casts the first ballots. Bring ID.</h2>
           <p>
             Mayor, ward councillors, and school board trustees are on the ballot. Nominations are closed.
             Vote at any poll in your ward, read certified candidates from the City—not a feed—and pray
             without baptizing a party.
           </p>
           <ul className="check-list election-season-list">
-            <li><CheckCircle2 /> Community polls: {hamiltonElection.communityPolls} · {hamiltonElection.communityPollHours}</li>
+            <li><CheckCircle2 /> {hamiltonElection.communityPollCount} community polls: {hamiltonElection.communityPolls} · {hamiltonElection.communityPollHours}</li>
             <li><CheckCircle2 /> Advance polls: {hamiltonElection.advancePolls.join(" · ")}</li>
             <li><CheckCircle2 /> A voter card is helpful, not required. There are no online or mail-in ballots.</li>
           </ul>
@@ -33,6 +34,9 @@ export function ElectionSeason() {
             What to bring to the poll <ArrowRight size={14} />
           </Link>
         </div>
+      </div>
+      <div className="page-width">
+        <WeekendVote />
       </div>
     </section>
   );

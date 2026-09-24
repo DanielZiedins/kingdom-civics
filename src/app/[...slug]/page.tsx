@@ -20,6 +20,7 @@ import { glossaryTerms } from "@/lib/content/glossary";
 import { hamiltonElection } from "@/lib/content/election";
 import { PollReady } from "@/components/poll-ready";
 import { VotingCalendar } from "@/components/voting-calendar";
+import { OutreachList, WeekendVote } from "@/components/weekend-vote";
 import { getIssueGuide, issueGuidesContent } from "@/lib/content/issues";
 import { getLearnArticle, learnArticles } from "@/lib/content/learn";
 import { civicScriptures, scriptureAnchor } from "@/lib/content/scripture";
@@ -575,6 +576,7 @@ function ElectionPage() {
             <span>{hamiltonElection.offices}</span>
           </div>
         </div>
+        <WeekendVote />
         <VotingCalendar />
         <PollReady />
         <div className="election-key-dates">
@@ -600,19 +602,11 @@ function ElectionPage() {
             <li key={board}>{board}</li>
           ))}
         </ul>
-        <h3 className="election-subhead">City voter outreach remaining</h3>
-        <ul className="election-outreach">
-          {hamiltonElection.outreach.map((event) => (
-            <li key={event.place}>
-              <strong>{event.date}</strong>
-              <span>{event.place} · {event.hours}</span>
-            </li>
-          ))}
-        </ul>
-        <p className="election-outreach-note">Confirm every outreach hour and location on hamilton.ca. Kingdom Civics does not replace the Clerk.</p>
+        <OutreachList />
         <LinkCards
           items={[
             { href: hamiltonElection.urls.findWard, title: "Find my ward", description: "Official City of Hamilton ward lookup. You may vote at any poll in your ward.", tag: "OFFICIAL", external: true },
+            { href: hamiltonElection.urls.accessibility, title: "Accessibility at the polls", description: "59 community polls, eight ballot-on-demand sites, and more than 300 voting opportunities — from the City.", tag: "OFFICIAL", external: true },
             { href: hamiltonElection.urls.eligibility, title: "Voter eligibility", description: "Official rules for who may vote in Hamilton's municipal election.", tag: "OFFICIAL", external: true },
             { href: hamiltonElection.urls.candidates, title: "Certified candidates", description: "Nominations closed August 21. Read the City's certified list—not a campaign graphic.", tag: "OFFICIAL", external: true },
             { href: hamiltonElection.urls.voters, title: "Where and how to vote", description: "Community polls, advance polls, election day, and proxy information from the City Clerk.", tag: "OFFICIAL", external: true },

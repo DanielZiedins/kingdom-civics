@@ -131,6 +131,16 @@ export const pageFaqs: Record<string, FaqItem[]> = {
         "For the 2026 municipal election, the City has stated you may vote at any polling station in your ward. First confirm your ward with the official Find my Ward tool on hamilton.ca.",
     },
     {
+      question: "Where are Hamilton's community polls this weekend?",
+      answer:
+        "Community polls are Saturday and Sunday, September 26–27, 2026, from 10 a.m. to 6 p.m. The City scheduled 59 of them in high-density buildings and locations chosen for accessibility. Your voter information card lists the stations in your ward, and you may vote at any of them. Kingdom Civics does not republish an unofficial address list — use hamilton.ca.",
+    },
+    {
+      question: "Can I vote in Hamilton after church on Sunday?",
+      answer:
+        "Yes. Community polls are open Sunday, September 27, 2026, from 10 a.m. to 6 p.m., as well as Saturday. Bring valid identification. A voter card is not required. Confirm your ward, then use any poll in that ward.",
+    },
+    {
       question: "Which school boards are on Hamilton's 2026 ballot?",
       answer:
         "Voters elect trustees for the Hamilton-Wentworth District School Board, Hamilton-Wentworth Catholic District School Board, Conseil scolaire Viamonde, and Conseil scolaire catholique MonAvenir. Eligibility for each ballot is set by the City—confirm on hamilton.ca.",

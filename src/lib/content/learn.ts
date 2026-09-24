@@ -5,6 +5,7 @@ export type LearnArticle = {
   duration: string;
   category: string;
   scripture: string;
+  relatedSlugs?: string[];
   sections: Array<{ heading: string; body: string }>;
 };
 
@@ -352,6 +353,7 @@ export const learnArticles: LearnArticle[] = [
       "A Scripture-shaped election prayer guide: pray for voters, officials, opponents, and whoever wins—without baptizing a ballot.",
     duration: "8 min",
     category: "Prayer",
+    relatedSlugs: ["what-to-bring-to-the-poll", "vote-with-conscience"],
     scripture: "1 Timothy 2:1–2 · James 1:5 · Philippians 4:6–7",
     sections: [
       {
@@ -379,6 +381,7 @@ export const learnArticles: LearnArticle[] = [
       "How school boards work, what trustees actually control, and how Christians can engage education governance without culture-war theatre.",
     duration: "10 min",
     category: "Education",
+    relatedSlugs: ["discern-local-candidates", "hamilton-city-council"],
     scripture: "Deuteronomy 6:6–7 · Proverbs 22:6 · Matthew 19:14",
     sections: [
       {
@@ -406,6 +409,7 @@ export const learnArticles: LearnArticle[] = [
       "A practical Kingdom-first checklist for Hamilton’s October 26, 2026 municipal and school board election—eligibility, voters list, advance polls, and discernment without endorsements.",
     duration: "9 min",
     category: "Elections",
+    relatedSlugs: ["what-to-bring-to-the-poll", "discern-local-candidates"],
     scripture: "1 Timothy 2:1–2 · Proverbs 18:17 · James 1:5",
     sections: [
       {
@@ -460,6 +464,7 @@ export const learnArticles: LearnArticle[] = [
       "Official-first poll-day guidance for Hamilton: identification, voter cards, any-poll-in-your-ward voting, community and advance poll hours, and what the City has actually said.",
     duration: "7 min",
     category: "Elections",
+    relatedSlugs: ["discern-local-candidates", "prepare-for-municipal-election", "pray-for-an-election"],
     scripture: "1 Timothy 2:1–2 · Proverbs 18:17 · Romans 13:7",
     sections: [
       {
@@ -487,6 +492,7 @@ export const learnArticles: LearnArticle[] = [
       "A Kingdom-first way to read a municipal ballot: offices, jurisdiction, official candidate lists, character, and school boards—without endorsements or influencer scorecards.",
     duration: "9 min",
     category: "Discernment",
+    relatedSlugs: ["what-to-bring-to-the-poll", "vote-with-conscience", "school-boards"],
     scripture: "Proverbs 18:17 · James 1:5 · Micah 6:8 · Mark 10:42–45",
     sections: [
       {
