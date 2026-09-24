@@ -1,3 +1,4 @@
+import { blogPosts } from "@/lib/content/blog";
 import { civicScriptures, scriptureAnchor } from "@/lib/content/scripture";
 import { glossaryTerms } from "@/lib/content/glossary";
 import { learnArticles } from "@/lib/content/learn";
@@ -30,6 +31,12 @@ export const searchIndex: SearchHit[] = [
   { title: "About Kingdom Civics", href: "/about", keywords: "about mission thy kingdom network", category: "About" },
   { title: "Privacy policy", href: "/privacy", keywords: "privacy data location", category: "Legal" },
   { title: "Compare candidates framework", href: "/compare", keywords: "compare candidates evidence", category: "Compare" },
+  ...blogPosts.map((post) => ({
+    title: post.title,
+    href: `/blog/${post.slug}`,
+    keywords: `${post.title} ${post.keywords.join(" ")} ${post.category} daniel ziedins`.toLowerCase(),
+    category: "Journal",
+  })),
   ...learnArticles.map((a) => ({
     title: a.title,
     href: `/learn/${a.slug}`,

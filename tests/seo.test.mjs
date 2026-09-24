@@ -202,6 +202,12 @@ test("start path scripture index and new civic content ship", async () => {
   const weekend = await readFile(new URL("src/components/weekend-vote.tsx", root), "utf8");
   assert.match(weekend, /WeekendVote/);
   assert.match(weekend, /Copy a church note/);
+  const blog = await readFile(new URL("src/lib/content/blog.ts", root), "utf8");
+  assert.match(blog, /hamilton-community-polls-this-weekend/);
+  assert.match(blog, /what-a-church-can-say-on-sunday/);
+  const creator = await readFile(new URL("src/lib/seo/site.ts", root), "utf8");
+  assert.match(creator, /Daniel Ziedins/);
+  assert.match(creator, /danielziedins\.com/);
   const calendar = await readFile(new URL("src/components/voting-calendar.tsx", root), "utf8");
   assert.match(calendar, /VotingCalendar/);
   const poll = await readFile(new URL("src/components/poll-ready.tsx", root), "utf8");

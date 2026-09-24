@@ -15,7 +15,7 @@ const geistSans = Geist({
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["500", "600"],
   style: ["normal", "italic"],
   display: "swap",
 });
@@ -39,7 +39,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${cormorant.variable} h-full antialiased`}
     >
       <head>
-        <link rel="author" href="https://www.danielziedins.design" />
+        <link rel="author" href="https://www.danielziedins.com" />
         <link rel="help" href="/llms.txt" type="text/plain" title="LLM site guide" />
         <link rel="alternate" type="text/plain" title="AI discovery" href="/ai.txt" />
         <link rel="alternate" type="application/rss+xml" title="Kingdom Civics" href="/feed.xml" />

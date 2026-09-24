@@ -193,7 +193,7 @@ export const prayerPrompts = [
 export const footerColumns = [
   {
     title: "Explore",
-    links: [["Why Engage", "/why-engage"], ["Learn", "/learn"], ["Scripture", "/scripture"], ["Glossary", "/glossary"], ["For Churches", "/for-churches"]],
+    links: [["Why Engage", "/why-engage"], ["Learn", "/learn"], ["Journal", "/blog"], ["Scripture", "/scripture"], ["For Churches", "/for-churches"]],
   },
   {
     title: "Practice",

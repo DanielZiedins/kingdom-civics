@@ -430,6 +430,8 @@ em { color: var(--gold-light); font-weight: 400; }
 .article-body { max-width: 760px; }
 .article-scripture { margin-bottom: 28px; padding: 16px 18px; background: var(--navy); color: white; }
 .article-scripture small { display: block; font-size: 9px; letter-spacing: .1em; color: var(--gold-light); margin-bottom: 6px; }
+.article-byline { margin: -12px 0 22px; font-size: 13px; color: var(--stone); }
+.article-byline a { color: var(--navy); border-bottom: 1px solid #b5a37e; font-weight: 700; }
 .article-body section { margin-bottom: 28px; }
 .article-body h2 { font-family: var(--font-serif); font-size: 28px; font-weight: 500; margin: 0 0 12px; color: var(--navy); }
 .article-body p { font-size: 14px; line-height: 1.75; color: var(--stone); margin: 0; }

@@ -1,5 +1,5 @@
 /* TEAM */
-Creator: Daniel Ziedins — https://www.danielziedins.design
+Creator: Daniel Ziedins — https://www.danielziedins.com
 Organization: Thy Kingdom Network — Kingdom Civics
 Site: https://www.kingdomcivics.org
 

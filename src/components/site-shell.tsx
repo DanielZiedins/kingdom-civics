@@ -117,7 +117,7 @@ export function SiteFooter() {
         <span>Educational research, not a candidate endorsement.</span>
         <span className="footer-credit">
           Made with <span aria-label="love">❤️</span> by{" "}
-          <a href="https://www.danielziedins.design" target="_blank" rel="noopener noreferrer">Daniel Ziedins.Design</a>
+          <a href="https://www.danielziedins.com" target="_blank" rel="noopener noreferrer">Daniel Ziedins</a>
         </span>
         <strong>KINGDOM FIRST.</strong>
       </div>

@@ -83,6 +83,8 @@ export function buildPageMetadata({
           other: {
             "geo.region": "CA-ON",
             "geo.placename": "Hamilton",
+            "geo.position": "43.2557;-79.8711",
+            ICBM: "43.2557, -79.8711",
           },
         }
       : {}),

@@ -203,6 +203,19 @@ export const pageSeo: Record<string, PageSeo> = {
       "pray for leaders scripture",
     ],
   },
+  blog: {
+    eyebrow: "JOURNAL",
+    title: "Journal — Christian Civic Notes",
+    description:
+      "Short, sourced notes from Daniel Ziedins on elections, prayer, and civic discipleship—starting with Hamilton’s 2026 municipal election.",
+    path: "/blog",
+    keywords: [
+      "Hamilton election guide",
+      "Christian civic journal",
+      "Daniel Ziedins",
+      "church and voting",
+    ],
+  },
   start: {
     eyebrow: "BEGIN HERE",
     title: "Start Here — Christian Civic Discipleship in Five Steps",

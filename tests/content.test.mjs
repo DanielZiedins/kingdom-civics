@@ -42,8 +42,8 @@ test("Kingdom Lens API route uses answer engine", async () => {
 
 test("footer credits Daniel Ziedins.Design", async () => {
   const source = await readFile(new URL("src/components/site-shell.tsx", root), "utf8");
-  assert.match(source, /danielziedins\.design/i);
-  assert.match(source, /Daniel Ziedins\.Design/);
+  assert.match(source, /danielziedins\.com/i);
+  assert.match(source, /Daniel Ziedins/);
 });
 
 test("Kingdom Lens API accepts global city context", async () => {

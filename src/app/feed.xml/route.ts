@@ -1,7 +1,10 @@
+import { blogPosts } from "@/lib/content/blog";
 import { issueGuidesContent } from "@/lib/content/issues";
 import { learnArticles } from "@/lib/content/learn";
 import { principles } from "@/lib/data";
-import { SITE_NAME, absoluteUrl } from "@/lib/seo/site";
+import { CREATOR, SITE_NAME, absoluteUrl } from "@/lib/seo/site";
+
+export const dynamic = "force-static";
 
 function escapeXml(value: string): string {
   return value
@@ -14,6 +17,13 @@ function escapeXml(value: string): string {
 
 export function GET() {
   const items = [
+    ...blogPosts.map((post) => ({
+      title: post.title,
+      description: post.description,
+      path: `/blog/${post.slug}`,
+      category: post.category,
+      pubDate: new Date(`${post.date}T12:00:00Z`).toUTCString(),
+    })),
     ...learnArticles.map((article) => ({
       title: article.title,
       description: article.description,
@@ -56,7 +66,10 @@ export function GET() {
       path: "/scripture",
       category: "Scripture",
     },
-  ];
+  ].map((item) => ({
+    ...item,
+    pubDate: "pubDate" in item && item.pubDate ? item.pubDate : "Sat, 15 Aug 2026 12:00:00 GMT",
+  }));
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
@@ -65,7 +78,7 @@ export function GET() {
     <link>${absoluteUrl("/")}</link>
     <description>Christian civic education — learn articles, issue guides, and biblical principles for public life.</description>
     <language>en-ca</language>
-    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
+    <lastBuildDate>Thu, 24 Sep 2026 21:00:00 GMT</lastBuildDate>
     <atom:link href="${absoluteUrl("/feed.xml")}" rel="self" type="application/rss+xml"/>
     ${items
       .map(
@@ -76,7 +89,8 @@ export function GET() {
       <description>${escapeXml(item.description)}</description>
       <guid isPermaLink="true">${absoluteUrl(item.path)}</guid>
       <category>${escapeXml(item.category)}</category>
-      <pubDate>Sat, 15 Aug 2026 12:00:00 GMT</pubDate>
+      <author>${escapeXml(CREATOR.name)}</author>
+      <pubDate>${item.pubDate}</pubDate>
     </item>`,
       )
       .join("")}

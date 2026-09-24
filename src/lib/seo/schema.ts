@@ -32,6 +32,11 @@ export function organizationSchema(): JsonLd {
         "@type": "City",
         name: HAMILTON_GEO.city,
         containedInPlace: { "@type": "AdministrativeArea", name: HAMILTON_GEO.region },
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: HAMILTON_GEO.latitude,
+          longitude: HAMILTON_GEO.longitude,
+        },
       },
     ],
     parentOrganization: {

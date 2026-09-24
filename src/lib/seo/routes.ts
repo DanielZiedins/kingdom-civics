@@ -1,3 +1,4 @@
+import { blogPosts } from "@/lib/content/blog";
 import { learnArticles } from "@/lib/content/learn";
 import { issueGuidesContent } from "@/lib/content/issues";
 import { principles } from "@/lib/data";
@@ -28,6 +29,7 @@ export const coreRoutes: SitemapEntry[] = [
   { path: "/find-representatives", priority: 0.9, changeFrequency: "monthly" },
   { path: "/scripture", priority: 0.92, changeFrequency: "monthly" },
   { path: "/start", priority: 0.95, changeFrequency: "monthly" },
+  { path: "/blog", priority: 0.88, changeFrequency: "weekly" },
   { path: "/compare", priority: 0.75, changeFrequency: "weekly" },
   { path: "/search", priority: 0.6, changeFrequency: "monthly" },
   { path: "/my-civics", priority: 0.6, changeFrequency: "weekly" },
@@ -38,6 +40,12 @@ export const coreRoutes: SitemapEntry[] = [
 export const cityRoutes: SitemapEntry[] = getAllCities().map((city) => ({
   path: `/cities/${city.slug}`,
   priority: city.status === "live" ? 0.9 : 0.7,
+  changeFrequency: "weekly" as const,
+}));
+
+export const blogRoutes: SitemapEntry[] = blogPosts.map((post) => ({
+  path: `/blog/${post.slug}`,
+  priority: 0.86,
   changeFrequency: "weekly" as const,
 }));
 
@@ -72,6 +80,7 @@ export const allSitemapEntries: SitemapEntry[] = [
   ...principleRoutes,
   ...learnRoutes,
   ...issueRoutes,
+  ...blogRoutes,
 ];
 
 export function sitemapUrls(): string[] {

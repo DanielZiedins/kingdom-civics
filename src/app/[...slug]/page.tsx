@@ -16,6 +16,7 @@ import { GlossaryExplorer } from "@/components/glossary-explorer";
 import { LeadersDirectory } from "@/components/leaders-directory";
 import { ShareButton } from "@/components/share-button";
 import { FaqSection } from "@/components/seo/faq-section";
+import { blogPosts, getBlogPost } from "@/lib/content/blog";
 import { glossaryTerms } from "@/lib/content/glossary";
 import { hamiltonElection } from "@/lib/content/election";
 import { PollReady } from "@/components/poll-ready";
@@ -74,6 +75,7 @@ export async function generateStaticParams() {
     "find-representatives",
     "scripture",
     "start",
+    "blog",
     "admin",
   ].map((section) => ({ slug: [section] }));
 
@@ -82,6 +84,7 @@ export async function generateStaticParams() {
     ...hamiltonOfficials.map((o) => ({ slug: ["leaders", o.slug] })),
     ...principles.map((p) => ({ slug: ["biblical-principles", p.slug] })),
     ...learnArticles.map((a) => ({ slug: ["learn", a.slug] })),
+    ...blogPosts.map((post) => ({ slug: ["blog", post.slug] })),
     ...issueGuidesContent.map((g) => ({ slug: ["issues", g.slug] })),
     ...getAllCities().map((c) => ({ slug: ["cities", c.slug] })),
   ];
@@ -115,6 +118,30 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         type: "article",
       });
     }
+  }
+
+  if (section === "blog" && slug[1]) {
+    const post = getBlogPost(slug[1]);
+    if (post) {
+      return buildPageMetadata({
+        title: post.title,
+        description: post.description,
+        path: `/blog/${post.slug}`,
+        keywords: post.keywords,
+        type: "article",
+        geo: "hamilton",
+      });
+    }
+  }
+
+  if (section === "blog") {
+    return buildPageMetadata({
+      title: "Journal — Christian Civic Notes",
+      description: "Short, sourced notes from Daniel Ziedins on elections, prayer, and civic discipleship—starting with Hamilton’s 2026 municipal election.",
+      path: "/blog",
+      keywords: ["Hamilton election guide", "Christian civic journal", "Daniel Ziedins"],
+      geo: "hamilton",
+    });
   }
 
   if (section === "learn" && slug[1]) {
@@ -215,6 +242,62 @@ function pageStructuredData(section: string, slug: string[], copy: { title: stri
           "Vote at a community poll (Sep 26–27, 10 a.m.–6 p.m.), an advance poll, or on Monday, October 26, 2026. Any poll in your ward.",
           "There are no online or mail-in ballots for this municipal election—verify proxy rules if you cannot attend.",
         ],
+      }),
+    ];
+  }
+  if (section === "blog" && slug[1]) {
+    const post = getBlogPost(slug[1]);
+    if (!post) return [base];
+    return [
+      base,
+      articleSchema({
+        title: post.title,
+        description: post.description,
+        path: `/blog/${post.slug}`,
+        datePublished: post.date,
+        dateModified: post.updated,
+      }),
+      faqPageSchema(post.faqs),
+    ];
+  }
+  if (section === "blog") {
+    return [
+      base,
+      itemListSchema({
+        name: "Kingdom Civics Journal",
+        items: blogPosts.map((post) => ({
+          name: post.title,
+          url: absoluteUrl(`/blog/${post.slug}`),
+          description: post.description,
+        })),
+      }),
+    ];
+  }
+  if (section === "blog" && slug[1]) {
+    const post = getBlogPost(slug[1]);
+    if (!post) return [base];
+    return [
+      base,
+      articleSchema({
+        title: post.title,
+        description: post.description,
+        path: `/blog/${post.slug}`,
+        datePublished: post.date,
+        dateModified: post.updated,
+      }),
+      faqPageSchema(post.faqs),
+    ];
+  }
+  if (section === "blog") {
+    return [
+      base,
+      itemListSchema({
+        name: "Kingdom Civics Journal",
+        items: blogPosts.map((post) => ({
+          name: post.title,
+          url: absoluteUrl(`/blog/${post.slug}`),
+          description: post.description,
+        })),
       }),
     ];
   }
@@ -412,6 +495,12 @@ function pageStructuredData(section: string, slug: string[], copy: { title: stri
 }
 
 function heroCopy(section: string, slug: string[]) {
+  if (section === "blog" && slug[1]) {
+    const post = getBlogPost(slug[1]);
+    if (post) {
+      return { eyebrow: `${post.category.toUpperCase()} · DANIEL ZIEDINS`, title: post.title, description: post.description, path: `/blog/${post.slug}` };
+    }
+  }
   if (section === "learn" && slug[1]) {
     const article = getLearnArticle(slug[1]);
     if (article) {
@@ -471,6 +560,9 @@ function pageBreadcrumbs(section: string, slug: string[]) {
     } else if (section === "learn") {
       const article = getLearnArticle(slug[1]);
       if (article) crumbs.push({ label: article.title, href: `/learn/${article.slug}` });
+    } else if (section === "blog") {
+      const post = getBlogPost(slug[1]);
+      if (post) crumbs.push({ label: post.title, href: `/blog/${post.slug}` });
     } else if (section === "issues") {
       const guide = getIssueGuide(slug[1]);
       if (guide) crumbs.push({ label: guide.title, href: `/issues/${guide.slug}` });
@@ -832,7 +924,7 @@ function AboutPage() {
         <div className="content-card"><small>MISSION</small><h3>Christian civic education worldwide</h3><p>Help the Church understand government, discern leadership, pray faithfully, and serve humbly—without partisan endorsements.</p></div>
         <div className="content-card"><small>LIVE NOW</small><h3>Hamilton, Ontario</h3><p>Our first live city with mayor, councillors, MPs, MPPs, and the October 26, 2026 municipal election—linked to official sources.</p></div>
         <div className="content-card"><small>METHOD</small><h3>Scripture · Evidence · Wisdom</h3><p>Kingdom Lens answers questions with citations, Scripture applications, uncertainties, and counterpoints.</p></div>
-        <div className="content-card"><small>CREATOR</small><h3>Daniel Ziedins.Design</h3><p>Built with care for the Church. Visit <a href="https://www.danielziedins.design" target="_blank" rel="noopener noreferrer">danielziedins.design</a>.</p></div>
+        <div className="content-card"><small>AUTHOR</small><h3>Daniel Ziedins</h3><p>Every guide and journal note is written by Daniel Ziedins. Visit <a href="https://www.danielziedins.com" target="_blank" rel="noopener noreferrer">danielziedins.com</a>.</p></div>
       </div>
       <div style={{ marginTop: 28, display: "flex", gap: 14, flexWrap: "wrap" }}>
         <Link href="/trust" className="button button-navy">Visit the Trust Center</Link>
@@ -944,6 +1036,27 @@ export default async function InnerPage({ params }: PageProps) {
   else if (section === "find-representatives") body = <FindRepresentatives />;
   else if (section === "scripture") body = <ScriptureIndex />;
   else if (section === "start") body = <StartHere />;
+  else if (section === "blog" && slug[1]) {
+    const post = getBlogPost(slug[1]);
+    if (!post) notFound();
+    body = (
+      <>
+        <ArticleBody scripture={post.scripture} sections={post.sections} slug={post.slug} kind="principle" />
+        <FaqSection faqs={post.faqs} title="Direct answers" description="Official Hamilton facts and Kingdom-first practice." />
+      </>
+    );
+  } else if (section === "blog") {
+    body = (
+      <LinkCards
+        items={blogPosts.map((post) => ({
+          href: `/blog/${post.slug}`,
+          title: post.title,
+          description: post.description,
+          tag: post.date,
+        }))}
+      />
+    );
+  }
   else if (section === "leaders") body = <LeadersPage detail={slug[1]} />;
   else if (section === "elections") body = <ElectionPage />;
   else if (section === "pray") body = <PrayPage />;

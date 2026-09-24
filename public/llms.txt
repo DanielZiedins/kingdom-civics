@@ -20,6 +20,7 @@ Last updated: 2026-09-24
 - [For Churches](https://www.kingdomcivics.org/for-churches): Free four-week civic discipleship kit for pastors and small groups
 - [Find Representatives](https://www.kingdomcivics.org/find-representatives): Official government lookup tools worldwide
 - [Start here](https://www.kingdomcivics.org/start): Five-step civic discipleship path
+- [Journal](https://www.kingdomcivics.org/blog): Notes by Daniel Ziedins, including this weekend’s Hamilton poll guide
 - [Scripture index](https://www.kingdomcivics.org/scripture): Bible verses about government, voting, and public life
 - [Hamilton Leaders](https://www.kingdomcivics.org/leaders): Mayor, councillors, MPs, MPPs with official links
 - [Hamilton City Hub](https://www.kingdomcivics.org/cities/hamilton-on): Live Hamilton civic data
@@ -114,12 +115,12 @@ Shareable links: https://www.kingdomcivics.org/kingdom-lens?q=Your+question
 ## Sitemap
 
 - https://www.kingdomcivics.org/sitemap.xml
-- https://www.kingdomcivics.org/feed.xml (RSS — learn articles & issue guides)
+- https://www.kingdomcivics.org/feed.xml (RSS — journal, lessons, and issue guides)
 - https://www.kingdomcivics.org/humans.txt
 
 ## Creator
 
-- Daniel Ziedins.Design — https://www.danielziedins.design
+- Daniel Ziedins — https://www.danielziedins.com
 
 ## Extended documentation
 

@@ -22,7 +22,8 @@ export function ElectionSeason() {
             <li><CheckCircle2 /> A voter card is helpful, not required. There are no online or mail-in ballots.</li>
           </ul>
           <div className="stack-actions">
-            <Link href="/elections" className="button button-gold">Open the election hub <ArrowRight size={16} /></Link>
+            <Link href="/blog/hamilton-community-polls-this-weekend" className="button button-gold">Read this weekend’s note <ArrowRight size={16} /></Link>
+            <Link href="/elections" className="text-link">Election hub <ArrowRight size={14} /></Link>
             <a href={hamiltonElection.urls.hub} className="text-link" target="_blank" rel="noopener noreferrer">
               City of Hamilton election page <ExternalLink size={14} />
             </a>

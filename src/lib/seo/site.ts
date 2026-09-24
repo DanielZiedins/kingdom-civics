@@ -10,8 +10,8 @@ export const DEFAULT_DESCRIPTION =
   "Global Christian civic education for every nation. Use Kingdom Lens AI to examine leaders through Jesus’ Kingdom principles, learn how government works, pray faithfully, get involved—and discern whether to serve or run for office.";
 
 export const CREATOR = {
-  name: "Daniel Ziedins.Design",
-  url: "https://www.danielziedins.design",
+  name: "Daniel Ziedins",
+  url: "https://www.danielziedins.com",
 } as const;
 
 export const PARENT_ORG = {
@@ -61,6 +61,8 @@ export const HAMILTON_GEO = {
   region: "Ontario",
   country: "Canada",
   countryCode: "CA",
+  latitude: 43.2557,
+  longitude: -79.8711,
 } as const;
 
 export function absoluteUrl(path = "/"): string {

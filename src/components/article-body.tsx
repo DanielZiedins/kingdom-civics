@@ -6,6 +6,7 @@ import { ArrowRight, Check, List } from "lucide-react";
 import { ReadingProgress } from "@/components/reading-progress";
 import { learnArticles } from "@/lib/content/learn";
 import { issueGuidesContent } from "@/lib/content/issues";
+import { CREATOR } from "@/lib/seo/site";
 
 const LEARN_KEY = "kingdom-civics-my-civics";
 
@@ -100,6 +101,9 @@ export function ArticleBody({
             <small>SCRIPTURE · {minutes} MIN READ</small>
             <span>{scripture}</span>
           </div>
+          <p className="article-byline">
+            By <a href={CREATOR.url} target="_blank" rel="author noopener noreferrer">{CREATOR.name}</a>
+          </p>
           {sections.map((section) => (
             <section key={section.heading} id={toId(section.heading)}>
               <h2>{section.heading}</h2>
