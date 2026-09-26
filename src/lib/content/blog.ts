@@ -33,18 +33,6 @@ const pollLessons: JournalLink[] = [
   },
 ];
 
-export function journalRelated(slug: string): JournalLink[] {
-  const notes = blogPosts
-    .filter((post) => post.slug !== slug)
-    .map((post) => ({
-      href: `/blog/${post.slug}`,
-      title: post.title,
-      description: post.description,
-      tag: "JOURNAL",
-    }));
-  return [...notes, ...pollLessons].slice(0, 4);
-}
-
 export const blogPosts: BlogPost[] = [
   {
     slug: "before-hamilton-community-polls",
@@ -188,4 +176,16 @@ export const blogPosts: BlogPost[] = [
 
 export function getBlogPost(slug: string): BlogPost | undefined {
   return blogPosts.find((post) => post.slug === slug);
+}
+
+export function journalRelated(slug: string): JournalLink[] {
+  const notes = blogPosts
+    .filter((post) => post.slug !== slug)
+    .map((post) => ({
+      href: `/blog/${post.slug}`,
+      title: post.title,
+      description: post.description,
+      tag: "JOURNAL",
+    }));
+  return [...notes, ...pollLessons].slice(0, 4);
 }

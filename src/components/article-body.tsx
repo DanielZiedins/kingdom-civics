@@ -13,22 +13,6 @@ function toId(heading: string) {
   return heading.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 }
 
-function readingMinutes(sections: ArticleSection[]) {
-  const words = sections.reduce(
-    (count, section) => count + `${section.heading} ${section.body}`.split(/\s+/).filter(Boolean).length,
-    0,
-  );
-  return Math.max(1, Math.round(words / 220));
-}
-
-function readingMinutes(sections: ArticleSection[]) {
-  const words = sections.reduce(
-    (count, section) => count + `${section.heading} ${section.body}`.trim().split(/\s+/).length,
-    0,
-  );
-  return Math.max(1, Math.round(words / 200));
-}
-
 function defaultRelated(slug: string | undefined, principles: string[] | undefined): RelatedCard[] {
   const article = slug ? learnArticles.find((item) => item.slug === slug) : undefined;
   const linked = (article?.relatedSlugs ?? [])
