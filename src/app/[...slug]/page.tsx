@@ -16,7 +16,7 @@ import { GlossaryExplorer } from "@/components/glossary-explorer";
 import { LeadersDirectory } from "@/components/leaders-directory";
 import { ShareButton } from "@/components/share-button";
 import { FaqSection } from "@/components/seo/faq-section";
-import { blogPosts, getBlogPost } from "@/lib/content/blog";
+import { blogPosts, getBlogPost, journalRelated } from "@/lib/content/blog";
 import { glossaryTerms } from "@/lib/content/glossary";
 import { hamiltonElection } from "@/lib/content/election";
 import { PollReady } from "@/components/poll-ready";
@@ -36,6 +36,7 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 import { getPageMetadata, getPageSeo } from "@/lib/seo/pages";
 import {
   articleSchema,
+  blogPostingSchema,
   courseSchema,
   definedTermSetSchema,
   electionEventSchema,
@@ -250,40 +251,13 @@ function pageStructuredData(section: string, slug: string[], copy: { title: stri
     if (!post) return [base];
     return [
       base,
-      articleSchema({
+      blogPostingSchema({
         title: post.title,
         description: post.description,
         path: `/blog/${post.slug}`,
         datePublished: post.date,
         dateModified: post.updated,
-      }),
-      faqPageSchema(post.faqs),
-    ];
-  }
-  if (section === "blog") {
-    return [
-      base,
-      itemListSchema({
-        name: "Kingdom Civics Journal",
-        items: blogPosts.map((post) => ({
-          name: post.title,
-          url: absoluteUrl(`/blog/${post.slug}`),
-          description: post.description,
-        })),
-      }),
-    ];
-  }
-  if (section === "blog" && slug[1]) {
-    const post = getBlogPost(slug[1]);
-    if (!post) return [base];
-    return [
-      base,
-      articleSchema({
-        title: post.title,
-        description: post.description,
-        path: `/blog/${post.slug}`,
-        datePublished: post.date,
-        dateModified: post.updated,
+        keywords: post.keywords,
       }),
       faqPageSchema(post.faqs),
     ];
@@ -1041,7 +1015,7 @@ export default async function InnerPage({ params }: PageProps) {
     if (!post) notFound();
     body = (
       <>
-        <ArticleBody scripture={post.scripture} sections={post.sections} slug={post.slug} kind="principle" />
+        <ArticleBody scripture={post.scripture} sections={post.sections} slug={post.slug} kind="principle" related={journalRelated(post.slug)} />
         <FaqSection faqs={post.faqs} title="Direct answers" description="Official Hamilton facts and Kingdom-first practice." />
       </>
     );

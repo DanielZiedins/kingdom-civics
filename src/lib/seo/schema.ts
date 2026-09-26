@@ -263,7 +263,7 @@ export function articleSchema({
     url: absoluteUrl(path),
     datePublished,
     dateModified,
-    author: { "@type": "Person", name: CREATOR.name, url: CREATOR.url },
+    author: { "@type": "Person", name: CREATOR.name, url: CREATOR.url, sameAs: [CREATOR.url] },
     publisher: { "@id": `${SITE_URL}/#organization` },
     about: principles.map((principle) => principle.name),
     inLanguage: "en-CA",
@@ -308,7 +308,7 @@ export function learningResourceSchema({
     educationalLevel: "Beginner",
     inLanguage: "en-CA",
     provider: { "@id": `${SITE_URL}/#organization` },
-    author: { "@type": "Person", name: CREATOR.name, url: CREATOR.url },
+    author: { "@type": "Person", name: CREATOR.name, url: CREATOR.url, sameAs: [CREATOR.url] },
   };
 }
 
@@ -343,6 +343,47 @@ export function howToSchema({
       position: index + 1,
       text,
     })),
+  };
+}
+
+export function blogPostingSchema(input: {
+  title: string;
+  description: string;
+  path: string;
+  datePublished: string;
+  dateModified: string;
+  keywords?: string[];
+}): JsonLd {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: input.title,
+    description: input.description,
+    url: absoluteUrl(input.path),
+    datePublished: input.datePublished,
+    dateModified: input.dateModified,
+    keywords: input.keywords?.join(", "),
+    inLanguage: "en-CA",
+    author: {
+      "@type": "Person",
+      name: CREATOR.name,
+      url: CREATOR.url,
+      sameAs: [CREATOR.url],
+    },
+    publisher: { "@id": `${SITE_URL}/#organization` },
+    contentLocation: {
+      "@type": "Place",
+      name: "Hamilton, Ontario, Canada",
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: 43.2557,
+        longitude: -79.8711,
+      },
+    },
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["h1", ".article-body h2", ".faq-answer"],
+    },
   };
 }
 

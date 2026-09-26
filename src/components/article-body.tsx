@@ -1,80 +1,89 @@
-"use client";
-
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { ArrowRight, Check, List } from "lucide-react";
-import { ReadingProgress } from "@/components/reading-progress";
-import { learnArticles } from "@/lib/content/learn";
-import { issueGuidesContent } from "@/lib/content/issues";
+import { ArrowRight, List } from "lucide-react";
 import { CREATOR } from "@/lib/seo/site";
+import { issueGuidesContent } from "@/lib/content/issues";
+import { learnArticles } from "@/lib/content/learn";
+import { LessonComplete } from "@/components/lesson-complete";
+import { ReadingProgress } from "@/components/reading-progress";
 
-const LEARN_KEY = "kingdom-civics-my-civics";
+export type ArticleSection = { heading: string; body: string };
+export type RelatedCard = { href: string; title: string; description: string; tag: string };
 
 function toId(heading: string) {
-  return heading.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+  return heading.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 }
 
-export function ArticleBody({
-  scripture,
-  sections,
-  slug,
-  kind = "learn",
-}: {
-  scripture: string;
-  sections: Array<{ heading: string; body: string }>;
-  slug?: string;
-  kind?: "learn" | "issue" | "principle";
-}) {
-  const [done, setDone] = useState(false);
-
-  useEffect(() => {
-    if (!slug || kind !== "learn") return;
-    const t = window.setTimeout(() => {
-      try {
-        const raw = window.localStorage.getItem(LEARN_KEY);
-        const parsed = raw ? JSON.parse(raw) as { completedLearn?: string[] } : {};
-        setDone(Boolean(parsed.completedLearn?.includes(slug)));
-      } catch {
-        /* ignore */
-      }
-    }, 0);
-    return () => window.clearTimeout(t);
-  }, [slug, kind]);
-
-  function markComplete() {
-    if (!slug || kind !== "learn") return;
-    try {
-      const raw = window.localStorage.getItem(LEARN_KEY);
-      const parsed = raw ? JSON.parse(raw) as { completedLearn?: string[] } : {};
-      const completedLearn = [...new Set([...(parsed.completedLearn ?? []), slug])];
-      window.localStorage.setItem(LEARN_KEY, JSON.stringify({ ...parsed, completedLearn }));
-      setDone(true);
-    } catch {
-      /* ignore */
-    }
-  }
-
-  const currentLearn = learnArticles.find((a) => a.slug === slug);
-  const preferredLearn = (currentLearn?.relatedSlugs ?? [])
-    .map((related) => learnArticles.find((a) => a.slug === related))
-    .filter((item): item is NonNullable<typeof item> => Boolean(item));
-  const sameCategory = learnArticles.filter(
-    (a) => a.slug !== slug && a.category === currentLearn?.category && !preferredLearn.some((item) => item.slug === a.slug),
+function readingMinutes(sections: ArticleSection[]) {
+  const words = sections.reduce(
+    (count, section) => count + `${section.heading} ${section.body}`.split(/\s+/).filter(Boolean).length,
+    0,
   );
-  const relatedLearn = [...preferredLearn, ...sameCategory, ...learnArticles.filter((a) => a.slug !== slug)]
-    .filter((item, index, list) => list.findIndex((other) => other.slug === item.slug) === index)
+  return Math.max(1, Math.round(words / 220));
+}
+
+function readingMinutes(sections: ArticleSection[]) {
+  const words = sections.reduce(
+    (count, section) => count + `${section.heading} ${section.body}`.trim().split(/\s+/).length,
+    0,
+  );
+  return Math.max(1, Math.round(words / 200));
+}
+
+function defaultRelated(slug: string | undefined, principles: string[] | undefined): RelatedCard[] {
+  const article = slug ? learnArticles.find((item) => item.slug === slug) : undefined;
+  const linked = (article?.relatedSlugs ?? [])
+    .map((relatedSlug) => learnArticles.find((item) => item.slug === relatedSlug))
+    .filter((item): item is (typeof learnArticles)[number] => Boolean(item));
+  const sameCategory = article
+    ? learnArticles.filter((item) => item.slug !== slug && item.category === article.category)
+    : [];
+  const relatedLearn = [...linked, ...sameCategory, ...learnArticles.filter((item) => item.slug !== slug)]
+    .filter((item, index, list) => list.findIndex((candidate) => candidate.slug === item.slug) === index)
     .slice(0, 2);
-  const currentIssue = issueGuidesContent.find((g) => g.slug === slug);
   const relatedIssues = [...issueGuidesContent]
-    .filter((g) => g.slug !== slug)
     .sort((a, b) => {
-      const overlap = (guide: typeof a) =>
-        guide.principles.filter((principle) => currentIssue?.principles.includes(principle)).length;
+      const overlap = (guide: (typeof issueGuidesContent)[number]) =>
+        guide.principles.filter((principle) => principles?.includes(principle)).length;
       return overlap(b) - overlap(a);
     })
     .slice(0, 2);
-  const wordCount = sections.reduce((n, s) => n + s.body.split(/\s+/).length, 0);
-  const minutes = Math.max(1, Math.round(wordCount / 180));
+
+  return [
+    ...relatedLearn.map((item) => ({
+      href: `/learn/${item.slug}`,
+      title: item.title,
+      description: item.description,
+      tag: "LEARN",
+    })),
+    ...relatedIssues.map((item) => ({
+      href: `/issues/${item.slug}`,
+      title: item.title,
+      description: item.description,
+      tag: "ISSUE",
+    })),
+  ];
+}
+
+export function ArticleBody({
+  sections,
+  scripture,
+  minutes,
+  slug,
+  principles,
+  kind = "learn",
+  related,
+}: {
+  sections: ArticleSection[];
+  scripture: string;
+  minutes?: number;
+  slug?: string;
+  principles?: string[];
+  kind?: "learn" | "principle" | "issue";
+  related?: RelatedCard[];
+}) {
+  const cards = related ?? defaultRelated(slug, principles);
+  const words = sections.reduce((count, section) => count + `${section.heading} ${section.body}`.split(/\s+/).length, 0);
+  const readMinutes = minutes ?? Math.max(2, Math.round(words / 220));
 
   return (
     <>
@@ -98,7 +107,7 @@ export function ArticleBody({
             </nav>
           </details>
           <div className="article-scripture">
-            <small>SCRIPTURE · {minutes} MIN READ</small>
+            <small>SCRIPTURE · {readMinutes} MIN READ</small>
             <span>{scripture}</span>
           </div>
           <p className="article-byline">
@@ -124,11 +133,7 @@ export function ArticleBody({
             <Link href="/kingdom-lens" className="button button-navy">
               Ask Kingdom Lens <ArrowRight size={15} />
             </Link>
-            {slug && kind === "learn" && (
-              <button type="button" className="button button-ghost" onClick={markComplete} disabled={done}>
-                {done ? <><Check size={15} /> Saved to My Civics</> : "Mark lesson complete"}
-              </button>
-            )}
+            {slug && kind === "learn" && <LessonComplete slug={slug} />}
             <Link href="/biblical-principles" className="text-link">
               Explore biblical principles <ArrowRight size={14} />
             </Link>
@@ -136,18 +141,11 @@ export function ArticleBody({
           <div className="article-related">
             <h3>Keep learning</h3>
             <div className="article-related-grid">
-              {relatedLearn.map((a) => (
-                <Link key={a.slug} href={`/learn/${a.slug}`} className="content-card">
-                  <small>LEARN</small>
-                  <h4>{a.title}</h4>
-                  <p>{a.description}</p>
-                </Link>
-              ))}
-              {relatedIssues.map((g) => (
-                <Link key={g.slug} href={`/issues/${g.slug}`} className="content-card">
-                  <small>ISSUE</small>
-                  <h4>{g.title}</h4>
-                  <p>{g.description}</p>
+              {cards.map((card) => (
+                <Link key={card.href} href={card.href} className="content-card">
+                  <small>{card.tag}</small>
+                  <h4>{card.title}</h4>
+                  <p>{card.description}</p>
                 </Link>
               ))}
             </div>

@@ -463,6 +463,22 @@ const globalChunks: KnowledgeChunk[] = [
     confidence: "strong",
   },
   {
+    id: "before-community-polls",
+    scope: "hamilton",
+    tags: ["tonight", "before", "friday", "saturday morning", "checklist", "community poll", "what should i do"],
+    answer:
+      "Before Hamilton's community polls, find your ward on hamilton.ca, set out valid ID, and read certified candidates from the City. A voter card is helpful, not required. Polls are Saturday and Sunday, September 26–27, 2026, 10 a.m.–6 p.m., at 59 locations. You may vote at any poll in your ward. City outreach tables are not automatically your polling station. Ballot-on-demand sites keep their own hours. There are no online or mail-in ballots. See /blog/before-hamilton-community-polls.",
+    principles: ["Truth", "Civic responsibility", "Neighbor love"],
+    scripture: [{ reference: "Jeremiah 29:7", application: "Seek the welfare of the city where God has placed you." }],
+    sources: [
+      { id: "ham-voters", title: "Voters", publisher: "City of Hamilton", url: "https://www.hamilton.ca/city-council/municipal-election/voters", tier: 1 },
+      { id: "kc-before", title: "Before Hamilton’s Community Polls Open", publisher: "Kingdom Civics", url: "/blog/before-hamilton-community-polls", tier: 2 },
+    ],
+    uncertainties: ["Exact polling addresses and ballot-on-demand hours are published by the Clerk and can change."],
+    counterpoints: ["Missing this weekend does not end the election. Advance polls run in October, and election day is October 26."],
+    confidence: "strong",
+  },
+  {
     id: "discern-candidates",
     scope: "global",
     tags: ["discern", "candidate", "scorecard", "who should i vote", "local candidates", "municipal ballot"],

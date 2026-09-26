@@ -11,7 +11,87 @@ export type BlogPost = {
   faqs: Array<{ question: string; answer: string }>;
 };
 
+export type JournalLink = {
+  href: string;
+  title: string;
+  description: string;
+  tag: string;
+};
+
+const pollLessons: JournalLink[] = [
+  {
+    href: "/learn/what-to-bring-to-the-poll",
+    title: "What to Bring to the Poll — Hamilton 2026",
+    description: "ID, voter cards, ward stations, and the hours the City has actually published.",
+    tag: "LEARN",
+  },
+  {
+    href: "/learn/discern-local-candidates",
+    title: "How to Discern Local Candidates without a Scorecard",
+    description: "Read the office and the official list before you mark a name.",
+    tag: "LEARN",
+  },
+];
+
+export function journalRelated(slug: string): JournalLink[] {
+  const notes = blogPosts
+    .filter((post) => post.slug !== slug)
+    .map((post) => ({
+      href: `/blog/${post.slug}`,
+      title: post.title,
+      description: post.description,
+      tag: "JOURNAL",
+    }));
+  return [...notes, ...pollLessons].slice(0, 4);
+}
+
 export const blogPosts: BlogPost[] = [
+  {
+    slug: "before-hamilton-community-polls",
+    title: "Before Hamilton’s Community Polls Open",
+    description:
+      "A practical checklist for Friday night and Saturday morning: valid ID, your ward, official locations, and a way to pray without endorsing a candidate.",
+    date: "2026-09-25",
+    updated: "2026-09-25",
+    category: "Hamilton",
+    scripture: "Jeremiah 29:7 · Proverbs 18:17",
+    keywords: [
+      "before Hamilton community polls",
+      "Hamilton vote Saturday September 26",
+      "what to do before voting Hamilton",
+      "Hamilton voter ID community poll",
+    ],
+    sections: [
+      {
+        heading: "Put the official facts where you will see them",
+        body: "Eligible Hamilton voters can cast a ballot Saturday and Sunday, September 26 and 27, 2026, from 10 a.m. to 6 p.m. The City has scheduled 59 community polls in high-density buildings and locations chosen for accessibility. Tonight, find your ward with the City’s Find my Ward tool and set valid identification where you will pick it up in the morning. A voter information card is helpful, not required. If the card has arrived, it lists the polling stations in your ward. You may vote at any of them. Kingdom Civics does not publish an unofficial address list and does not endorse a candidate.",
+      },
+      {
+        heading: "Read the ballot before you read a feed",
+        body: "The offices are mayor, one ward councillor, and school board trustees. The boards on Hamilton’s ballot are the Hamilton-Wentworth District School Board, the Hamilton-Wentworth Catholic District School Board, Conseil scolaire Viamonde, and Conseil scolaire catholique MonAvenir. Eligibility for each trustee ballot is set by the City. Nominations closed August 21 and candidates were certified August 24. Read that certified list on hamilton.ca. A forwarded graphic is not a source. Ask what the office actually controls, what the public record shows, and whether you can pray for the opponent without contempt.",
+      },
+      {
+        heading: "Outreach is not the same thing as a polling station",
+        body: "The City has listed election outreach on Friday, September 25, at Neighbour to Neighbour, 28 Athens Street, from 9:30 a.m. to 12:30 p.m., and on Sunday, September 27, at Open Streets, 876 Cannon Street East, from 10 a.m. to 4 p.m. Those are chances to ask the Clerk’s team a question. They are not a promise that the building is your poll. Confirm the station on your voter card or the City’s voters page. Eight ballot-on-demand sites, including McMaster, Mohawk, and Redeemer, plus some social-service locations, keep their own hours. Do not assume those hours are 10 a.m. to 6 p.m.",
+      },
+      {
+        heading: "If Saturday morning gets away from you",
+        body: "Sunday, September 27, is still a voting day, 10 a.m. to 6 p.m. A church can worship first and send people to vote afterward without reading a name from the pulpit. If the weekend is impossible, advance polls run October 3–4, 10–11, and 17–18, also 10 a.m. to 6 p.m. Election day is Monday, October 26. There are no online or mail-in ballots. Voters can amend the list in person with ID through October 24, or at a poll. The Clerk’s office is 905-546-4365 and elections@hamilton.ca, at City Hall, 71 Main Street West. Seek the city’s welfare. Do not baptize the ballot.",
+      },
+    ],
+    faqs: [
+      {
+        question: "What should I do the night before Hamilton’s community polls?",
+        answer:
+          "Find your ward on the City of Hamilton site, set out valid identification, and read certified candidates from hamilton.ca. A voter card is helpful, not required. Community polls are Saturday and Sunday, September 26–27, 2026, from 10 a.m. to 6 p.m. You may vote at any poll in your ward.",
+      },
+      {
+        question: "Is a City outreach table the same as a polling station?",
+        answer:
+          "No. Outreach stops, including Neighbour to Neighbour on September 25 and Open Streets on September 27, are places to ask questions. Confirm your polling station on your voter information card or the City’s voters page. Do not rely on a forwarded address list.",
+      },
+    ],
+  },
   {
     slug: "hamilton-community-polls-this-weekend",
     title: "Hamilton Community Polls Are This Weekend — What the City Actually Said",
