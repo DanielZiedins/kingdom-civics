@@ -57,28 +57,37 @@ export function getRhythmOfTheDay(date = new Date()) {
   }).format(date);
   const dayIndex = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].indexOf(weekday);
   const base = civicRhythm[dayIndex === -1 ? date.getDay() : dayIndex];
-  const start = Date.parse("2026-09-26T10:00:00-04:00");
-  const end = Date.parse("2026-09-27T18:00:00-04:00");
+  const start = Date.parse("2026-10-17T10:00:00-04:00");
+  const end = Date.parse("2026-10-18T18:00:00-04:00");
   const now = date.getTime();
   if (now < end && start - now < 12 * 86400000) {
-    if (weekday === "Thu") {
+    if (weekday === "Tue" || weekday === "Wed" || weekday === "Thu") {
       return {
         ...base,
-        title: "Confirm your ward before community polls.",
-        body: "Use the City’s Find my Ward tool, then read the poll-ready checklist. A voter card is helpful, not required.",
-        href: "/elections",
-        cta: "Open the election hub",
+        title: "The last advance weekend is October 17–18.",
+        body: "Find your ward, set out valid ID, and read certified candidates on hamilton.ca. A voter card is helpful, not required.",
+        href: "/blog/hamilton-final-advance-polls",
+        cta: "Read the final advance guide",
       };
     }
     if (weekday === "Fri" || weekday === "Sat" || weekday === "Sun") {
       return {
         ...base,
-        title: "Community polls this weekend.",
-        body: "Hamilton community polls are September 26–27, 10 a.m.–6 p.m. Vote at any poll in your ward. Bring valid ID.",
+        title: "Final advance polls this weekend.",
+        body: "Hamilton advance polls are October 17–18, 10 a.m.–6 p.m. Vote at any poll in your ward. Bring valid ID.",
         href: "/learn/what-to-bring-to-the-poll",
         cta: "What to bring to the poll",
       };
     }
+  }
+  if (now >= end && now < Date.parse("2026-10-27T00:00:00-04:00")) {
+    return {
+      ...base,
+      title: "Election day is Monday, October 26.",
+      body: "Confirm hours on hamilton.ca. Bring valid ID. If you already voted, you do not vote again.",
+      href: "/elections",
+      cta: "Open the election hub",
+    };
   }
   return base;
 }

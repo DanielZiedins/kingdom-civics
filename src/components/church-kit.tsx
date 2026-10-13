@@ -105,7 +105,7 @@ export function ChurchKit() {
         <div className="content-card">
           <small>HAMILTON · ELECTION</small>
           <h3>Prepare the congregation to vote without a scorecard</h3>
-          <p>Community polls are September 26–27. Teach ID, ward maps, and prayer—not pulpit endorsements. Point people to hamilton.ca.</p>
+          <p>The last advance polls are October 17–18, and election day is October 26. Teach ID, ward maps, and prayer—not pulpit endorsements. Point people to hamilton.ca.</p>
           <Link href="/learn/what-to-bring-to-the-poll" className="text-link">Poll-ready guide <ArrowRight size={14} /></Link>
         </div>
       </div>

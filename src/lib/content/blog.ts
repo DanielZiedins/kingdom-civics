@@ -35,6 +35,52 @@ const pollLessons: JournalLink[] = [
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "hamilton-final-advance-polls",
+    title: "Hamilton’s Last Advance Polls Are October 17–18",
+    description:
+      "The final advance weekend before election day: Saturday and Sunday, 10 a.m.–6 p.m., valid ID, any poll in your ward, and what to do if you already voted.",
+    date: "2026-10-13",
+    updated: "2026-10-13",
+    category: "Hamilton",
+    scripture: "Jeremiah 29:7 · 1 Timothy 2:1–2",
+    keywords: [
+      "Hamilton advance polls October 17",
+      "Hamilton final advance voting 2026",
+      "vote Hamilton before October 26",
+      "Hamilton election day ID",
+    ],
+    sections: [
+      {
+        heading: "The weekend that is still open",
+        body: "Community polls on September 26–27, and the advance weekends of October 3–4 and October 10–11, have passed. The last advance polls are Saturday and Sunday, October 17 and 18, 2026, from 10 a.m. to 6 p.m. Bring valid identification. A voter information card is helpful, not required, and it lists the polling stations in your ward. You may vote at any of them. Kingdom Civics does not publish an unofficial address list and does not endorse a candidate.",
+      },
+      {
+        heading: "If you already voted, stop",
+        body: "This election takes one ballot. If you voted at a community poll or at an earlier advance poll, you do not vote again on October 17, October 18, or election day. If you are unsure whether your ballot was accepted, call the Clerk before you go: 905-546-4365 or elections@hamilton.ca. Guessing, or marking a second ballot, is not faithfulness.",
+      },
+      {
+        heading: "City Hall is a separate window",
+        body: "The City has listed special voting at City Hall, 71 Main Street West, from October 16 through October 23. Confirm the hours on hamilton.ca before you travel. Those hours are not the same as the 10 a.m.–6 p.m. advance-poll window, and this page will not invent them. Eight ballot-on-demand sites, including McMaster, Mohawk, and Redeemer, plus some social-service locations, also keep their own hours.",
+      },
+      {
+        heading: "Then Monday, October 26",
+        body: "If the weekend is impossible, election day is Monday, October 26. Confirm that day’s hours and locations on hamilton.ca. You can amend the voters list in person with ID through October 24, or be added at a poll. There are no online or mail-in ballots. Read certified candidates from the City — mayor, your ward councillor, and the school board you are eligible for. The new term begins November 15. Seek the city’s welfare, and pray for whoever serves.",
+      },
+    ],
+    faqs: [
+      {
+        question: "When is Hamilton’s last advance poll weekend?",
+        answer:
+          "Saturday and Sunday, October 17–18, 2026, from 10 a.m. to 6 p.m. Bring valid ID. A voter card is not required. You may vote at any poll in your ward. Confirm locations on hamilton.ca.",
+      },
+      {
+        question: "Can I still vote in Hamilton if I missed the community polls?",
+        answer:
+          "Yes, if you have not already voted. The final advance polls are October 17–18, 10 a.m.–6 p.m. Election day is Monday, October 26. City Hall special voting runs October 16–23 — confirm hours. There are no online or mail-in ballots.",
+      },
+    ],
+  },
+  {
     slug: "before-hamilton-community-polls",
     title: "Before Hamilton’s Community Polls Open",
     description:

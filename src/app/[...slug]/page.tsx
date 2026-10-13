@@ -240,7 +240,7 @@ function pageStructuredData(section: string, slug: string[], copy: { title: stri
           "Confirm you are eligible to vote in Hamilton, Ontario.",
           "Find your ward with the City's official map and bring valid ID—a voter card is not required.",
           "Read certified candidates from the official City of Hamilton list.",
-          "Vote at a community poll (Sep 26–27, 10 a.m.–6 p.m.), an advance poll, or on Monday, October 26, 2026. Any poll in your ward.",
+          "Vote at the final advance polls (October 17–18, 10 a.m.–6 p.m.) or on Monday, October 26, 2026. Any poll in your ward. If you already voted, do not vote again.",
           "There are no online or mail-in ballots for this municipal election—verify proxy rules if you cannot attend.",
         ],
       }),
@@ -626,7 +626,7 @@ function ElectionPage() {
     "Bring valid ID. A voter information card is helpful, not required.",
     "If needed, amend the voters list in person with ID by October 24, 2026—or at a poll.",
     "Read certified candidates from the City of Hamilton, not a forwarded graphic.",
-    "Vote at a community poll (Sep 26–27, 10 a.m.–6 p.m.), an advance poll, or on Monday, October 26.",
+    "Vote at the final advance polls (October 17–18, 10 a.m.–6 p.m.) or on Monday, October 26. If you already voted, do not vote again.",
   ];
   return (
     <div className="election-layout">

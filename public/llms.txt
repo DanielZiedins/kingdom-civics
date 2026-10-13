@@ -4,7 +4,7 @@
 
 Kingdom Civics helps Christians worldwide understand government, discern leadership, pray faithfully, and serve humbly—without partisan endorsements.
 
-Last updated: 2026-09-25
+Last updated: 2026-10-13
 
 ## Canonical site
 
@@ -20,7 +20,7 @@ Last updated: 2026-09-25
 - [For Churches](https://www.kingdomcivics.org/for-churches): Free four-week civic discipleship kit for pastors and small groups
 - [Find Representatives](https://www.kingdomcivics.org/find-representatives): Official government lookup tools worldwide
 - [Start here](https://www.kingdomcivics.org/start): Five-step civic discipleship path
-- [Journal](https://www.kingdomcivics.org/blog): Notes by Daniel Ziedins (https://www.danielziedins.com), including the poll-day checklist and this weekend’s Hamilton guide
+- [Journal](https://www.kingdomcivics.org/blog): Notes by Daniel Ziedins (https://www.danielziedins.com), including the final advance-poll guide
 - [Scripture index](https://www.kingdomcivics.org/scripture): Bible verses about government, voting, and public life
 - [Hamilton Leaders](https://www.kingdomcivics.org/leaders): Mayor, councillors, MPs, MPPs with official links
 - [Hamilton City Hub](https://www.kingdomcivics.org/cities/hamilton-on): Live Hamilton civic data
@@ -72,6 +72,7 @@ Last updated: 2026-09-25
 
 ## Journal (Daniel Ziedins — https://www.danielziedins.com)
 
+- /blog/hamilton-final-advance-polls
 - /blog/before-hamilton-community-polls
 - /blog/hamilton-community-polls-this-weekend
 - /blog/what-a-church-can-say-on-sunday
@@ -83,7 +84,10 @@ Last updated: 2026-09-25
 - Next municipal election: October 26, 2026
 - Community polls: September 26–27, 2026, 10 a.m.–6 p.m. (59 locations)
 - More than 300 voting opportunities; 8 ballot-on-demand sites (hours vary)
-- Advance polls: October 3–4, 10–11, 17–18, 2026, 10 a.m.–6 p.m.
+- Final advance polls still open: October 17–18, 2026, 10 a.m.–6 p.m.
+- Earlier advance polls: October 3–4 and 10–11, 2026 (closed)
+- Election day: Monday, October 26, 2026 — confirm hours
+- If you already voted, you do not vote again
 - Voter information card is not required; bring valid ID
 - Vote at any poll in your ward
 - Official city site: https://www.hamilton.ca

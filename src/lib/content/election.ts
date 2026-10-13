@@ -113,35 +113,131 @@ export function upcomingOutreach(now = new Date()) {
   return hamiltonElection.outreach.filter((event) => event.end >= date);
 }
 
+function pollDayStatus(date: string, hour: number, day: string, again: string) {
+  if (date === day && hour < 10) return `Open today at 10 a.m. ${again}`;
+  if (date === day && hour < 18) return `Open today until 6 p.m. ${again}`;
+  return "";
+}
+
 export function getWeekendStatus(now = new Date()) {
   const { date, hour } = torontoDateParts(now);
-  if (date < "2026-09-26") {
-    return "Opens this Saturday and Sunday, 10 a.m.–6 p.m. Bring valid ID.";
+  if (date > "2026-10-26") {
+    return "Election day has passed. Pray for whoever serves. The new term begins November 15.";
   }
-  if (date === "2026-09-26" && hour < 10) {
-    return "Opens today at 10 a.m. Open again Sunday. Bring valid ID.";
+  if (date === "2026-10-26") {
+    return "Election day is today. Confirm hours on hamilton.ca. Bring valid ID. Any poll in your ward.";
   }
-  if (date === "2026-09-26" && hour < 18) {
-    return "Open today until 6 p.m. Open again Sunday, 10 a.m.–6 p.m.";
+  if (date > "2026-10-18" || (date === "2026-10-18" && hour >= 18)) {
+    return "Advance polls have closed. Election day is Monday, October 26. Confirm hours on hamilton.ca. Bring valid ID.";
   }
-  if (date === "2026-09-26") {
-    return "Saturday polls have closed. Open again Sunday, 10 a.m.–6 p.m.";
+  const sundayAdvance = pollDayStatus(date, hour, "2026-10-18", "Bring valid ID. Any poll in your ward.");
+  if (sundayAdvance) return sundayAdvance;
+  const saturdayAdvance = pollDayStatus(date, hour, "2026-10-17", "Open again Sunday, 10 a.m.–6 p.m. Bring valid ID.");
+  if (saturdayAdvance) return saturdayAdvance;
+  if (date === "2026-10-17") return "Saturday advance polls have closed. Open again Sunday, 10 a.m.–6 p.m.";
+  if (date >= "2026-10-12") {
+    return "Final advance polls are Saturday and Sunday, October 17–18, 10 a.m.–6 p.m. Bring valid ID.";
   }
-  if (date === "2026-09-27" && hour < 10) {
-    return "Opens today at 10 a.m. Bring valid ID. Any poll in your ward.";
+  if (date > "2026-10-11" || (date === "2026-10-11" && hour >= 18)) {
+    return "This advance weekend has closed. The last advance polls are October 17–18, 10 a.m.–6 p.m.";
   }
-  if (date === "2026-09-27" && hour < 18) {
-    return "Open today until 6 p.m. Bring valid ID. Any poll in your ward.";
+  if (date >= "2026-10-05") {
+    return "Advance polls are Saturday and Sunday, October 10–11, 10 a.m.–6 p.m. Bring valid ID.";
   }
+  if (date >= "2026-09-28") {
+    return "Community polls have closed. Advance polls are October 3–4, 10 a.m.–6 p.m.";
+  }
+  if (date < "2026-09-26") return "Opens this Saturday and Sunday, 10 a.m.–6 p.m. Bring valid ID.";
+  const sundayCommunity = pollDayStatus(date, hour, "2026-09-27", "Bring valid ID. Any poll in your ward.");
+  if (sundayCommunity) return sundayCommunity;
+  const saturdayCommunity = pollDayStatus(date, hour, "2026-09-26", "Open again Sunday, 10 a.m.–6 p.m.");
+  if (saturdayCommunity) return saturdayCommunity;
+  if (date === "2026-09-26") return "Saturday polls have closed. Open again Sunday, 10 a.m.–6 p.m.";
   return "Community polls have closed. Advance polls are October 3–4, 10 a.m.–6 p.m.";
 }
 
 export function getChurchNote(now = new Date()) {
   const { date, hour } = torontoDateParts(now);
-  if (date > "2026-09-27" || (date === "2026-09-27" && hour >= 18)) {
-    return "Hamilton community polls have closed. Advance polls are October 3–4, 10–11, and 17–18, 10 a.m.–6 p.m. Bring valid ID. A voter card is not required. You may vote at any poll in your ward. Official info: hamilton.ca. Kingdom Civics does not endorse candidates.";
+  const close = "Official info: hamilton.ca. Kingdom Civics does not endorse candidates.";
+  if (date > "2026-10-26") {
+    return `Hamilton’s October 26 election day has passed. Pray for whoever serves. The new term begins November 15, 2026. ${close}`;
   }
-  return "Hamilton community polls are open Saturday and Sunday, September 26–27, 10 a.m.–6 p.m. — including after church on Sunday. Bring valid ID. A voter card is not required. The City has scheduled 59 community polls; your card lists the stations in your ward, and you may use any of them. Official info: hamilton.ca. Kingdom Civics does not endorse candidates.";
+  if (date > "2026-10-18" || (date === "2026-10-18" && hour >= 18)) {
+    return `Hamilton’s final advance polls have closed. Election day is Monday, October 26. Confirm hours on hamilton.ca. Bring valid ID. A voter card is not required. You may vote at any poll in your ward. If you already voted, you do not vote again. ${close}`;
+  }
+  if (date >= "2026-09-28") {
+    return "Hamilton’s final advance polls are Saturday and Sunday, October 17–18, 10 a.m.–6 p.m. Bring valid ID. A voter card is not required. You may vote at any poll in your ward. City Hall special voting runs October 16–23 — confirm hours. Election day is Monday, October 26. If you already voted, you do not vote again. " + close;
+  }
+  return "Hamilton community polls are open Saturday and Sunday, September 26–27, 10 a.m.–6 p.m. — including after church on Sunday. Bring valid ID. A voter card is not required. The City has scheduled 59 community polls; your card lists the stations in your ward, and you may use any of them. " + close;
+}
+
+export type VoteDay = { small: string; strong: string; span: string };
+export type VoteFocus = {
+  aria: string;
+  kicker: string;
+  title: string;
+  days: VoteDay[];
+};
+
+export function getElectionHeading(now = new Date()) {
+  const { date, hour } = torontoDateParts(now);
+  if (date > "2026-10-26") return "The ballots are cast. Pray for whoever serves.";
+  if (date === "2026-10-26") return "Hamilton votes today. Confirm hours. Bring ID.";
+  if (date > "2026-10-18" || (date === "2026-10-18" && hour >= 18)) return "Election day is Monday, October 26. Bring ID.";
+  if (date === "2026-10-18" && hour >= 10) return "Final advance polls are open today until 6 p.m. Bring ID.";
+  if (date === "2026-10-18") return "Final advance polls open today at 10 a.m. Bring ID.";
+  if (date === "2026-10-17" && hour >= 18) return "Advance polls open again Sunday. Bring ID.";
+  if (date === "2026-10-17" && hour >= 10) return "Advance polls are open today until 6 p.m. Bring ID.";
+  if (date === "2026-10-17") return "Advance polls open today at 10 a.m. Bring ID.";
+  if (date >= "2026-10-12") return "Hamilton’s last advance weekend is October 17–18. Bring ID.";
+  if (date >= "2026-09-28") return "Advance polls are still ahead. Bring ID.";
+  return "This weekend, Hamilton casts the first ballots. Bring ID.";
+}
+
+export function getVoteFocus(now = new Date()): VoteFocus {
+  const { date, hour } = torontoDateParts(now);
+  if (date > "2026-10-26") {
+    return {
+      aria: "After Hamilton election day",
+      kicker: "AFTER THE BALLOT",
+      title: "Pray for whoever serves.",
+      days: [
+        { small: "ELECTION DAY", strong: "Oct 26", span: "Ballots cast" },
+        { small: "TERM BEGINS", strong: "Nov 15", span: "New council" },
+      ],
+    };
+  }
+  if (date > "2026-10-18" || (date === "2026-10-18" && hour >= 18)) {
+    return {
+      aria: "Hamilton election day",
+      kicker: "ELECTION DAY · MONDAY",
+      title: "October 26. Bring ID. Confirm hours.",
+      days: [
+        { small: "MONDAY", strong: "Oct 26", span: "Confirm hours" },
+        { small: "VOTERS LIST", strong: "Oct 24", span: "Amend in person" },
+      ],
+    };
+  }
+  if (date >= "2026-09-28") {
+    return {
+      aria: "Hamilton final advance polls",
+      kicker: "FINAL ADVANCE POLLS",
+      title: "Saturday and Sunday. Any poll in your ward.",
+      days: [
+        { small: "SATURDAY", strong: "Oct 17", span: "10 a.m.–6 p.m." },
+        { small: "SUNDAY · AFTER CHURCH", strong: "Oct 18", span: "10 a.m.–6 p.m." },
+      ],
+    };
+  }
+  return {
+    aria: "Hamilton community polls this weekend",
+    kicker: `COMMUNITY POLLS · ${hamiltonElection.communityPollCount} LOCATIONS`,
+    title: "Saturday and Sunday. Any poll in your ward.",
+    days: [
+      { small: "SATURDAY", strong: "Sep 26", span: "10 a.m.–6 p.m." },
+      { small: "SUNDAY · AFTER CHURCH", strong: "Sep 27", span: "10 a.m.–6 p.m." },
+    ],
+  };
 }
 
 export function getNextVotingWindow(now = new Date()) {
@@ -155,34 +251,20 @@ export function getNextVotingWindow(now = new Date()) {
 
 export function getBannerCopy(now = new Date()) {
   const { date, hour } = torontoDateParts(now);
-  if (date < "2026-09-26") {
-    return "This weekend · Community polls Sat–Sun · 10 a.m.–6 p.m. · Bring ID";
+  if (date > "2026-10-26") return "Hamilton has voted · Pray for whoever serves · Term begins Nov 15";
+  if (date === "2026-10-26") return "Election day is today · Confirm hours on hamilton.ca · Bring ID";
+  if (date > "2026-10-18" || (date === "2026-10-18" && hour >= 18)) {
+    return "Election day Monday Oct 26 · Bring ID · Any poll in your ward";
   }
-  if (date === "2026-09-26" && hour < 18) {
-    return hour < 10
-      ? "Community polls open today at 10 a.m. · Bring ID · Any poll in your ward"
-      : "Community polls open today until 6 p.m. · Bring ID · Any poll in your ward";
-  }
-  if (date === "2026-09-26") {
-    return "Community polls open again Sunday · 10 a.m.–6 p.m. · Bring ID";
-  }
-  if (date === "2026-09-27" && hour < 18) {
-    return hour < 10
-      ? "Community polls open today at 10 a.m. · Bring ID · Any poll in your ward"
-      : "Community polls open today until 6 p.m. · Bring ID · Any poll in your ward";
-  }
-  if (date === "2026-09-27") {
-    return "Advance polls next weekend · Oct 3–4 · 10 a.m.–6 p.m. · Bring ID";
-  }
+  if (date === "2026-10-18" && hour >= 10 && hour < 18) return "Final advance polls open today until 6 p.m. · Bring ID";
+  if (date === "2026-10-18") return "Final advance polls open today at 10 a.m. · Bring ID";
+  if (date === "2026-10-17" && hour >= 18) return "Advance polls open again Sunday · 10 a.m.–6 p.m. · Bring ID";
+  if (date === "2026-10-17" && hour >= 10) return "Advance polls open today until 6 p.m. · Bring ID · Any poll in your ward";
+  if (date === "2026-10-17") return "Advance polls open today at 10 a.m. · Bring ID · Any poll in your ward";
+  if (date >= "2026-10-12") return "Final advance polls · Sat–Sun Oct 17–18 · 10 a.m.–6 p.m. · Bring ID";
   const next = getNextVotingWindow(now);
-  if (next?.id === "community") {
-    return "Community polls Sep 26–27 · 10 a.m.–6 p.m. · Bring ID";
-  }
-  if (next?.id.startsWith("advance")) {
-    return `Advance polls ${next.when} · 10 a.m.–6 p.m. · Any poll in your ward`;
-  }
-  if (next?.id === "election-day") {
-    return "Hamilton votes Monday Oct 26 · Official sources only";
-  }
+  if (next?.id.startsWith("advance")) return `Advance polls ${next.when} · 10 a.m.–6 p.m. · Any poll in your ward`;
+  if (next?.id === "election-day") return "Hamilton votes Monday Oct 26 · Official sources only";
+  if (date < "2026-09-26") return "This weekend · Community polls Sat–Sun · 10 a.m.–6 p.m. · Bring ID";
   return "Hamilton election · Official sources only";
 }

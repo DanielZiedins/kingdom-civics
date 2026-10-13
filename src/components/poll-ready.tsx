@@ -5,8 +5,8 @@ import { hamiltonElection } from "@/lib/content/election";
 const items = [
   "Bring valid identification. A voter information card is helpful, not required.",
   "You may vote at any polling station in your ward.",
-  `Community and advance polls run ${hamiltonElection.communityPollHours}`,
-  `The City scheduled ${hamiltonElection.communityPollCount} community polls. Your voter card lists the stations in your ward.`,
+  "Final advance polls: October 17–18, 10 a.m.–6 p.m. Election day is Monday, October 26 — confirm those hours.",
+  `Your voter card lists the stations in your ward. The City scheduled ${hamiltonElection.communityPollCount} community polls earlier this season.`,
   "If you are missing from the list, you can usually be added at the poll with ID.",
   "There are no online or mail-in ballots for this municipal election.",
 ];

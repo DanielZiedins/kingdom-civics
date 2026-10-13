@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, ExternalLink } from "lucide-react";
 import { ElectionCountdown } from "@/components/election-countdown";
+import { ElectionHeading } from "@/components/election-heading";
 import { WeekendVote } from "@/components/weekend-vote";
 import { hamiltonElection } from "@/lib/content/election";
 
@@ -10,19 +11,19 @@ export function ElectionSeason() {
       <div className="page-width election-season-grid">
         <div>
           <span className="eyebrow gold-text">HAMILTON · ELECTION SEASON</span>
-          <h2 id="election-season-heading">This weekend, Hamilton casts the first ballots. Bring ID.</h2>
+          <ElectionHeading />
           <p>
             Mayor, ward councillors, and school board trustees are on the ballot. Nominations are closed.
             Vote at any poll in your ward, read certified candidates from the City—not a feed—and pray
             without baptizing a party.
           </p>
           <ul className="check-list election-season-list">
-            <li><CheckCircle2 /> {hamiltonElection.communityPollCount} community polls: {hamiltonElection.communityPolls} · {hamiltonElection.communityPollHours}</li>
-            <li><CheckCircle2 /> Advance polls: {hamiltonElection.advancePolls.join(" · ")}</li>
-            <li><CheckCircle2 /> A voter card is helpful, not required. There are no online or mail-in ballots.</li>
+            <li><CheckCircle2 /> Final advance polls: October 17–18 · {hamiltonElection.advancePollHours}</li>
+            <li><CheckCircle2 /> City Hall special voting {hamiltonElection.cityHallSpecial}. Confirm hours.</li>
+            <li><CheckCircle2 /> Election day {hamiltonElection.weekdayLabel}. A voter card is helpful, not required.</li>
           </ul>
           <div className="stack-actions">
-            <Link href="/blog/before-hamilton-community-polls" className="button button-gold">Read the poll-day checklist <ArrowRight size={16} /></Link>
+            <Link href="/blog/hamilton-final-advance-polls" className="button button-gold">Read the final advance guide <ArrowRight size={16} /></Link>
             <Link href="/elections" className="text-link">Election hub <ArrowRight size={14} /></Link>
             <a href={hamiltonElection.urls.hub} className="text-link" target="_blank" rel="noopener noreferrer">
               City of Hamilton election page <ExternalLink size={14} />

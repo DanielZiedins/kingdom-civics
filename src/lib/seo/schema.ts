@@ -184,7 +184,7 @@ export function electionEventSchema(): JsonLd {
     },
     url: absoluteUrl("/elections"),
     description:
-      "Hamilton municipal and school board election for mayor, ward councillors, and trustees. Community polls September 26–27, 10 a.m.–6 p.m. Advance polls October 3–4, 10–11, and 17–18.",
+      "Hamilton municipal and school board election for mayor, ward councillors, and trustees. Final advance polls October 17–18, 10 a.m.–6 p.m. Election day October 26, 2026.",
     subEvent: [
       {
         "@type": "Event",
@@ -196,8 +196,8 @@ export function electionEventSchema(): JsonLd {
       },
       {
         "@type": "Event",
-        name: "Hamilton advance polls",
-        startDate: "2026-10-03",
+        name: "Hamilton final advance polls",
+        startDate: "2026-10-17",
         endDate: "2026-10-18",
         eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
         location: { "@type": "City", name: HAMILTON_GEO.city },

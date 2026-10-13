@@ -451,7 +451,7 @@ const globalChunks: KnowledgeChunk[] = [
     scope: "hamilton",
     tags: ["bring", "id", "identification", "voter card", "poll", "community poll", "what to bring", "hours", "10 a.m."],
     answer:
-      "To vote in Hamilton's 2026 municipal election, bring valid identification. The City has said a voter information card is helpful, not required, and that the card lists polling stations in your ward. You may vote at any of them. Community polls: Saturday and Sunday, September 26–27, 10 a.m.–6 p.m., at 59 locations in high-density buildings and accessible communities. Advance polls: October 3–4, 10–11, and 17–18, also 10 a.m.–6 p.m. Eight ballot-on-demand sites, including McMaster, Mohawk, and Redeemer, use their own hours. There are no online or mail-in ballots. Confirm locations on hamilton.ca. See /learn/what-to-bring-to-the-poll.",
+      "To vote in Hamilton's 2026 municipal election, bring valid identification. The last advance polls are October 17–18, 10 a.m.–6 p.m. Election day is Monday, October 26 — confirm those hours. If you already voted, you do not vote again. A voter information card is helpful, not required, and it lists the stations in your ward. You may vote at any of them. Eight ballot-on-demand sites, including McMaster, Mohawk, and Redeemer, use their own hours. There are no online or mail-in ballots. Confirm locations on hamilton.ca. See /learn/what-to-bring-to-the-poll.",
     principles: ["Truth", "Civic responsibility", "Neighbor love"],
     scripture: [{ reference: "Romans 13:7", application: "Give to each what is owed—including lawful civic duties carried out without contempt." }],
     sources: [
@@ -460,6 +460,22 @@ const globalChunks: KnowledgeChunk[] = [
     ],
     uncertainties: ["Exact polling addresses and any ballot-on-demand hours are published by the Clerk and can change."],
     counterpoints: [],
+    confidence: "strong",
+  },
+  {
+    id: "final-advance-polls",
+    scope: "hamilton",
+    tags: ["advance", "october 17", "october 18", "last weekend", "final advance", "already voted", "election day"],
+    answer:
+      "Hamilton's last advance polls are Saturday and Sunday, October 17–18, 2026, from 10 a.m. to 6 p.m. Bring valid ID. A voter card is not required. You may vote at any poll in your ward. If you already voted at a community poll or an earlier advance poll, you do not vote again. City Hall special voting runs October 16–23 — confirm hours. Election day is Monday, October 26. There are no online or mail-in ballots. See /blog/hamilton-final-advance-polls.",
+    principles: ["Truth", "Civic responsibility", "Neighbor love"],
+    scripture: [{ reference: "Jeremiah 29:7", application: "Seek the welfare of the city where God has placed you." }],
+    sources: [
+      { id: "ham-voters", title: "Voters", publisher: "City of Hamilton", url: "https://www.hamilton.ca/city-council/municipal-election/voters", tier: 1 },
+      { id: "kc-final", title: "Hamilton’s Last Advance Polls", publisher: "Kingdom Civics", url: "/blog/hamilton-final-advance-polls", tier: 2 },
+    ],
+    uncertainties: ["Election-day hours, City Hall special-voting hours, and exact polling addresses must be confirmed on hamilton.ca."],
+    counterpoints: ["Missing this weekend does not end the election if you have not already voted. Election day is October 26."],
     confidence: "strong",
   },
   {
@@ -538,7 +554,7 @@ const hamiltonChunks: KnowledgeChunk[] = [
     id: "hamilton-election",
     scope: "hamilton",
     tags: ["election", "vote", "2026", "october", "municipal", "nomination", "hamilton"],
-    answer: `Hamilton's next municipal and school board election is Monday, October 26, 2026. Offices: mayor, 15 ward councillors, and school board trustees. Nominations closed August 21, 2026; candidates were certified August 24. Community polls: September 26–27, 10 a.m.–6 p.m. Advance polls: October 3–4, 10–11, and 17–18, 10 a.m.–6 p.m. You may vote at any poll in your ward. A voter card is not required—bring valid ID. The City has stated there are no online or mail-in ballots. Eligible voters can amend the voters list in person with ID through October 24, 2026, or at a poll. Verify everything at hamilton.ca—not social media.`,
+    answer: `Hamilton's municipal and school board election is Monday, October 26, 2026. The last advance polls are October 17–18, 10 a.m.–6 p.m. Earlier days (September 26–27, October 3–4, and October 10–11) have passed. If you already voted, you do not vote again. Offices: mayor, 15 ward councillors, and school board trustees. You may vote at any poll in your ward. A voter card is not required—bring valid ID. There are no online or mail-in ballots. Amend the voters list in person with ID through October 24, or at a poll. City Hall special voting runs October 16–23 — confirm hours. Verify everything at hamilton.ca.`,
     principles: ["Truth", "Civic responsibility", "Peaceful order"],
     scripture: [{ reference: "1 Timothy 2:1–2", application: "Christians can pray for peaceful civic life while participating lawfully in the process." }],
     sources: [{ id: "hamilton-election", title: "2026 Municipal Election", publisher: "City of Hamilton", url: hamiltonMeta.electionUrl, tier: 1 }],

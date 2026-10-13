@@ -5,17 +5,31 @@ import Link from "next/link";
 import { ArrowRight, CalendarDays, Church, Copy, Check } from "lucide-react";
 import {
   getChurchNote,
+  getVoteFocus,
   getWeekendStatus,
   hamiltonElection,
   upcomingOutreach,
+  type VoteFocus,
 } from "@/lib/content/election";
 
+const focusFallback: VoteFocus = {
+  aria: "Hamilton final advance polls",
+  kicker: "FINAL ADVANCE POLLS",
+  title: "Saturday and Sunday. Any poll in your ward.",
+  days: [
+    { small: "SATURDAY", strong: "Oct 17", span: "10 a.m.–6 p.m." },
+    { small: "SUNDAY · AFTER CHURCH", strong: "Oct 18", span: "10 a.m.–6 p.m." },
+  ],
+};
+
 export function WeekendVote() {
-  const [status, setStatus] = useState("Saturday and Sunday · 10 a.m.–6 p.m. · Bring valid ID");
+  const [status, setStatus] = useState("Final advance polls are Saturday and Sunday, October 17–18, 10 a.m.–6 p.m. Bring valid ID.");
+  const [focus, setFocus] = useState(focusFallback);
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     setStatus(getWeekendStatus());
+    setFocus(getVoteFocus());
   }, []);
 
   async function copyNote() {
@@ -29,16 +43,16 @@ export function WeekendVote() {
   }
 
   return (
-    <section className="weekend-vote" aria-label="Hamilton community polls this weekend">
+    <section className="weekend-vote" aria-label={focus.aria}>
       <div className="weekend-vote-copy">
-        <small>COMMUNITY POLLS · {hamiltonElection.communityPollCount} LOCATIONS</small>
-        <h3>Saturday and Sunday. Any poll in your ward.</h3>
+        <small>{focus.kicker}</small>
+        <h3>{focus.title}</h3>
         <p>{status}</p>
         <p>
-          The City has scheduled {hamiltonElection.communityPollCount} community polls in high-density buildings
-          and places with accessibility needs — part of {hamiltonElection.votingOpportunities} voting opportunities.
           Your voter information card lists the stations in your ward. A card is helpful, not required.
+          You may vote at any poll in that ward. City Hall special voting runs {hamiltonElection.cityHallSpecial} — confirm hours.
           Eight ballot-on-demand sites, including McMaster, Mohawk, and Redeemer, use their own hours.
+          If you already voted, you do not vote again.
         </p>
         <div className="stack-actions">
           <Link href="/learn/what-to-bring-to-the-poll" className="button button-gold">
@@ -54,18 +68,14 @@ export function WeekendVote() {
         </div>
       </div>
       <div className="weekend-days">
-        <article>
-          <CalendarDays size={18} />
-          <small>SATURDAY</small>
-          <strong>Sep 26</strong>
-          <span>10 a.m.–6 p.m.</span>
-        </article>
-        <article>
-          <Church size={18} />
-          <small>SUNDAY · AFTER CHURCH</small>
-          <strong>Sep 27</strong>
-          <span>10 a.m.–6 p.m.</span>
-        </article>
+        {focus.days.map((day) => (
+          <article key={day.strong}>
+            {day.small.includes("SUNDAY") ? <Church size={18} /> : <CalendarDays size={18} />}
+            <small>{day.small}</small>
+            <strong>{day.strong}</strong>
+            <span>{day.span}</span>
+          </article>
+        ))}
       </div>
     </section>
   );

@@ -78,7 +78,7 @@ export function GET() {
     <link>${absoluteUrl("/")}</link>
     <description>Christian civic education — learn articles, issue guides, and biblical principles for public life.</description>
     <language>en-ca</language>
-    <lastBuildDate>Fri, 25 Sep 2026 13:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 13 Oct 2026 17:00:00 GMT</lastBuildDate>
     <atom:link href="${absoluteUrl("/feed.xml")}" rel="self" type="application/rss+xml"/>
     ${items
       .map(

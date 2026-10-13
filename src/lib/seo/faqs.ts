@@ -26,7 +26,7 @@ export const globalFaqs: FaqItem[] = [
   },
   {
     question: "When is Hamilton's next municipal election?",
-    answer: `Hamilton's next municipal and school board election is Monday, October 26, 2026. Community polls are September 26–27 (10 a.m.–6 p.m.). Advance polls are October 3–4, 10–11, and 17–18. Voters elect a mayor, 15 ward councillors, and school board trustees. Official information is at ${hamiltonMeta.electionUrl}.`,
+    answer: `Hamilton's municipal and school board election is Monday, October 26, 2026. The last advance polls are October 17–18, 10 a.m.–6 p.m. Earlier voting days were September 26–27 and October 3–4 and 10–11. Voters elect a mayor, 15 ward councillors, and school board trustees. If you already voted, you do not vote again. Official information is at ${hamiltonMeta.electionUrl}.`,
     keywords: ["Hamilton election 2026", "municipal election Ontario"],
   },
   {
@@ -118,7 +118,7 @@ export const pageFaqs: Record<string, FaqItem[]> = {
     {
       question: "When are Hamilton advance polls in 2026?",
       answer:
-        "Advance polls are October 3–4, 10–11, and 17–18, 2026, from 10 a.m. to 6 p.m. Community polls: September 26–27, 10 a.m.–6 p.m. Election day is Monday, October 26, 2026. You may vote at any poll in your ward. Confirm locations with the City Clerk.",
+        "Advance polls were October 3–4 and 10–11, and the final weekend is October 17–18, 2026, from 10 a.m. to 6 p.m. Community polls were September 26–27. Election day is Monday, October 26, 2026. You may vote at any poll in your ward. If you already voted, you do not vote again. Confirm locations with the City Clerk.",
     },
     {
       question: "Do I need a voter information card to vote in Hamilton?",
@@ -131,14 +131,14 @@ export const pageFaqs: Record<string, FaqItem[]> = {
         "For the 2026 municipal election, the City has stated you may vote at any polling station in your ward. First confirm your ward with the official Find my Ward tool on hamilton.ca.",
     },
     {
-      question: "Where are Hamilton's community polls this weekend?",
+      question: "When is Hamilton’s final advance poll weekend?",
       answer:
-        "Community polls are Saturday and Sunday, September 26–27, 2026, from 10 a.m. to 6 p.m. The City scheduled 59 of them in high-density buildings and locations chosen for accessibility. Your voter information card lists the stations in your ward, and you may vote at any of them. Kingdom Civics does not republish an unofficial address list — use hamilton.ca.",
+        "Saturday and Sunday, October 17–18, 2026, from 10 a.m. to 6 p.m. Bring valid ID. A voter card is not required. You may vote at any poll in your ward. City Hall special voting runs October 16–23 — confirm hours. Election day is Monday, October 26. Kingdom Civics does not republish an unofficial address list.",
     },
     {
-      question: "Can I vote in Hamilton after church on Sunday?",
+      question: "Can I vote in Hamilton after church on Sunday, October 18?",
       answer:
-        "Yes. Community polls are open Sunday, September 27, 2026, from 10 a.m. to 6 p.m., as well as Saturday. Bring valid identification. A voter card is not required. Confirm your ward, then use any poll in that ward.",
+        "Yes. The final advance polls are open Sunday, October 18, 2026, from 10 a.m. to 6 p.m., as well as Saturday. Bring valid identification. A voter card is not required. Confirm your ward, then use any poll in that ward. If you already voted, you do not vote again.",
     },
     {
       question: "Which school boards are on Hamilton's 2026 ballot?",
