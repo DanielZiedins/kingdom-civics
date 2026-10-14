@@ -26,14 +26,60 @@ const pollLessons: JournalLink[] = [
     tag: "LEARN",
   },
   {
-    href: "/learn/discern-local-candidates",
-    title: "How to Discern Local Candidates without a Scorecard",
-    description: "Read the office and the official list before you mark a name.",
+    href: "/learn/school-boards",
+    title: "School Boards — Why They Matter",
+    description: "What trustees usually control, and what they do not.",
     tag: "LEARN",
   },
 ];
 
 export const blogPosts: BlogPost[] = [
+  {
+    slug: "three-marks-on-a-hamilton-ballot",
+    title: "The Three Marks on a Hamilton Ballot",
+    description:
+      "Before Saturday’s advance polls: what the mayor, your ward councillor, and a school board trustee actually decide — and which trustee ballot is yours.",
+    date: "2026-10-14",
+    updated: "2026-10-14",
+    category: "Hamilton",
+    scripture: "Proverbs 18:17 · Micah 6:8",
+    keywords: [
+      "Hamilton ballot 2026 mayor councillor trustee",
+      "Hamilton school board election",
+      "what does a Hamilton mayor do",
+      "which school board do I vote for Hamilton",
+    ],
+    sections: [
+      {
+        heading: "You are not electing a prime minister",
+        body: "On Saturday and Sunday, October 17–18, Hamilton’s last advance polls are open from 10 a.m. to 6 p.m. The ballot asks for three kinds of names: mayor, one councillor for your ward, and school board trustees. It does not elect a prime minister, set criminal law, or run a hospital. If you already voted, you do not vote again. If you have not, read the offices before you read a feed.",
+      },
+      {
+        heading: "Mayor",
+        body: "Hamilton’s mayor chairs council, represents the city, and — under Ontario’s strong-mayor framework since July 2023 — holds expanded executive tools. Council as a whole still approves the budget and bylaws. The mayor does not unilaterally control schools, hospitals, or federal immigration. Read the certified mayoral list on hamilton.ca. Kingdom Civics does not endorse a name.",
+      },
+      {
+        heading: "Your ward councillor",
+        body: "Hamilton has 15 wards and one councillor for each. That councillor votes with the rest of council on bylaws, the budget, planning, and committee recommendations. A ward office is local. It is not a back door into provincial health policy. Confirm your ward with the City’s Find my Ward tool, then read only the certified candidates for that ward.",
+      },
+      {
+        heading: "A trustee — if you are eligible",
+        body: "The boards on this ballot are the Hamilton-Wentworth District School Board, the Hamilton-Wentworth Catholic District School Board, Conseil scolaire Viamonde, and Conseil scolaire catholique MonAvenir. Trustees help set local policy, budgets, and direction. They do not write the entire education statute. Which trustee ballot you may mark is set by the City, not by a church bulletin or a guess about where your children attend. Confirm eligibility on hamilton.ca before you mark a name.",
+      },
+    ],
+    faqs: [
+      {
+        question: "What is on Hamilton’s October 2026 ballot?",
+        answer:
+          "Mayor, one ward councillor, and school board trustees. Advance polls are October 17–18, 10 a.m.–6 p.m. Election day is Monday, October 26. Bring valid ID. If you already voted, you do not vote again.",
+      },
+      {
+        question: "Which school board do I vote for in Hamilton?",
+        answer:
+          "The City of Hamilton decides which trustee ballot you are eligible to mark. The boards on the ballot are the Hamilton-Wentworth District School Board, the Hamilton-Wentworth Catholic District School Board, Conseil scolaire Viamonde, and Conseil scolaire catholique MonAvenir. Confirm your eligibility on hamilton.ca.",
+      },
+    ],
+  },
   {
     slug: "what-a-church-can-say-october-18",
     title: "What a Church Can Say This Sunday, October 18",
@@ -273,6 +319,7 @@ export function getBlogPost(slug: string): BlogPost | undefined {
 export function journalRelated(slug: string): JournalLink[] {
   const notes = blogPosts
     .filter((post) => post.slug !== slug)
+    .slice(0, 2)
     .map((post) => ({
       href: `/blog/${post.slug}`,
       title: post.title,

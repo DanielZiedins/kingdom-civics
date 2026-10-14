@@ -877,6 +877,24 @@ em { color: var(--gold-light); font-weight: 400; }
 .weekend-days strong { font-family: var(--font-serif); font-size: 32px; line-height: 1; }
 .weekend-days span { color: #d5dee4; font-size: 14px; }
 .election-season .weekend-vote { margin-top: 28px; }
+.ballot-offices { margin-top: 28px; }
+.ballot-offices-head { max-width: 640px; margin-bottom: 16px; }
+.ballot-offices-head small, .ballot-offices article small { letter-spacing: .12em; font-size: 10px; text-transform: uppercase; }
+.ballot-offices-head h3, .ballot-offices h4 { font-family: var(--font-serif); }
+.ballot-offices-head h3 { font-size: clamp(28px, 4vw, 40px); margin: 8px 0 10px; }
+.ballot-offices-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px; }
+.ballot-offices article { padding: 18px 16px; min-height: 100%; }
+.ballot-offices h4 { font-size: 26px; margin: 8px 0; }
+.ballot-offices p { font-size: 14px; line-height: 1.55; margin: 0; }
+.ballot-offices-dark article { background: rgba(255,255,255,.04); border: 1px solid rgba(201,164,91,.35); }
+.ballot-offices-dark small { color: var(--gold-light); }
+.ballot-offices-dark p, .ballot-offices-dark .ballot-offices-head p { color: #c5d0d7; }
+.ballot-offices-light article { background: white; border: 1px solid var(--line); }
+.ballot-offices-light small { color: #9a7431; }
+.ballot-offices-light p { color: var(--stone); }
+@media (max-width: 800px) {
+  .ballot-offices-grid { grid-template-columns: 1fr; }
+}
 
 @media (max-width: 1100px) {
   .voting-calendar { grid-template-columns: 1fr 1fr; }

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, ExternalLink } from "lucide-react";
+import { BallotOffices } from "@/components/ballot-offices";
 import { ElectionCountdown, NextPollCountdown } from "@/components/election-countdown";
 import { ElectionHeading } from "@/components/election-heading";
 import { WeekendVote } from "@/components/weekend-vote";
@@ -23,7 +24,8 @@ export function ElectionSeason() {
             <li><CheckCircle2 /> Election day {hamiltonElection.weekdayLabel}. A voter card is helpful, not required.</li>
           </ul>
           <div className="stack-actions">
-            <Link href="/blog/what-a-church-can-say-october-18" className="button button-gold">Read Sunday’s church note <ArrowRight size={16} /></Link>
+            <Link href="/blog/three-marks-on-a-hamilton-ballot" className="button button-gold">See what is on the ballot <ArrowRight size={16} /></Link>
+            <Link href="/blog/what-a-church-can-say-october-18" className="text-link">Sunday’s church note <ArrowRight size={14} /></Link>
             <Link href="/elections" className="text-link">Election hub <ArrowRight size={14} /></Link>
             <a href={hamiltonElection.urls.hub} className="text-link" target="_blank" rel="noopener noreferrer">
               City of Hamilton election page <ExternalLink size={14} />
@@ -40,6 +42,7 @@ export function ElectionSeason() {
       </div>
       <div className="page-width">
         <WeekendVote />
+        <BallotOffices tone="dark" />
       </div>
     </section>
   );

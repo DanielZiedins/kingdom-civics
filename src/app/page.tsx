@@ -37,7 +37,7 @@ export const metadata: Metadata = buildPageMetadata({
     "biblical government principles",
     "global Christian citizenship",
     "Kingdom Lens civic AI",
-    "Hamilton vote after church October 18",
+    "Hamilton ballot mayor councillor trustee",
     "what to bring to vote Hamilton",
     "Christians running for office",
     "discern political leaders biblically",

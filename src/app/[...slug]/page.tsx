@@ -19,6 +19,7 @@ import { FaqSection } from "@/components/seo/faq-section";
 import { blogPosts, getBlogPost, journalRelated } from "@/lib/content/blog";
 import { glossaryTerms } from "@/lib/content/glossary";
 import { hamiltonElection } from "@/lib/content/election";
+import { BallotOffices } from "@/components/ballot-offices";
 import { PollReady } from "@/components/poll-ready";
 import { VotingCalendar } from "@/components/voting-calendar";
 import { OutreachList, WeekendVote } from "@/components/weekend-vote";
@@ -662,6 +663,7 @@ function ElectionPage() {
             <p>This municipal election is in-person. Proxy voting has official rules—verify before assuming.</p>
           </article>
         </div>
+        <BallotOffices />
         <h3 className="election-subhead">School boards on this ballot</h3>
         <ul className="election-boards">
           {hamiltonElection.schoolBoards.map((board) => (

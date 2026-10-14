@@ -20,7 +20,7 @@ Last updated: 2026-10-14
 - [For Churches](https://www.kingdomcivics.org/for-churches): Free four-week civic discipleship kit for pastors and small groups
 - [Find Representatives](https://www.kingdomcivics.org/find-representatives): Official government lookup tools worldwide
 - [Start here](https://www.kingdomcivics.org/start): Five-step civic discipleship path
-- [Journal](https://www.kingdomcivics.org/blog): Notes by Daniel Ziedins (https://www.danielziedins.com), including the October 18 church note
+- [Journal](https://www.kingdomcivics.org/blog): Notes by Daniel Ziedins (https://www.danielziedins.com), including the three marks on a Hamilton ballot
 - [Scripture index](https://www.kingdomcivics.org/scripture): Bible verses about government, voting, and public life
 - [Hamilton Leaders](https://www.kingdomcivics.org/leaders): Mayor, councillors, MPs, MPPs with official links
 - [Hamilton City Hub](https://www.kingdomcivics.org/cities/hamilton-on): Live Hamilton civic data
@@ -72,6 +72,7 @@ Last updated: 2026-10-14
 
 ## Journal (Daniel Ziedins — https://www.danielziedins.com)
 
+- /blog/three-marks-on-a-hamilton-ballot
 - /blog/what-a-church-can-say-october-18
 - /blog/hamilton-final-advance-polls
 - /blog/before-hamilton-community-polls

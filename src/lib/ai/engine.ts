@@ -463,6 +463,22 @@ const globalChunks: KnowledgeChunk[] = [
     confidence: "strong",
   },
   {
+    id: "hamilton-ballot-offices",
+    scope: "hamilton",
+    tags: ["ballot", "mayor", "councillor", "trustee", "school board", "what is on the ballot", "three"],
+    answer:
+      "Hamilton's 2026 ballot has three kinds of offices: mayor, one councillor for your ward, and school board trustees. The mayor chairs council and holds strong-mayor tools; council still approves budgets and bylaws. A ward councillor is one of 15. Trustee ballots are for the Hamilton-Wentworth District School Board, the Hamilton-Wentworth Catholic District School Board, Conseil scolaire Viamonde, and Conseil scolaire catholique MonAvenir. The City decides which trustee ballot you may mark. Advance polls are October 17–18, 10 a.m.–6 p.m. If you already voted, you do not vote again. See /blog/three-marks-on-a-hamilton-ballot.",
+    principles: ["Truth", "Limits of authority", "Prudential judgment"],
+    scripture: [{ reference: "Proverbs 18:17", application: "The first claim seems right until someone examines what the office actually controls." }],
+    sources: [
+      { id: "hamilton-election", title: "2026 Municipal Election", publisher: "City of Hamilton", url: "https://www.hamilton.ca/city-council/municipal-election", tier: 1 },
+      { id: "kc-ballot", title: "The Three Marks on a Hamilton Ballot", publisher: "Kingdom Civics", url: "/blog/three-marks-on-a-hamilton-ballot", tier: 2 },
+    ],
+    uncertainties: ["Trustee eligibility is set by the City and must be confirmed on hamilton.ca."],
+    counterpoints: ["Faithful Christians may mark different names for the same office."],
+    confidence: "strong",
+  },
+  {
     id: "sunday-october-18",
     scope: "hamilton",
     tags: ["sunday", "church", "october 18", "after church", "pastor", "pulpit", "advance"],

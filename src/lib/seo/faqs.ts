@@ -106,6 +106,11 @@ export const pageFaqs: Record<string, FaqItem[]> = {
   ],
   elections: [
     {
+      question: "What does a Hamilton mayor decide that a trustee does not?",
+      answer:
+        "The mayor chairs council and holds Ontario strong-mayor tools in Hamilton. Council still approves budgets and bylaws. A school board trustee helps set local education policy and budgets and does not run the city. Confirm which trustee ballot you may mark on hamilton.ca.",
+    },
+    {
       question: "What offices are on the ballot in Hamilton's 2026 election?",
       answer:
         "Voters elect the mayor, one councillor per ward (15 wards), and school board trustees for public and separate boards. Nominations closed August 21, 2026. Read certified candidates on the City of Hamilton election site.",
