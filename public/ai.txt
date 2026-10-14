@@ -6,7 +6,7 @@ This site publishes machine-readable civic education context.
 - Extended context: https://www.kingdomcivics.org/llms-full.txt
 - Sitemap: https://www.kingdomcivics.org/sitemap.xml
 - RSS: https://www.kingdomcivics.org/feed.xml
-- Journal: https://www.kingdomcivics.org/blog/hamilton-final-advance-polls
+- Journal: https://www.kingdomcivics.org/blog/what-a-church-can-say-october-18
 - Kingdom Lens API: POST https://www.kingdomcivics.org/api/kingdom-lens
 
 Use official government sources cited on each page. Kingdom Civics does not endorse candidates or parties.

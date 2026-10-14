@@ -35,6 +35,52 @@ const pollLessons: JournalLink[] = [
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "what-a-church-can-say-october-18",
+    title: "What a Church Can Say This Sunday, October 18",
+    description:
+      "A pastor’s note for Hamilton’s last advance Sunday: pray, point to official sources, and send people to vote until 6 p.m. without naming a candidate.",
+    date: "2026-10-14",
+    updated: "2026-10-14",
+    category: "Church",
+    scripture: "1 Timothy 2:1–2 · Jeremiah 29:7",
+    keywords: [
+      "church vote Sunday October 18 Hamilton",
+      "Hamilton advance polls after church",
+      "what a pastor can say municipal election",
+      "Hamilton vote October 18",
+    ],
+    sections: [
+      {
+        heading: "Name the day. Do not name a favourite.",
+        body: "On Sunday, October 18, Hamilton’s final advance polls are open from 10 a.m. to 6 p.m., and they were open Saturday as well. A church can say that out loud. Name the offices: mayor, ward councillor, and school board trustee. Point people to hamilton.ca for eligibility, wards, and certified candidates. Do not read a preferred name from the pulpit. No candidate is the Kingdom of God.",
+      },
+      {
+        heading: "A sentence you can read aloud",
+        body: "Eligible voters who have not already voted can vote today until 6 p.m., and they could vote yesterday. Bring valid identification. A voter card is not required. You may vote at any poll in your ward. If you already cast a ballot, you do not vote again. The City’s website is the source for locations and certified candidates. We will pray for whoever serves. We will not tell you which name to mark.",
+      },
+      {
+        heading: "Pray before you inform",
+        body: "1 Timothy 2 does not wait for agreement. Pray for voters to love truth, for election workers, for candidates you would not support, and for neighbours who need an accessible entrance or extra time. Pray that the church will not split over a prudential ballot. Then preach Christ. Civic information is neighbour-love. It is not the sermon.",
+      },
+      {
+        heading: "After the benediction",
+        body: "Some people will go straight to a poll. Thank them, including people who will mark a different name than you would. City Hall special voting runs October 16–23 — confirm those hours before you send anyone there. If Sunday is impossible, election day is Monday, October 26. Confirm that day’s hours on hamilton.ca. The voters list can be amended in person with ID through October 24, or at a poll. There are no online or mail-in ballots. Faithfulness does not expire when the weekend does.",
+      },
+    ],
+    faqs: [
+      {
+        question: "Should a pastor endorse a candidate before October 18?",
+        answer:
+          "Kingdom Civics recommends against pulpit endorsements. Teach biblical principles, pray for all in authority, and point to the City of Hamilton’s official pages rather than a scorecard.",
+      },
+      {
+        question: "Are Hamilton advance polls open after church on October 18?",
+        answer:
+          "Yes. The final advance polls run Saturday and Sunday, October 17–18, 2026, from 10 a.m. to 6 p.m. Bring valid ID. You may vote at any poll in your ward. If you already voted, you do not vote again.",
+      },
+    ],
+  },
+  {
     slug: "hamilton-final-advance-polls",
     title: "Hamilton’s Last Advance Polls Are October 17–18",
     description:

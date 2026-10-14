@@ -64,10 +64,10 @@ export function getRhythmOfTheDay(date = new Date()) {
     if (weekday === "Tue" || weekday === "Wed" || weekday === "Thu") {
       return {
         ...base,
-        title: "The last advance weekend is October 17–18.",
-        body: "Find your ward, set out valid ID, and read certified candidates on hamilton.ca. A voter card is helpful, not required.",
-        href: "/blog/hamilton-final-advance-polls",
-        cta: "Read the final advance guide",
+        title: "This Sunday, polls are open until 6 p.m.",
+        body: "Advance polls are October 17–18. City Hall special voting starts October 16 — confirm hours. Bring valid ID. If you already voted, you do not vote again.",
+        href: "/blog/what-a-church-can-say-october-18",
+        cta: "Read Sunday’s church note",
       };
     }
     if (weekday === "Fri" || weekday === "Sat" || weekday === "Sun") {

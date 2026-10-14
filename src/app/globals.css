@@ -824,6 +824,10 @@ em { color: var(--gold-light); font-weight: 400; }
   background: linear-gradient(180deg, #fffaf0 0%, #fff 70%);
   box-shadow: 0 12px 32px rgba(201, 164, 91, .18);
 }
+.voting-calendar li.is-past {
+  opacity: 0.62;
+}
+.voting-calendar li.is-past strong { color: var(--stone); }
 .voting-calendar small { letter-spacing: .1em; font-size: 9px; color: #9a7431; }
 .voting-calendar strong { font-family: var(--font-serif); font-size: 22px; color: var(--navy); line-height: 1.1; }
 .voting-calendar span { font-size: 12px; line-height: 1.5; color: var(--stone); }

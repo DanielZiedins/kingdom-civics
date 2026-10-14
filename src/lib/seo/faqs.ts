@@ -136,6 +136,11 @@ export const pageFaqs: Record<string, FaqItem[]> = {
         "Saturday and Sunday, October 17–18, 2026, from 10 a.m. to 6 p.m. Bring valid ID. A voter card is not required. You may vote at any poll in your ward. City Hall special voting runs October 16–23 — confirm hours. Election day is Monday, October 26. Kingdom Civics does not republish an unofficial address list.",
     },
     {
+      question: "What can a Hamilton church say on Sunday, October 18?",
+      answer:
+        "Tell people the final advance polls are open until 6 p.m., name the offices, and point to hamilton.ca. Bring valid ID. A voter card is not required. You may vote at any poll in your ward. If you already voted, you do not vote again. Kingdom Civics recommends against pulpit endorsements.",
+    },
+    {
       question: "Can I vote in Hamilton after church on Sunday, October 18?",
       answer:
         "Yes. The final advance polls are open Sunday, October 18, 2026, from 10 a.m. to 6 p.m., as well as Saturday. Bring valid identification. A voter card is not required. Confirm your ward, then use any poll in that ward. If you already voted, you do not vote again.",

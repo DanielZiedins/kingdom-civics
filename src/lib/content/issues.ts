@@ -334,7 +334,7 @@ export const issueGuidesContent: IssueGuide[] = [
       },
       {
         heading: "Hamilton, this season",
-        body: "The City has placed community polls in selected buildings and accessible locations, with hours of 10 a.m.–6 p.m. on September 26–27. Confirm locations and any accessibility supports on hamilton.ca. Pray for election workers and for neighbours who need extra time or help. See /learn/what-to-bring-to-the-poll and /elections.",
+        body: "The last advance polls are October 17–18, 10 a.m.–6 p.m. Election day is Monday, October 26 — confirm those hours. Earlier community polls were placed in selected buildings and accessible locations. Confirm locations and any accessibility supports on hamilton.ca. Pray for election workers and for neighbours who need extra time or help. See /learn/what-to-bring-to-the-poll and /elections.",
       },
     ],
   },

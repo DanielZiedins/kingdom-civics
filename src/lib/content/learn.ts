@@ -422,7 +422,7 @@ export const learnArticles: LearnArticle[] = [
       },
       {
         heading: "Know the calendar",
-        body: "Nominations closed August 21, 2026; candidates were certified August 24. Community polls: September 26–27. Advance polls: October 3–4, 10–11, and 17–18. Election day: Monday, October 26. The City has stated there are no online or mail-in ballots for this municipal election. Proxy voting exists for those who cannot attend any voting day—read the official proxy rules before assuming.",
+        body: "The last advance polls are October 17–18, 10 a.m.–6 p.m. Election day is Monday, October 26 — confirm those hours on hamilton.ca. Earlier voting days were September 26–27, October 3–4, and October 10–11. If you already voted, you do not vote again. Nominations closed August 21, 2026; candidates were certified August 24. There are no online or mail-in ballots. Proxy voting exists for those who cannot attend any voting day—read the official proxy rules before assuming.",
       },
       {
         heading: "Discern without baptizing a ballot",
@@ -473,7 +473,7 @@ export const learnArticles: LearnArticle[] = [
       },
       {
         heading: "You may vote at any poll in your ward",
-        body: "For this municipal election the City has stated you can vote at any polling station in your ward, not only a single assigned building. Community polls run September 26–27 from 10 a.m. to 6 p.m. Advance polls run October 3–4, 10–11, and 17–18, also 10 a.m. to 6 p.m. Election day is Monday, October 26. Find your ward with the City’s official map, then confirm locations closer to each voting day.",
+        body: "For this municipal election the City has stated you can vote at any polling station in your ward, not only a single assigned building. The last advance polls are October 17–18, 10 a.m.–6 p.m. Election day is Monday, October 26 — confirm those hours. Earlier days were September 26–27, October 3–4, and October 10–11. If you already voted, you do not vote again. Find your ward with the City’s official map, then confirm locations on hamilton.ca.",
       },
       {
         heading: "What this election is not",

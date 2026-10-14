@@ -463,6 +463,22 @@ const globalChunks: KnowledgeChunk[] = [
     confidence: "strong",
   },
   {
+    id: "sunday-october-18",
+    scope: "hamilton",
+    tags: ["sunday", "church", "october 18", "after church", "pastor", "pulpit", "advance"],
+    answer:
+      "On Sunday, October 18, 2026, Hamilton's final advance polls are open from 10 a.m. to 6 p.m. A church can say that, name the offices, and point to hamilton.ca without endorsing a candidate. Bring valid ID. A voter card is not required. You may vote at any poll in your ward. If you already voted, you do not vote again. Election day is Monday, October 26. See /blog/what-a-church-can-say-october-18.",
+    principles: ["Truth", "Kingdom first", "Neighbor love"],
+    scripture: [{ reference: "1 Timothy 2:1–2", application: "Pray for all in authority, including people you would not vote for." }],
+    sources: [
+      { id: "ham-voters", title: "Voters", publisher: "City of Hamilton", url: "https://www.hamilton.ca/city-council/municipal-election/voters", tier: 1 },
+      { id: "kc-sunday", title: "What a Church Can Say This Sunday", publisher: "Kingdom Civics", url: "/blog/what-a-church-can-say-october-18", tier: 2 },
+    ],
+    uncertainties: ["Election-day hours and City Hall special-voting hours must be confirmed on hamilton.ca."],
+    counterpoints: ["A congregation can inform and pray without telling members which name to mark."],
+    confidence: "strong",
+  },
+  {
     id: "final-advance-polls",
     scope: "hamilton",
     tags: ["advance", "october 17", "october 18", "last weekend", "final advance", "already voted", "election day"],

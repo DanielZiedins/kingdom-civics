@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, ExternalLink } from "lucide-react";
-import { ElectionCountdown } from "@/components/election-countdown";
+import { ElectionCountdown, NextPollCountdown } from "@/components/election-countdown";
 import { ElectionHeading } from "@/components/election-heading";
 import { WeekendVote } from "@/components/weekend-vote";
 import { hamiltonElection } from "@/lib/content/election";
@@ -23,7 +23,7 @@ export function ElectionSeason() {
             <li><CheckCircle2 /> Election day {hamiltonElection.weekdayLabel}. A voter card is helpful, not required.</li>
           </ul>
           <div className="stack-actions">
-            <Link href="/blog/hamilton-final-advance-polls" className="button button-gold">Read the final advance guide <ArrowRight size={16} /></Link>
+            <Link href="/blog/what-a-church-can-say-october-18" className="button button-gold">Read Sunday’s church note <ArrowRight size={16} /></Link>
             <Link href="/elections" className="text-link">Election hub <ArrowRight size={14} /></Link>
             <a href={hamiltonElection.urls.hub} className="text-link" target="_blank" rel="noopener noreferrer">
               City of Hamilton election page <ExternalLink size={14} />
@@ -31,6 +31,7 @@ export function ElectionSeason() {
           </div>
         </div>
         <div className="election-season-card">
+          <NextPollCountdown />
           <ElectionCountdown date={hamiltonElection.date} label="Hamilton voting day" />
           <Link href="/learn/what-to-bring-to-the-poll" className="text-link">
             What to bring to the poll <ArrowRight size={14} />
