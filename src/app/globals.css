@@ -877,6 +877,14 @@ em { color: var(--gold-light); font-weight: 400; }
 .weekend-days strong { font-family: var(--font-serif); font-size: 32px; line-height: 1; }
 .weekend-days span { color: #d5dee4; font-size: 14px; }
 .election-season .weekend-vote { margin-top: 28px; }
+.next-windows { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 22px; }
+.next-windows article { display: grid; gap: 6px; padding: 18px 16px; border: 1px solid rgba(201,164,91,.4); background: rgba(255,255,255,.04); }
+.next-windows small { letter-spacing: .12em; font-size: 10px; text-transform: uppercase; color: var(--gold-light); }
+.next-windows strong { font-family: var(--font-serif); font-size: 28px; line-height: 1; }
+.next-windows span { color: #c5d0d7; font-size: 14px; line-height: 1.5; }
+@media (max-width: 700px) {
+  .next-windows { grid-template-columns: 1fr; }
+}
 .ballot-offices { margin-top: 28px; }
 .ballot-offices-head { max-width: 640px; margin-bottom: 16px; }
 .ballot-offices-head small, .ballot-offices article small { letter-spacing: .12em; font-size: 10px; text-transform: uppercase; }

@@ -45,7 +45,7 @@ export function ElectionCountdown({ date = "2026-10-26", label = "Election day" 
 
 const nextPollFallback = {
   label: "Advance polls",
-  strong: "3 days",
+  strong: "2 days",
   detail: "until Saturday, October 17",
 };
 

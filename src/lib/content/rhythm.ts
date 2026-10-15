@@ -64,19 +64,19 @@ export function getRhythmOfTheDay(date = new Date()) {
     if (weekday === "Tue" || weekday === "Wed" || weekday === "Thu") {
       return {
         ...base,
-        title: "This Sunday, polls are open until 6 p.m.",
-        body: "Advance polls are October 17–18. City Hall special voting starts October 16 — confirm hours. Bring valid ID. If you already voted, you do not vote again.",
-        href: "/blog/what-a-church-can-say-october-18",
-        cta: "Read Sunday’s church note",
+        title: "City Hall special voting starts tomorrow.",
+        body: "Confirm those hours on hamilton.ca. They are not 10 a.m. to 6 p.m. Advance polls are Saturday and Sunday. If you already voted, you do not vote again.",
+        href: "/blog/friday-at-city-hall-then-saturday",
+        cta: "Friday at City Hall, then Saturday",
       };
     }
     if (weekday === "Fri" || weekday === "Sat" || weekday === "Sun") {
       return {
         ...base,
         title: "Final advance polls this weekend.",
-        body: "Hamilton advance polls are October 17–18, 10 a.m.–6 p.m. Vote at any poll in your ward. Bring valid ID.",
-        href: "/learn/what-to-bring-to-the-poll",
-        cta: "What to bring to the poll",
+        body: "Saturday and Sunday are 10 a.m.–6 p.m. City Hall hours are separate — confirm them. Bring valid ID. Any poll in your ward.",
+        href: "/blog/friday-at-city-hall-then-saturday",
+        cta: "Friday, then Saturday",
       };
     }
   }

@@ -135,6 +135,9 @@ export function getWeekendStatus(now = new Date()) {
   const saturdayAdvance = pollDayStatus(date, hour, "2026-10-17", "Open again Sunday, 10 a.m.–6 p.m. Bring valid ID.");
   if (saturdayAdvance) return saturdayAdvance;
   if (date === "2026-10-17") return "Saturday advance polls have closed. Open again Sunday, 10 a.m.–6 p.m.";
+  if (date === "2026-10-15" || date === "2026-10-16") {
+    return "City Hall special voting runs October 16–23 — confirm hours. Final advance polls are Saturday and Sunday, October 17–18, 10 a.m.–6 p.m. Bring valid ID.";
+  }
   if (date >= "2026-10-12") {
     return "Final advance polls are Saturday and Sunday, October 17–18, 10 a.m.–6 p.m. Bring valid ID.";
   }
@@ -165,6 +168,9 @@ export function getChurchNote(now = new Date()) {
   if (date > "2026-10-18" || (date === "2026-10-18" && hour >= 18)) {
     return `Hamilton’s final advance polls have closed. Election day is Monday, October 26. Confirm hours on hamilton.ca. Bring valid ID. A voter card is not required. You may vote at any poll in your ward. If you already voted, you do not vote again. ${close}`;
   }
+  if (date === "2026-10-15" || date === "2026-10-16") {
+    return "Hamilton City Hall special voting runs October 16–23 at 71 Main Street West. Confirm the hours — they are not the advance-poll hours. Final advance polls are Saturday and Sunday, October 17–18, 10 a.m.–6 p.m. Bring valid ID. A voter card is not required. You may vote at any poll in your ward. If you already voted, you do not vote again. " + close;
+  }
   if (date >= "2026-09-28") {
     return "Hamilton’s final advance polls are Saturday and Sunday, October 17–18, 10 a.m.–6 p.m. Bring valid ID. A voter card is not required. You may vote at any poll in your ward. City Hall special voting runs October 16–23 — confirm hours. Election day is Monday, October 26. If you already voted, you do not vote again. " + close;
   }
@@ -189,6 +195,8 @@ export function getElectionHeading(now = new Date()) {
   if (date === "2026-10-17" && hour >= 18) return "Advance polls open again Sunday. Bring ID.";
   if (date === "2026-10-17" && hour >= 10) return "Advance polls are open today until 6 p.m. Bring ID.";
   if (date === "2026-10-17") return "Advance polls open today at 10 a.m. Bring ID.";
+  if (date === "2026-10-16") return "City Hall special voting has begun. Confirm hours. Advance polls are tomorrow.";
+  if (date === "2026-10-15") return "City Hall special voting starts tomorrow. Advance polls are Saturday.";
   if (date >= "2026-10-12") return "Hamilton’s last advance weekend is October 17–18. Bring ID.";
   if (date >= "2026-09-28") return "Advance polls are still ahead. Bring ID.";
   return "This weekend, Hamilton casts the first ballots. Bring ID.";
@@ -261,6 +269,8 @@ export function getBannerCopy(now = new Date()) {
   if (date === "2026-10-17" && hour >= 18) return "Advance polls open again Sunday · 10 a.m.–6 p.m. · Bring ID";
   if (date === "2026-10-17" && hour >= 10) return "Advance polls open today until 6 p.m. · Bring ID · Any poll in your ward";
   if (date === "2026-10-17") return "Advance polls open today at 10 a.m. · Bring ID · Any poll in your ward";
+  if (date === "2026-10-16") return "City Hall special voting today · Confirm hours · Advance polls tomorrow 10 a.m.–6 p.m.";
+  if (date === "2026-10-15") return "Tomorrow · City Hall special voting starts · Confirm hours · Advance polls Sat–Sun";
   if (date >= "2026-10-12") return "Final advance polls · Sat–Sun Oct 17–18 · 10 a.m.–6 p.m. · Bring ID";
   const next = getNextVotingWindow(now);
   if (next?.id.startsWith("advance")) return `Advance polls ${next.when} · 10 a.m.–6 p.m. · Any poll in your ward`;

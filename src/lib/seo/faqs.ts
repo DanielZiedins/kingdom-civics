@@ -106,6 +106,11 @@ export const pageFaqs: Record<string, FaqItem[]> = {
   ],
   elections: [
     {
+      question: "Are Hamilton City Hall voting hours the same as the advance polls?",
+      answer:
+        "No. Advance polls on October 17–18, 2026 are 10 a.m. to 6 p.m. City Hall special voting runs October 16–23 at 71 Main Street West. Confirm those hours on hamilton.ca before you go.",
+    },
+    {
       question: "What does a Hamilton mayor decide that a trustee does not?",
       answer:
         "The mayor chairs council and holds Ontario strong-mayor tools in Hamilton. Council still approves budgets and bylaws. A school board trustee helps set local education policy and budgets and does not run the city. Confirm which trustee ballot you may mark on hamilton.ca.",

@@ -35,6 +35,98 @@ const pollLessons: JournalLink[] = [
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "friday-at-city-hall-then-saturday",
+    title: "Friday at City Hall, Then Saturday at the Poll",
+    description:
+      "Hamilton’s two clocks this weekend: City Hall special voting starts October 16 with its own hours, and advance polls are October 17–18 from 10 a.m. to 6 p.m.",
+    date: "2026-10-15",
+    updated: "2026-10-15",
+    category: "Hamilton",
+    scripture: "Jeremiah 29:7 · Romans 13:7",
+    keywords: [
+      "Hamilton City Hall special voting October 16",
+      "Hamilton advance polls Saturday October 17",
+      "City Hall voting hours Hamilton 2026",
+      "vote Hamilton this weekend",
+    ],
+    sections: [
+      {
+        heading: "Two clocks, not one",
+        body: "Tomorrow, Friday, October 16, the City of Hamilton’s special voting at City Hall begins. It runs through October 23 at 71 Main Street West. Those hours are not published here, because they are not the same as the advance-poll window and they can change. Confirm them on hamilton.ca before you go. Saturday and Sunday, October 17 and 18, are the last advance polls, and those hours are 10 a.m. to 6 p.m. Mixing the two clocks is how people arrive at a locked door.",
+      },
+      {
+        heading: "What Friday is for",
+        body: "City Hall is one official place to vote during October 16–23, if you have not already voted. It is not a promise that every hour of those days is open. Bring valid identification. A voter information card is helpful, not required. If you are unsure whether a Friday trip fits the Clerk’s hours, call 905-546-4365 or write elections@hamilton.ca before you leave. Kingdom Civics does not invent a timetable the City has not put in this sentence.",
+      },
+      {
+        heading: "What Saturday and Sunday are for",
+        body: "Advance polls on October 17 and 18 run from 10 a.m. to 6 p.m. You may vote at any polling station in your ward. Your voter card lists those stations. Find the ward on the City’s Find my Ward tool if the card has not arrived. The ballot is mayor, your ward councillor, and the school board trustee race you are eligible for. Read certified candidates on hamilton.ca. This page does not endorse a name.",
+      },
+      {
+        heading: "If you already voted, stay home",
+        body: "This election takes one ballot. A vote at a community poll or an earlier advance poll is the vote. Do not mark another one on Friday, Saturday, Sunday, or election day. If you have not voted and the weekend fails, election day is Monday, October 26 — confirm those hours on hamilton.ca. The voters list can be amended in person with ID through October 24, or at a poll. There are no online or mail-in ballots.",
+      },
+    ],
+    faqs: [
+      {
+        question: "Are Hamilton City Hall voting hours the same as advance polls?",
+        answer:
+          "No. Advance polls on October 17–18, 2026 run from 10 a.m. to 6 p.m. City Hall special voting runs October 16–23 at 71 Main Street West, and those hours must be confirmed on hamilton.ca. Do not assume they match.",
+      },
+      {
+        question: "When do Hamilton’s last advance polls open?",
+        answer:
+          "Saturday, October 17, 2026, at 10 a.m., and again Sunday, October 18, until 6 p.m. Bring valid ID. You may vote at any poll in your ward. If you already voted, you do not vote again.",
+      },
+    ],
+  },
+  {
+    slug: "friday-at-city-hall-then-saturday",
+    title: "Friday at City Hall, Then Saturday at the Poll",
+    description:
+      "Hamilton’s two clocks this weekend: City Hall special voting starts October 16 with its own hours, and advance polls are October 17–18 from 10 a.m. to 6 p.m.",
+    date: "2026-10-15",
+    updated: "2026-10-15",
+    category: "Hamilton",
+    scripture: "Jeremiah 29:7 · Romans 13:7",
+    keywords: [
+      "Hamilton City Hall special voting October 16",
+      "Hamilton advance polls Saturday October 17",
+      "City Hall voting hours Hamilton 2026",
+      "vote Hamilton this weekend",
+    ],
+    sections: [
+      {
+        heading: "Two clocks, not one",
+        body: "Tomorrow, Friday, October 16, the City of Hamilton’s special voting at City Hall begins. It runs through October 23 at 71 Main Street West. Those hours are not published here, because they are not the same as the advance-poll window and they can change. Confirm them on hamilton.ca before you go. Saturday and Sunday, October 17 and 18, are the last advance polls, and those hours are 10 a.m. to 6 p.m. Mixing the two clocks is how people arrive at a locked door.",
+      },
+      {
+        heading: "What Friday is for",
+        body: "City Hall is one official place to vote during October 16–23, if you have not already voted. It is not a promise that every hour of those days is open. Bring valid identification. A voter information card is helpful, not required. If you are unsure whether a Friday trip fits the Clerk’s hours, call 905-546-4365 or write elections@hamilton.ca before you leave. Kingdom Civics does not invent a timetable the City has not put in this sentence.",
+      },
+      {
+        heading: "What Saturday and Sunday are for",
+        body: "Advance polls on October 17 and 18 run from 10 a.m. to 6 p.m. You may vote at any polling station in your ward. Your voter card lists those stations. Find the ward on the City’s Find my Ward tool if the card has not arrived. The ballot is mayor, your ward councillor, and the school board trustee race you are eligible for. Read certified candidates on hamilton.ca. This page does not endorse a name.",
+      },
+      {
+        heading: "If you already voted, stay home",
+        body: "This election takes one ballot. A vote at a community poll or an earlier advance poll is the vote. Do not mark another one on Friday, Saturday, Sunday, or election day. If you have not voted and the weekend fails, election day is Monday, October 26 — confirm those hours on hamilton.ca. The voters list can be amended in person with ID through October 24, or at a poll. There are no online or mail-in ballots.",
+      },
+    ],
+    faqs: [
+      {
+        question: "Are Hamilton City Hall voting hours the same as advance polls?",
+        answer:
+          "No. Advance polls on October 17–18, 2026 run from 10 a.m. to 6 p.m. City Hall special voting runs October 16–23 at 71 Main Street West, and those hours must be confirmed on hamilton.ca. Do not assume they match.",
+      },
+      {
+        question: "When do Hamilton’s last advance polls open?",
+        answer:
+          "Saturday, October 17, 2026, at 10 a.m., and again Sunday, October 18, until 6 p.m. Bring valid ID. You may vote at any poll in your ward. If you already voted, you do not vote again.",
+      },
+    ],
+  },
+  {
     slug: "three-marks-on-a-hamilton-ballot",
     title: "The Three Marks on a Hamilton Ballot",
     description:

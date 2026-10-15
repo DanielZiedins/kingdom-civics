@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { getElectionHeading } from "@/lib/content/election";
 
-const FALLBACK = "Hamilton’s last advance weekend is October 17–18. Bring ID.";
+const FALLBACK = "City Hall special voting starts tomorrow. Advance polls are Saturday.";
 
 export function ElectionHeading() {
   const [heading, setHeading] = useState(FALLBACK);

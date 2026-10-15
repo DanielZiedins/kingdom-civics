@@ -463,6 +463,22 @@ const globalChunks: KnowledgeChunk[] = [
     confidence: "strong",
   },
   {
+    id: "city-hall-friday",
+    scope: "hamilton",
+    tags: ["city hall", "friday", "october 16", "special voting", "hours", "71 main", "tomorrow"],
+    answer:
+      "Hamilton City Hall special voting runs October 16–23, 2026, at 71 Main Street West. Those hours are not the same as advance polls and must be confirmed on hamilton.ca. Advance polls are Saturday and Sunday, October 17–18, from 10 a.m. to 6 p.m. Bring valid ID. You may vote at any poll in your ward. If you already voted, you do not vote again. See /blog/friday-at-city-hall-then-saturday.",
+    principles: ["Truth", "Civic responsibility"],
+    scripture: [{ reference: "Romans 13:7", application: "Give what is owed, including the patience to check the official hours." }],
+    sources: [
+      { id: "ham-voters", title: "Voters", publisher: "City of Hamilton", url: "https://www.hamilton.ca/city-council/municipal-election/voters", tier: 1 },
+      { id: "kc-friday", title: "Friday at City Hall, Then Saturday at the Poll", publisher: "Kingdom Civics", url: "/blog/friday-at-city-hall-then-saturday", tier: 2 },
+    ],
+    uncertainties: ["City Hall special-voting hours must be confirmed on hamilton.ca and can change."],
+    counterpoints: ["Missing Friday does not end the election. Advance polls are Saturday and Sunday, and election day is October 26."],
+    confidence: "strong",
+  },
+  {
     id: "hamilton-ballot-offices",
     scope: "hamilton",
     tags: ["ballot", "mayor", "councillor", "trustee", "school board", "what is on the ballot", "three"],

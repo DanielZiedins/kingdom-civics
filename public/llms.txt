@@ -4,7 +4,7 @@
 
 Kingdom Civics helps Christians worldwide understand government, discern leadership, pray faithfully, and serve humbly—without partisan endorsements.
 
-Last updated: 2026-10-14
+Last updated: 2026-10-15
 
 ## Canonical site
 
@@ -20,7 +20,7 @@ Last updated: 2026-10-14
 - [For Churches](https://www.kingdomcivics.org/for-churches): Free four-week civic discipleship kit for pastors and small groups
 - [Find Representatives](https://www.kingdomcivics.org/find-representatives): Official government lookup tools worldwide
 - [Start here](https://www.kingdomcivics.org/start): Five-step civic discipleship path
-- [Journal](https://www.kingdomcivics.org/blog): Notes by Daniel Ziedins (https://www.danielziedins.com), including the three marks on a Hamilton ballot
+- [Journal](https://www.kingdomcivics.org/blog): Notes by Daniel Ziedins (https://www.danielziedins.com), including Friday at City Hall and Saturday’s advance polls
 - [Scripture index](https://www.kingdomcivics.org/scripture): Bible verses about government, voting, and public life
 - [Hamilton Leaders](https://www.kingdomcivics.org/leaders): Mayor, councillors, MPs, MPPs with official links
 - [Hamilton City Hub](https://www.kingdomcivics.org/cities/hamilton-on): Live Hamilton civic data
@@ -72,6 +72,7 @@ Last updated: 2026-10-14
 
 ## Journal (Daniel Ziedins — https://www.danielziedins.com)
 
+- /blog/friday-at-city-hall-then-saturday
 - /blog/three-marks-on-a-hamilton-ballot
 - /blog/what-a-church-can-say-october-18
 - /blog/hamilton-final-advance-polls
@@ -87,6 +88,7 @@ Last updated: 2026-10-14
 - Community polls: September 26–27, 2026, 10 a.m.–6 p.m. (59 locations)
 - More than 300 voting opportunities; 8 ballot-on-demand sites (hours vary)
 - Final advance polls still open: October 17–18, 2026, 10 a.m.–6 p.m.
+- City Hall special voting: October 16–23, 2026, 71 Main Street West — confirm hours; they are not 10 a.m.–6 p.m.
 - Earlier advance polls: October 3–4 and 10–11, 2026 (closed)
 - Election day: Monday, October 26, 2026 — confirm hours
 - If you already voted, you do not vote again

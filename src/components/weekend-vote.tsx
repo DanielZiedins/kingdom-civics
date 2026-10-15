@@ -23,7 +23,7 @@ const focusFallback: VoteFocus = {
 };
 
 export function WeekendVote() {
-  const [status, setStatus] = useState("Final advance polls are Saturday and Sunday, October 17–18, 10 a.m.–6 p.m. Bring valid ID.");
+  const [status, setStatus] = useState("City Hall special voting runs October 16–23 — confirm hours. Final advance polls are Saturday and Sunday, October 17–18, 10 a.m.–6 p.m. Bring valid ID.");
   const [focus, setFocus] = useState(focusFallback);
   const [copied, setCopied] = useState(false);
 

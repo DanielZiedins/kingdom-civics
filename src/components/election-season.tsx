@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, ExternalLink } from "lucide-react";
 import { BallotOffices } from "@/components/ballot-offices";
+import { NextWindows } from "@/components/next-windows";
 import { ElectionCountdown, NextPollCountdown } from "@/components/election-countdown";
 import { ElectionHeading } from "@/components/election-heading";
 import { WeekendVote } from "@/components/weekend-vote";
@@ -19,12 +20,12 @@ export function ElectionSeason() {
             without baptizing a party.
           </p>
           <ul className="check-list election-season-list">
+            <li><CheckCircle2 /> Tomorrow: City Hall special voting starts. Confirm hours. It is not the 10 a.m.–6 p.m. window.</li>
             <li><CheckCircle2 /> Final advance polls: October 17–18 · {hamiltonElection.advancePollHours}</li>
-            <li><CheckCircle2 /> City Hall special voting {hamiltonElection.cityHallSpecial}. Confirm hours.</li>
             <li><CheckCircle2 /> Election day {hamiltonElection.weekdayLabel}. A voter card is helpful, not required.</li>
           </ul>
           <div className="stack-actions">
-            <Link href="/blog/three-marks-on-a-hamilton-ballot" className="button button-gold">See what is on the ballot <ArrowRight size={16} /></Link>
+            <Link href="/blog/friday-at-city-hall-then-saturday" className="button button-gold">Friday, then Saturday <ArrowRight size={16} /></Link>
             <Link href="/blog/what-a-church-can-say-october-18" className="text-link">Sunday’s church note <ArrowRight size={14} /></Link>
             <Link href="/elections" className="text-link">Election hub <ArrowRight size={14} /></Link>
             <a href={hamiltonElection.urls.hub} className="text-link" target="_blank" rel="noopener noreferrer">
@@ -41,6 +42,7 @@ export function ElectionSeason() {
         </div>
       </div>
       <div className="page-width">
+        <NextWindows />
         <WeekendVote />
         <BallotOffices tone="dark" />
       </div>
